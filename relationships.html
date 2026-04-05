@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Music | Magiarchy</title>
+    <title>Relationships | Magiarchy</title>
     <meta
       name="description"
-      content="A curated listening room for Magiarchy with room for future themes and institutional motifs."
+      content="Relationship architecture for Magiarchy covering the character pairings and triads that drive legitimacy, loyalty, and conflict."
     />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -16,7 +16,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body data-page="music">
+  <body data-page="relationships">
     <div id="mobile-shell"></div>
 
     <div class="container-fluid px-0 site-shell">
@@ -28,25 +28,33 @@
         <main class="col-lg-9 col-xl-10 content-column">
           <div class="content-wrap">
             <section class="page-banner">
-              <p class="page-kicker">Music</p>
-              <h1 class="page-title">A listening room for atmosphere, hidden pressure, and institutional motifs</h1>
+              <p class="page-kicker">Relationships</p>
+              <h1 class="page-title">Trust, mirrors, pressure pairs, and the human architecture of power</h1>
               <p class="page-copy banner-copy mt-3">
-                Music sits beside the archive as a future layer of pressure and recurrence.
-                Instead of a wall of embeds, this page keeps one active player and a few shelves
-                ready for the setting's main theme and recurring motifs.
+                Relationship logic in Magiarchy is structural before it is ornamental. Alliances,
+                rivalries, mirrors, and loyalty fractures decide how power behaves under stress.
               </p>
             </section>
 
             <section class="page-section mt-4">
-              <div id="music-feature"></div>
+              <div class="dual-grid">
+                <article class="paper-panel">
+                  <p class="card-kicker">Visible And Hidden</p>
+                  <p class="page-copy mb-0">
+                    The core relationship engine is often about who can act visibly and who must act from shadow without breaking trust.
+                  </p>
+                </article>
+                <article class="paper-panel">
+                  <p class="card-kicker">Institution And Intimacy</p>
+                  <p class="page-copy mb-0">
+                    Personal bonds matter here because institutions weaponize them, lean on them, or collapse when they fail.
+                  </p>
+                </article>
+              </div>
             </section>
 
             <section class="page-section mt-4">
-              <div class="section-header">
-                <p class="page-kicker">Listening Shelves</p>
-                <h2 class="section-title">Move through the score by narrative function</h2>
-              </div>
-              <div class="music-collections" id="music-collections"></div>
+              <div class="entry-grid entry-grid--wide" id="relationship-grid"></div>
             </section>
           </div>
         </main>
@@ -60,6 +68,6 @@
     ></script>
     <script src="shell.js" defer></script>
     <script src="archive-core.js" defer></script>
-    <script src="music.js" defer></script>
+    <script src="relationships.js" defer></script>
   </body>
 </html>
