@@ -29,14 +29,42 @@
           <div class="content-wrap">
             <section class="page-banner">
               <p class="page-kicker">Story Timeline</p>
-              <h1 class="page-title">Chapter progression and crisis escalation</h1>
+              <h1 class="page-title">Chapter progression, pivotal events, and visible activity across the arc</h1>
               <p class="page-copy banner-copy mt-3">
-                Chronology helps readers follow how the active chapter scaffold and catalytic events
-                escalate from prelude pressure into exile, mutation, and return.
+                Use the timeline map to follow chapters across the top, pivotal events cutting through
+                the sequence, and character or faction movement unfolding lane by lane through the canon.
               </p>
             </section>
 
             <section class="page-section mt-4">
+              <div class="detail-panel timeline-map-shell">
+                <div class="timeline-map-head">
+                  <div>
+                    <p class="page-kicker">Narrative Mapping</p>
+                    <h2 class="section-title timeline-map-title">Story Timeline Board</h2>
+                    <p class="page-copy mt-3 mb-0">
+                      Click a chapter or event column to isolate that point in the story. Drag the board
+                      to pan across it on desktop, or scroll normally on smaller screens.
+                    </p>
+                  </div>
+                  <div class="timeline-map-legend" aria-label="Timeline legend">
+                    <span class="timeline-map-legend__chip timeline-map-legend__chip--story">Character Movement</span>
+                    <span class="timeline-map-legend__chip timeline-map-legend__chip--faction">Faction Pressure</span>
+                    <span class="timeline-map-legend__chip timeline-map-legend__chip--event">Pivotal Event</span>
+                  </div>
+                </div>
+
+                <div class="timeline-map-frame mt-4" id="timeline-map-frame" aria-label="Story timeline board">
+                  <div class="timeline-map-board" id="timeline-map-board"></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="page-section mt-4">
+              <div class="section-header">
+                <p class="page-kicker">Chronological Index</p>
+                <h2 class="section-title">Files in sequence</h2>
+              </div>
               <div class="timeline-list" id="timeline-list"></div>
             </section>
           </div>
