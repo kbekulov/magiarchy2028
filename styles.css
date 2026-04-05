@@ -93,14 +93,10 @@ code {
 }
 
 .sidebar-column {
-  display: none !important;
   min-height: 100vh;
 }
 
 .content-column {
-  width: 100%;
-  max-width: 100%;
-  flex: 0 0 100%;
   min-height: 100vh;
 }
 

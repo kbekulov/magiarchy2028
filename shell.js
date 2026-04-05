@@ -12,121 +12,230 @@ const DC_SHELL = (() => {
     { key: "global-prompt", label: "Global Prompt", href: "notes.html" },
   ];
 
-  const pageByKey = Object.fromEntries(sections.map((section) => [section.key, section]));
+  const utilityPages = [
+    { key: "home", label: "Project Home", href: "index.html" },
+    { key: "archive", label: "Archive Browser", href: "library.html" },
+  ];
+
+  const pageByKey = Object.fromEntries(
+    [...sections, ...utilityPages].map((page) => [page.key, page])
+  );
+
   const activeAliases = {
     about: "story-universe",
     cast: "characters",
     cases: "events-chapters",
-    music: "music",
     notes: "global-prompt",
+    reader: "archive",
     timeline: "story-timeline",
     world: "magic-system",
   };
 
+  const contextualLinks = {
+    home: ["story-universe", "characters", "events-chapters"],
+    archive: ["story-universe", "characters", "global-prompt"],
+    "story-universe": ["magic-system", "organizations", "characters"],
+    "magic-system": ["locations", "organizations", "story-timeline"],
+    locations: ["story-universe", "organizations", "events-chapters"],
+    music: ["story-universe", "characters", "global-prompt"],
+    organizations: ["characters", "events-chapters", "story-timeline"],
+    characters: ["relationships", "events-chapters", "story-timeline"],
+    relationships: ["characters", "events-chapters", "global-prompt"],
+    "events-chapters": ["story-timeline", "characters", "archive"],
+    "story-timeline": ["events-chapters", "archive", "global-prompt"],
+    "global-prompt": ["story-universe", "events-chapters", "archive"],
+  };
+
+  const notes = {
+    home:
+      "Start from the story universe, then move into characters, events, or the archive depending on whether you want premise, people, or canon structure first.",
+    archive:
+      "The archive stays as the deep-browse layer, while the sidebar sections give the project a cleaner front-facing navigation path.",
+    "story-universe":
+      "This page frames the hidden-world premise, the political equilibrium, and the thematic pressure before you open narrower files.",
+    "magic-system":
+      "Magic system pages should explain law, cost, secrecy, and precision without draining the setting of atmosphere.",
+    locations:
+      "Locations matter here as pressure-bearing spaces, not neutral maps. Each one changes visibility, legitimacy, and symbolic weight.",
+    music:
+      "Music works best as a restrained listening room tied to narrative function and institutional motifs rather than pure decoration.",
+    organizations:
+      "Organizations define how hidden power survives, mutates, and negotiates with the visible world.",
+    characters:
+      "Character pages should stay dossier-like: clear enough to browse, sharp enough to carry doctrine, pressure, and role.",
+    relationships:
+      "Relationships in this project are structural. Trust, mirrors, rivalries, and loyalty fractures all change how power behaves.",
+    "events-chapters":
+      "Events and chapters are the canon's turning machinery: catalytic incidents first, then the story movement they trigger.",
+    "story-timeline":
+      "The timeline should clarify escalation and sequence without turning the project into a dry production sheet.",
+    "global-prompt":
+      "The global prompt shelf keeps the active canon pack close to the supporting writer-facing references that feed it.",
+  };
+
   const body = document.body;
   const currentKey = body.dataset.page || "home";
-  const activeKey = pageByKey[currentKey] ? currentKey : activeAliases[currentKey] || null;
-  const activeSection = activeKey ? pageByKey[activeKey] : null;
-  const shellRoot = document.getElementById("mobile-shell");
+  const activeKey = pageByKey[currentKey] ? currentKey : activeAliases[currentKey] || "home";
   const sidebarRoot = document.getElementById("sidebar-shell");
+  const mobileRoot = document.getElementById("mobile-shell");
 
-  function renderDesktopNav() {
-    return sections
-      .map((section, index) => {
-        const isActive = section.key === activeKey;
-
-        return `
-          <a
-            class="section-nav__link${isActive ? " is-active" : ""}"
-            ${isActive ? 'aria-current="page"' : ""}
-            href="${section.href}"
-          >
-            ${section.label}
-          </a>
-          ${
-            index < sections.length - 1
-              ? '<span class="section-nav__divider" aria-hidden="true">|</span>'
-              : ""
-          }
-        `;
-      })
-      .join("");
-  }
-
-  function renderDrawerLinks() {
+  function renderPrimaryNav() {
     return sections
       .map((section) => {
         const isActive = section.key === activeKey;
 
         return `
-          <a
-            class="section-drawer__link${isActive ? " is-active" : ""}"
-            ${isActive ? 'aria-current="page"' : ""}
-            href="${section.href}"
-          >
-            <span class="section-drawer__title">${section.label}</span>
+          <a class="nav-link${isActive ? " active" : ""}" ${
+            isActive ? 'aria-current="page"' : ""
+          } href="${section.href}">
+            ${section.label}
           </a>
         `;
       })
       .join("");
   }
 
-  function renderShell() {
-    if (!shellRoot) {
+  function renderUtilityNav() {
+    return utilityPages
+      .map((page) => {
+        const isActive = page.key === activeKey;
+
+        return `
+          <a class="nav-link${isActive ? " active" : ""}" ${
+            isActive ? 'aria-current="page"' : ""
+          } href="${page.href}">
+            ${page.label}
+          </a>
+        `;
+      })
+      .join("");
+  }
+
+  function renderContextLinks() {
+    const keys = contextualLinks[activeKey] || contextualLinks.home;
+
+    return keys
+      .map((key) => {
+        const page = pageByKey[key];
+        if (!page) {
+          return "";
+        }
+
+        return `
+          <a class="sidebar-mini-link" href="${page.href}">
+            <span class="sidebar-mini-link__title">${page.label}</span>
+            <span class="sidebar-mini-link__copy">Open ${page.label.toLowerCase()}.</span>
+          </a>
+        `;
+      })
+      .join("");
+  }
+
+  function renderSidebar() {
+    if (!sidebarRoot) {
       return;
     }
 
-    shellRoot.innerHTML = `
-      <header class="section-shell">
-        <div class="section-shell__inner">
-          <a class="shell-home" href="index.html">
-            <span class="shell-home__title">Magiarchy</span>
-            <span class="shell-home__copy">Archive Home</span>
-          </a>
+    sidebarRoot.innerHTML = `
+      <div class="sidebar-panel">
+        <div class="sidebar-top">
+          <p class="sidebar-kicker mb-2">Hidden World Archive</p>
+          <p class="sidebar-copy mt-2 mb-0">
+            Magiarchy canon, doctrine, character architecture, and writer-facing reference arranged as one readable archive.
+          </p>
+        </div>
 
-          <nav class="section-nav d-none d-lg-flex" aria-label="Primary">
-            ${renderDesktopNav()}
-          </nav>
+        <div class="sidebar-divider"></div>
 
-          <div class="section-shell__mobile d-lg-none">
-            <span class="section-shell__current">${activeSection?.label || "Archive Home"}</span>
-            <button
-              class="btn btn-outline-light btn-sm"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#sectionDrawer"
-              aria-controls="sectionDrawer"
-            >
-              Sections
-            </button>
+        <div class="site-nav-shell">
+          <div class="site-nav-group">
+            <p class="sidebar-section-label">Utilities</p>
+            <nav class="nav flex-column site-nav">
+              ${renderUtilityNav()}
+            </nav>
+          </div>
+
+          <div class="site-nav-group">
+            <p class="sidebar-section-label">Sections</p>
+            <nav class="nav flex-column site-nav">
+              ${renderPrimaryNav()}
+            </nav>
           </div>
         </div>
-      </header>
 
-      <div class="offcanvas offcanvas-start section-drawer d-lg-none" tabindex="-1" id="sectionDrawer">
+        <div class="sidebar-divider"></div>
+
+        <div class="sidebar-utility">
+          <p class="sidebar-section-label">Go Next</p>
+          <div class="sidebar-link-list">
+            ${renderContextLinks()}
+          </div>
+        </div>
+
+        <div class="sidebar-note mt-auto">
+          ${notes[activeKey] || notes.home}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderMobile() {
+    if (!mobileRoot) {
+      return;
+    }
+
+    mobileRoot.innerHTML = `
+      <div class="mobile-topbar d-lg-none">
+        <button
+          class="btn btn-outline-light btn-sm"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileNav"
+          aria-controls="mobileNav"
+        >
+          Menu
+        </button>
+        <a class="mobile-brand" href="index.html">Magiarchy</a>
+      </div>
+
+      <div class="offcanvas offcanvas-start mobile-drawer d-lg-none" tabindex="-1" id="mobileNav">
         <div class="offcanvas-header border-bottom">
           <div>
-            <p class="drawer-kicker mb-1">Navigation</p>
-            <p class="page-copy mb-0">Move through the project by story-facing section.</p>
+            <p class="drawer-kicker mb-0">Hidden World Archive</p>
           </div>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <div class="section-drawer__links">
-            ${renderDrawerLinks()}
+          <div class="site-nav-shell">
+            <div class="site-nav-group">
+              <p class="sidebar-section-label">Utilities</p>
+              <nav class="nav flex-column site-nav">
+                ${renderUtilityNav()}
+              </nav>
+            </div>
+
+            <div class="site-nav-group">
+              <p class="sidebar-section-label">Sections</p>
+              <nav class="nav flex-column site-nav">
+                ${renderPrimaryNav()}
+              </nav>
+            </div>
           </div>
-          <div class="section-drawer__utilities mt-4">
-            <a class="btn btn-outline-light w-100" href="index.html">Back to Home</a>
-            <a class="btn btn-brass w-100 mt-3" href="library.html">Open Archive</a>
+          <div class="sidebar-divider my-4"></div>
+          <div class="sidebar-utility">
+            <p class="sidebar-section-label">Go Next</p>
+            <div class="sidebar-link-list">
+              ${renderContextLinks()}
+            </div>
+          </div>
+          <div class="sidebar-note mt-4">
+            ${notes[activeKey] || notes.home}
           </div>
         </div>
       </div>
     `;
   }
 
-  if (sidebarRoot) {
-    sidebarRoot.innerHTML = "";
-  }
-
-  renderShell();
+  renderSidebar();
+  renderMobile();
 })();
