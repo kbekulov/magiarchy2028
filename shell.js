@@ -17,6 +17,25 @@ const DC_SHELL = (() => {
     { key: "archive", label: "Archive Browser", href: "library.html" },
   ];
 
+  const navGroups = [
+    {
+      label: "Orientation",
+      keys: ["home", "story-universe", "global-prompt"],
+    },
+    {
+      label: "Worldbuilding",
+      keys: ["magic-system", "locations", "organizations"],
+    },
+    {
+      label: "Story Architecture",
+      keys: ["characters", "relationships", "events-chapters", "story-timeline"],
+    },
+    {
+      label: "Companion",
+      keys: ["music", "archive"],
+    },
+  ];
+
   const pageByKey = Object.fromEntries(
     [...sections, ...utilityPages].map((page) => [page.key, page])
   );
@@ -79,33 +98,35 @@ const DC_SHELL = (() => {
   const sidebarRoot = document.getElementById("sidebar-shell");
   const mobileRoot = document.getElementById("mobile-shell");
 
-  function renderPrimaryNav() {
-    return sections
-      .map((section) => {
-        const isActive = section.key === activeKey;
+  function renderNavGroups() {
+    return navGroups
+      .map((group) => {
+        const links = group.keys
+          .map((key) => {
+            const page = pageByKey[key];
+            if (!page) {
+              return "";
+            }
+
+            const isActive = page.key === activeKey;
+
+            return `
+              <a class="nav-link${isActive ? " active" : ""}" ${
+                isActive ? 'aria-current="page"' : ""
+              } href="${page.href}">
+                ${page.label}
+              </a>
+            `;
+          })
+          .join("");
 
         return `
-          <a class="nav-link${isActive ? " active" : ""}" ${
-            isActive ? 'aria-current="page"' : ""
-          } href="${section.href}">
-            ${section.label}
-          </a>
-        `;
-      })
-      .join("");
-  }
-
-  function renderUtilityNav() {
-    return utilityPages
-      .map((page) => {
-        const isActive = page.key === activeKey;
-
-        return `
-          <a class="nav-link${isActive ? " active" : ""}" ${
-            isActive ? 'aria-current="page"' : ""
-          } href="${page.href}">
-            ${page.label}
-          </a>
+          <div class="site-nav-group">
+            <p class="sidebar-section-label">${group.label}</p>
+            <nav class="nav flex-column site-nav">
+              ${links}
+            </nav>
+          </div>
         `;
       })
       .join("");
@@ -148,19 +169,7 @@ const DC_SHELL = (() => {
         <div class="sidebar-divider"></div>
 
         <div class="site-nav-shell">
-          <div class="site-nav-group">
-            <p class="sidebar-section-label">Utilities</p>
-            <nav class="nav flex-column site-nav">
-              ${renderUtilityNav()}
-            </nav>
-          </div>
-
-          <div class="site-nav-group">
-            <p class="sidebar-section-label">Sections</p>
-            <nav class="nav flex-column site-nav">
-              ${renderPrimaryNav()}
-            </nav>
-          </div>
+          ${renderNavGroups()}
         </div>
 
         <div class="sidebar-divider"></div>
@@ -207,19 +216,7 @@ const DC_SHELL = (() => {
         </div>
         <div class="offcanvas-body">
           <div class="site-nav-shell">
-            <div class="site-nav-group">
-              <p class="sidebar-section-label">Utilities</p>
-              <nav class="nav flex-column site-nav">
-                ${renderUtilityNav()}
-              </nav>
-            </div>
-
-            <div class="site-nav-group">
-              <p class="sidebar-section-label">Sections</p>
-              <nav class="nav flex-column site-nav">
-                ${renderPrimaryNav()}
-              </nav>
-            </div>
+            ${renderNavGroups()}
           </div>
           <div class="sidebar-divider my-4"></div>
           <div class="sidebar-utility">
