@@ -12,36 +12,101 @@ summary: A writer-facing checklist for building chapters that move plot, pressur
 template: notebook
 ---
 
-# Chapter Construction Toolkit
+# Chapter Construction Toolkit (Writer's Checklist)
 
-Use these questions while outlining any chapter or chapter arc.
+Use this set of questions when building **each chapter** or **chapter arc**.<br />
+Not every chapter must answer all of them, but most strong chapters will touch several.
 
-## Story Motion
+---
 
-- What changes in this chapter?
-- What new pressure is introduced?
-- What becomes harder by the end than it was at the start?
+## 1. Scene Purpose
+- What **changes** in this chapter?
+- What new information, shift in power, or event occurs?
+- How is the **status quo altered** by the end?
 
-## Character Motion
+---
 
-- What does the point-of-view character want on entry?
-- What blocks that desire?
-- What new thing do they learn, misread, lose, or refuse?
+## 2. Character Intent
+- What does the POV character **want at the beginning** of the chapter?
+- What **action or decision** do they take to pursue it?
+- Do they **succeed, partially succeed, or fail**?
 
-## Emotional Target
+---
 
-- What should the reader feel most strongly here?
-- Where is the chapter intimate, sharp, or destabilizing?
-- What image or exchange should remain after the scene is over?
+## 3. Conflict or Obstacle
+- What stands in the character's way?
+- Is the conflict:
+  - external (enemy, institution, environment)
+  - internal (fear, doubt, moral dilemma)
+  - systemic (politics, hidden structures, magical instability)
 
-## World And System
+---
 
-- What part of the world becomes clearer?
-- How does the chapter teach the rules without sounding like a lecture?
-- What institutional or magical cost becomes newly visible?
+## 4. Emotional Core
+- What **emotion** should the reader feel in this chapter?
+- Examples:
+  - tension
+  - curiosity
+  - dread
+  - relief
+  - confusion
+  - revelation
 
-## Stakes
+---
 
-- What becomes riskier after this chapter?
-- What can no longer be returned to innocence?
-- What does the ending force the next chapter to inherit?
+## 5. Thematic Echo
+- Which **core theme** of the story does this chapter reinforce or challenge?
+- Example themes in Magiarchy:
+  - knowledge vs stability
+  - visible authority vs hidden leverage
+  - systems under pressure
+  - the cost of truth
+
+---
+
+## 6. World Revelation
+- What part of the **world system** becomes clearer?
+- Does the chapter reveal:
+  - institutional mechanics
+  - magical rules
+  - political dynamics
+  - Holumn behavior
+  - faction motivations
+
+---
+
+## 7. Stakes Adjustment
+- How do the **stakes change** after this chapter?
+- Are the consequences now:
+  - more dangerous
+  - more personal
+  - more political
+  - more supernatural
+
+---
+
+## 8. Narrative Momentum
+- Does this chapter **push the story forward**?
+- Does it create:
+  - a new problem
+  - a deeper mystery
+  - a harder decision
+
+---
+
+## 9. Character Transformation
+- Does the POV character **learn something new**?
+- Does their **belief or understanding shift**?
+
+---
+
+## 10. Ending Hook
+- How does the chapter end?
+- Possible endings:
+  - revelation
+  - unresolved tension
+  - emotional shift
+  - new threat
+  - unexpected alliance
+
+The final lines should naturally make the reader want to continue.
