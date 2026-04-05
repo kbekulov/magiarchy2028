@@ -11,9 +11,9 @@ async function initializeNotes() {
   const featured = notes.find((entry) => entry.featured) || notes[0];
 
   if (featured) {
-    const response = await fetch(featured.path);
-    const markdown = response.ok ? await response.text() : "";
+    const markdown = await window.DivineChamber.getEntryMarkdown(featured);
     notesFeatured.innerHTML = `
+      ${window.DivineChamber.renderDocumentToolbar(markdown, { label: "Copy" })}
       <div class="detail-panel__hero detail-panel__hero--stack">
         <div class="chip-row mb-3">${window.DivineChamber.renderBadges(featured)}</div>
         <h2 class="detail-title">${window.DivineChamber.escapeHtml(featured.title)}</h2>

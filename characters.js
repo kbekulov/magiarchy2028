@@ -113,6 +113,7 @@ async function renderCastDetail() {
   const fields = entry.fields || {};
 
   castDetail.innerHTML = `
+    ${window.DivineChamber.renderDocumentToolbar(markdown, { label: "Copy" })}
     <div class="detail-panel__hero">
       <div class="portrait-sigil">${window.DivineChamber.escapeHtml(fields.sigil || "DC")}</div>
       <div>
@@ -151,15 +152,11 @@ async function renderCastDetail() {
 }
 
 async function getMarkdown(entry) {
-  if (!castState.cache.has(entry.path)) {
-    const response = await fetch(entry.path);
-    if (!response.ok) {
-      throw new Error(`Content request failed with ${response.status}`);
-    }
-    castState.cache.set(entry.path, await response.text());
+  if (!castState.cache.has(entry.id)) {
+    castState.cache.set(entry.id, window.DivineChamber.getEntryMarkdown(entry));
   }
 
-  return castState.cache.get(entry.path);
+  return castState.cache.get(entry.id);
 }
 
 function renderRecordItem(label, value) {

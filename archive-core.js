@@ -1,6 +1,9 @@
 window.DivineChamber = (() => {
   const manifestPath = "content/library-manifest.json";
   let manifestPromise;
+  const markdownFetchCache = new Map();
+  const copyPayloads = new Map();
+  let copyPayloadIndex = 0;
 
   const TYPE_LABELS = {
     chapter: "Chapter",
@@ -119,6 +122,7 @@ window.DivineChamber = (() => {
   function renderInline(text) {
     const escaped = escapeHtml(text);
     return escaped
+      .replace(/&lt;br\s*\/?&gt;/gi, "<br />")
       .replace(/`([^`]+)`/g, "<code>$1</code>")
       .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
       .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
@@ -130,7 +134,7 @@ window.DivineChamber = (() => {
     const lines = cleaned.split("\n");
     const html = [];
     let paragraph = [];
-    let listType = null;
+    const listStack = [];
 
     const flushParagraph = () => {
       if (!paragraph.length) {
@@ -141,81 +145,250 @@ window.DivineChamber = (() => {
       paragraph = [];
     };
 
-    const closeList = () => {
-      if (!listType) {
+    const closeCurrentList = () => {
+      const current = listStack[listStack.length - 1];
+      if (!current) {
         return;
       }
 
-      html.push(listType === "ul" ? "</ul>" : "</ol>");
-      listType = null;
+      if (current.liOpen) {
+        html.push("</li>");
+        current.liOpen = false;
+      }
+
+      html.push(`</${current.type}>`);
+      listStack.pop();
+    };
+
+    const closeAllLists = () => {
+      while (listStack.length) {
+        closeCurrentList();
+      }
+    };
+
+    const closeListsToIndent = (indent) => {
+      while (listStack.length && listStack[listStack.length - 1].indent > indent) {
+        closeCurrentList();
+      }
     };
 
     lines.forEach((rawLine) => {
-      const line = rawLine.trim();
+      const line = rawLine.replace(/\t/g, "    ");
+      const trimmed = line.trim();
 
-      if (!line) {
+      if (!trimmed) {
         flushParagraph();
-        closeList();
+        closeAllLists();
         return;
       }
 
-      const headingMatch = line.match(/^(#{1,4})\s+(.*)$/);
+      const headingMatch = trimmed.match(/^(#{1,4})\s+(.*)$/);
       if (headingMatch) {
         flushParagraph();
-        closeList();
+        closeAllLists();
         const level = headingMatch[1].length;
         html.push(`<h${level}>${renderInline(headingMatch[2])}</h${level}>`);
         return;
       }
 
-      if (/^---+$/.test(line) || /^\*\*\*+$/.test(line)) {
+      if (/^---+$/.test(trimmed) || /^\*\*\*+$/.test(trimmed)) {
         flushParagraph();
-        closeList();
+        closeAllLists();
         html.push("<hr />");
         return;
       }
 
-      const blockquoteMatch = line.match(/^>\s?(.*)$/);
+      const blockquoteMatch = trimmed.match(/^>\s?(.*)$/);
       if (blockquoteMatch) {
         flushParagraph();
-        closeList();
+        closeAllLists();
         html.push(`<blockquote>${renderInline(blockquoteMatch[1])}</blockquote>`);
         return;
       }
 
-      const unorderedMatch = line.match(/^[-*]\s+(.*)$/);
+      const unorderedMatch = line.match(/^(\s*)[-*]\s+(.*)$/);
       if (unorderedMatch) {
         flushParagraph();
-        if (listType !== "ul") {
-          closeList();
+        const indent = Math.floor(unorderedMatch[1].length / 2);
+        const text = unorderedMatch[2];
+
+        if (!listStack.length) {
           html.push("<ul>");
-          listType = "ul";
+          listStack.push({ type: "ul", indent, liOpen: false });
+        } else {
+          let current = listStack[listStack.length - 1];
+
+          if (indent > current.indent) {
+            html.push("<ul>");
+            listStack.push({ type: "ul", indent, liOpen: false });
+          } else {
+            closeListsToIndent(indent);
+            current = listStack[listStack.length - 1];
+
+            if (!current || current.indent < indent) {
+              html.push("<ul>");
+              listStack.push({ type: "ul", indent, liOpen: false });
+            } else if (current.type !== "ul") {
+              closeCurrentList();
+              html.push("<ul>");
+              listStack.push({ type: "ul", indent, liOpen: false });
+            } else if (current.liOpen) {
+              html.push("</li>");
+              current.liOpen = false;
+            }
+          }
         }
-        html.push(`<li>${renderInline(unorderedMatch[1])}</li>`);
+
+        const current = listStack[listStack.length - 1];
+        current.liOpen = true;
+        html.push(`<li>${renderInline(text)}`);
         return;
       }
 
-      const orderedMatch = line.match(/^\d+\.\s+(.*)$/);
+      const orderedMatch = line.match(/^(\s*)\d+\.\s+(.*)$/);
       if (orderedMatch) {
         flushParagraph();
-        if (listType !== "ol") {
-          closeList();
+        const indent = Math.floor(orderedMatch[1].length / 2);
+        const text = orderedMatch[2];
+
+        if (!listStack.length) {
           html.push("<ol>");
-          listType = "ol";
+          listStack.push({ type: "ol", indent, liOpen: false });
+        } else {
+          let current = listStack[listStack.length - 1];
+
+          if (indent > current.indent) {
+            html.push("<ol>");
+            listStack.push({ type: "ol", indent, liOpen: false });
+          } else {
+            closeListsToIndent(indent);
+            current = listStack[listStack.length - 1];
+
+            if (!current || current.indent < indent) {
+              html.push("<ol>");
+              listStack.push({ type: "ol", indent, liOpen: false });
+            } else if (current.type !== "ol") {
+              closeCurrentList();
+              html.push("<ol>");
+              listStack.push({ type: "ol", indent, liOpen: false });
+            } else if (current.liOpen) {
+              html.push("</li>");
+              current.liOpen = false;
+            }
+          }
         }
-        html.push(`<li>${renderInline(orderedMatch[1])}</li>`);
+
+        const current = listStack[listStack.length - 1];
+        current.liOpen = true;
+        html.push(`<li>${renderInline(text)}`);
         return;
       }
 
-      closeList();
-      paragraph.push(line);
+      closeAllLists();
+      paragraph.push(trimmed);
     });
 
     flushParagraph();
-    closeList();
+    closeAllLists();
 
     return html.join("");
   }
+
+  async function getEntryMarkdown(entry) {
+    if (typeof entry?.markdown === "string" && entry.markdown.length) {
+      return entry.markdown;
+    }
+
+    if (!entry?.path) {
+      return "";
+    }
+
+    if (!markdownFetchCache.has(entry.path)) {
+      markdownFetchCache.set(
+        entry.path,
+        fetch(entry.path).then(async (response) => {
+          if (!response.ok) {
+            throw new Error(`Content request failed with ${response.status}`);
+          }
+
+          return stripFrontMatter(await response.text());
+        })
+      );
+    }
+
+    return markdownFetchCache.get(entry.path);
+  }
+
+  function renderDocumentToolbar(markdown, options = {}) {
+    if (!markdown) {
+      return "";
+    }
+
+    const payloadId = `copy-${++copyPayloadIndex}`;
+    copyPayloads.set(payloadId, markdown);
+
+    return `
+      <div class="document-toolbar ${options.className || ""}">
+        <button
+          class="btn btn-outline-light btn-sm copy-markdown-button"
+          type="button"
+          data-copy-id="${payloadId}"
+          data-copy-default-label="${escapeHtml(options.label || "Copy")}"
+        >
+          ${escapeHtml(options.label || "Copy")}
+        </button>
+      </div>
+    `;
+  }
+
+  async function writeToClipboard(text) {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "absolute";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+  }
+
+  function setCopyButtonState(button, label) {
+    const defaultLabel = button.dataset.copyDefaultLabel || "Copy";
+    button.textContent = label;
+    button.classList.add("is-copied");
+
+    window.clearTimeout(button._copyResetTimer);
+    button._copyResetTimer = window.setTimeout(() => {
+      button.textContent = defaultLabel;
+      button.classList.remove("is-copied");
+    }, 1600);
+  }
+
+  document.addEventListener("click", async (event) => {
+    const button = event.target.closest(".copy-markdown-button");
+    if (!button) {
+      return;
+    }
+
+    const payload = copyPayloads.get(button.dataset.copyId);
+    if (!payload) {
+      setCopyButtonState(button, "Unavailable");
+      return;
+    }
+
+    try {
+      await writeToClipboard(payload);
+      setCopyButtonState(button, "Copied");
+    } catch (error) {
+      setCopyButtonState(button, "Copy failed");
+    }
+  });
 
   function renderBadges(entry, options = {}) {
     const badges = [];
@@ -361,6 +534,8 @@ window.DivineChamber = (() => {
     orderLabel,
     byChronology,
     renderMarkdown,
+    getEntryMarkdown,
+    renderDocumentToolbar,
     renderBadges,
     renderEntryCard,
     getRelatedEntries,

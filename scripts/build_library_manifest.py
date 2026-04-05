@@ -72,6 +72,18 @@ def parse_front_matter(markdown_text):
     return metadata
 
 
+def strip_front_matter(markdown_text):
+    if not markdown_text.startswith("---\n"):
+        return markdown_text.strip()
+
+    _, _, remainder = markdown_text.partition("\n")
+    _, separator, body = remainder.partition("\n---\n")
+    if not separator:
+        return markdown_text.strip()
+
+    return body.strip()
+
+
 def parse_value(key, value):
     lowered = value.lower()
 
@@ -176,6 +188,7 @@ def build_entry(kind, path):
         "order": order if isinstance(order, int) else 999,
         "chronology": chronology if isinstance(chronology, int) else 999,
         "path": relative_path,
+        "markdown": strip_front_matter(raw_text),
         "case": case_slug,
         "case_name": case_value,
         "characters": characters,

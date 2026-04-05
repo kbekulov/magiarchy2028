@@ -3,6 +3,7 @@ const readerKind = document.getElementById("reader-kind");
 const readerSummary = document.getElementById("reader-summary");
 const readerMeta = document.getElementById("reader-meta");
 const readerRecord = document.getElementById("reader-record");
+const readerToolbar = document.getElementById("reader-toolbar");
 const readerBody = document.getElementById("reader-body");
 const readerContext = document.getElementById("reader-context");
 const relatedList = document.getElementById("related-list");
@@ -17,6 +18,7 @@ if (
   readerSummary &&
   readerMeta &&
   readerRecord &&
+  readerToolbar &&
   readerBody &&
   readerContext &&
   relatedList &&
@@ -46,12 +48,7 @@ async function initializeReader() {
       return;
     }
 
-    const response = await fetch(entry.path);
-    if (!response.ok) {
-      throw new Error(`Content request failed with ${response.status}`);
-    }
-
-    const markdown = await response.text();
+    const markdown = await window.DivineChamber.getEntryMarkdown(entry);
     const related = window.DivineChamber.getRelatedEntries(entries, entry, 4);
     const prevNext = window.DivineChamber.findPrevNext(entries, entry);
     const fields = entry.fields || {};
@@ -64,6 +61,9 @@ async function initializeReader() {
     readerCard.className = `reader-card reader-card--${entry.template} reader-card--${entry.facet}`;
     readerLayout.dataset.template = entry.template;
     readerMeta.innerHTML = window.DivineChamber.renderBadges(entry);
+    readerToolbar.innerHTML = window.DivineChamber.renderDocumentToolbar(markdown, {
+      label: "Copy",
+    });
     readerRecord.innerHTML = [
       recordItem("Facet", window.DivineChamber.formatFacet(entry.facet)),
       recordItem("Status", window.DivineChamber.formatStatus(entry.status)),
@@ -125,6 +125,7 @@ function renderMissing(message) {
   readerSummary.textContent = message;
   readerMeta.innerHTML = "";
   readerRecord.innerHTML = "";
+  readerToolbar.innerHTML = "";
   readerBody.innerHTML = `<p class="page-copy mb-0">${window.DivineChamber.escapeHtml(message)}</p>`;
   readerContext.innerHTML = `<p class="page-copy mb-0">Return to the archive and choose another file.</p>`;
   relatedList.innerHTML = `<div class="empty-card">No related files available.</div>`;

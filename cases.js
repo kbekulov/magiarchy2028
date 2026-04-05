@@ -70,6 +70,7 @@ async function renderCaseDetail() {
   );
 
   caseDetail.innerHTML = `
+    ${window.DivineChamber.renderDocumentToolbar(markdown, { label: "Copy" })}
     <div class="detail-panel__hero detail-panel__hero--stack">
       <div class="chip-row mb-3">${window.DivineChamber.renderBadges(entry)}</div>
       <h2 class="detail-title">${window.DivineChamber.escapeHtml(entry.title)}</h2>
@@ -97,15 +98,11 @@ async function renderCaseDetail() {
 }
 
 async function getCaseMarkdown(entry) {
-  if (!caseState.cache.has(entry.path)) {
-    const response = await fetch(entry.path);
-    if (!response.ok) {
-      throw new Error(`Content request failed with ${response.status}`);
-    }
-    caseState.cache.set(entry.path, await response.text());
+  if (!caseState.cache.has(entry.id)) {
+    caseState.cache.set(entry.id, window.DivineChamber.getEntryMarkdown(entry));
   }
 
-  return caseState.cache.get(entry.path);
+  return caseState.cache.get(entry.id);
 }
 
 function renderRecordItem(label, value) {

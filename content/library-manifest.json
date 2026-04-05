@@ -14,6 +14,7 @@
       "order": 0,
       "chronology": 5,
       "path": "content/cases/case-00-the-spill.md",
+      "markdown": "# Event File - The Spill\n\nThe Spill is the earliest active rupture in the current timeline scaffold. It is less a solved incident than a pressure pocket: a covert deployment, a contaminated perimeter, and the beginning of Heyk's usable value to actors outside his original lane.\n\n## Known Function\n\n- It gives the story its first operational texture.\n- It begins Heyk's arc before the central MSF succession crisis becomes visible.\n- It creates the context for Sherie and Drake to extract him and extend a new offer.\n\n## Pressure Chain\n\n- Hidden danger enters before institutional language is ready for it.\n- Extraction becomes more important than explanation.\n- The event establishes that peripheral operators may become central once the system destabilizes.\n\n## Linked Material\n\n- `Chapter 0 - The Spill`\n- `Chapter 1 - Pressure Builds`\n- Dossiers for Heyk, Sherie, and Drake",
       "case": "the-spill",
       "case_name": "Event File - The Spill",
       "characters": [
@@ -49,6 +50,7 @@
       "order": 1,
       "chronology": 35,
       "path": "content/cases/case-01-fionns-assassination.md",
+      "markdown": "# Event File - Fionn's Assassination\n\nThis event is the story's decisive break. Helena weaponizes the murder politically, using accusation as both internal control and succession architecture.\n\n## Trigger Effect\n\n- Lynleit is forced out of stable authority.\n- MSF resources are turned inward and repurposed for the hunt.\n- Private crisis becomes institutionally legible.\n\n## Counterweight\n\nKyrien becomes essential at the moment ordinary chains of command fail. His value is not formal rank, but contingency: extraction, unpredictability, and the ability to act where visible authority cannot.\n\n## Story Consequence\n\n- The narrative moves from inheritance pressure into exile.\n- Trust becomes expensive.\n- Every later recovery attempt is shaped by this event.",
       "case": "fionn-assassination",
       "case_name": "Event File - Fionn's Assassination",
       "characters": [
@@ -85,6 +87,7 @@
       "order": 2,
       "chronology": 65,
       "path": "content/cases/case-02-msf-compression.md",
+      "markdown": "# Event File - MSF Compression\n\nMSF survives collapse by changing shape instead of surrendering continuity. The institution becomes more secretive, more guild-like, and more dependent on selective trust.\n\n## Structural Mutation\n\n- The name remains even as doctrine changes.\n- The acronym is intentionally unrevealed.\n- Operators, facilitators, and non-central personnel still matter after compression.\n\n## Why It Matters\n\n- This event keeps the story from becoming a simple rise-and-fall narrative.\n- Institutional survival becomes as important as personal survival.\n- The crisis transforms MSF into a more explicitly magical architecture without erasing its intelligence roots.\n\n## Linked Material\n\n- `Chapter 5 - Extraction Lines`\n- `Chapter 6 - Countermove`\n- `Chapter 7 - Institutional Pressure`",
       "case": "msf-compression",
       "case_name": "Event File - MSF Compression",
       "characters": [
@@ -122,6 +125,7 @@
       "order": 3,
       "chronology": 85,
       "path": "content/cases/case-03-kyrien-tien-clash.md",
+      "markdown": "# Event File - Kyrien-Tien Clash\n\nTien functions as Helena's covert mirror to Kyrien: another precise actor shaped by secrecy, but aligned to a different doctrine of protection and pressure.\n\n## Mirror Logic\n\n- Kyrien is independent contingency.\n- Tien is covert enforcement.\n- Their clash tests whether hidden protection remains ethical once escalation stops being deniable.\n\n## Narrative Use\n\n- It externalizes the conflict between visible leadership and shadow action.\n- It converts abstract pursuit into direct embodied danger.\n- It prepares the return phase by clarifying what kind of force now shapes the story's underside.",
       "case": "kyrien-tien-clash",
       "case_name": "Event File - Kyrien-Tien Clash",
       "characters": [
@@ -157,6 +161,7 @@
       "order": 1,
       "chronology": 1,
       "path": "content/dossiers/dossier-lynleit.md",
+      "markdown": "# Lynleit\n\nLynleit is twenty-eight and already carrying a structure that was unstable before it officially became hers. She does not inherit a healthy institution; she inherits a continuity problem, and her answer to that pressure is neither theatrical dominance nor surrender to fear.\n\n## About\n\nShe leads through proximity. Where traditional power widens emotional distance, Lynleit reduces it. She treats trust as infrastructure and refuses to confuse visible coldness with strength.\n\n## Visual Description\n\n- Average height; slim, lean build.\n- Long, dark, softly wavy hair.\n- Clear blue eyes.\n- Palette of blue, white, and black.\n- Tailored blue coat, white blouse, black ribbon bow, black shorts, dark stockings, and over-the-knee boots.\n\n## Leadership Style\n\n- Communicates directly and lowers unnecessary hierarchy.\n- Builds loyalty through presence and sincerity.\n- Prefers cohesion to obedience.\n- Is often misread as soft by people who only recognize coercive authority.\n\n## Writer Guide Notes\n\n- Her legitimacy must always feel earned in real time.\n- She should preserve her moral core even when forced toward selective opacity.\n- At least one trust-based decision should cost her.\n\n## Thematic Axis\n\nLynleit is visible authority trying to remain ethical while depending on shadow capability to keep the structure survivable.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -193,6 +198,7 @@
       "order": 2,
       "chronology": 2,
       "path": "content/dossiers/dossier-kyrien.md",
+      "markdown": "# Kyrien\n\nKyrien is not built for spectacle. His strength is structural literacy: systems, logistics, surveillance, timing, and the discovery of failure points before other people realize they are standing inside them.\n\n## About\n\nHe is shaped by early exposure to lethal knowledge and by the suspicious removal of his father from elite power circles. He does not mythologize magic and does not romanticize force. He treats both as problems of leverage.\n\n## Visual Description\n\n- Average height; slim, lean build.\n- Short dark hair.\n- Brown eyes.\n- Palette of black, beige, and brown.\n- Brown leather jacket, dark shirt, black pants, dark office shoes.\n\n## Combat And Method\n\n- Fights through spacing, leverage, and terrain.\n- Treats violence as concise function, not performance.\n- Alters conditions before he trades force directly.\n- Prefers outcome over optics.\n\n## Writer Guide Notes\n\n- He should feel emotionally restrained rather than empty.\n- Precision matters more than legend.\n- Loyalty is durable, but secrecy is part of how he protects.\n- He must fail emotionally at least once.\n\n## Thematic Axis\n\nKyrien edits invisible drafts while Lynleit carries visible strategy.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -229,6 +235,7 @@
       "order": 3,
       "chronology": 3,
       "path": "content/dossiers/dossier-helena.md",
+      "markdown": "# Helena\n\nHelena is currently defined most clearly by function. She builds the framing logic around Lynleit and converts internal shock into durable control.\n\n## Operational Role\n\n- Builds the accusation vector after Fionn's assassination.\n- Redirects MSF machinery into pursuit.\n- Consolidates authority under unstable conditions.\n\n## Current Canon Status\n\nHer full personal history remains open, but her structural use is already clear: she is the figure who proves that institutions can mutate into weapons while still speaking the language of order.\n\n## Writer Note\n\nShe should read as precise and dangerous, not melodramatic. Her force comes from systems capture rather than open theatricality.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -266,6 +273,7 @@
       "order": 4,
       "chronology": 4,
       "path": "content/dossiers/dossier-tien.md",
+      "markdown": "# Tien\n\nTien enters the canon as pressure before he arrives as biography. He is the shadow actor who makes Helena's will physically executable.\n\n## Operational Role\n\n- Begins as hidden deployment.\n- Escalates into pursuit and selective disruption.\n- Forces the story's contingency lane into direct confrontation.\n\n## Function In The Story\n\nTien matters because he mirrors Kyrien without sharing his ethic. Their eventual clash is not simply personal; it is doctrinal.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -302,6 +310,7 @@
       "order": 5,
       "chronology": 5,
       "path": "content/dossiers/dossier-fionn.md",
+      "markdown": "# Fionn\n\nFionn's dossier remains partial, but the story already knows what his removal does.\n\n## Current Use\n\n- High-value target before the break.\n- The death that Helena converts into leverage.\n- A presence defined, for now, by the consequences of absence.\n\n## Expansion Note\n\nLater canon should define his exact relation to Lynleit, internal standing, and why his death carries enough symbolic weight to reorder MSF.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -338,6 +347,7 @@
       "order": 6,
       "chronology": 6,
       "path": "content/dossiers/dossier-felix.md",
+      "markdown": "# Felix\n\nFelix remains a scaffolded dossier, but his structural role is already visible.\n\n## Timeline Position\n\n- Supports alignment during the accusation and exile phase.\n- Repositions operationally once the system fractures.\n- Helps show that continuity depends on more than visible leaders.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -374,6 +384,7 @@
       "order": 7,
       "chronology": 7,
       "path": "content/dossiers/dossier-reiner.md",
+      "markdown": "# Reiner\n\nReiner is currently a functional dossier rather than a finished one.\n\n## Known Use\n\n- Represents internal friction during the fracture phase.\n- Helps dramatize tactical response under unstable authority.\n- Remains useful for exploring loyalty that is sincere but pressured.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -410,6 +421,7 @@
       "order": 8,
       "chronology": 8,
       "path": "content/dossiers/dossier-drake.md",
+      "markdown": "# Drake\n\nDrake is present in canon as a functional pressure actor rather than a fully authored personality.\n\n## Current Lane\n\n- Participates in Heyk's extraction and job offer.\n- Tracks the fallout from the MSF crisis from the Duchy side.\n- Helps widen the story beyond a single institution without dissolving focus.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -446,6 +458,7 @@
       "order": 9,
       "chronology": 9,
       "path": "content/dossiers/dossier-sherie.md",
+      "markdown": "# Sherie\n\nSherie remains partially defined, but her role in the canon is already useful.\n\n## Current Lane\n\n- Enters through the extraction sequence around Heyk.\n- Becomes part of the Duchy's reading of the succession crisis.\n- Offers an external interpretive angle on MSF instability.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -482,6 +495,7 @@
       "order": 10,
       "chronology": 10,
       "path": "content/dossiers/dossier-heyk.md",
+      "markdown": "# Heyk\n\nHeyk is a rostered character whose early deployment gives the canon its first operational incident.\n\n## Current Lane\n\n- Covert deployment into a quarantine zone.\n- Extraction into a possible new alignment.\n- Serves as one bridge between the prelude event and the wider political story.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -518,6 +532,7 @@
       "order": 11,
       "chronology": 11,
       "path": "content/dossiers/dossier-hiyu.md",
+      "markdown": "# Hiyu\n\nHiyu is currently a world-facing placeholder dossier.\n\n## Current Lane\n\n- Enters during the institutional response phase.\n- Provides an academic angle on systemic disruption.\n- Helps the story widen into interpretation rather than only pursuit.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -552,6 +567,7 @@
       "order": 12,
       "chronology": 12,
       "path": "content/dossiers/dossier-yulia.md",
+      "markdown": "# Yulia\n\nYulia is another scaffolded world-facing character.\n\n## Current Lane\n\n- Reads magical strain at the scholarly level.\n- Supports the widening of the crisis into doctrine and explanation.\n- Remains open for later expansion into a more specific academic or political role.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -586,6 +602,7 @@
       "order": 13,
       "chronology": 13,
       "path": "content/dossiers/dossier-natalia.md",
+      "markdown": "# Natalia\n\nNatalia is presently a governance placeholder, but her function is already usable.\n\n## Current Lane\n\n- Responds from inside the Magiarchy.\n- Helps make institutional oversight feel embodied rather than abstract.\n- Keeps the story's political layer tied to actual people.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -620,6 +637,7 @@
       "order": 14,
       "chronology": 14,
       "path": "content/dossiers/dossier-lester.md",
+      "markdown": "# Lester\n\nLester is defined more by institutional weight than biography at this stage.\n\n## Current Lane\n\n- Applies containment logic.\n- Makes Magiarchal doctrine feel active rather than merely descriptive.\n- Can later expand into a major voice on legitimacy, secrecy, or control.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -654,6 +672,7 @@
       "order": 15,
       "chronology": 15,
       "path": "content/dossiers/dossier-myka.md",
+      "markdown": "# Myka\n\nMyka is a reserved dossier for the academy response lane.\n\n## Current Lane\n\n- Appears during the late institutional phase.\n- Connects the story to academy-adjacent doctrine and reaction.\n- Remains intentionally open for later canon depth.",
       "case": "",
       "case_name": "",
       "characters": [
@@ -687,6 +706,7 @@
       "order": 0,
       "chronology": 10,
       "path": "content/chapters/chapter-00-the-spill.md",
+      "markdown": "# Chapter 0 - The Spill\n\nThis chapter establishes the story's operational mood before the main succession crisis becomes explicit.\n\n## Core Movement\n\n- Heyk enters a dangerous zone under covert conditions.\n- Containment proves unstable.\n- The event becomes a quiet test of who can still move effectively inside compromised structure.\n\n## Story Use\n\n- Opens with pressure rather than exposition.\n- Gives the project an early field texture: secrecy, extraction, and incomplete visibility.\n- Seeds the Duchy-side lane through Sherie and Drake.",
       "case": "the-spill",
       "case_name": "Event File - The Spill",
       "characters": [
@@ -718,6 +738,7 @@
       "order": 1,
       "chronology": 20,
       "path": "content/chapters/chapter-01-pressure-builds.md",
+      "markdown": "# Chapter 1 - Pressure Builds\n\nThe story's visible architecture starts tightening here. What was peripheral begins to align with the succession crisis already forming around Lynleit.\n\n## Timeline Trajectory\n\n- Lynleit absorbs visible leadership pressure.\n- Heyk's early crisis does not close cleanly.\n- Sherie and Drake become more than incidental operators.\n\n## Narrative Function\n\n- Transition from atmospheric opening to structural tension.\n- Make collapse feel near before any single accusation becomes official.",
       "case": "the-spill",
       "case_name": "Event File - The Spill",
       "characters": [
@@ -750,6 +771,7 @@
       "order": 2,
       "chronology": 30,
       "path": "content/chapters/chapter-02-accusation-vector.md",
+      "markdown": "# Chapter 2 - Accusation Vector\n\nHelena does not merely oppose Lynleit; she arranges the conditions under which accusation becomes plausible, portable, and difficult to resist.\n\n## Pressure Movements\n\n- Fionn becomes vulnerable as a catalytic target.\n- Felix and Reiner are drawn into unstable loyalty conditions.\n- Lynleit's legitimacy becomes something that must now be defended rather than assumed.\n\n## Writer Target\n\nKeep the chapter procedural in surface logic, but morally suffocating underneath.",
       "case": "fionn-assassination",
       "case_name": "Event File - Fionn's Assassination",
       "characters": [
@@ -783,6 +805,7 @@
       "order": 3,
       "chronology": 40,
       "path": "content/chapters/chapter-03-exile-opens.md",
+      "markdown": "# Chapter 3 - Exile Opens\n\nExile is not just movement away from home. It is the forced separation between visible authority and the structure that used to authorize it.\n\n## Core Consequences\n\n- Lynleit loses ordinary access to legitimacy.\n- Helena gains room to redirect MSF.\n- Kyrien moves from potential counterweight to necessary one.\n\n## Tone Note\n\nThe chapter should feel like a door opening in the wrong direction: escape and loss at the same time.",
       "case": "fionn-assassination",
       "case_name": "Event File - Fionn's Assassination",
       "characters": [
@@ -814,6 +837,7 @@
       "order": 4,
       "chronology": 50,
       "path": "content/chapters/chapter-04-hunt-architecture.md",
+      "markdown": "# Chapter 4 - Hunt Architecture\n\nThis is the chapter where pursuit becomes a system instead of a reaction.\n\n## Structural Lines\n\n- Helena consolidates procedural control.\n- Tien shifts from hidden deployment toward active pressure.\n- Kyrien is forced to operate against an intelligence structure designed to close options.\n\n## Narrative Aim\n\nShow how institutions become more dangerous once they decide that their own continuity justifies escalation.",
       "case": "fionn-assassination",
       "case_name": "Event File - Fionn's Assassination",
       "characters": [
@@ -846,6 +870,7 @@
       "order": 5,
       "chronology": 60,
       "path": "content/chapters/chapter-05-extraction-lines.md",
+      "markdown": "# Chapter 5 - Extraction Lines\n\nThis chapter tests whether survival can still be organized when visibility itself has become a liability.\n\n## Active Threads\n\n- Kyrien's method becomes legible through action.\n- Felix and Reiner reposition under pressure.\n- Lynleit must continue making choices with incomplete information.\n\n## Transition Value\n\nThe story moves from collapse into adaptive counter-structure.",
       "case": "msf-compression",
       "case_name": "Event File - MSF Compression",
       "characters": [
@@ -878,6 +903,7 @@
       "order": 6,
       "chronology": 70,
       "path": "content/chapters/chapter-06-countermove.md",
+      "markdown": "# Chapter 6 - Countermove\n\nCountermove is the first chapter where recovery becomes active strategy instead of endurance.\n\n## Pressure Movements\n\n- Lynleit begins repositioning for visible return.\n- Kyrien escalates from extraction to anti-pressure design.\n- Wider governance actors start responding as the crisis becomes harder to contain privately.\n\n## Story Logic\n\nRecovery should feel expensive, partial, and real.",
       "case": "msf-compression",
       "case_name": "Event File - MSF Compression",
       "characters": [
@@ -911,6 +937,7 @@
       "order": 7,
       "chronology": 80,
       "path": "content/chapters/chapter-07-institutional-pressure.md",
+      "markdown": "# Chapter 7 - Institutional Pressure\n\nWhat began as a succession wound becomes a broader systems problem. The crisis is now visible enough to attract organizations that would rather remain one step removed.\n\n## External Response\n\n- The Magiarchy watches for destabilization.\n- Government tracks public-order implications.\n- The Church measures necessity against suspicion.\n\n## Function\n\nThis chapter scales the story outward without losing its personal axis.",
       "case": "msf-compression",
       "case_name": "Event File - MSF Compression",
       "characters": [
@@ -944,6 +971,7 @@
       "order": 8,
       "chronology": 90,
       "path": "content/chapters/chapter-08-visibility-debt.md",
+      "markdown": "# Chapter 8 - Visibility Debt\n\nEvery hidden intervention creates a bill that visible authority eventually has to pay.\n\n## Narrative Tension\n\n- Lynleit must absorb outcomes she did not fully witness.\n- Kyrien's shadow work becomes harder to keep morally abstract.\n- Tien's pressure turns direct enough to demand confrontation.\n\n## Writer Rule\n\nDo not let secrecy read as convenience. It must always produce cost.",
       "case": "kyrien-tien-clash",
       "case_name": "Event File - Kyrien-Tien Clash",
       "characters": [
@@ -976,6 +1004,7 @@
       "order": 9,
       "chronology": 100,
       "path": "content/chapters/chapter-09-return-window.md",
+      "markdown": "# Chapter 9 - Return Window\n\nThe return is not restoration. It is a calculated re-entry into a structure that has already mutated.\n\n## End-State Questions\n\n- What legitimacy can still be reclaimed?\n- What part of MSF survives recognizably?\n- What cost must be accepted to keep visible power ethical once the invisible war is known?\n\n## Function\n\nThis chapter closes the current scaffold while leaving the canon open for expansion.",
       "case": "kyrien-tien-clash",
       "case_name": "Event File - Kyrien-Tien Clash",
       "characters": [
@@ -1008,6 +1037,7 @@
       "order": 1,
       "chronology": 400,
       "path": "content/world/world-ontological-foundation.md",
+      "markdown": "# Ontological Foundation\n\nMagic is not an external force imposed on the world. It is woven into reality itself through psyche, soul, emotion, and structural pressure.\n\n## Consequences\n\n- Human nightmare can externalize when the equilibrium of a city starts to fail.\n- Such manifestations are never generic; each bears the imprint of the people feeding it.\n- Natural law remains absolute, but not seamless. Reality contains exploitable cracks, seams, and pressure points.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1037,6 +1067,7 @@
       "order": 2,
       "chronology": 410,
       "path": "content/world/world-hidden-history-and-balance.md",
+      "markdown": "# Hidden History And Balance Of Powers\n\nMagic endured not through open conquest, but through restraint, containment, and deliberate silence.\n\n## Hidden History\n\n- The Magi divided between Church-aligned order and rejectionist independence.\n- From that split emerged the Magiarchy and its regional Magiarchates.\n- Modern society believes itself more secular and transparent than it really is.\n\n## Balance Of Powers\n\n- The Church, Magiarchy, aristocracy, government, and intelligence structures depend on each other while mistrusting each other.\n- No bloc is fully sovereign over the hidden world.\n- Betrayal inside this equilibrium can quickly become bloody.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1066,6 +1097,7 @@
       "order": 3,
       "chronology": 420,
       "path": "content/world/world-law-of-magistry.md",
+      "markdown": "# Law Of Magistry\n\nMagic does not violate natural law. It manipulates it from within.\n\n## Core Distinctions\n\n- **Thaumaturgy** handles outward manipulation: ignition, reinforcement, weakening, and environmental effect.\n- **Theurgy** handles inward transformation: perception, awareness, identity, and emotional-cognitive recalibration.\n- No clean line fully separates inner and outer change.\n\n## Limitations\n\n- Magic cannot create absolute contradiction.\n- It cannot create from nothing or overwrite foundational structure.\n- Every intervention shifts equilibrium and risks backlash.\n\n## Rule Of Power\n\nThe greatest Magi are defined by precision and restraint, not volume.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1095,6 +1127,7 @@
       "order": 4,
       "chronology": 430,
       "path": "content/world/world-secrecy-doctrine.md",
+      "markdown": "# Secrecy Doctrine And Governance\n\nKnowledge is distributed as little as possible and only as widely as necessary.\n\n## Governance\n\n- A hidden magical society regulates practice to prevent destabilization.\n- The Church knows enough to cooperate while remaining suspicious.\n- Magi outside sanctioned order become hunted renegades rather than merely dissidents.\n\n## Why Secrecy Holds\n\n- Full exposure risks collapse, reprisals, internal conflict, and civil panic.\n- The Magi suppress horrors partly to save civilization and partly to prove they should not be eradicated.\n- Unchecked miracle-making is treated as civilizational risk, not individual eccentricity.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1124,6 +1157,7 @@
       "order": 5,
       "chronology": 440,
       "path": "content/world/world-the-country.md",
+      "markdown": "# The Country\n\nThe national structure is organized around four pressure points.\n\n- **Velna-Nue**: visible law and parliamentary legitimacy.\n- **Feldenmark**: inherited sovereignty and aristocratic continuity.\n- **Turon**: intelligence leverage and controlled opacity.\n- **Naminsk**: movement control, trade, and economic access.\n\n## Turon\n\nTuron matters most directly to the current canon.\n\n- Semi-autonomous and operationally insulated.\n- Headquarters zone for Lynleit-family MSF operations.\n- Feared because it is both indispensable and deniable.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1154,6 +1188,7 @@
       "order": 6,
       "chronology": 450,
       "path": "content/world/world-white-cathedral-monastery-academy.md",
+      "markdown": "# White Cathedral-Monastery-Academy\n\nThe Academy is cathedral, monastery, and university at once.\n\n## Spatial Logic\n\n- Anchored to reality but not permanently fixed to one geography.\n- Rarely relocates, and only when magical-political stress becomes serious.\n- Recognized through selective ontological acknowledgement rather than simple illusion.\n\n## Atmosphere\n\n- White stone, vaulted scale, cold mornings, lingering echoes.\n- Beautiful, severe, bureaucratically heavy.\n- Built to study and contain loopholes in natural law.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1183,6 +1218,7 @@
       "order": 7,
       "chronology": 460,
       "path": "content/world/world-lynleits-home.md",
+      "markdown": "# Lynleit's Home\n\nThis location is still a placeholder in the canon.\n\n## Reserved Scope\n\n- Architecture and atmosphere\n- Symbolic domestic role\n- Social and political context\n- Security profile and access logic",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1211,6 +1247,7 @@
       "order": 8,
       "chronology": 470,
       "path": "content/world/world-msf.md",
+      "markdown": "# MSF\n\nMSF begins as a private intelligence structure and becomes the continuity core of a deeper magical transformation.\n\n## Narrative Function\n\n- Carries institutional memory across crisis.\n- Provides the setting with an intelligence grammar as well as a magical one.\n- Demonstrates that continuity can survive through doctrinal mutation instead of institutional death.\n\n## Identity Doctrine\n\nMSF keeps its name before and after transformation. The acronym is not revealed because function matters more than formal definition.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1240,6 +1277,7 @@
       "order": 9,
       "chronology": 480,
       "path": "content/world/world-the-magiarchy.md",
+      "markdown": "# The Magiarchy\n\nThe word **Magi** names the broader class. The **Magiarchy** names the sanctioned order within it.\n\n## Core Role\n\n- Organizes Church-aligned Magi through regional Magiarchates.\n- Negotiates externally while preserving the institutional terms of Magi survival.\n- Makes magical power politically legible without making it public.\n\n## Church Relations\n\n- Productive, necessary, and never innocent.\n- Built on diplomacy, shared necessity, espionage, extortion, and occasional blood.\n- Trust is always conditional.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1269,6 +1307,7 @@
       "order": 10,
       "chronology": 490,
       "path": "content/world/world-external-power-blocs.md",
+      "markdown": "# External Power Blocs\n\n## Aristocracy\n\nLegacy, inheritance, noble influence, and succession logic continue shaping how authority is distributed.\n\n## Government\n\nGovernment represents the visible machinery of state legitimacy, parliamentary oversight, and public-order language.\n\n## Church\n\nThe Church knows enough to fear both nightmare and the Magi who suppress it. It cooperates because it must, but suspicion is part of the structure rather than a temporary misunderstanding.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1298,6 +1337,7 @@
       "order": 1,
       "chronology": 300,
       "path": "content/themes/theme-truth-versus-stability.md",
+      "markdown": "# Truth Versus Stability\n\nThe story's central conflict is not moral simplicity. It is the cost of knowledge.\n\n- Hidden systems preserve ordinary life by denying the public access to the truth.\n- Institutions defend secrecy partly to protect civilization and partly to protect themselves.\n- Revelation is dangerous not only because horrors exist, but because societies built on managed ignorance may not survive contact with the full structure beneath them.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1325,6 +1365,7 @@
       "order": 2,
       "chronology": 310,
       "path": "content/themes/theme-visible-authority-and-shadow-capability.md",
+      "markdown": "# Visible Authority And Shadow Capability\n\nLynleit and Kyrien are not built around romance-first tension. Their real engine is structural complementarity.\n\n- She leads through visibility, responsibility, and proximity.\n- He protects through obscurity, contingency, and selective intervention.\n- Their tension comes from whether ethical visible power can survive while accepting support it cannot fully witness.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1353,6 +1394,7 @@
       "order": 3,
       "chronology": 320,
       "path": "content/themes/theme-magic-as-political-physics.md",
+      "markdown": "# Magic As Political Physics\n\nMagic matters because it changes systems, not because it looks impressive.\n\n- Every intervention shifts equilibrium.\n- Precision is more dangerous than magnitude.\n- Magical practice always collides with morality, governance, secrecy, and institutional survival.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1380,6 +1422,7 @@
       "order": 1,
       "chronology": 910,
       "path": "content/notes/note-global-story-prompt.md",
+      "markdown": "# Magiarchy - Global Story Prompt\n\nUse this as a canon pack for story generation, character writing, scene planning, and image prompts. Treat all details below as the active world bible unless explicitly overridden.\n\n## Story Universe\n\n### Story Key Art Direction\n- Deep navy celestial background with arcane geometric sigils and concentric circles.\n- Luminous gold/ivory title treatment with an elegant, high-fantasy prestige tone.\n- Atmosphere should feel ancient, mystical, and structurally precise rather than chaotic.\n\n### Ontological Foundation\n- Magic is not an external force imposed upon the world, but an expression of psyche and soul woven into reality itself.\n- It adheres most intensely where the inward life of the world gathers pressure, above all in the spirit of its cities.\n- When that inner equilibrium begins to fail, human nightmare does not remain confined to thought, but presses outward until it assumes material form.\n- Such manifestations are never uniform; each bears the imprint of the individual from whom it emerges, shaped by fear, memory, and psychic fracture.\n- Natural law remains absolute, but not seamless; reality contains pressure points and fractures that can be exploited.\n- Mind, emotion, fear, and belief are structural variables within reality, not symbolic decoration.\n- The Magi exist to detect, contain, and suppress these breaches before the hidden structure of reality becomes visible.\n- They do so under the wary tolerance of the Church, while ordinary society continues in ignorance of the terrors pressing against the visible world.\n\n### Hidden History\n- Magic endured not through conquest, but through restraint, containment, and silence.\n- Over time, the Magi divided between those who accepted tense partnership with the Church and those who rejected it in pursuit of their own aims.\n- From that division emerged the Magiarchy and its regional Magiarchates, formal bodies through which Church-aligned Magi could be organized, monitored, and made politically legible.\n- Modern society appears secular and ordinary, yet remains partially uninformed by design.\n\n### Balance Of Powers\n- Stability depends on an uneasy balance between magical governance, Church influence, aristocratic legacy, state institutions, and intelligence networks.\n- No bloc stands fully above the others; each depends on the rest while distrusting them, and the Church's partnership with the Magiarchy is as productive as it is dangerous in moments of betrayal.\n- Outside that sanctioned order, renegade Magi remain blood enemies of both the Church and the Magiarchates, creating a hidden war beneath ordinary reality.\n\n### System Behavior\n- Every intervention shifts equilibrium, and every suppression raises pressure elsewhere.\n- When the soul of a city destabilizes, the nightmares of its inhabitants begin to take physical form.\n- Overload manifests as Holumns, emergent fractures where nightmare becomes material threat.\n- Magi are tasked with suppressing these manifestations before they rupture public reality and expose the hidden architecture.\n- They do so under the scrutiny of the Church, which knows both the reality of the nightmares and the powers of the Magi, and regards both with suspicion.\n- The Church tolerates the Magi because the Magi make themselves indispensable through suppression; without that necessity, tolerance would give way to inquisition.\n- Institutions behave like living systems under stress: they harden, fail, adapt, or mutate to preserve continuity.\n- The central conflict is knowledge versus stability, not good versus evil.\n\n### Core Question\n- Can civilization survive the truth of its hidden architecture, or does revelation itself become destabilizing?\n\n## Events And Chapters\n\n### Chapter Trigger\n- Helena frames Lynleit for Fionn's assassination.\n- The accusation becomes Helena's leverage.\n- Lynleit is forced into exile.\n- MSF resources are redirected into hunting Lynleit.\n\n### Counterweight\n- Kyrien activates as Lynleit's hidden trump card.\n- He is unpredictable, off-chart, and decisive in ambush, captivity, and extraction scenarios.\n\n### Mirror Threat\n- Tien (name-root: \"shadow\"), Helena's covert enforcer, mirrors Kyrien as an opposite analogue.\n- Their conflict is a direct contest of protector logic and unpredictability.\n\n### Structural Mutation\n- MSF does not disappear.\n- It compresses from a private intelligence company into secretive Magi guild architecture.\n- Transition includes more than core Magi: additional personnel remain as support operators and facilitators.\n- Operational continuity is preserved under new doctrine and structure.\n\n### Identity Doctrine\n- MSF keeps its name before and after transformation.\n- The acronym is never revealed.\n- Continuity is carried by function, not formal definition.\n\n### Current Chapter Timeline Scaffold\n- Chapter 0: The Spill.\n- Chapter 1: Pressure Builds.\n- Chapter 2: Accusation Vector.\n- Pivotal Event: Fionn's assassination.\n- Chapter 3: Exile Opens.\n- Chapter 4: Hunt Architecture.\n- Chapter 5: Extraction Lines.\n- Pivotal Event: MSF compression into guild-like continuity.\n- Chapter 6: Countermove.\n- Chapter 7: Institutional Pressure.\n- Pivotal Event: Kyrien-Tien clash.\n- Chapter 8: Visibility Debt.\n- Chapter 9: Return Window.\n\n### Timeline Trajectories\n- Chapter 0 affects Heyk, Sherie, and Drake.\n- Heyk's early arc begins in Chapter 0 and stretches into Chapter 1: covert deployment into quarantine zone.\n- Sherie's and Drake's Chapter 1 event: Heyk's extraction and new job offer.\n- Lynleit moves from inheritance pressure to exile, then into leverage recovery and visible return positioning.\n- Kyrien moves from silent preparation into contingency activation, extraction work, and direct anti-Tien counterplay.\n- Helena builds the accusation architecture, redirects MSF into the hunt, and consolidates unstable control.\n- Tien escalates from hidden deployment into pursuit and shadow-force pressure.\n- MSF fractures, redirects inward, then compresses into a continuity structure rather than disappearing.\n- Magiarchy, Government, Aristocracy, and Church increasingly respond as the private crisis becomes institutional.\n\n## Magic System (Law Of Magistry)\n\n### Core Principle\n- Magic does not violate natural law. Magic manipulates natural law.\n- Magi do not create rules of reality; they leverage existing pressure points, friction zones, and cracks.\n- Creation belongs to gods. Manipulation belongs to Magi.\n- Magic is systemic literacy applied with intent.\n\n### Thaumaturgy (External Manipulation)\n- Ignition, concentration, weakening/reinforcement, and sensory-physical alteration.\n- Produces observable environmental outcomes.\n- Rewrites world conditions through controlled force application.\n\n### Theurgy (Internal Transformation)\n- Awareness expansion, perception reconfiguration, cognitive-emotional recalibration.\n- Includes spiritual integration and identity-level shifts.\n- Rewrites the operator's relation to the system itself.\n\n### Continuum Doctrine\n- Every magical act affects both self and world.\n- There is no clean divide between internal and external transformation.\n\n### Ontology Of Magic\n- Natural law includes physics, cognition, emotion, perception, and agency.\n- Legitimate targets include matter, energy, probability paths, mind, sensory interpretation, and emotional state.\n- Internal and external realities are structurally continuous.\n\n### Nature Of Magi\n- Magi are anomalies inside the human system: embodied loopholes, not divine beings.\n- Difference is access/perception, not biological superiority.\n- Talent is rare and unevenly distributed; trainability remains unresolved.\n\n### Limitations And Cost\n- Magic cannot create absolute contradictions of natural law.\n- Magic cannot create from absolute nothing or overwrite foundational structure.\n- Every intervention shifts equilibrium, introduces stress, and risks backlash.\n- Overuse destabilizes; misjudgment magnifies systemic resistance.\n- Magic is leverage, not omnipotence.\n\n### Nightmare Manifestation Logic\n- Nightmares are not drawn from a fixed bestiary; they differ radically from person to person.\n- Each manifestation depends on psyche, fear structure, and internal pressure.\n- This gives the setting effectively inexhaustible monster and threat design potential.\n\n### Philosophical Consequence\n- Great Magi maximize precision, not output volume.\n- Power equals leverage literacy plus disciplined restraint.\n- Ideal method: minimal intervention for maximal structural effect.\n\n### Narrative Rules For Magic\n- Subtle before spectacular.\n- Precision is more dangerous than magnitude.\n- Every spell alters equilibrium.\n- Overconfidence triggers backlash.\n- Internal transformation can be as consequential as external display.\n- Avoid arbitrary spellcasting, limitless escalation, cartoon villainy, and consequence-free miracles.\n\n### Moral And Political Implications\n- Magi conflict with morality, law, religion, and politics is structural, not incidental.\n- A secret Magi society regulates practice, prevents destabilization, and preserves a precarious balance with the Church.\n- The Church is not ignorant of the Magi, but watches them with sustained suspicion and continually tests the legitimacy of their existence.\n- That balance applies most fully to the Magiarchy and its regional Magiarchates, whose members remain in sanctioned, uneasy partnership with the Church.\n- Outside that structure stand renegade Magi, who reject obedience, pursue their own ends, and are hunted as enemies by both Church and Magiarchal authority.\n- The Magi suppress horrors not only to preserve civilization, but to prove their necessity and keep inquisitorial elimination at bay.\n- External political interference in internal Magi governance is taboo and severely punished.\n- Unchecked miracle-making is treated as civilizational risk.\n\n### Secrecy Doctrine\n- Knowledge distribution principle: as small as possible, as large as necessary.\n- Selective non-Magi awareness exists among clergy, advisors, and political actors.\n- Ordinary society continues life without knowing magic or Magi exist, and suppression doctrine is built to preserve that ignorance.\n- Beneath that silence, sanctioned Magi and renegade Magi remain locked in a concealed conflict shaped by surveillance, betrayal, and reprisal.\n- Full exposure risks collapse, retaliation, internal conflict, and civil destabilization.\n\n### Thematic Integration\n- Magic is political physics: intervention into cracks of reality.\n- It reflects institutional fragility, unstable power, the cost of knowledge, and hidden authority.\n- Intervention always carries weight.\n\n## Locations\n\n### The Country\n- A four-point power geometry:\n- Velna-Nue: visible law and parliamentary legitimacy.\n- Feldenmark: inherited sovereignty and aristocratic continuity.\n- Turon: intelligence leverage and controlled opacity.\n- Naminsk: economic gateway and movement control.\n\n#### Turon (Northern Capital)\n- Semi-autonomous and operationally insulated.\n- Headquarters zone for Lynleit-family MSF operations.\n- Functions as strategic blind spot with flexible enforcement.\n- Not a simple shadow state; it runs on information asymmetry.\n\n#### National Reactions To Turon\n- Velna-Nue sees Turon as destabilizing but cannot dismantle it without exposing dependency.\n- Feldenmark distrusts Turon but may align with it against parliamentary concentration.\n- Naminsk tracks Turon's intelligence influence via trade and maritime routing.\n\n#### Structural Dynamic\n- Turon introduces lateral power into systems designed for vertical authority.\n- It does not seek throne or title; it seeks positioning.\n- National stability depends on unresolved but managed asymmetry.\n\n#### Narrative Guidance\n- Turon should feel quieter, less ceremonial, and more operational than southern capitals.\n- It attracts analysts, operators, skeptics, and actors avoiding spectacle.\n- Influence is pursued through access and leverage, not status display.\n\n#### Thematic Function\n- If Velna-Nue is law and Feldenmark is legacy, Turon is leverage.\n- \"Mafia city\" is directionally useful but analytically imprecise.\n- Turon is feared because it is indispensable and deniable at once.\n\n### White Cathedral-Monastery-Academy\n- Sacred-academic megastructure for Magi training and dangerous knowledge governance.\n- Cathedral + monastery + university in one integrated complex.\n- Present in major cities but recognized only by permitted observers.\n- Not hidden by simple illusion; recognized through selective ontological acknowledgement.\n\n#### Spatial Logic\n- Anchored to natural reality but not geographically fixed.\n- Can relocate between cities or withdraw from unstable regions.\n- Relocation is rare and signals major magical-political stress.\n- Movement is coordinate-priority reassignment, not teleportation.\n\n#### Institutional Role\n- Postgraduate magistry training for bloodline entrants and rare exceptional outsiders.\n- Global active Magi faculty rotate for duty, influence, and succession shaping.\n- Curriculum emphasizes loophole literacy, secrecy discipline, and balance-of-power compliance.\n\n#### Political Weight\n- In negotiated tension with the Church, but not itself a church institution.\n- Influential globally without absolute dominance.\n- Exists for continuity: standards, doctrine, and anti-destabilization.\n\n#### Atmosphere\n- White stone, vaulted scale, cold mornings, lingering echoes.\n- Solemn, austere, bureaucratically heavy.\n- Beautiful and intimidating; never whimsical or comforting.\n\n#### Symbolic Axis\n- If Magi are loopholes in natural law, the Cathedral is the framework that studies and contains them: massive, silent, enduring.\n\n### Lynleit's Home\n- Placeholder.\n- Reserved for architecture, atmosphere, symbolic role, social-political context, and security profile.\n\n## Organizations\n\n### MSF\n- Private intelligence company and continuity core across structural transformation.\n- Status: placeholder profile pending final doctrine, structure, and leadership model.\n\n### Magiarchy\n- The Magiarchy is the sanctioned political order of the Magi: the structure through which Church-aligned Magi are organized, regulated, and made diplomatically legible.\n- Through its regional Magiarchates, it reports upward, negotiates outward, and preserves the institutional terms of Magi survival.\n- The term \"Magi\" names the broader class; \"Magiarchy\" names the sanctioned order within that class.\n- Its partnership with the Church is productive but never innocent, marked by diplomacy, shared necessity, espionage, extortion, and blood when trust is broken.\n- Renegade Magi who reject Church-aligned order become blood enemies of both the Church and the Magiarchates.\n\n### Aristocracy\n- Placeholder for noble blocs, succession logic, and influence channels.\n\n### Government\n- Placeholder for parliamentary structure, oversight, and state authority.\n\n## Character Dossiers\n\n### Lynleit\n- Subtitle: Visible Protagonist; Acting Heir-Director.\n- Age: 28.\n- Gender: Female.\n- Narrative role: visible protagonist and public decision-maker.\n- Occupation: acting heir of MSF.\n- Core goal: hold the structure together without abandoning ethics.\n- Key dynamic: public legitimacy paired with hidden contingency support.\n- About: the sole heir of MSF, forced into leadership early to prevent institutional collapse after internal instability; she rejects rule through fear and treats trust as infrastructure.\n\n#### Visual Description\n- Stature: average height; slim, lean build.\n- Hair: long, dark, softly wavy.\n- Eyes: clear blue.\n- Palette: typically blue, white, and black.\n- Outerwear: tailored blue coat.\n- Top: crisp white blouse with a black ribbon bow necktie at the collar.\n- Bottoms: fitted black shorts.\n- Legwear: opaque black stockings.\n- Footwear: dark over-the-knee boots with medium heels; elegant, stable, and mobility-friendly in a crisis.\n\n#### Leadership Style\n- Communicates directly and reduces the distance that power usually creates.\n- Builds loyalty through emotional presence and visible sincerity.\n- Prefers cohesion to control, and alignment to obedience.\n- Is viewed as soft by traditionalists who mistake warmth for weakness.\n\n#### Writer Guide Notes\n- Matured early under succession pressure and understands that legitimacy must be earned in real time.\n- Keeps her moral philosophy even as she accepts selective opacity when deterrence becomes necessary.\n- Must prove that proximity can be strength, and must make at least one costly trust-based decision.\n- Voice target: composed and conviction-driven; vulnerability should feel conscious and chosen.\n\n#### Thematic Axis\n- Visible power trying to remain ethical while relying on shadow capability to keep the system survivable.\n\n### Kyrien\n- Subtitle: Independent Ally; Hidden Contingency.\n- Age: 28.\n- Gender: Male.\n- Narrative role: main-character gravity, but not visible protagonist.\n- Occupation: off-chart tactical operator and infrastructure strategist.\n- Core goal: preserve structural survivability without becoming controllable.\n- Key dynamic: independent ally to Lynleit, essential in systemic crisis.\n- About: an urban tactician shaped by early exposure to lethal knowledge after his father's suspicious removal from elite circles; he specializes in systems, logistics, surveillance, and vulnerability mapping rather than force for its own sake.\n\n#### Visual Description\n- Stature: average height; slim, lean build.\n- Hair: short, dark.\n- Eyes: brown.\n- Palette: typically black, beige, and brown.\n- Outerwear: brown leather jacket.\n- Top: black office shirt (sometimes burgundy).\n- Bottoms: black pants.\n- Footwear: dark office shoes.\n\n#### Combat And Method\n- Fights through spacing, leverage, timing, and environmental control.\n- Rewrites combat by altering terrain, light, and momentum.\n- Keeps violence concise, functional, and low in spectacle.\n- Values outcomes over optics and rejects performative dominance.\n\n#### Writer Guide Notes\n- Core philosophy: \"If it bleeds, it breaks. If it moves, it has structure. If it has structure, it has a failure point.\"\n- Emotionally restrained, not empty.\n- Distrusts centralized authority, but respects competent structure.\n- Loyalty is durable; harm is minimized when possible; outcomes matter more than approval.\n- Must fail emotionally at least once.\n- Voice target: underplay him; precision over legend, competence over theatrics.\n\n#### Thematic Axis\n- Refuses to mythologize magic.\n- Functions as shadow capability inside institutions.\n- He edits invisible drafts while Lynleit executes visible strategy.\n\n### Placeholder Characters\nThe following are registered but currently placeholder profiles: Drake, Sherie, Heyk, Felix, Reiner, Fionn, Helena, Yulia, Hiyu, Natalia, Lester, Myka, Tien.\n\nUse this placeholder doctrine for each until replaced:\n- Subtitle: Profile Placeholder.\n- About: listed placeholder pending a detailed narrative profile.\n- Profile fields: Status=Placeholder, Age=TBD, Role=TBD, Affiliations=TBD, Core Goal=TBD.\n- Notes: registered in the roster; function, history, relationships, and operational traits remain to be defined.\n- Thematic axis: not finalized.\n- Visual description placeholder: define stature, hair, eyes, palette, outerwear, top, bottoms, legwear, and footwear.\n\n## Relationship Dynamics\n\n### Lynleit + Kyrien\n- Core framing: structural complementarity under pressure, not romance-first tension.\n- She leads through proximity; he operates through distance.\n- She builds legitimacy through transparency; he preserves survivability through controlled opacity.\n\n#### Lynleit - Visible Authority\n- Intentionally collapses hierarchy; treats core colleagues as allies.\n- Creates loyalty but appears soft to traditional executives.\n- Learns cohesion is strength but not deterrence.\n- Grows by adding structural insurance without abandoning ethics.\n\n#### Kyrien - Invisible Contingency\n- Off-chart, unofficial, outside consensus machinery.\n- Systemic contingency, not simple enforcer.\n- Suspicious during calm; inevitable during crisis.\n- Disrupts threats before visible leadership absorbs impact.\n\n#### Trust Without Visibility\n- Lynleit chooses controlled trust, not ignorance.\n- Central tension: tolerance for incomplete operational visibility.\n- Visible consequences still land on Lynleit when hidden interventions escalate.\n\n#### Crisis Dynamic\n- Lynleit handles negotiation, morale, public strategy.\n- Kyrien redirects threats and neutralizes sub-visible escalation.\n- Post-crisis ambiguity is deliberate survivability design.\n\n#### Relational Axis\n- He is neither weapon nor subordinate; he is an independent ally.\n- She anchors through responsibility; he stands with her by choice.\n- She integrates through inclusion; he protects through exclusion.\n- She writes visible narrative; he edits invisible draft.\n\n#### Writer Rule\n- Transparency supported by controlled opacity.\n- Do not romanticize prematurely.\n- Do not flatten either character into archetype.\n- Keep Lynleit strategic/decisive and Kyrien restrained/precise/independently moral.\n- Their power is tension, not dominance.\n\n### Felix + Reiner\n- Placeholder demo dynamic.\n- Pending final canon.\n- Current scaffold prompts:\n- Define visible authority holder.\n- Define covert leverage holder.\n- Define non-negotiable lines for each.\n- Define repeating friction pattern.\n- Define crisis that forces collaboration.\n- Define unresolved tension that remains.\n\n## Music Cues (Placeholder)\n\n### Main Theme\n- Placeholder track slot.\n\n### MSF Motif\n- Placeholder track slot.\n\n### Music Direction\n- Music content remains temporary and should be replaced with finalized tracks and narrative intent when available.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1407,6 +1450,7 @@
       "order": 2,
       "chronology": 920,
       "path": "content/notes/note-chapter-construction-toolkit.md",
+      "markdown": "# Chapter Construction Toolkit (Writer's Checklist)\n\nUse this set of questions when building **each chapter** or **chapter arc**.<br />\nNot every chapter must answer all of them, but most strong chapters will touch several.\n\n---\n\n## 1. Scene Purpose\n- What **changes** in this chapter?\n- What new information, shift in power, or event occurs?\n- How is the **status quo altered** by the end?\n\n---\n\n## 2. Character Intent\n- What does the POV character **want at the beginning** of the chapter?\n- What **action or decision** do they take to pursue it?\n- Do they **succeed, partially succeed, or fail**?\n\n---\n\n## 3. Conflict or Obstacle\n- What stands in the character's way?\n- Is the conflict:\n  - external (enemy, institution, environment)\n  - internal (fear, doubt, moral dilemma)\n  - systemic (politics, hidden structures, magical instability)\n\n---\n\n## 4. Emotional Core\n- What **emotion** should the reader feel in this chapter?\n- Examples:\n  - tension\n  - curiosity\n  - dread\n  - relief\n  - confusion\n  - revelation\n\n---\n\n## 5. Thematic Echo\n- Which **core theme** of the story does this chapter reinforce or challenge?\n- Example themes in Magiarchy:\n  - knowledge vs stability\n  - visible authority vs hidden leverage\n  - systems under pressure\n  - the cost of truth\n\n---\n\n## 6. World Revelation\n- What part of the **world system** becomes clearer?\n- Does the chapter reveal:\n  - institutional mechanics\n  - magical rules\n  - political dynamics\n  - Holumn behavior\n  - faction motivations\n\n---\n\n## 7. Stakes Adjustment\n- How do the **stakes change** after this chapter?\n- Are the consequences now:\n  - more dangerous\n  - more personal\n  - more political\n  - more supernatural\n\n---\n\n## 8. Narrative Momentum\n- Does this chapter **push the story forward**?\n- Does it create:\n  - a new problem\n  - a deeper mystery\n  - a harder decision\n\n---\n\n## 9. Character Transformation\n- Does the POV character **learn something new**?\n- Does their **belief or understanding shift**?\n\n---\n\n## 10. Ending Hook\n- How does the chapter end?\n- Possible endings:\n  - revelation\n  - unresolved tension\n  - emotional shift\n  - new threat\n  - unexpected alliance\n\nThe final lines should naturally make the reader want to continue.",
       "case": "",
       "case_name": "",
       "characters": [],
@@ -1433,6 +1477,7 @@
       "order": 3,
       "chronology": 930,
       "path": "content/notes/note-music-direction.md",
+      "markdown": "# Music Direction\n\nMusic in this archive is still placeholder material.\n\n## Reserved Slots\n\n- Main Theme\n- MSF Motif\n\n## Direction\n\n- The principal cue should introduce the setting's prestige, mystery, and structural pressure.\n- The MSF cue should carry continuity, hidden authority, and institutional strain.\n- Later tracks should be organized by narrative function rather than uploaded as an unstructured wall of embeds.",
       "case": "",
       "case_name": "",
       "characters": [],
