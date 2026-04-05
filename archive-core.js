@@ -6,21 +6,27 @@ window.DivineChamber = (() => {
     chapter: "Chapter",
     scene: "Scene",
     play: "Play",
-    case: "Case File",
+    case: "Crisis File",
     dossier: "Dossier",
     world: "World File",
-    note: "Note",
+    note: "Writer Note",
     theme: "Theme",
   };
 
   const FACET_LABELS = {
+    story: "Story Line",
+    power: "Power Structure",
+    world: "World Context",
+    meta: "Writer Material",
     chamber: "From the Chamber",
     bureau: "From the Bureau",
-    world: "World Context",
-    meta: "Development",
   };
 
   const STATUS_LABELS = {
+    active: "Active",
+    placeholder: "Placeholder",
+    scaffold: "Scaffold",
+    reference: "Reference",
     draft: "Draft",
     "in-progress": "In Progress",
     canon: "Canon",

@@ -1,72 +1,34 @@
 {
-  "overview": "Original Divine Chamber uploads live here as atmosphere, pressure, and recurring cues beside the written archive.",
-  "featuredTrackId": "featured-cue",
+  "overview": "The music room is still provisional. For now it holds the source repo's intended cue slots so the archive has a clear sonic structure waiting for final uploads.",
+  "featuredTrackId": "main-theme",
   "collectionNotes": {
-    "Featured": "Lead with the cue that best introduces the project's atmosphere before a reader opens the archive.",
-    "From the Chamber": "Use these shelves for interior, theatrical, intimate, or symbolic pieces.",
-    "From the Bureau": "Keep investigation, pressure, city movement, and case-facing tracks here.",
-    "Motifs & Interludes": "Smaller cues, recurring relationship motifs, and transitional pieces can live here."
+    "Core Themes": "These shelves define the project's first recognizable sonic identity before the track list grows outward.",
+    "Institutional Motifs": "Reserve these slots for cues tied to power structures, continuity, and pressure rather than generic ambience."
   },
   "tracks": [
     {
-      "id": "featured-cue",
-      "title": "Featured Cue",
-      "youtube": "https://www.youtube.com/watch?v=yarhr49YF-I",
-      "facet": "chamber",
-      "collection": "Featured",
-      "mood": "Threshold, nocturne, first impression",
-      "reading": "Project home / broad orientation",
-      "summary": "Use this slot for the first Divine Chamber upload new visitors should hear.",
-      "note": "This featured player is designed for one strong cue rather than a dense wall of embeds.",
+      "id": "main-theme",
+      "title": "Main Theme Placeholder",
+      "youtube": "",
+      "facet": "story",
+      "collection": "Core Themes",
+      "mood": "Prestige, mystery, high-pressure elegance",
+      "reading": "Project entry / story universe",
+      "summary": "The principal musical statement for Magiarchy once the final theme exists.",
+      "note": "The main cue should introduce ancient structure, hidden danger, and the feeling of a world held together by controlled pressure.",
       "order": 1
     },
     {
-      "id": "chamber-cue",
-      "title": "Chamber Cue",
-      "youtube": "https://www.youtube.com/watch?v=izjfLw8Knls",
-      "facet": "chamber",
-      "collection": "From the Chamber",
-      "mood": "Theatrical, intimate, archetypal pressure",
-      "reading": "Cast dossiers / chamber scenes",
-      "summary": "Reserve this shelf for music that feels interior, charged, witty, or symbolically alive.",
-      "note": "A chamber-facing cue pairs well with dossiers, scenes, and relationship pressure.",
-      "order": 2
-    },
-    {
-      "id": "bureau-cue",
-      "title": "Bureau Cue",
-      "youtube": "https://www.youtube.com/watch?v=EfL7LL9-uWs",
-      "facet": "bureau",
-      "collection": "From the Bureau",
-      "mood": "Procedure, pursuit, city pressure",
-      "reading": "Cases / investigations",
-      "summary": "Use this shelf for tracks tied to fieldwork, case escalation, or official pressure.",
-      "note": "Bureau pieces can carry more movement and tension without losing the archive's restraint.",
-      "order": 3
-    },
-    {
-      "id": "city-pressure-motif",
-      "title": "City Pressure Motif",
-      "youtube": "https://www.youtube.com/watch?v=gXaoN0jwdUc",
-      "facet": "bureau",
-      "collection": "Motifs & Interludes",
-      "mood": "Municipal unease, distant bells, weather",
-      "reading": "World files / timeline",
-      "summary": "A smaller cue for the city itself, institutional tension, or the sensation of pressure building.",
-      "note": "This shelf works well for transitional or environmental tracks.",
-      "order": 4
-    },
-    {
-      "id": "lateumn-interlude",
-      "title": "Lateumn Interlude",
+      "id": "msf-motif",
+      "title": "MSF Motif Placeholder",
       "youtube": "",
-      "facet": "world",
-      "collection": "Motifs & Interludes",
-      "mood": "Suspension, reflection, afterimage",
-      "reading": "Notes / reflective passages",
-      "summary": "Keep quieter or reflective uploads here when they deepen the archive without overpowering it.",
-      "note": "Interludes can act like breath marks between heavier case or chamber material.",
-      "order": 5
+      "facet": "power",
+      "collection": "Institutional Motifs",
+      "mood": "Continuity, surveillance, controlled strain",
+      "reading": "Crisis files / MSF world material",
+      "summary": "A recurring cue for MSF as continuity structure, intelligence grammar, and institutional pressure engine.",
+      "note": "This track should feel disciplined and loaded, not loudly militarized.",
+      "order": 2
     }
   ]
 }

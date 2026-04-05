@@ -1,33 +1,28 @@
 ---
 title: Dossier - Sherie
 type: dossier
-facet: bureau
+facet: power
 section: cast
-chronology: 3
-cast_order: 3
-status: canon
-canon: core
-characters: Sherie
-tags: bureau | wit | discipline | city
-summary: Sherie keeps the bureau socially survivable: strategic, dryly funny, and terrifyingly capable of managing a room.
+order: 9
+chronology: 9
+status: placeholder
+canon: working
+characters: Sherie | Drake | Heyk
+tags: duchy | interpretation | extraction | response
+summary: Sherie occupies the interpretive Duchy-side lane, moving from Heyk's extraction into a longer response to the broader institutional crisis.
 template: profile
-featured: true
 sigil: SH
-role: Investigative coordinator
-affiliation: Divine Chamber Bureau
-archetype: The social blade
+role: Duchy-side interpreter
+affiliation: Duchy
+archetype: Strategic observer
 ---
 
-# Dossier - Sherie
+# Sherie
 
-Sherie is what happens when grace becomes an operational skill.
+Sherie remains partially defined, but her role in the canon is already useful.
 
-She can calm witnesses, corner liars, and make officials feel flattered while she
-extracts what they wanted to withhold. Her wit is rarely decorative; it is usually
-an instrument.
+## Current Lane
 
-## Bureau Read
-
-- Public function: interviews, city contacts, tone control.
-- Private skill: knows exactly how much intimacy a conversation can survive.
-- Chamber effect: she reads charged dynamics faster than anyone else and is rarely charmed by them.
+- Enters through the extraction sequence around Heyk.
+- Becomes part of the Duchy's reading of the succession crisis.
+- Offers an external interpretive angle on MSF instability.

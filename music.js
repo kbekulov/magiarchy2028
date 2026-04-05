@@ -180,7 +180,7 @@ function renderMusicFeature() {
                 </span>
               `
           }
-          <a class="btn btn-outline-light" href="library.html">Open writing archive</a>
+          <a class="btn btn-outline-light" href="library.html">Open archive</a>
         </div>
       </div>
     </article>

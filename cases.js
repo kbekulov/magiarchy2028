@@ -58,7 +58,7 @@ function renderCaseRoster() {
 async function renderCaseDetail() {
   const entry = caseState.cases.find((item) => item.id === caseState.activeId);
   if (!entry) {
-    caseDetail.innerHTML = `<p class="page-copy mb-0">No case file available.</p>`;
+    caseDetail.innerHTML = `<p class="page-copy mb-0">No crisis file is available for this view.</p>`;
     caseRelated.innerHTML = "";
     return;
   }
@@ -79,7 +79,7 @@ async function renderCaseDetail() {
     <div class="record-grid mt-4">
       ${renderRecordItem("Priority", fields.priority)}
       ${renderRecordItem("Location", fields.location)}
-      ${renderRecordItem("Case Cluster", entry.case_name)}
+      ${renderRecordItem("Crisis Thread", entry.case_name)}
       ${renderRecordItem("Status", window.DivineChamber.formatStatus(entry.status))}
     </div>
     <div class="markdown-body mt-4">${window.DivineChamber.renderMarkdown(markdown)}</div>
@@ -93,7 +93,7 @@ async function renderCaseDetail() {
           })
         )
         .join("")
-    : `<div class="empty-card">No related files have been connected to this case yet.</div>`;
+    : `<div class="empty-card">No related files have been connected to this crisis yet.</div>`;
 }
 
 async function getCaseMarkdown(entry) {

@@ -56,7 +56,7 @@ async function initializeReader() {
     const prevNext = window.DivineChamber.findPrevNext(entries, entry);
     const fields = entry.fields || {};
 
-    document.title = `${entry.title} | Divine Chamber`;
+    document.title = `${entry.title} | Magiarchy`;
     readerKind.textContent = window.DivineChamber.formatType(entry.type);
     readerTitle.textContent = entry.title;
     readerSummary.textContent = entry.summary || "No summary provided yet.";
@@ -69,7 +69,7 @@ async function initializeReader() {
       recordItem("Status", window.DivineChamber.formatStatus(entry.status)),
       recordItem("Canon", window.DivineChamber.sentenceCase(entry.canon)),
       recordItem("Chronology", window.DivineChamber.orderLabel(entry)),
-      recordItem("Case", entry.case_name),
+      recordItem("Crisis", entry.case_name),
       recordItem("Role", fields.role),
       recordItem("Affiliation", fields.affiliation),
       recordItem("Archetype", fields.archetype),
@@ -86,7 +86,7 @@ async function initializeReader() {
       ${
         entry.case_name
           ? `<div class="context-block">
-              <span class="context-block__label">Case Cluster</span>
+              <span class="context-block__label">Crisis Thread</span>
               <a class="context-link" href="cases.html?case=${encodeURIComponent(entry.case)}">${window.DivineChamber.escapeHtml(
                 entry.case_name
               )}</a>

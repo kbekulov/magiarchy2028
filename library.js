@@ -72,7 +72,7 @@ async function initializeArchive() {
   );
   populateSelect(
     caseSelect,
-    "All Cases",
+    "All Crises",
     manifest.collections.cases,
     (value) =>
       archiveState.entries.find((entry) => entry.case === value)?.case_name ||
@@ -89,28 +89,28 @@ async function initializeArchive() {
 function renderQuickLinks() {
   const views = [
     {
-      title: "Scene files",
-      copy: "Jump into the chamber-facing story material first.",
-      params: { type: "scene" },
+      title: "Chapter scaffolds",
+      copy: "Open the active chapter line and move through the current plot skeleton.",
+      params: { type: "chapter" },
     },
     {
-      title: "Case dossiers",
-      copy: "Move through the bureau-facing incident structure.",
+      title: "Crisis files",
+      copy: "Move through the catalytic events that reorganize the story.",
       params: { type: "case" },
     },
     {
-      title: "Character records",
-      copy: "Browse the chamber cast as dossiers and profiles.",
+      title: "Character dossiers",
+      copy: "Browse the active roster as dossiers, roles, and scaffolded profiles.",
       params: { type: "dossier" },
     },
     {
-      title: "World reference",
-      copy: "Read city, Crown, and symbolic-system files together.",
+      title: "World doctrine",
+      copy: "Read ontological rules, locations, and organizations together.",
       params: { facet: "world" },
     },
     {
-      title: "Development notes",
-      copy: "Separate draft thinking from canon-facing material.",
+      title: "Writer notes",
+      copy: "Open the canon pack, chapter toolkit, and other writer-facing material.",
       params: { facet: "meta" },
     },
   ];

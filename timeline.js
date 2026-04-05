@@ -7,7 +7,14 @@ if (timelineList) {
 async function initializeTimeline() {
   const { entries } = await window.DivineChamber.fetchManifest();
   const ordered = window.DivineChamber
-    .byChronology(entries.filter((entry) => entry.chronology && entry.chronology !== 999))
+    .byChronology(
+      entries.filter(
+        (entry) =>
+          entry.chronology &&
+          entry.chronology !== 999 &&
+          ["chapter", "scene", "play", "case"].includes(entry.type)
+      )
+    )
     .map(
       (entry) => `
         <article class="timeline-item">

@@ -15,19 +15,19 @@ async function initializeHome() {
   homeStats.innerHTML = `
     <article class="stat-card">
       <span class="stat-card__value">${entries.filter((entry) => entry.type === "dossier").length}</span>
-      <span class="stat-card__label">Cast Dossiers</span>
+      <span class="stat-card__label">Character Dossiers</span>
     </article>
     <article class="stat-card">
       <span class="stat-card__value">${entries.filter((entry) => entry.type === "case").length}</span>
-      <span class="stat-card__label">Bureau Cases</span>
+      <span class="stat-card__label">Crisis Files</span>
     </article>
     <article class="stat-card">
       <span class="stat-card__value">${literaryEntries.length}</span>
-      <span class="stat-card__label">Literary Files</span>
+      <span class="stat-card__label">Story Files</span>
     </article>
     <article class="stat-card">
       <span class="stat-card__value">${entries.filter((entry) => entry.type === "world").length}</span>
-      <span class="stat-card__label">World Files</span>
+      <span class="stat-card__label">Doctrine Files</span>
     </article>
   `;
 

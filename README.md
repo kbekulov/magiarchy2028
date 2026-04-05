@@ -1,36 +1,32 @@
-# Divine Chamber Archive
+# Magiarchy Archive
 
-Divine Chamber is a Bootstrap-based personal website/archive for an original story
-project with two intertwined facets:
-
-- the chamber: theatrical, symbolic, intimate, witty, psychologically charged
-- the bureau: investigative, political, procedural, and city-facing
-
-This repository keeps Markdown as the source of truth for the writing while
-presenting it through a multi-page archive structure instead of a generic blog.
+Magiarchy is a Bootstrap-based archive site for a hidden-world story project.
+This repo adapts source material from `github.com/kbekulov/magiarchy` into a
+manifest-driven reading structure built around dossiers, crisis files, world
+doctrine, chapter scaffolds, and writer-facing notes.
 
 ## Site structure
 
 - `index.html`:
-  Project home and archive entry points
+  project home and archive entry points
 - `narrative.html`:
-  About Divine Chamber, its premise, themes, and dual-facet logic
+  story universe, hidden ontology, and thematic questions
 - `characters.html`:
-  Chamber cast and bureau presences rendered from Markdown dossiers
+  character dossiers rendered from Markdown
 - `cases.html`:
-  Bureau cases and linked archive materials
+  crisis files and linked archive materials
 - `music.html`:
-  Curated listening room for YouTube-hosted project tracks
+  listening room for placeholder themes and future uploads
 - `library.html`:
-  Full archive browser with metadata filters
+  full archive browser with metadata filters
 - `world.html`:
-  Worldbuilding, city, Crown, bureau, and symbolic system files
+  world doctrine, magistry rules, locations, and organizations
 - `timeline.html`:
-  Chronology/progression view across the archive
+  chapter and crisis chronology
 - `notes.html`:
-  Notes, drafts, and development logs
+  canon packs and writer-facing notes
 - `reader.html`:
-  Dedicated reader for individual archive entries
+  dedicated reader for individual archive entries
 
 ## Frontend stack
 
@@ -42,36 +38,34 @@ presenting it through a multi-page archive structure instead of a generic blog.
 
 ## Content model
 
-Markdown files live under `content/` and are indexed by
+Markdown lives under `content/` and is indexed by
 `scripts/build_library_manifest.py`.
 
-Current content folders:
+Active folders:
 
 - `content/chapters`
-- `content/scenes`
-- `content/plays`
 - `content/cases`
 - `content/dossiers`
-- `content/music-library.json`
 - `content/world`
 - `content/notes`
 - `content/themes`
+- `content/music-library.json`
 
 Minimal supported frontmatter schema:
 
 ```md
 ---
-title: Case 01 - The Amber Ward
+title: Event File - Fionn's Assassination
 type: case
-facet: bureau
+facet: power
 section: cases
 order: 1
-chronology: 10
-status: canon
+chronology: 35
+status: active
 canon: core
-case: amber-ward
-characters: Operator | Sherie | Drake
-tags: bureau | municipal | ward-break
+case: Fionn Assassination
+characters: Lynleit | Helena | Kyrien
+tags: succession | accusation | exile
 summary: Short archive summary.
 template: dossier
 featured: true
@@ -84,7 +78,7 @@ Recommended fields:
 - `type`
   `chapter`, `scene`, `play`, `case`, `dossier`, `world`, `note`, `theme`
 - `facet`
-  `chamber`, `bureau`, `world`, `meta`
+  `story`, `power`, `world`, `meta`
 - `section`
   `archive`, `cases`, `cast`, `world`, `notes`, `about`
 - `order`
@@ -100,21 +94,19 @@ Recommended fields:
 - `featured`
 
 Optional entry-specific fields such as `sigil`, `role`, `affiliation`, `archetype`,
-`case_code`, `priority`, `location`, or `category` are also passed into the manifest
+`case_code`, `priority`, `location`, or `category` are passed into the manifest
 and can be used by page templates.
 
 ## Music library
 
-YouTube-backed music data lives in `content/music-library.json`.
+Track metadata lives in `content/music-library.json`.
 
 Supported track fields:
 
 - `id`
 - `title`
 - `youtube`
-  accepts either a full YouTube URL or a bare video ID
 - `facet`
-  `chamber`, `bureau`, `world`, or `meta`
 - `collection`
 - `mood`
 - `reading`
