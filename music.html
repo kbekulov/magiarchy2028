@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Room | Divine Chamber</title>
+    <meta
+      name="description"
+      content="A curated listening room for Divine Chamber featuring YouTube-hosted tracks aligned with the chamber and bureau sides of the archive."
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="music">
+    <div id="mobile-shell"></div>
+
+    <div class="container-fluid px-0 site-shell">
+      <div class="row g-0">
+        <aside class="col-lg-3 col-xl-2 d-none d-lg-block sidebar-column">
+          <div id="sidebar-shell"></div>
+        </aside>
+
+        <main class="col-lg-9 col-xl-10 content-column">
+          <div class="content-wrap">
+            <section class="page-banner">
+              <p class="page-kicker">Music Room</p>
+              <h1 class="page-title">A listening room for chamber tension and bureau weather</h1>
+              <p class="page-copy banner-copy mt-3">
+                Music sits beside the writing as atmosphere, pressure, and recurrence.
+                Instead of a wall of embeds, this page keeps one active player and quieter
+                shelves for the rest of the uploaded cues.
+              </p>
+            </section>
+
+            <section class="page-section mt-4">
+              <div id="music-feature"></div>
+            </section>
+
+            <section class="page-section mt-4">
+              <div class="section-header">
+                <p class="page-kicker">Listening Shelves</p>
+                <h2 class="section-title">Move through the score by function</h2>
+              </div>
+              <div class="music-collections" id="music-collections"></div>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="shell.js" defer></script>
+    <script src="archive-core.js" defer></script>
+    <script src="music.js" defer></script>
+  </body>
+</html>

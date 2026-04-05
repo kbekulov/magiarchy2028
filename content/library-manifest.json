@@ -1,0 +1,777 @@
+{
+  "entries": [
+    {
+      "id": "case-case-01-the-amber-ward",
+      "slug": "case-01-the-amber-ward",
+      "title": "Case 01 - The Amber Ward",
+      "kind": "case",
+      "type": "case",
+      "facet": "bureau",
+      "section": "cases",
+      "status": "canon",
+      "canon": "core",
+      "summary": "A municipal seal around a disused ward fails in slow motion, drawing the bureau toward the chamber before the city can name the incident aloud.",
+      "order": 1,
+      "chronology": 10,
+      "path": "content/cases/case-01-the-amber-ward.md",
+      "case": "amber-ward",
+      "case_name": "Case 01 - The Amber Ward",
+      "characters": [
+        "Operator",
+        "Sherie",
+        "Drake",
+        "Seris"
+      ],
+      "tags": [
+        "bureau",
+        "municipal",
+        "ward-break",
+        "chamber-threshold"
+      ],
+      "template": "dossier",
+      "featured": true,
+      "fields": {
+        "case_code": "Bureau File 01",
+        "priority": "Black Ribbon",
+        "location": "Amber Ward, Ninth District"
+      }
+    },
+    {
+      "id": "case-case-02-the-litany-glass",
+      "slug": "case-02-the-litany-glass",
+      "title": "Case 02 - The Litany of Glass",
+      "kind": "case",
+      "type": "case",
+      "facet": "bureau",
+      "section": "cases",
+      "status": "draft",
+      "canon": "working",
+      "summary": "A rehearsal begins generating details from incidents that have not yet happened, forcing the bureau to investigate whether performance has become predictive.",
+      "order": 2,
+      "chronology": 34,
+      "path": "content/cases/case-02-the-litany-glass.md",
+      "case": "litany-glass",
+      "case_name": "Case 02 - The Litany of Glass",
+      "characters": [
+        "Sherie",
+        "Goat",
+        "Anima"
+      ],
+      "tags": [
+        "bureau",
+        "theatre",
+        "contagion",
+        "performance"
+      ],
+      "template": "dossier",
+      "featured": true,
+      "fields": {
+        "case_code": "Bureau File 02",
+        "priority": "Wine Lantern",
+        "location": "Mirrorgate Civic Theatre"
+      }
+    },
+    {
+      "id": "dossier-dossier-the-operator",
+      "slug": "dossier-the-operator",
+      "title": "Dossier - The Operator",
+      "kind": "dossier",
+      "type": "dossier",
+      "facet": "bureau",
+      "section": "cast",
+      "status": "canon",
+      "canon": "core",
+      "summary": "The bureau\u2019s central masculine anchor: composed, watchful, and always one revelation too close to the chamber.",
+      "order": 999,
+      "chronology": 1,
+      "path": "content/dossiers/dossier-the-operator.md",
+      "case": "",
+      "case_name": "",
+      "characters": [
+        "Operator"
+      ],
+      "tags": [
+        "bureau",
+        "anchor",
+        "witness",
+        "central"
+      ],
+      "template": "profile",
+      "featured": true,
+      "fields": {
+        "cast_order": 1,
+        "sigil": "OP",
+        "role": "Bureau operator",
+        "affiliation": "Divine Chamber Bureau",
+        "archetype": "The witness who cannot remain neutral"
+      }
+    },
+    {
+      "id": "dossier-dossier-anima",
+      "slug": "dossier-anima",
+      "title": "Dossier - Anima",
+      "kind": "dossier",
+      "type": "dossier",
+      "facet": "chamber",
+      "section": "cast",
+      "status": "canon",
+      "canon": "core",
+      "summary": "Elegant, destabilizing, and sharper than comfort allows, Anima turns intimacy into interpretation and interpretation into risk.",
+      "order": 999,
+      "chronology": 2,
+      "path": "content/dossiers/dossier-anima.md",
+      "case": "",
+      "case_name": "",
+      "characters": [
+        "Anima"
+      ],
+      "tags": [
+        "chamber",
+        "eros",
+        "intelligence",
+        "archetype"
+      ],
+      "template": "profile",
+      "featured": true,
+      "fields": {
+        "cast_order": 2,
+        "sigil": "AN",
+        "role": "Chamber intelligence",
+        "affiliation": "Interior chamber",
+        "archetype": "The intimate provocation"
+      }
+    },
+    {
+      "id": "dossier-dossier-sherie",
+      "slug": "dossier-sherie",
+      "title": "Dossier - Sherie",
+      "kind": "dossier",
+      "type": "dossier",
+      "facet": "bureau",
+      "section": "cast",
+      "status": "canon",
+      "canon": "core",
+      "summary": "Sherie keeps the bureau socially survivable: strategic, dryly funny, and terrifyingly capable of managing a room.",
+      "order": 999,
+      "chronology": 3,
+      "path": "content/dossiers/dossier-sherie.md",
+      "case": "",
+      "case_name": "",
+      "characters": [
+        "Sherie"
+      ],
+      "tags": [
+        "bureau",
+        "wit",
+        "discipline",
+        "city"
+      ],
+      "template": "profile",
+      "featured": true,
+      "fields": {
+        "cast_order": 3,
+        "sigil": "SH",
+        "role": "Investigative coordinator",
+        "affiliation": "Divine Chamber Bureau",
+        "archetype": "The social blade"
+      }
+    },
+    {
+      "id": "dossier-dossier-sister",
+      "slug": "dossier-sister",
+      "title": "Dossier - Sister",
+      "kind": "dossier",
+      "type": "dossier",
+      "facet": "chamber",
+      "section": "cast",
+      "status": "canon",
+      "canon": "core",
+      "summary": "Sister carries the authority of ritual intimacy: protective, watchful, and fully capable of turning devotion into discipline.",
+      "order": 999,
+      "chronology": 4,
+      "path": "content/dossiers/dossier-sister.md",
+      "case": "",
+      "case_name": "",
+      "characters": [
+        "Sister"
+      ],
+      "tags": [
+        "chamber",
+        "doctrine",
+        "tenderness",
+        "severity"
+      ],
+      "template": "profile",
+      "featured": false,
+      "fields": {
+        "cast_order": 4,
+        "sigil": "SI",
+        "role": "Chamber authority",
+        "affiliation": "Interior chamber",
+        "archetype": "The devout severity"
+      }
+    },
+    {
+      "id": "dossier-dossier-drake",
+      "slug": "dossier-drake",
+      "title": "Dossier - Drake",
+      "kind": "dossier",
+      "type": "dossier",
+      "facet": "bureau",
+      "section": "cast",
+      "status": "canon",
+      "canon": "core",
+      "summary": "Drake handles the bureau\u2019s harder edges: surveillance, pressure, perimeter control, and the kind of loyalty that can become menace.",
+      "order": 999,
+      "chronology": 5,
+      "path": "content/dossiers/dossier-drake.md",
+      "case": "",
+      "case_name": "",
+      "characters": [
+        "Drake"
+      ],
+      "tags": [
+        "bureau",
+        "force",
+        "perimeter",
+        "city"
+      ],
+      "template": "profile",
+      "featured": false,
+      "fields": {
+        "cast_order": 5,
+        "sigil": "DR",
+        "role": "Field enforcement",
+        "affiliation": "Divine Chamber Bureau",
+        "archetype": "The disciplined threat"
+      }
+    },
+    {
+      "id": "dossier-dossier-goat",
+      "slug": "dossier-goat",
+      "title": "Dossier - Goat",
+      "kind": "dossier",
+      "type": "dossier",
+      "facet": "chamber",
+      "section": "cast",
+      "status": "canon",
+      "canon": "core",
+      "summary": "Goat brings the chamber\u2019s absurd intelligence into view, making appetite, mockery, and revelation feel perilously adjacent.",
+      "order": 999,
+      "chronology": 6,
+      "path": "content/dossiers/dossier-goat.md",
+      "case": "",
+      "case_name": "",
+      "characters": [
+        "Goat"
+      ],
+      "tags": [
+        "chamber",
+        "absurdity",
+        "appetite",
+        "wit"
+      ],
+      "template": "profile",
+      "featured": false,
+      "fields": {
+        "cast_order": 6,
+        "sigil": "GO",
+        "role": "Chamber trickster",
+        "affiliation": "Interior chamber",
+        "archetype": "The unruly appetite"
+      }
+    },
+    {
+      "id": "dossier-dossier-jung",
+      "slug": "dossier-jung",
+      "title": "Dossier - Jung",
+      "kind": "dossier",
+      "type": "dossier",
+      "facet": "world",
+      "section": "cast",
+      "status": "working",
+      "canon": "visitor",
+      "summary": "An occasional visitor whose presence frames the chamber as if it were a psyche with political consequences.",
+      "order": 999,
+      "chronology": 7,
+      "path": "content/dossiers/dossier-jung.md",
+      "case": "",
+      "case_name": "",
+      "characters": [
+        "Jung"
+      ],
+      "tags": [
+        "visitor",
+        "archetype",
+        "interpretation"
+      ],
+      "template": "profile",
+      "featured": false,
+      "fields": {
+        "cast_order": 7,
+        "sigil": "JU",
+        "role": "Visiting interpreter",
+        "affiliation": "External visitor",
+        "archetype": "The classifier under pressure"
+      }
+    },
+    {
+      "id": "dossier-dossier-hillman",
+      "slug": "dossier-hillman",
+      "title": "Dossier - Hillman",
+      "kind": "dossier",
+      "type": "dossier",
+      "facet": "world",
+      "section": "cast",
+      "status": "working",
+      "canon": "visitor",
+      "summary": "A visitor who treats the chamber less as a system to solve than as an image-field to remain inside long enough to read well.",
+      "order": 999,
+      "chronology": 8,
+      "path": "content/dossiers/dossier-hillman.md",
+      "case": "",
+      "case_name": "",
+      "characters": [
+        "Hillman"
+      ],
+      "tags": [
+        "visitor",
+        "image",
+        "psyche",
+        "style"
+      ],
+      "template": "profile",
+      "featured": false,
+      "fields": {
+        "cast_order": 8,
+        "sigil": "HI",
+        "role": "Visiting imaginal theorist",
+        "affiliation": "External visitor",
+        "archetype": "The imaginal reader"
+      }
+    },
+    {
+      "id": "chapter-chapter-01-the-threshold",
+      "slug": "chapter-01-the-threshold",
+      "title": "Chapter I - The Threshold",
+      "kind": "chapter",
+      "type": "chapter",
+      "facet": "chamber",
+      "section": "archive",
+      "status": "draft",
+      "canon": "core",
+      "summary": "Kael returns to the sealed chamber and discovers it has begun responding to memory like a living witness.",
+      "order": 1,
+      "chronology": 20,
+      "path": "content/chapters/chapter-01-the-threshold.md",
+      "case": "amber-ward",
+      "case_name": "Case 01 - The Amber Ward",
+      "characters": [
+        "Operator",
+        "Seris",
+        "Chamber"
+      ],
+      "tags": [
+        "threshold",
+        "witness",
+        "archive",
+        "city-depths"
+      ],
+      "template": "literary",
+      "featured": true,
+      "fields": {}
+    },
+    {
+      "id": "scene-scene-01-an-audience-of-stone",
+      "slug": "scene-01-an-audience-of-stone",
+      "title": "Scene I - An Audience of Stone",
+      "kind": "scene",
+      "type": "scene",
+      "facet": "chamber",
+      "section": "archive",
+      "status": "draft",
+      "canon": "core",
+      "summary": "Seris confronts Kael inside the chamber, forcing the first ideological clash over what the place is for.",
+      "order": 1,
+      "chronology": 22,
+      "path": "content/scenes/scene-01-an-audience-of-stone.md",
+      "case": "amber-ward",
+      "case_name": "Case 01 - The Amber Ward",
+      "characters": [
+        "Seris",
+        "Operator"
+      ],
+      "tags": [
+        "confrontation",
+        "doctrine",
+        "chamber",
+        "witness"
+      ],
+      "template": "literary",
+      "featured": true,
+      "fields": {}
+    },
+    {
+      "id": "play-play-01-the-litany-of-glass",
+      "slug": "play-01-the-litany-of-glass",
+      "title": "Play I - The Litany of Glass",
+      "kind": "play",
+      "type": "play",
+      "facet": "chamber",
+      "section": "archive",
+      "status": "in-progress",
+      "canon": "working",
+      "summary": "Mira stages a ritualized retelling that begins echoing future events, blurring rehearsal and prophecy.",
+      "order": 1,
+      "chronology": 38,
+      "path": "content/plays/play-01-the-litany-of-glass.md",
+      "case": "litany-glass",
+      "case_name": "Case 02 - The Litany of Glass",
+      "characters": [
+        "Anima",
+        "Goat",
+        "Sherie"
+      ],
+      "tags": [
+        "ritual",
+        "rehearsal",
+        "prophecy",
+        "performance"
+      ],
+      "template": "literary",
+      "featured": true,
+      "fields": {}
+    },
+    {
+      "id": "world-world-city-ledger",
+      "slug": "world-city-ledger",
+      "title": "City Ledger - The District Arrangement",
+      "kind": "world",
+      "type": "world",
+      "facet": "bureau",
+      "section": "world",
+      "status": "canon",
+      "canon": "core",
+      "summary": "The city is not just a backdrop but an administrative organism whose districts determine pressure, concealment, and incident response.",
+      "order": 999,
+      "chronology": 5,
+      "path": "content/world/world-city-ledger.md",
+      "case": "",
+      "case_name": "",
+      "characters": [],
+      "tags": [
+        "city",
+        "districts",
+        "infrastructure",
+        "bureau"
+      ],
+      "template": "reference",
+      "featured": false,
+      "fields": {
+        "category": "city"
+      }
+    },
+    {
+      "id": "world-world-bureau-charter",
+      "slug": "world-bureau-charter",
+      "title": "Bureau Charter - Why the Office Exists",
+      "kind": "world",
+      "type": "world",
+      "facet": "bureau",
+      "section": "world",
+      "status": "canon",
+      "canon": "core",
+      "summary": "The bureau exists because the city needs an entity small enough to move discreetly and serious enough to handle incidents before they become state property.",
+      "order": 999,
+      "chronology": 6,
+      "path": "content/world/world-bureau-charter.md",
+      "case": "",
+      "case_name": "",
+      "characters": [],
+      "tags": [
+        "bureau",
+        "charter",
+        "office",
+        "incidents"
+      ],
+      "template": "reference",
+      "featured": false,
+      "fields": {
+        "category": "bureau"
+      }
+    },
+    {
+      "id": "world-world-crown-protocol",
+      "slug": "world-crown-protocol",
+      "title": "Crown Protocol - Legitimacy and Seizure",
+      "kind": "world",
+      "type": "world",
+      "facet": "world",
+      "section": "world",
+      "status": "canon",
+      "canon": "core",
+      "summary": "The Crown rarely needs to solve the city\u2019s mysteries itself; it only needs the right to seize the official version of them.",
+      "order": 999,
+      "chronology": 14,
+      "path": "content/world/world-crown-protocol.md",
+      "case": "",
+      "case_name": "",
+      "characters": [],
+      "tags": [
+        "crown",
+        "government",
+        "legitimacy",
+        "protocol"
+      ],
+      "template": "reference",
+      "featured": false,
+      "fields": {
+        "category": "crown"
+      }
+    },
+    {
+      "id": "world-world-chamber-symbolic-system",
+      "slug": "world-chamber-symbolic-system",
+      "title": "Chamber System - Symbolic Pressure",
+      "kind": "world",
+      "type": "world",
+      "facet": "chamber",
+      "section": "world",
+      "status": "working",
+      "canon": "core",
+      "summary": "The chamber works through symbolic pressure: tension, attraction, hierarchy, confession, reversal, and the theatrical intelligence of charged presence.",
+      "order": 999,
+      "chronology": 16,
+      "path": "content/world/world-chamber-symbolic-system.md",
+      "case": "",
+      "case_name": "",
+      "characters": [],
+      "tags": [
+        "chamber",
+        "archetype",
+        "symbolism",
+        "eros"
+      ],
+      "template": "reference",
+      "featured": false,
+      "fields": {
+        "category": "symbolic-systems"
+      }
+    },
+    {
+      "id": "theme-theme-the-dual-facet",
+      "slug": "theme-the-dual-facet",
+      "title": "Theme Note - The Dual Facet",
+      "kind": "theme",
+      "type": "theme",
+      "facet": "chamber",
+      "section": "about",
+      "status": "working",
+      "canon": "meta",
+      "summary": "Divine Chamber works because the bureau and the chamber are not separate genres but mirrored instruments for producing tension, interpretation, and consequence.",
+      "order": 999,
+      "chronology": 12,
+      "path": "content/themes/theme-the-dual-facet.md",
+      "case": "",
+      "case_name": "",
+      "characters": [],
+      "tags": [
+        "themes",
+        "bureau",
+        "chamber",
+        "duality"
+      ],
+      "template": "essay",
+      "featured": true,
+      "fields": {}
+    },
+    {
+      "id": "theme-theme-relationship-dynamics",
+      "slug": "theme-relationship-dynamics",
+      "title": "Theme Note - Relationship Dynamics",
+      "kind": "theme",
+      "type": "theme",
+      "facet": "chamber",
+      "section": "about",
+      "status": "working",
+      "canon": "meta",
+      "summary": "Character interplay should feel psychologically precise, verbally alive, and charged with consequence without ever collapsing into explicitness.",
+      "order": 999,
+      "chronology": 13,
+      "path": "content/themes/theme-relationship-dynamics.md",
+      "case": "",
+      "case_name": "",
+      "characters": [],
+      "tags": [
+        "themes",
+        "relationships",
+        "archetypes",
+        "wit"
+      ],
+      "template": "essay",
+      "featured": false,
+      "fields": {}
+    },
+    {
+      "id": "note-note-devlog-archive-grammar",
+      "slug": "note-devlog-archive-grammar",
+      "title": "Development Log - Archive Grammar",
+      "kind": "note",
+      "type": "note",
+      "facet": "meta",
+      "section": "notes",
+      "status": "draft",
+      "canon": "meta",
+      "summary": "Notes on how the project archive should separate literary scenes, bureau dossiers, and world references without flattening them into identical posts.",
+      "order": 999,
+      "chronology": 90,
+      "path": "content/notes/note-devlog-archive-grammar.md",
+      "case": "",
+      "case_name": "",
+      "characters": [],
+      "tags": [
+        "devlog",
+        "archive",
+        "structure",
+        "site"
+      ],
+      "template": "notebook",
+      "featured": true,
+      "fields": {}
+    },
+    {
+      "id": "note-note-draft-incident-matrix",
+      "slug": "note-draft-incident-matrix",
+      "title": "Draft Note - Incident Matrix",
+      "kind": "note",
+      "type": "note",
+      "facet": "meta",
+      "section": "notes",
+      "status": "draft",
+      "canon": "meta",
+      "summary": "A planning note for how city incidents, chamber escalations, and case structures may interlock across the project.",
+      "order": 999,
+      "chronology": 91,
+      "path": "content/notes/note-draft-incident-matrix.md",
+      "case": "",
+      "case_name": "",
+      "characters": [],
+      "tags": [
+        "draft",
+        "cases",
+        "progression",
+        "matrix"
+      ],
+      "template": "notebook",
+      "featured": false,
+      "fields": {}
+    }
+  ],
+  "collections": {
+    "types": [
+      "case",
+      "chapter",
+      "dossier",
+      "note",
+      "play",
+      "scene",
+      "theme",
+      "world"
+    ],
+    "facets": [
+      "bureau",
+      "chamber",
+      "meta",
+      "world"
+    ],
+    "sections": [
+      "about",
+      "archive",
+      "cases",
+      "cast",
+      "notes",
+      "world"
+    ],
+    "statuses": [
+      "canon",
+      "draft",
+      "in-progress",
+      "working"
+    ],
+    "characters": [
+      "Anima",
+      "Chamber",
+      "Drake",
+      "Goat",
+      "Hillman",
+      "Jung",
+      "Operator",
+      "Seris",
+      "Sherie",
+      "Sister"
+    ],
+    "tags": [
+      "absurdity",
+      "anchor",
+      "appetite",
+      "archetype",
+      "archetypes",
+      "archive",
+      "bureau",
+      "cases",
+      "central",
+      "chamber",
+      "chamber-threshold",
+      "charter",
+      "city",
+      "city-depths",
+      "confrontation",
+      "contagion",
+      "crown",
+      "devlog",
+      "discipline",
+      "districts",
+      "doctrine",
+      "draft",
+      "duality",
+      "eros",
+      "force",
+      "government",
+      "image",
+      "incidents",
+      "infrastructure",
+      "intelligence",
+      "interpretation",
+      "legitimacy",
+      "matrix",
+      "municipal",
+      "office",
+      "performance",
+      "perimeter",
+      "progression",
+      "prophecy",
+      "protocol",
+      "psyche",
+      "rehearsal",
+      "relationships",
+      "ritual",
+      "severity",
+      "site",
+      "structure",
+      "style",
+      "symbolism",
+      "tenderness",
+      "theatre",
+      "themes",
+      "threshold",
+      "visitor",
+      "ward-break",
+      "wit",
+      "witness"
+    ],
+    "cases": [
+      "amber-ward",
+      "litany-glass"
+    ]
+  }
+}
