@@ -64,7 +64,7 @@ async function initializeReader() {
     readerToolbar.innerHTML = window.DivineChamber.renderDocumentToolbar(markdown, {
       label: "Copy",
     });
-    readerRecord.innerHTML = [
+    const recordItems = [
       recordItem("Facet", window.DivineChamber.formatFacet(entry.facet)),
       recordItem("Status", window.DivineChamber.formatStatus(entry.status)),
       recordItem("Canon", window.DivineChamber.sentenceCase(entry.canon)),
@@ -77,8 +77,10 @@ async function initializeReader() {
       recordItem("Priority", fields.priority),
       recordItem("Location", fields.location),
     ]
-      .filter(Boolean)
-      .join("");
+      .filter(Boolean);
+
+    readerRecord.dataset.count = String(recordItems.length);
+    readerRecord.innerHTML = recordItems.join("");
 
     readerBody.innerHTML = window.DivineChamber.renderMarkdown(markdown);
     removeDuplicateHeading(readerBody, entry.title);
@@ -126,6 +128,7 @@ function renderMissing(message) {
   readerTitle.textContent = "Archive file unavailable";
   readerSummary.textContent = message;
   readerMeta.innerHTML = "";
+  readerRecord.removeAttribute("data-count");
   readerRecord.innerHTML = "";
   readerToolbar.innerHTML = "";
   readerBody.innerHTML = `<p class="page-copy mb-0">${window.DivineChamber.escapeHtml(message)}</p>`;
