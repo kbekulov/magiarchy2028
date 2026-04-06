@@ -272,6 +272,11 @@ function bindVNEvents(refs, state) {
 
   document.addEventListener("fullscreenchange", () => {
     setFullscreenButtonState(refs);
+    fitNarrationText(refs, state);
+  });
+
+  window.addEventListener("resize", () => {
+    fitNarrationText(refs, state);
   });
 
   document.addEventListener("keydown", (event) => {
@@ -346,8 +351,9 @@ function renderVNEmpty(refs, message) {
   refs.narrationMode.textContent = "Archive Note";
   refs.narrationMode.dataset.mode = "system";
   refs.narrationProgress.textContent = "0 / 0";
-  refs.narrationText.textContent = message;
   refs.narrationText.dataset.mode = "system";
+  renderNarrationText(refs.narrationText, message);
+  fitNarrationText(refs, {});
   refs.hint.innerHTML = "The VN simulator could not load chapter text.";
   refs.backButton.disabled = true;
   refs.nextButton.disabled = true;
@@ -452,7 +458,7 @@ function renderCurrentBeat(refs, state) {
     refs.narrationMode.dataset.mode = beat.mode;
     refs.narrationProgress.textContent = progressLabel;
     refs.narrationText.dataset.mode = beat.mode;
-    refs.narrationText.textContent = "";
+    renderNarrationText(refs.narrationText, "");
     refs.speaker.hidden = true;
     refs.speaker.textContent = "";
     state.currentTarget = refs.narrationText;
@@ -467,9 +473,7 @@ function playVNBeatText(refs, state, text) {
   state.currentText = text;
 
   if (state.skipAnimations) {
-    if (state.currentTarget) {
-      state.currentTarget.textContent = text;
-    }
+    renderCurrentText(refs, state, text);
     state.isAnimating = false;
     updateVNActionLabels(refs, state);
     queueAutoAdvance(refs, state);
@@ -481,9 +485,7 @@ function playVNBeatText(refs, state, text) {
   let index = 0;
 
   const tick = () => {
-    if (state.currentTarget) {
-      state.currentTarget.textContent = text.slice(0, index + 1);
-    }
+    renderCurrentText(refs, state, text.slice(0, index + 1));
     index += 1;
 
     if (index >= text.length) {
@@ -555,9 +557,7 @@ function advanceVN(refs, state, options = {}) {
 
   if (state.isAnimating) {
     clearVNAnimation(state);
-    if (state.currentTarget) {
-      state.currentTarget.textContent = state.currentText;
-    }
+    renderCurrentText(refs, state, state.currentText);
     updateVNActionLabels(refs, state);
     if (state.autoAdvance && !options.automated) {
       queueAutoAdvance(refs, state);
@@ -583,9 +583,12 @@ function advanceVN(refs, state, options = {}) {
   refs.narrationMode.textContent = "Archive End";
   refs.narrationMode.dataset.mode = "system";
   refs.narrationProgress.textContent = `${chapter.beats.length} / ${chapter.beats.length}`;
-  refs.narrationText.textContent =
-    "End of the currently loaded chapter archive. Add more chapter text and the simulator will continue from here.";
   refs.narrationText.dataset.mode = "system";
+  renderNarrationText(
+    refs.narrationText,
+    "End of the currently loaded chapter archive. Add more chapter text and the simulator will continue from here."
+  );
+  fitNarrationText(refs, state);
   refs.speaker.hidden = true;
   refs.speaker.textContent = "";
   refs.hint.innerHTML =
@@ -602,9 +605,7 @@ function retreatVN(refs, state) {
 
   if (state.isAnimating) {
     clearVNAnimation(state);
-    if (state.currentTarget) {
-      state.currentTarget.textContent = state.currentText;
-    }
+    renderCurrentText(refs, state, state.currentText);
     updateVNActionLabels(refs, state);
     return;
   }
@@ -668,6 +669,76 @@ function updateHint(refs, state) {
     'Click the stage or press <kbd>Space</kbd> to advance. Use <kbd>A</kbd> for auto, <kbd>B</kbd> for BGM, and <kbd>F</kbd> for fullscreen.';
 }
 
+function renderCurrentText(refs, state, text) {
+  if (!state.currentTarget) {
+    return;
+  }
+
+  if (state.currentMode === "dialogue") {
+    state.currentTarget.textContent = text;
+    return;
+  }
+
+  renderNarrationText(state.currentTarget, text);
+  fitNarrationText(refs, state);
+}
+
+function renderNarrationText(target, text) {
+  if (!target) {
+    return;
+  }
+
+  const normalized = String(text || "").replace(/\r\n/g, "\n").trim();
+  target.innerHTML = "";
+
+  if (!normalized) {
+    return;
+  }
+
+  const paragraphs = normalized.split(/\n\s*\n+/).filter(Boolean);
+  const sourceParagraphs = paragraphs.length ? paragraphs : [normalized];
+
+  sourceParagraphs.forEach((paragraph) => {
+    const paragraphNode = document.createElement("p");
+    paragraphNode.className = "vn-text__paragraph";
+    paragraphNode.textContent = paragraph.replace(/\n+/g, " ").trim();
+    target.appendChild(paragraphNode);
+  });
+}
+
+function fitNarrationText(refs, state) {
+  if (!refs.narrationBox || !refs.narrationText || refs.narrationBox.hidden) {
+    return;
+  }
+
+  const textNode = refs.narrationText;
+  textNode.style.fontSize = "";
+  textNode.style.lineHeight = "";
+  textNode.style.rowGap = "";
+
+  const computed = window.getComputedStyle(textNode);
+  const baseFontSize = parseFloat(computed.fontSize) || 18;
+  const baseLineHeight = parseFloat(computed.lineHeight) || baseFontSize * 1.92;
+  const baseGap = parseFloat(computed.rowGap || computed.gap) || Math.max(baseFontSize * 0.62, 10);
+
+  textNode.style.fontSize = `${baseFontSize}px`;
+  textNode.style.lineHeight = `${baseLineHeight}px`;
+  textNode.style.rowGap = `${baseGap}px`;
+
+  const lineHeightRatio = baseLineHeight / baseFontSize;
+  const gapRatio = baseGap / baseFontSize;
+  const minFontSize = window.innerWidth <= 575 ? 12.2 : window.innerWidth <= 991 ? 12.8 : 13.4;
+
+  let currentFontSize = baseFontSize;
+
+  while (textNode.scrollHeight > textNode.clientHeight && currentFontSize > minFontSize) {
+    currentFontSize -= 0.35;
+    textNode.style.fontSize = `${currentFontSize}px`;
+    textNode.style.lineHeight = `${currentFontSize * lineHeightRatio}px`;
+    textNode.style.rowGap = `${Math.max(currentFontSize * gapRatio, 6)}px`;
+  }
+}
+
 function pauseAutoForManualInteraction(refs, state) {
   if (!state.autoAdvance) {
     return;
@@ -684,9 +755,7 @@ function setSkipState(refs, state, value) {
 
   if (state.isAnimating && state.skipAnimations) {
     clearVNAnimation(state);
-    if (state.currentTarget) {
-      state.currentTarget.textContent = state.currentText;
-    }
+    renderCurrentText(refs, state, state.currentText);
     updateVNActionLabels(refs, state);
     queueAutoAdvance(refs, state);
   }
