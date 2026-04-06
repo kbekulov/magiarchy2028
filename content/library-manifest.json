@@ -700,30 +700,27 @@
       "type": "chapter",
       "facet": "story",
       "section": "archive",
-      "status": "scaffold",
+      "status": "draft",
       "canon": "core",
-      "summary": "Heyk's early deployment into a quarantine zone creates the first unstable field in the canon and opens the lane that later connects him to Sherie and Drake.",
+      "summary": "A sharp prelude dialogue defines Magi as human loopholes in natural law, establishing secrecy, Church ambivalence, and the forbidden cost of politics before the wider story opens.",
       "order": 0,
       "chronology": 10,
       "path": "content/chapters/chapter-00-the-spill.md",
-      "markdown": "# Chapter 0 - The Spill\n\nThis chapter establishes the story's operational mood before the main succession crisis becomes explicit.\n\n## Core Movement\n\n- Heyk enters a dangerous zone under covert conditions.\n- Containment proves unstable.\n- The event becomes a quiet test of who can still move effectively inside compromised structure.\n\n## Story Use\n\n- Opens with pressure rather than exposition.\n- Gives the project an early field texture: secrecy, extraction, and incomplete visibility.\n- Seeds the Duchy-side lane through Sherie and Drake.",
+      "markdown": "# Chapter 0 - The Spill\n\n\"What can you tell me about Magi?\"\n\n\"That depends on whether you want the answer fit for a child, a priest, or a judge.\"\n\n\"The true one.\"\n\n\"A dangerous preference.\"\n\nA pause followed. Paper shifted. Somewhere in the room, a clock gave a small and patient click.\n\n\"Very well. Magi do not create miracles. They exploit them.\"\n\n\"Explain.\"\n\n\"Nature is full of pressure points. Fault lines. Small mercies in the machinery. Most men live their entire lives without seeing them. A Magus sees them, presses where others only endure, and obtains from the world an effect that the world was already willing to permit.\"\n\n\"So your craft is natural.\"\n\n\"Do not say that too loudly. It upsets both the devout and the educated, though for different reasons.\"\n\n\"And the common word for it?\"\n\n\"Magic. Superstition. Blasphemy. Treason, on difficult days.\"\n\nThe scratching of a pen.\n\n\"You speak of it with very little reverence.\"\n\n\"I was not asked to admire it.\"\n\n\"Then what are Magi, truly?\"\n\nAnother pause. Longer this time.\n\n\"Loopholes. Human ones.\"\n\nSilence.\n\n\"You say that as if it were an accusation.\"\n\n\"It often is.\"\n\n\"And what follows from this?\"\n\n\"What follows is secrecy. Always secrecy. A society can forgive murder more easily than it can forgive a wound in its understanding of nature.\"\n\n\"That is a severe claim.\"\n\n\"It is also a practical one.\"\n\n\"You mean that a witness must die.\"\n\n\"I mean that the world protects its coherence with astonishing cruelty.\"\n\n\"That was not my question.\"\n\n\"No. But it was the truthful answer.\"\n\nThe pen stopped.\n\n\"And the Church?\"\n\nAt that, the speaker gave a quiet sound that may once have been amusement.\n\n\"The Church is wiser than statesmen and less honest than philosophers. It knows enough to fear us, enough to use us, and enough to deny both.\"\n\n\"And politics?\"\n\nA chair creaked.\n\n\"Politics is forbidden.\"\n\n\"Forbidden, or impossible?\"\n\n\"Neither. Merely expensive.\"",
       "case": "the-spill",
       "case_name": "Event File - The Spill",
-      "characters": [
-        "Heyk",
-        "Sherie",
-        "Drake"
-      ],
+      "characters": [],
       "tags": [
-        "opening",
-        "covert-deployment",
-        "quarantine",
-        "extraction"
+        "magi",
+        "secrecy",
+        "church",
+        "politics",
+        "doctrine"
       ],
       "template": "literary",
       "featured": true,
       "fields": {
-        "draft_version": "1.0"
+        "draft_version": "1.1"
       }
     },
     {
@@ -1634,7 +1631,6 @@
       "naminsk",
       "nightmare",
       "ontology",
-      "opening",
       "outcome",
       "oversight",
       "placeholder",
