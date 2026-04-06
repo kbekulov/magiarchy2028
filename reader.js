@@ -68,7 +68,7 @@ async function initializeReader() {
       recordItem("Facet", window.DivineChamber.formatFacet(entry.facet)),
       recordItem("Status", window.DivineChamber.formatStatus(entry.status)),
       recordItem("Canon", window.DivineChamber.sentenceCase(entry.canon)),
-      recordItem("Draft Version", fields.draft_version ? `v${fields.draft_version}` : ""),
+      recordItem("Version", fields.draft_version ? `v${fields.draft_version}` : ""),
       recordItem("Chronology", window.DivineChamber.orderLabel(entry)),
       recordItem("Crisis", entry.case_name),
       recordItem("Role", fields.role),

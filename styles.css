@@ -627,7 +627,7 @@ body[data-page="reader"] #reader-record {
 }
 
 body[data-page="reader"] #reader-card {
-  margin-top: 2rem !important;
+  margin-top: 1.35rem !important;
 }
 
 body[data-page="reader"] #reader-nav {
