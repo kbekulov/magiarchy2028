@@ -137,8 +137,11 @@ const DC_SHELL = (() => {
           ${renderNavGroups()}
         </div>
 
-        <div class="sidebar-note mt-auto">
-          ${notes[activeKey] || notes.home}
+        <div class="sidebar-context mt-auto">
+          <p class="sidebar-section-label sidebar-section-label--context">Page Note</p>
+          <div class="sidebar-note">
+            ${notes[activeKey] || notes.home}
+          </div>
         </div>
       </div>
     `;
@@ -174,8 +177,11 @@ const DC_SHELL = (() => {
           <div class="site-nav-shell">
             ${renderNavGroups()}
           </div>
-          <div class="sidebar-note mt-4">
-            ${notes[activeKey] || notes.home}
+          <div class="sidebar-context mt-4">
+            <p class="sidebar-section-label sidebar-section-label--context">Page Note</p>
+            <div class="sidebar-note">
+              ${notes[activeKey] || notes.home}
+            </div>
           </div>
         </div>
       </div>

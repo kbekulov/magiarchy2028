@@ -60,7 +60,7 @@ async function initializeReader() {
     readerSourceLink.href = entry.path;
     readerCard.className = `reader-card reader-card--${entry.template} reader-card--${entry.facet}`;
     readerLayout.dataset.template = entry.template;
-    readerMeta.innerHTML = window.DivineChamber.renderBadges(entry);
+    readerMeta.innerHTML = "";
     readerToolbar.innerHTML = window.DivineChamber.renderDocumentToolbar(markdown, {
       label: "Copy",
     });
@@ -81,6 +81,7 @@ async function initializeReader() {
       .join("");
 
     readerBody.innerHTML = window.DivineChamber.renderMarkdown(markdown);
+    removeDuplicateHeading(readerBody, entry.title);
     readerContext.innerHTML = `
       ${entry.characters?.length ? blockRow("Characters", entry.characters) : ""}
       ${entry.tags?.length ? blockRow("Tags", entry.tags) : ""}
@@ -172,4 +173,26 @@ function navLink(entry, label) {
       <strong>${window.DivineChamber.escapeHtml(entry.title)}</strong>
     </a>
   `;
+}
+
+function removeDuplicateHeading(container, title) {
+  const firstHeading = container.querySelector("h1");
+  if (!firstHeading) {
+    return;
+  }
+
+  const headingText = normalizeText(firstHeading.textContent);
+  const titleText = normalizeText(title);
+  if (headingText !== titleText) {
+    return;
+  }
+
+  firstHeading.remove();
+}
+
+function normalizeText(value) {
+  return String(value || "")
+    .trim()
+    .replace(/\s+/g, " ")
+    .toLowerCase();
 }
