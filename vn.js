@@ -71,10 +71,7 @@ function getVNRefs() {
     shell: document.getElementById("vn-shell"),
     order: document.getElementById("vn-order"),
     title: document.getElementById("vn-chapter-title"),
-    summary: document.getElementById("vn-summary"),
     stage: document.getElementById("vn-stage"),
-    stageChapter: document.getElementById("vn-stage-chapter"),
-    stageHint: document.getElementById("vn-stage-hint"),
     spriteLeft: document.getElementById("vn-sprite-left"),
     spriteRight: document.getElementById("vn-sprite-right"),
     narrationBox: document.getElementById("vn-narration-box"),
@@ -343,9 +340,7 @@ function bindVNEvents(refs, state) {
 
 function renderVNEmpty(refs, message) {
   refs.title.textContent = "VN Simulator unavailable";
-  refs.summary.textContent = message;
-  refs.stageChapter.textContent = "Archive unavailable";
-  refs.stageHint.textContent = message;
+  refs.order.textContent = "Archive";
   refs.narrationBox.hidden = false;
   refs.dialogueBox.hidden = true;
   refs.narrationMode.textContent = "Archive Note";
@@ -385,10 +380,6 @@ function openChapter(refs, state, chapterIndex, beatIndex = 0) {
 function updateChapterScene(refs, chapter) {
   refs.order.textContent = `Chronology ${window.DivineChamber.orderLabel(chapter)}`;
   refs.title.textContent = chapter.title;
-  refs.summary.textContent = chapter.summary || "No summary has been registered for this chapter yet.";
-  refs.stageChapter.textContent = chapter.title;
-  refs.stageHint.textContent =
-    chapter.summary || "Placeholder background and sprite direction can be replaced once art arrives.";
 
   const hue = 200 + (chapter.index * 19) % 60;
   refs.stage.style.setProperty("--vn-accent", `hsla(${hue}, 78%, 62%, 0.28)`);

@@ -2200,17 +2200,9 @@ body[data-page="reader"] #reader-nav {
 
 .vn-topbar {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 1.2rem;
-}
-
-.vn-chapter-meta {
-  max-width: 48rem;
-}
-
-.vn-chapter-title {
-  max-width: 18ch;
 }
 
 .vn-toolbar {
@@ -2218,6 +2210,49 @@ body[data-page="reader"] #reader-nav {
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.55rem;
+}
+
+.vn-statusline {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.45rem 0.8rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, var(--surface-soft-start), var(--surface-soft-end)),
+    radial-gradient(circle at top right, var(--surface-soft-accent), transparent 38%);
+  box-shadow: var(--shadow-soft);
+}
+
+.vn-statusline__order {
+  flex: 0 0 auto;
+  color: var(--ink-faint);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.vn-statusline__divider {
+  width: 0.35rem;
+  height: 0.35rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--accent-blue-border);
+  opacity: 0.8;
+}
+
+.vn-statusline__title {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1rem, 1.6vw, 1.22rem);
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .vn-toolbar .btn-outline-light.is-active {
@@ -2290,25 +2325,12 @@ body[data-page="reader"] #reader-nav {
   pointer-events: none;
 }
 
-.vn-stage__backdrop,
 .vn-stage__sprites,
 .vn-narration-box,
 .vn-dialogue-box,
 .vn-controlbar {
   position: relative;
   z-index: 1;
-}
-
-.vn-stage__backdrop {
-  max-width: 30rem;
-  padding: 1rem 1.05rem 1.1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.15rem;
-  background:
-    linear-gradient(180deg, rgba(15, 23, 37, 0.58), rgba(11, 18, 29, 0.74)),
-    radial-gradient(circle at top right, var(--vn-accent), transparent 42%);
-  box-shadow: 0 18px 42px rgba(6, 10, 18, 0.24);
-  backdrop-filter: blur(14px);
 }
 
 .vn-stage__label,
@@ -2319,20 +2341,6 @@ body[data-page="reader"] #reader-nav {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-}
-
-.vn-stage__chapter {
-  margin: 0.45rem 0 0;
-  color: #f4f7ff;
-  font-family: var(--serif);
-  font-size: clamp(1.6rem, 2.4vw, 2.45rem);
-  line-height: 1.05;
-}
-
-.vn-stage__hint {
-  margin: 0.65rem 0 0;
-  color: rgba(228, 236, 247, 0.82);
-  line-height: 1.62;
 }
 
 .vn-narration-box {
@@ -3204,6 +3212,10 @@ body[data-page="reader"] .reader-card .markdown-body p:last-child {
     align-items: stretch;
   }
 
+  .vn-statusline {
+    width: 100%;
+  }
+
   .vn-toolbar,
   .vn-controlbar__actions {
     justify-content: flex-start;
@@ -3298,11 +3310,6 @@ body[data-page="reader"] .reader-card .markdown-body p:last-child {
   .vn-stage__background {
     min-height: 27rem;
     padding: 0.95rem;
-  }
-
-  .vn-stage__backdrop {
-    padding: 0.85rem 0.9rem 0.95rem;
-    border-radius: 1rem;
   }
 
   .vn-sprite-slot {

@@ -41,12 +41,10 @@
             <section class="page-section mt-4">
               <div class="detail-panel vn-shell" id="vn-shell">
                 <div class="vn-topbar">
-                  <div class="vn-chapter-meta">
-                    <p class="page-kicker mb-2" id="vn-order">Chronology</p>
-                    <h2 class="section-title vn-chapter-title" id="vn-chapter-title">Loading chapters…</h2>
-                    <p class="page-copy mt-3 mb-0" id="vn-summary">
-                      The simulator is loading the chapter archive and preparing the current reading lane.
-                    </p>
+                  <div class="vn-statusline" aria-live="polite">
+                    <span class="vn-statusline__order" id="vn-order">Chronology</span>
+                    <span class="vn-statusline__divider" aria-hidden="true"></span>
+                    <span class="vn-statusline__title" id="vn-chapter-title">Loading chapters…</span>
                   </div>
 
                   <div class="vn-toolbar">
@@ -70,14 +68,6 @@
 
                 <div class="vn-stage" id="vn-stage">
                   <div class="vn-stage__background">
-                    <div class="vn-stage__backdrop">
-                      <p class="vn-stage__label">Background Placeholder</p>
-                      <h3 class="vn-stage__chapter" id="vn-stage-chapter">Preparing chapter stage</h3>
-                      <p class="vn-stage__hint" id="vn-stage-hint">
-                        Final background art, atmosphere plates, and sprite direction can slot in here later.
-                      </p>
-                    </div>
-
                     <div class="vn-narration-box" id="vn-narration-box" hidden>
                       <div class="vn-narration-box__meta">
                         <span class="vn-mode-pill" id="vn-mode-narration">Narration</span>
@@ -138,18 +128,13 @@
                 >
                   <div class="vn-menu-panel__head">
                     <div>
-                      <p class="page-kicker mb-2">Jump Menu</p>
-                      <h2 class="section-title mb-0" id="vn-menu-title">Chapters in chronology order</h2>
+                      <p class="page-kicker mb-2">Chapter Select</p>
+                      <h2 class="section-title mb-0" id="vn-menu-title">Chronology order</h2>
                     </div>
                     <button class="btn btn-outline-light btn-sm" type="button" id="vn-menu-close">Close</button>
                   </div>
 
-                  <p class="page-copy mt-3 mb-0">
-                    Jump to any chapter already in the archive. Later, this can expand into branching, route flags,
-                    and per-scene saves.
-                  </p>
-
-                  <div class="vn-chapter-list mt-4" id="vn-chapter-list"></div>
+                  <div class="vn-chapter-list mt-3" id="vn-chapter-list"></div>
                 </section>
               </div>
             </section>
