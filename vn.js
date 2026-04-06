@@ -240,7 +240,7 @@ function vnModeLabel(mode) {
   }[mode] || "Narration";
 }
 
-function splitSpeakerFromText(text) {
+function extractDialoguePayload(text) {
   const speakerMatch = text.match(/^([A-Z][A-Za-z\s'’-]{1,36}):\s+([\s\S]+)$/);
   if (speakerMatch) {
     return {
@@ -249,10 +249,131 @@ function splitSpeakerFromText(text) {
     };
   }
 
+  const quotedFragments = Array.from(text.matchAll(/["“]([\s\S]*?)["”]/g))
+    .map((match) => match[1].replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+
+  if (quotedFragments.length) {
+    return {
+      speaker: "",
+      text: quotedFragments.join(" ").replace(/\s+([,.;!?])/g, "$1").trim(),
+    };
+  }
+
   return {
     speaker: "",
-    text,
+    text: String(text || "").trim(),
   };
+}
+
+function beatContainsSpeech(text) {
+  return /^([A-Z][A-Za-z\s'’-]{1,36}):\s+/.test(text) || /["“][\s\S]*["”]/.test(text);
+}
+
+function beatUsesAttributedDialogue(text, dialoguePayload) {
+  const normalizedSource = String(text || "").trim();
+  const normalizedDialogue = String(dialoguePayload?.text || "").trim();
+  return Boolean(normalizedDialogue) && normalizedSource !== normalizedDialogue;
+}
+
+function getSceneSpritesForChapter(chapter) {
+  return VN_SCENE_LIBRARY[chapter?.id]?.sprites || [];
+}
+
+function buildSpeakerKeys(value) {
+  const normalized = normalizeSpeakerKey(value);
+  if (!normalized) {
+    return [];
+  }
+
+  const tokens = normalized.split(" ").filter(Boolean);
+  const keys = new Set([normalized]);
+
+  if (tokens.length >= 2) {
+    keys.add(tokens.slice(-2).join(" "));
+    keys.add(tokens[tokens.length - 1]);
+  }
+
+  if (tokens.length >= 3) {
+    keys.add(`${tokens[0]} ${tokens[tokens.length - 1]}`);
+  }
+
+  return Array.from(keys).filter(Boolean);
+}
+
+function getSceneSpeakerMentions(text, sceneSprites) {
+  const normalizedText = ` ${normalizeSpeakerKey(text)} `;
+
+  return sceneSprites.filter((sprite) => {
+    const keys = [sprite.name || "", ...(sprite.aliases || [])].flatMap((value) =>
+      buildSpeakerKeys(value)
+    );
+
+    return keys.some((key) => normalizedText.includes(` ${key} `));
+  });
+}
+
+function resolveUniqueSceneSpeaker(text, sceneSprites) {
+  const matches = getSceneSpeakerMentions(text, sceneSprites);
+  return matches.length === 1 ? matches[0].name : "";
+}
+
+function containsNonSceneCharacterMention(chapter, text, sceneSprites) {
+  const normalizedText = ` ${normalizeSpeakerKey(text)} `;
+  const sceneKeys = new Set(
+    sceneSprites.flatMap((sprite) => [sprite.name || "", ...(sprite.aliases || [])]).flatMap(
+      (value) => buildSpeakerKeys(value)
+    )
+  );
+
+  return (chapter.characters || []).some((characterName) => {
+    const characterKeys = buildSpeakerKeys(characterName).filter((key) => !sceneKeys.has(key));
+    return characterKeys.some((key) => normalizedText.includes(` ${key} `));
+  });
+}
+
+function resolveBeatSpeaker(chapter, beatIndex) {
+  const beat = chapter?.beats?.[beatIndex];
+  if (!chapter || !beat) {
+    return "";
+  }
+
+  const dialoguePayload = extractDialoguePayload(beat.text);
+  if (dialoguePayload.speaker) {
+    return dialoguePayload.speaker;
+  }
+
+  const sceneSprites = getSceneSpritesForChapter(chapter);
+  if (!sceneSprites.length || !beatContainsSpeech(beat.text)) {
+    return "";
+  }
+
+  const currentSpeaker = resolveUniqueSceneSpeaker(beat.text, sceneSprites);
+  if (currentSpeaker) {
+    return currentSpeaker;
+  }
+
+  if (containsNonSceneCharacterMention(chapter, beat.text, sceneSprites)) {
+    return "";
+  }
+
+  const offsets = beatUsesAttributedDialogue(beat.text, dialoguePayload)
+    ? [-1, -2, 1, 2]
+    : [-1, 1];
+
+  for (const offset of offsets) {
+    const nearbyBeat = chapter.beats[beatIndex + offset];
+    if (!nearbyBeat || beatContainsSpeech(nearbyBeat.text)) {
+      continue;
+    }
+
+    const nearbySpeaker = resolveUniqueSceneSpeaker(nearbyBeat.text, sceneSprites);
+    if (nearbySpeaker) {
+      return nearbySpeaker;
+    }
+  }
+
+  return "";
 }
 
 function bindVNEvents(refs, state) {
@@ -514,8 +635,9 @@ function renderCurrentBeat(refs, state) {
 
   clearAutoAdvance(state);
   state.archiveEnded = false;
-  const speakerData = beat.mode === "dialogue" ? splitSpeakerFromText(beat.text) : null;
-  const displayText = speakerData ? speakerData.text : beat.text;
+  const dialoguePayload = beat.mode === "dialogue" ? extractDialoguePayload(beat.text) : null;
+  const resolvedSpeaker = resolveBeatSpeaker(chapter, state.beatIndex);
+  const displayText = dialoguePayload ? dialoguePayload.text : beat.text;
   const progressLabel = `${state.beatIndex + 1} / ${chapter.beats.length}`;
 
   state.currentMode = beat.mode;
@@ -530,9 +652,9 @@ function renderCurrentBeat(refs, state) {
     refs.dialogueText.dataset.mode = beat.mode;
     refs.dialogueText.textContent = "";
 
-    if (speakerData?.speaker) {
+    if (resolvedSpeaker) {
       refs.speaker.hidden = false;
-      refs.speaker.textContent = speakerData.speaker;
+      refs.speaker.textContent = resolvedSpeaker;
     } else {
       refs.speaker.hidden = true;
       refs.speaker.textContent = "";
@@ -552,7 +674,7 @@ function renderCurrentBeat(refs, state) {
     state.currentTarget = refs.narrationText;
   }
 
-  updateActiveSpriteSpeaker(refs, speakerData?.speaker || "");
+  updateActiveSpriteSpeaker(refs, resolvedSpeaker);
   updateHint(refs, state);
   playVNBeatText(refs, state, displayText);
 }
