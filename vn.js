@@ -1,7 +1,7 @@
 const vnShell = document.getElementById("vn-shell");
 const VN_SCENE_LIBRARY = {
   "chapter-chapter-01-pressure-builds": {
-    backdrop: "img/vn_simulator/chapter_1/66be6298-7ee0-4f91-982e-436084363f2d.png",
+    backdrop: "img/vn_simulator/chapter_1/bg_street_1.png",
     sprites: [
       {
         name: "Inspector Leonid",
