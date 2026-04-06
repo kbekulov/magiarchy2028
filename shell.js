@@ -126,17 +126,33 @@ const DC_SHELL = (() => {
     return validTheme;
   }
 
-  function renderThemeSwitch() {
+  function renderThemeSwitch({ mobile = false } = {}) {
     const theme = themeById[currentTheme] || themeById["light-cold"];
+    const modifierClass = mobile ? " theme-switch--mobile" : " theme-switch--corner";
+
+    const iconByTheme = {
+      "light-cold": `
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <path d="M12 2.4v3.1M12 18.5v3.1M21.6 12h-3.1M5.5 12H2.4M18.8 5.2l-2.2 2.2M7.4 16.6l-2.2 2.2M18.8 18.8l-2.2-2.2M7.4 7.4 5.2 5.2"></path>
+        </svg>
+      `,
+      "dark-cold": `
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M15.8 3.2a8.8 8.8 0 1 0 5 15.8 9.4 9.4 0 1 1-5-15.8Z"></path>
+        </svg>
+      `,
+    };
 
     return `
-      <div class="theme-switch">
-        <div class="theme-switch__head">
-          <span class="sidebar-section-label sidebar-section-label--context">Color Scheme</span>
-          <span class="theme-switch__value" data-theme-current>${theme.label}</span>
-        </div>
-
-        <div class="theme-slider" data-theme-slider style="--theme-index: ${theme.index}">
+      <div class="theme-switch${modifierClass}">
+        <div
+          class="theme-slider"
+          data-theme-slider
+          style="--theme-index: ${theme.index}"
+          role="group"
+          aria-label="Color scheme"
+        >
           ${themeOptions
             .map((option) => {
               const isActive = option.id === theme.id;
@@ -147,9 +163,13 @@ const DC_SHELL = (() => {
                   type="button"
                   data-theme-option="${option.id}"
                   aria-pressed="${isActive ? "true" : "false"}"
+                  aria-label="${option.label}"
                   title="${option.label}"
                 >
-                  ${option.shortLabel}
+                  <span class="theme-slider__icon">
+                    ${iconByTheme[option.id]}
+                  </span>
+                  <span class="visually-hidden">${option.label}</span>
                 </button>
               `;
             })
@@ -205,7 +225,6 @@ const DC_SHELL = (() => {
           <p class="sidebar-copy mt-2 mb-0">
             A quieter map through Magiarchy canon, doctrine, characters, and story structure.
           </p>
-          ${renderThemeSwitch()}
         </div>
 
         <div class="sidebar-divider"></div>
@@ -230,6 +249,10 @@ const DC_SHELL = (() => {
     }
 
     mobileRoot.innerHTML = `
+      <div class="theme-corner d-none d-lg-block">
+        ${renderThemeSwitch()}
+      </div>
+
       <div class="mobile-topbar d-lg-none">
         <button
           class="btn btn-outline-light btn-sm"
@@ -241,6 +264,7 @@ const DC_SHELL = (() => {
           Menu
         </button>
         <a class="mobile-brand" href="index.html">Magiarchy</a>
+        ${renderThemeSwitch({ mobile: true })}
       </div>
 
       <div class="offcanvas offcanvas-start mobile-drawer d-lg-none" tabindex="-1" id="mobileNav">
@@ -251,7 +275,6 @@ const DC_SHELL = (() => {
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          ${renderThemeSwitch()}
           <div class="site-nav-shell">
             ${renderNavGroups()}
           </div>
@@ -271,10 +294,6 @@ const DC_SHELL = (() => {
 
     document.querySelectorAll("[data-theme-slider]").forEach((slider) => {
       slider.style.setProperty("--theme-index", String(theme.index));
-    });
-
-    document.querySelectorAll("[data-theme-current]").forEach((label) => {
-      label.textContent = theme.label;
     });
 
     document.querySelectorAll("[data-theme-option]").forEach((button) => {
