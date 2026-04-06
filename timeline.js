@@ -3,7 +3,7 @@ const timelineMapBoard = document.getElementById("timeline-map-board");
 const timelineMapFrame = document.getElementById("timeline-map-frame");
 
 const timelineLanes = [
-  { id: "ch0", label: "Chapter 0", title: "The Spill", type: "chapter" },
+  { id: "ch0", label: "Chapter 0", title: "Prequel", type: "chapter" },
   { id: "ch1", label: "Chapter 1", title: "Pressure Builds", type: "chapter" },
   { id: "ch2", label: "Chapter 2", title: "Accusation Vector", type: "chapter" },
   { id: "ev1", label: "Event", title: "Fionn's Assassination", type: "event" },

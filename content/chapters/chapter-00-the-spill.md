@@ -1,5 +1,5 @@
 ---
-title: Chapter 0 - The Spill
+title: Prequel
 type: chapter
 facet: story
 section: archive
@@ -7,7 +7,7 @@ order: 0
 chronology: 10
 status: draft
 canon: core
-case: The Spill
+case:
 characters:
 tags: magi | secrecy | church | politics | doctrine
 summary: A sharp prelude dialogue defines Magi as human loopholes in natural law, establishing secrecy, Church ambivalence, and the forbidden cost of politics before the wider story opens.
@@ -16,7 +16,7 @@ template: literary
 featured: true
 ---
 
-# Chapter 0 - The Spill
+# Prequel
 
 "What can you tell me about Magi?"
 

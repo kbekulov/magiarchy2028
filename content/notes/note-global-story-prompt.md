@@ -86,7 +86,7 @@ Use this as a canon pack for story generation, character writing, scene planning
 - Continuity is carried by function, not formal definition.
 
 ### Current Chapter Timeline Scaffold
-- Chapter 0: The Spill.
+- Chapter 0: Prequel.
 - Chapter 1: Pressure Builds.
 - Chapter 2: Accusation Vector.
 - Pivotal Event: Fionn's assassination.
