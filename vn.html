@@ -6,7 +6,7 @@
     <title>VN Simulator | Magiarchy</title>
     <meta
       name="description"
-      content="Visual novel simulator for reading Magiarchy chapters in chronology order with animated text, placeholder stage visuals, and chapter jump controls."
+      content="Visual novel simulator for reading Magiarchy chapters in chronology order with animated text, narration and dialogue layouts, placeholder BGM, fullscreen mode, and chapter jump controls."
     />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -33,7 +33,8 @@
               <h1 class="page-title">Playable chapter reader with animated delivery and placeholder stage visuals</h1>
               <p class="page-copy banner-copy mt-3">
                 Read the current chapter line by line in chronology order, jump between chapters from the
-                menu, and toggle text animation skip while we wait for final backgrounds and sprites.
+                menu, switch between narration and dialogue presentation, enable auto mode or placeholder
+                BGM, and toggle fullscreen while we wait for final backgrounds and sprites.
               </p>
             </section>
 
@@ -52,8 +53,17 @@
                     <button class="btn btn-outline-light btn-sm" type="button" id="vn-menu-button">
                       Chapters
                     </button>
+                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-auto-toggle" aria-pressed="false">
+                      Auto
+                    </button>
                     <button class="btn btn-outline-light btn-sm" type="button" id="vn-skip-toggle" aria-pressed="false">
-                      Skip Anim
+                      Skip Type
+                    </button>
+                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-bgm-toggle" aria-pressed="false">
+                      BGM
+                    </button>
+                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-fullscreen-toggle" aria-pressed="false">
+                      Fullscreen
                     </button>
                   </div>
                 </div>
@@ -68,6 +78,14 @@
                       </p>
                     </div>
 
+                    <div class="vn-narration-box" id="vn-narration-box" hidden>
+                      <div class="vn-narration-box__meta">
+                        <span class="vn-mode-pill" id="vn-mode-narration">Narration</span>
+                        <span class="vn-progress" id="vn-progress-narration">0 / 0</span>
+                      </div>
+                      <p class="vn-text vn-text--narration" id="vn-narration-text" aria-live="polite"></p>
+                    </div>
+
                     <div class="vn-stage__sprites">
                       <div class="vn-sprite-slot" id="vn-sprite-left">
                         <span class="vn-sprite-slot__label">Sprite Slot</span>
@@ -80,28 +98,31 @@
                     </div>
                   </div>
 
-                  <div class="vn-textbox">
-                    <div class="vn-textbox__meta">
-                      <span class="vn-mode-pill" id="vn-mode">Narration</span>
-                      <span class="vn-progress" id="vn-progress">0 / 0</span>
+                  <div class="vn-dialogue-box" id="vn-dialogue-box" hidden>
+                    <div class="vn-dialogue-box__meta">
+                      <div class="vn-dialogue-box__speaker-wrap">
+                        <span class="vn-mode-pill" id="vn-mode-dialogue">Dialogue</span>
+                        <p class="vn-speaker" id="vn-speaker" hidden></p>
+                      </div>
+                      <span class="vn-progress" id="vn-progress-dialogue">0 / 0</span>
                     </div>
 
-                    <div class="vn-textbox__body">
-                      <p class="vn-text" id="vn-text" aria-live="polite"></p>
+                    <div class="vn-dialogue-box__body">
+                      <p class="vn-text vn-text--dialogue" id="vn-dialogue-text" aria-live="polite"></p>
                     </div>
+                  </div>
 
-                    <div class="vn-textbox__footer">
-                      <div class="vn-textbox__hint">
-                        Click the text box or press <kbd>Space</kbd> to advance.
-                      </div>
-                      <div class="vn-textbox__actions">
-                        <button class="btn btn-outline-light btn-sm" type="button" id="vn-back-button">
-                          Back
-                        </button>
-                        <button class="btn btn-outline-light btn-sm" type="button" id="vn-next-button">
-                          Advance
-                        </button>
-                      </div>
+                  <div class="vn-controlbar">
+                    <div class="vn-controlbar__hint" id="vn-hint">
+                      Click the stage or press <kbd>Space</kbd> to advance.
+                    </div>
+                    <div class="vn-controlbar__actions">
+                      <button class="btn btn-outline-light btn-sm" type="button" id="vn-back-button">
+                        Back
+                      </button>
+                      <button class="btn btn-outline-light btn-sm" type="button" id="vn-next-button">
+                        Advance
+                      </button>
                     </div>
                   </div>
                 </div>
