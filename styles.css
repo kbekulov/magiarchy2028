@@ -2193,9 +2193,10 @@ body[data-page="reader"] #reader-nav {
 }
 
 .vn-shell {
+  --vn-shell-pad: clamp(1.1rem, 2vw, 1.5rem);
   position: relative;
   isolation: isolate;
-  padding: clamp(1.1rem, 2vw, 1.5rem);
+  padding: var(--vn-shell-pad);
   border-color: rgba(255, 255, 255, 0.08);
   background:
     linear-gradient(180deg, rgba(6, 8, 13, 0.985), rgba(3, 5, 9, 0.995)),
@@ -2292,10 +2293,10 @@ body[data-page="reader"] #reader-nav {
   --vn-stage-art: url("img/bg.png");
   --vn-stage-art-opacity: 0.5;
   position: relative;
-  margin-top: 1.2rem;
+  margin: 1.2rem calc(var(--vn-shell-pad) * -1) calc(var(--vn-shell-pad) * -1);
   overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 1.45rem;
+  border-top: 1px solid var(--border);
+  border-radius: 1.35rem 1.35rem 0 0;
   background:
     linear-gradient(180deg, var(--surface-panel-start), var(--surface-panel-end)),
     radial-gradient(circle at top right, var(--vn-accent-soft), transparent 28%);
@@ -2737,10 +2738,11 @@ body.vn-menu-open {
 }
 
 .vn-shell:fullscreen {
+  --vn-shell-pad: clamp(0.9rem, 1.8vw, 1.35rem);
   width: 100%;
   height: 100%;
   max-width: none;
-  padding: clamp(0.9rem, 1.8vw, 1.35rem);
+  padding: var(--vn-shell-pad);
   border-radius: 0;
   display: flex;
   flex-direction: column;
@@ -2750,6 +2752,9 @@ body.vn-menu-open {
 }
 
 .vn-shell:fullscreen .vn-stage {
+  margin: 1rem 0 0;
+  border: 1px solid var(--border);
+  border-radius: 1.45rem;
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -3399,12 +3404,13 @@ body[data-page="reader"] .reader-card .markdown-body p:last-child {
   }
 
   .vn-shell {
-    padding: 0.95rem;
+    --vn-shell-pad: 0.95rem;
+    padding: var(--vn-shell-pad);
   }
 
   .vn-stage {
-    margin-top: 1rem;
-    border-radius: 1.05rem;
+    margin: 1rem calc(var(--vn-shell-pad) * -1) calc(var(--vn-shell-pad) * -1);
+    border-radius: 1rem 1rem 0 0;
   }
 
   .vn-stage__background {
