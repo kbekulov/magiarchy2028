@@ -11,6 +11,7 @@ case: Kyrien Tien Clash
 characters: Lynleit | Kyrien | Tien | Helena
 tags: visibility | debt | return | shadow-conflict
 summary: The cost of hidden action returns to the visible field, forcing Lynleit to carry consequences created below the surface while Kyrien and Tien close toward direct conflict.
+draft_version: 1.0
 template: literary
 ---
 

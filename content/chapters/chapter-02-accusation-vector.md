@@ -11,6 +11,7 @@ case: Fionn Assassination
 characters: Lynleit | Helena | Fionn | Felix | Reiner
 tags: accusation | succession | framing | internal-conflict
 summary: Helena builds the accusation architecture around Lynleit, converting internal instability into a usable vector of removal.
+draft_version: 1.0
 template: literary
 ---
 

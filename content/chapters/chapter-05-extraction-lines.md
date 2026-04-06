@@ -11,6 +11,7 @@ case: MSF Compression
 characters: Kyrien | Lynleit | Felix | Reiner
 tags: extraction | survival | logistics | transition
 summary: Kyrien's contingency lane takes center stage as extraction, rerouting, and survival logistics become the story's immediate grammar.
+draft_version: 1.0
 template: literary
 ---
 

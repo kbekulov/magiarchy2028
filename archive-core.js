@@ -445,6 +445,9 @@ window.DivineChamber = (() => {
     if (entry.case_name) {
       metaLine.push(`<span>${escapeHtml(entry.case_name)}</span>`);
     }
+    if (entry.fields?.draft_version) {
+      metaLine.push(`<span>Draft v${escapeHtml(entry.fields.draft_version)}</span>`);
+    }
     if (entry.chronology && entry.chronology !== 999) {
       metaLine.push(`<span>Chronology ${escapeHtml(orderLabel(entry))}</span>`);
     }

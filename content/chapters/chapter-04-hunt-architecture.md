@@ -11,6 +11,7 @@ case: Fionn Assassination
 characters: Helena | Tien | Lynleit | Kyrien
 tags: pursuit | system-design | covert-force | hunt
 summary: The hunt against Lynleit stops being emotional fallout and becomes structure, with Helena and Tien turning pursuit into deliberate architecture.
+draft_version: 1.0
 template: literary
 ---
 

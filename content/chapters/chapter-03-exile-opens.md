@@ -11,6 +11,7 @@ case: Fionn Assassination
 characters: Lynleit | Kyrien | Helena
 tags: exile | flight | crisis | contingency
 summary: After the assassination frame lands, Lynleit is pushed into exile and the story fully opens the hidden contingency line that Kyrien represents.
+draft_version: 1.0
 template: literary
 featured: true
 ---

@@ -11,6 +11,7 @@ case: Kyrien Tien Clash
 characters: Lynleit | Kyrien | Helena | Tien
 tags: return | leverage | recovery | outcome
 summary: The story reaches the narrow interval in which Lynleit can attempt a visible return, but only after shadow conflict, institutional pressure, and structural debt have reshaped the field.
+draft_version: 1.0
 template: literary
 featured: true
 ---

@@ -722,7 +722,9 @@
       ],
       "template": "literary",
       "featured": true,
-      "fields": {}
+      "fields": {
+        "draft_version": "1.0"
+      }
     },
     {
       "id": "chapter-chapter-01-pressure-builds",
@@ -732,30 +734,33 @@
       "type": "chapter",
       "facet": "story",
       "section": "archive",
-      "status": "scaffold",
+      "status": "draft",
       "canon": "core",
-      "summary": "Pressure accumulates around Lynleit's inheritance lane while the fallout from The Spill widens Heyk's importance and gives Sherie and Drake their entry point.",
+      "summary": "Inspector Leonid arrives at a rain-soaked aristocratic residence where a homicide scene is already shadowed by Church credentials, impossible cold, and the suggestion of a death against the order of nature.",
       "order": 1,
       "chronology": 20,
       "path": "content/chapters/chapter-01-pressure-builds.md",
-      "markdown": "# Chapter 1 - Pressure Builds\n\nThe story's visible architecture starts tightening here. What was peripheral begins to align with the succession crisis already forming around Lynleit.\n\n## Timeline Trajectory\n\n- Lynleit absorbs visible leadership pressure.\n- Heyk's early crisis does not close cleanly.\n- Sherie and Drake become more than incidental operators.\n\n## Narrative Function\n\n- Transition from atmospheric opening to structural tension.\n- Make collapse feel near before any single accusation becomes official.",
-      "case": "the-spill",
-      "case_name": "Event File - The Spill",
+      "markdown": "# Chapter 1 - Pressure Builds\n\nRain had stopped fifteen minutes earlier, but the residence still looked wet in a way that made the whole property feel freshly uncovered.\n\nBlue police strobes rolled over the front facade in mute pulses, catching on rain-dark stone, iron fencing, security glass, and old carved ornament too expensive to remove and too historic to replace. The mansion sat on a corner lot above the river district, one of those surviving aristocratic estates that had outlived kingdoms, occupations, constitutions, and development plans by becoming useful to each of them in turn.\n\nA patrol officer lifted the tape for him.\n\nInspector Leonid stepped through, flashed his credentials without slowing, and took in the courtyard in one sweep.\n\nOne ambulance. Two patrol cars. Forensics van still sealed. Outer barrier holding. Three officers at the steps. One of them pale enough to be useless.\n\nAnd under the portico, waiting near the open front doors as if he belonged there, a priest.\n\nInspector Leonid stopped.\n\nHe looked from the priest to Sergeant Marta Vale and back again.\n\n\"Why,\" he asked, \"is there clergy inside my perimeter?\"\n\nNo one answered immediately.\n\nWater dripped from the stone lions flanking the staircase. Somewhere on the street beyond the gates, journalists were beginning to gather behind the second police line. A drone buzzed at a distance, then vanished, probably already warned off by municipal air control.\n\nInspector Leonid turned fully to the sergeant.\n\n\"I asked a simple question.\"\n\nSergeant Vale approached, shoulders wet, tablet in one hand. \"He was already here when patrol entered, sir.\"\n\n\"That is not an answer.\"\n\n\"It's the only one I have.\"\n\nInspector Leonid looked back at the priest.\n\nNot local parish. Not hospital chaplain. The man wore a black clerical coat with a standing collar, but the cut was too severe, too tailored, too deliberate. Nothing pastoral about him. Mid-forties perhaps. Pale. Clean-shaven. Gloves on. No umbrella. No visible rush in him at all.\n\nHe was dry.\n\nThat was the first thing Inspector Leonid disliked.\n\nThe second was that the man did not look surprised to be the center of the scene.\n\nInspector Leonid crossed the courtyard.\n\n\"This is an active homicide scene,\" he said. \"Who authorized Church access?\"\n\nThe priest regarded him with the calm attention of someone receiving a formal introduction rather than a challenge.\n\n\"No one authorized it,\" he said.\n\n\"That is not how this works.\"\n\n\"Tonight, Inspector, it appears to be.\"\n\nInspector Leonid let that sit for exactly half a second.\n\n\"Name.\"\n\nThe priest reached into his coat and produced an identification wallet, then opened it with deliberate neatness.\n\n\"Father Mikhail Arsenyev von Tiesen.\"\n\nInspector Leonid took the wallet.\n\nThe name matched the face. The seal beneath it was more interesting.\n\nNot diocesan parish administration. Not a city deanery. Not even ordinary episcopal office. This came from a Church bureau with a title bland enough to hide its purpose, the kind of office nobody at street level was supposed to need.\n\nHe handed it back.\n\n\"And why is Father Mikhail Arsenyev von Tiesen standing in my crime scene?\"\n\nFather Mikhail closed the wallet. \"Waiting.\"\n\n\"For whom?\"\n\n\"For you.\"\n\nThat answer made Sergeant Vale look away.\n\nInspector Leonid glanced past Father Mikhail into the entrance hall.\n\nThe interior lights were fully on. Marble floor. Dark runner carpet. A toppled side chair. One crime-scene tech near the threshold speaking in a low voice into her headset. Another officer farther in, standing too rigidly, as if afraid to shift his weight and accidentally remember something.\n\nThe stretcher outside was empty.\n\nInspector Leonid turned back.\n\n\"Where is the body?\"\n\n\"In the receiving room,\" said Sergeant Vale.\n\n\"Why has it not been moved?\"\n\n\"Medical refused transport pending homicide clearance.\"\n\nReasonable.\n\nHe pointed toward the hallway. \"Then why does everybody out here look like they've seen a saint descend through the ceiling?\"\n\nNo one answered that either.\n\nInspector Leonid faced the sergeant. \"Who made first entry?\"\n\n\"Patrol Unit Three.\"\n\n\"Who touched the victim?\"\n\nA young officer by the steps stiffened involuntarily.\n\nInspector Leonid saw it at once. \"You.\"\n\nThe young patrolman approached, face drained, cap tucked under one arm.\n\n\"Name.\"\n\n\"Officer Piotr Jakubas, sir.\"\n\n\"You checked for pulse?\"\n\n\"Yes, Inspector Leonid.\"\n\n\"What did you find?\"\n\nOfficer Piotr swallowed before speaking. \"Male victim. No response. No visible survivability. I checked carotid and wrist.\"\n\n\"And?\"\n\nThe young man hesitated just long enough to irritate him.\n\n\"And the body was too cold.\"\n\nInspector Leonid waited.\n\nOfficer Piotr looked embarrassed by his own words. \"Too cold for the room, sir.\"\n\n\"How cold?\"\n\nThe officer glanced toward the doorway, then toward Father Mikhail, then back to the inspector.\n\n\"Like he'd been outside for hours,\" he said. \"Maybe longer.\"\n\nInspector Leonid's expression did not change.\n\n\"Windows open?\"\n\n\"No, sir.\"\n\n\"HVAC malfunction?\"\n\n\"No, sir.\"\n\n\"Wet clothes?\"\n\n\"No, sir.\"\n\nHe looked to Sergeant Vale.\n\n\"Thermal read?\"\n\n\"Initial handheld scan was inconsistent. Forensics hasn't logged final yet.\"\n\nThat was at least a proper sentence.\n\nInspector Leonid shifted his gaze to Father Mikhail. \"Have you been inside?\"\n\n\"I stood at the threshold.\"\n\n\"That is already too far.\"\n\n\"I did not cross it.\"\n\n\"You are still not supposed to be here.\"\n\nFather Mikhail accepted that without reaction.\n\nThe inspector studied him for another moment. It was not only the clothes or the credentials. It was his composure. People trained in grief looked one way. People trained in bureaucracy looked another. Father Mikhail had the stillness of someone trained to stand near events that were not to be spoken of directly.\n\nInspector Leonid said, \"Who called you?\"\n\nThere was no pause in the answer.\n\n\"Not the police.\"\n\n\"Yes, Father Mikhail, I had guessed that.\"\n\n\"A call was placed to my office from inside this residence eight minutes before emergency services received the first civilian report.\"\n\nInspector Leonid went still.\n\nSergeant Vale lowered her tablet.\n\n\"From inside the house,\" he repeated.\n\n\"Yes.\"\n\n\"By whom?\"\n\n\"We were not given a name.\"\n\n\"And what exactly was said?\"\n\nFather Mikhail looked toward the open doorway, then back to him.\n\n\"That there had been a death. That it was necessary the Church be informed at once. And that the police must not be allowed to misunderstand what they found.\"\n\nThe courtyard seemed to contract around that line.\n\nInspector Leonid said, \"Must not be allowed.\"\n\n\"That was the phrasing.\"\n\n\"Convenient.\"\n\n\"I am not here to improve its tone.\"\n\nSomewhere behind the second barrier a journalist shouted a question no one answered. A black sedan turned onto the street, slowed at the lights, then continued past once it saw the number of police units already present.\n\nInspector Leonid folded his arms.\n\n\"Tell me why anyone in this house would call your office before homicide.\"\n\nFather Mikhail's eyes were pale grey, flat and administrative.\n\n\"I assume because someone here believed the nature of the death might be mistaken for something ordinary.\"\n\nInspector Leonid almost smiled at that.\n\n\"A dead man in a locked receiving room is already homicide until proven otherwise.\"\n\n\"Of course.\"\n\n\"You think it is not ordinary.\"\n\n\"I think,\" said Father Mikhail, \"that someone in this house was frightened of a particular kind of mistake.\"\n\nThe answer irritated him because it was careful rather than dramatic. Not occult. Not florid. Institutional. As if this were not madness but classification.\n\nInspector Leonid stepped closer.\n\n\"Let me make something plain. You are not on this scene as an equal authority. You are here because somebody panicked and made a phone call that I do not yet understand. Until I do, you are an irregular civilian presence with unusual credentials.\"\n\nFather Mikhail inclined his head once. \"Understood.\"\n\n\"You will remain available.\"\n\n\"Yes.\"\n\n\"You will not leave.\"\n\n\"No.\"\n\n\"You will not speak to press, family counsel, household staff, Church media, or anyone else who suddenly remembers your office exists.\"\n\n\"Agreed.\"\n\nInspector Leonid held his gaze another second.\n\nThat answer came too easily.\n\nHe turned away.\n\n\"Sergeant Vale.\"\n\n\"Yes, Inspector Leonid.\"\n\n\"Lock digital perimeter. Pull every exterior camera from the residence, neighboring properties, and street traffic poles covering the last three hours. I want gate access logs, alarm logs, private security records, and household comms. Nobody deletes anything.\"\n\n\"Yes.\"\n\n\"Separate staff. No group statements.\"\n\n\"Yes.\"\n\nHe looked to Officer Piotr.\n\n\"You are done touching things.\"\n\n\"Yes, Inspector Leonid.\"\n\n\"Write down exactly what you saw before your imagination improves it.\"\n\nThe young officer nodded too fast.\n\nThen Inspector Leonid looked once more at Father Mikhail.\n\n\"Last question. When your office received the call, why send you personally?\"\n\nFor the first time, the priest took a moment.\n\n\"Because the caller used a phrase we take seriously.\"\n\nInspector Leonid waited.\n\nFather Mikhail said, \"He said the death might concern an act against the order of nature.\"\n\nThat sat in the rain-cooled air without shape for a second or two.\n\nNot because the words were theatrical. Because they were not. They had been spoken in exactly the tone a bank official might use to discuss a sealed transfer or a customs officer to discuss contraband classifications.\n\nInspector Leonid found that infinitely worse.\n\nFrom inside the residence came the sharp crash of glass, followed by a woman saying something fast and furious in French before another voice silenced her.\n\nThe inspector looked toward the doorway.\n\nThen back at the priest.\n\n\"Stay here, Father Mikhail.\"\n\n\"As you wish.\"\n\nInspector Leonid started toward the entrance, then stopped just before crossing the threshold.\n\nWithout turning, he said, \"If I find out this is some aristocratic attempt to contaminate a murder inquiry with superstition, I will personally make your night unpleasant.\"\n\nFather Mikhail's reply came calm and immediate.\n\n\"If that is what you find, Inspector Leonid, I will help you do it.\"\n\nThat was not the correct answer.\n\nIt was, however, the answer of a man who expected the room beyond the doorway to win the argument for him.\n\nInspector Leonid disliked that too.\n\nThen he went inside.",
+      "case": "",
+      "case_name": "",
       "characters": [
-        "Lynleit",
-        "Heyk",
-        "Sherie",
-        "Drake"
+        "Inspector Leonid",
+        "Father Mikhail Arsenyev von Tiesen",
+        "Sergeant Marta Vale",
+        "Officer Piotr Jakubas"
       ],
       "tags": [
-        "succession",
-        "tension",
-        "pre-collapse",
+        "homicide",
+        "church",
+        "investigation",
+        "unnatural-death",
         "pressure"
       ],
       "template": "literary",
       "featured": false,
-      "fields": {}
+      "fields": {
+        "draft_version": "1.0"
+      }
     },
     {
       "id": "chapter-chapter-02-accusation-vector",
@@ -789,7 +794,9 @@
       ],
       "template": "literary",
       "featured": false,
-      "fields": {}
+      "fields": {
+        "draft_version": "1.0"
+      }
     },
     {
       "id": "chapter-chapter-03-exile-opens",
@@ -821,7 +828,9 @@
       ],
       "template": "literary",
       "featured": true,
-      "fields": {}
+      "fields": {
+        "draft_version": "1.0"
+      }
     },
     {
       "id": "chapter-chapter-04-hunt-architecture",
@@ -854,7 +863,9 @@
       ],
       "template": "literary",
       "featured": false,
-      "fields": {}
+      "fields": {
+        "draft_version": "1.0"
+      }
     },
     {
       "id": "chapter-chapter-05-extraction-lines",
@@ -887,7 +898,9 @@
       ],
       "template": "literary",
       "featured": false,
-      "fields": {}
+      "fields": {
+        "draft_version": "1.0"
+      }
     },
     {
       "id": "chapter-chapter-06-countermove",
@@ -921,7 +934,9 @@
       ],
       "template": "literary",
       "featured": false,
-      "fields": {}
+      "fields": {
+        "draft_version": "1.0"
+      }
     },
     {
       "id": "chapter-chapter-07-institutional-pressure",
@@ -955,7 +970,9 @@
       ],
       "template": "literary",
       "featured": false,
-      "fields": {}
+      "fields": {
+        "draft_version": "1.0"
+      }
     },
     {
       "id": "chapter-chapter-08-visibility-debt",
@@ -988,7 +1005,9 @@
       ],
       "template": "literary",
       "featured": false,
-      "fields": {}
+      "fields": {
+        "draft_version": "1.0"
+      }
     },
     {
       "id": "chapter-chapter-09-return-window",
@@ -1021,7 +1040,9 @@
       ],
       "template": "literary",
       "featured": true,
-      "fields": {}
+      "fields": {
+        "draft_version": "1.0"
+      }
     },
     {
       "id": "world-world-ontological-foundation",
@@ -1516,6 +1537,7 @@
     ],
     "statuses": [
       "active",
+      "draft",
       "placeholder",
       "scaffold",
       "working"
@@ -1523,19 +1545,23 @@
     "characters": [
       "Church",
       "Drake",
+      "Father Mikhail Arsenyev von Tiesen",
       "Felix",
       "Fionn",
       "Government",
       "Helena",
       "Heyk",
       "Hiyu",
+      "Inspector Leonid",
       "Kyrien",
       "Lester",
       "Lynleit",
       "Magiarchy",
       "Myka",
       "Natalia",
+      "Officer Piotr Jakubas",
       "Reiner",
+      "Sergeant Marta Vale",
       "Sherie",
       "Tien",
       "Yulia"
@@ -1578,12 +1604,14 @@
       "governance",
       "government",
       "history",
+      "homicide",
       "hunt",
       "institution",
       "institutions",
       "intelligence",
       "internal-conflict",
       "interpretation",
+      "investigation",
       "kyrien",
       "law",
       "legitimacy",
@@ -1611,7 +1639,6 @@
       "oversight",
       "placeholder",
       "politics",
-      "pre-collapse",
       "precision",
       "prelude",
       "pressure",
@@ -1641,13 +1668,13 @@
       "system-design",
       "tactical-response",
       "tactician",
-      "tension",
       "thaumaturgy",
       "theurgy",
       "transition",
       "truth",
       "turon",
       "university",
+      "unnatural-death",
       "usurpation",
       "velna-nue",
       "visibility",

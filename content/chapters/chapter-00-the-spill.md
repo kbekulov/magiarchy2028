@@ -11,6 +11,7 @@ case: The Spill
 characters: Heyk | Sherie | Drake
 tags: opening | covert-deployment | quarantine | extraction
 summary: Heyk's early deployment into a quarantine zone creates the first unstable field in the canon and opens the lane that later connects him to Sherie and Drake.
+draft_version: 1.0
 template: literary
 featured: true
 ---

@@ -11,6 +11,7 @@ case: MSF Compression
 characters: Lynleit | Kyrien | Magiarchy | Government | Church
 tags: institution | oversight | doctrine | pressure
 summary: The private crisis now attracts institutional attention, pulling Magiarchy, government, Church, and legacy blocs closer to direct involvement.
+draft_version: 1.0
 template: literary
 ---
 
