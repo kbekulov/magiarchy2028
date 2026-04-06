@@ -755,6 +755,20 @@ code {
   margin-top: 0.35rem;
 }
 
+.relationship-note-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.relationship-note {
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(118, 139, 176, 0.14);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 249, 0.78), rgba(246, 241, 234, 0.88)),
+    radial-gradient(circle at top right, rgba(121, 149, 203, 0.1), transparent 32%);
+}
+
 .route-list--compact .route-link {
   padding: 0.8rem 0.9rem;
 }
