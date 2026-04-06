@@ -2268,6 +2268,8 @@ body[data-page="reader"] #reader-nav {
   --vn-accent: rgba(100, 140, 212, 0.24);
   --vn-accent-strong: rgba(100, 140, 212, 0.44);
   --vn-accent-soft: rgba(100, 140, 212, 0.12);
+  --vn-stage-art: url("img/bg.png");
+  --vn-stage-art-opacity: 0.5;
   position: relative;
   margin-top: 1.2rem;
   overflow: hidden;
@@ -2309,8 +2311,8 @@ body[data-page="reader"] #reader-nav {
   inset: 0;
   background:
     linear-gradient(180deg, rgba(8, 14, 25, 0.12), rgba(8, 14, 25, 0.36)),
-    url("img/bg.png") center center / cover no-repeat;
-  opacity: 0.5;
+    var(--vn-stage-art) center center / cover no-repeat;
+  opacity: var(--vn-stage-art-opacity);
   pointer-events: none;
 }
 
@@ -2399,6 +2401,20 @@ body[data-page="reader"] #reader-nav {
   opacity: 0.92;
 }
 
+.vn-sprite-slot__art {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: auto;
+  height: calc(100% - 0.4rem);
+  max-width: none;
+  transform: translateX(-50%);
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 24px 28px rgba(6, 10, 18, 0.42));
+  pointer-events: none;
+}
+
 .vn-sprite-slot::before {
   content: "";
   position: absolute;
@@ -2411,6 +2427,10 @@ body[data-page="reader"] #reader-nav {
   opacity: 0.95;
 }
 
+.vn-sprite-slot.has-art::before {
+  opacity: 0.42;
+}
+
 .vn-sprite-slot__name {
   position: relative;
   margin-top: 0.3rem;
@@ -2418,6 +2438,7 @@ body[data-page="reader"] #reader-nav {
   font-family: var(--serif);
   font-size: 1.15rem;
   line-height: 1.1;
+  text-shadow: 0 1px 12px rgba(6, 10, 18, 0.48);
 }
 
 .vn-dialogue-box {

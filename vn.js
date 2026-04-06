@@ -1,4 +1,21 @@
 const vnShell = document.getElementById("vn-shell");
+const VN_SCENE_LIBRARY = {
+  "chapter-chapter-01-pressure-builds": {
+    backdrop: "img/vn_simulator/chapter_1/66be6298-7ee0-4f91-982e-436084363f2d.png",
+    sprites: [
+      {
+        name: "Inspector Leonid",
+        role: "Investigator",
+        src: "img/vn_simulator/chapter_1/detective_1.png",
+      },
+      {
+        name: "Father Mikhail",
+        role: "Church Bureau",
+        src: "img/vn_simulator/chapter_1/priest_1.png",
+      },
+    ],
+  },
+};
 
 if (vnShell) {
   initializeVNSimulator();
@@ -391,29 +408,70 @@ function updateChapterScene(refs, chapter) {
   refs.stage.style.setProperty("--vn-accent", `hsla(${hue}, 78%, 62%, 0.28)`);
   refs.stage.style.setProperty("--vn-accent-strong", `hsla(${hue}, 82%, 58%, 0.46)`);
   refs.stage.style.setProperty("--vn-accent-soft", `hsla(${hue}, 80%, 72%, 0.12)`);
+  applyChapterSceneArt(refs, chapter);
 
   const spriteNames = chapter.characters?.length
     ? chapter.characters.slice(0, 2)
     : chapter.beats.some((beat) => beat.mode === "dialogue")
       ? ["Speaker A", "Speaker B"]
       : ["Stage Left", "Stage Right"];
+  const configuredScene = VN_SCENE_LIBRARY[chapter.id];
 
-  setSpriteSlot(refs.spriteLeft, spriteNames[0] || "Stage Left", "Sprite Slot");
-  setSpriteSlot(refs.spriteRight, spriteNames[1] || "Sprite Slot", "Sprite Slot");
+  if (configuredScene?.sprites?.length) {
+    setSpriteSlot(refs.spriteLeft, configuredScene.sprites[0] || null);
+    setSpriteSlot(refs.spriteRight, configuredScene.sprites[1] || null);
+    return;
+  }
+
+  setSpriteSlot(refs.spriteLeft, {
+    name: spriteNames[0] || "Stage Left",
+    role: "Placeholder",
+    src: "",
+  });
+  setSpriteSlot(refs.spriteRight, {
+    name: spriteNames[1] || "Stage Right",
+    role: "Placeholder",
+    src: "",
+  });
 }
 
-function setSpriteSlot(node, name, label) {
+function applyChapterSceneArt(refs, chapter) {
+  const configuredScene = VN_SCENE_LIBRARY[chapter.id];
+  const backdrop = configuredScene?.backdrop || "img/bg.png";
+  const opacity = configuredScene?.backdrop ? "0.76" : "0.5";
+  refs.stage.style.setProperty("--vn-stage-art", `url("${backdrop}")`);
+  refs.stage.style.setProperty("--vn-stage-art-opacity", opacity);
+}
+
+function setSpriteSlot(node, sprite) {
   if (!node) {
     return;
   }
 
+  const normalizedSprite = sprite || {};
   const labelNode = node.querySelector(".vn-sprite-slot__label");
   const nameNode = node.querySelector(".vn-sprite-slot__name");
+  const artNode = node.querySelector(".vn-sprite-slot__art");
+  const hasArt = Boolean(normalizedSprite.src);
+
+  node.classList.toggle("has-art", hasArt);
+
   if (labelNode) {
-    labelNode.textContent = label;
+    labelNode.textContent = normalizedSprite.role || "Placeholder";
   }
   if (nameNode) {
-    nameNode.textContent = name;
+    nameNode.textContent = normalizedSprite.name || "Waiting";
+  }
+  if (artNode) {
+    if (hasArt) {
+      artNode.hidden = false;
+      artNode.src = normalizedSprite.src;
+      artNode.alt = normalizedSprite.name || "";
+    } else {
+      artNode.hidden = true;
+      artNode.removeAttribute("src");
+      artNode.alt = "";
+    }
   }
 }
 
