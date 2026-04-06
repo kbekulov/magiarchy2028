@@ -2333,7 +2333,7 @@ body[data-page="reader"] #reader-nav {
   inset: 0;
   background:
     linear-gradient(180deg, rgba(8, 14, 25, 0.12), rgba(8, 14, 25, 0.36)),
-    var(--vn-stage-art) center center / cover no-repeat;
+    var(--vn-stage-art) center top / cover no-repeat;
   opacity: var(--vn-stage-art-opacity);
   pointer-events: none;
 }
