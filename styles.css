@@ -2420,7 +2420,9 @@ body[data-page="reader"] #reader-nav {
     radial-gradient(circle at top, var(--vn-accent), transparent 46%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   overflow: hidden;
-  opacity: 0.92;
+  opacity: 0;
+  transform: translateY(18px) scale(0.92);
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
 .vn-sprite-slot__art {
@@ -2490,6 +2492,11 @@ body[data-page="reader"] #reader-nav {
 .vn-sprite-slot.is-speaking .vn-sprite-slot__name {
   opacity: 1;
   transform: translateY(0);
+}
+
+.vn-sprite-slot.is-speaking {
+  opacity: 0.96;
+  transform: translateY(0) scale(1);
 }
 
 .vn-dialogue-box {
