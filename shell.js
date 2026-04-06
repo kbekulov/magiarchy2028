@@ -78,10 +78,8 @@ const DC_SHELL = (() => {
   };
 
   const themeOptions = [
-    { id: "light-warm", label: "Light / Warm", shortLabel: "L/W" },
-    { id: "light-cold", label: "Light / Cold", shortLabel: "L/C" },
-    { id: "dark-warm", label: "Dark / Warm", shortLabel: "D/W" },
-    { id: "dark-cold", label: "Dark / Cold", shortLabel: "D/C" },
+    { id: "light-cold", label: "Light / Cold", shortLabel: "Light" },
+    { id: "dark-cold", label: "Dark / Cold", shortLabel: "Dark" },
   ].map((theme, index) => ({ ...theme, index }));
 
   const themeById = Object.fromEntries(themeOptions.map((theme) => [theme.id, theme]));
@@ -96,9 +94,21 @@ const DC_SHELL = (() => {
     document.documentElement.dataset.theme || readStoredTheme()
   );
 
+  function normalizeThemeId(themeId) {
+    if (themeId === "light-warm") {
+      return "light-cold";
+    }
+
+    if (themeId === "dark-warm") {
+      return "dark-cold";
+    }
+
+    return themeId;
+  }
+
   function readStoredTheme() {
     try {
-      const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+      const storedTheme = normalizeThemeId(window.localStorage.getItem(THEME_STORAGE_KEY));
       return themeById[storedTheme] ? storedTheme : "light-cold";
     } catch (error) {
       return "light-cold";
@@ -106,7 +116,9 @@ const DC_SHELL = (() => {
   }
 
   function applyThemeToDocument(themeId) {
-    const validTheme = themeById[themeId] ? themeId : "light-cold";
+    const validTheme = themeById[normalizeThemeId(themeId)]
+      ? normalizeThemeId(themeId)
+      : "light-cold";
     document.documentElement.dataset.theme = validTheme;
     document.documentElement.dataset.bsTheme = validTheme.startsWith("dark")
       ? "dark"
