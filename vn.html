@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VN Simulator | Magiarchy</title>
+    <meta
+      name="description"
+      content="Visual novel simulator for reading Magiarchy chapters in chronology order with animated text, placeholder stage visuals, and chapter jump controls."
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script src="theme-init.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="vn-simulator">
+    <div id="mobile-shell"></div>
+
+    <div class="container-fluid px-0 site-shell">
+      <div class="row g-0">
+        <aside class="col-lg-3 col-xl-2 d-none d-lg-block sidebar-column">
+          <div id="sidebar-shell"></div>
+        </aside>
+
+        <main class="col-lg-9 col-xl-10 content-column">
+          <div class="content-wrap">
+            <section class="page-banner">
+              <p class="page-kicker">VN Simulator</p>
+              <h1 class="page-title">Playable chapter reader with animated delivery and placeholder stage visuals</h1>
+              <p class="page-copy banner-copy mt-3">
+                Read the current chapter line by line in chronology order, jump between chapters from the
+                menu, and toggle text animation skip while we wait for final backgrounds and sprites.
+              </p>
+            </section>
+
+            <section class="page-section mt-4">
+              <div class="detail-panel vn-shell" id="vn-shell">
+                <div class="vn-topbar">
+                  <div class="vn-chapter-meta">
+                    <p class="page-kicker mb-2" id="vn-order">Chronology</p>
+                    <h2 class="section-title vn-chapter-title" id="vn-chapter-title">Loading chapters…</h2>
+                    <p class="page-copy mt-3 mb-0" id="vn-summary">
+                      The simulator is loading the chapter archive and preparing the current reading lane.
+                    </p>
+                  </div>
+
+                  <div class="vn-toolbar">
+                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-menu-button">
+                      Chapters
+                    </button>
+                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-skip-toggle" aria-pressed="false">
+                      Skip Anim
+                    </button>
+                  </div>
+                </div>
+
+                <div class="vn-stage" id="vn-stage">
+                  <div class="vn-stage__background">
+                    <div class="vn-stage__backdrop">
+                      <p class="vn-stage__label">Background Placeholder</p>
+                      <h3 class="vn-stage__chapter" id="vn-stage-chapter">Preparing chapter stage</h3>
+                      <p class="vn-stage__hint" id="vn-stage-hint">
+                        Final background art, atmosphere plates, and sprite direction can slot in here later.
+                      </p>
+                    </div>
+
+                    <div class="vn-stage__sprites">
+                      <div class="vn-sprite-slot" id="vn-sprite-left">
+                        <span class="vn-sprite-slot__label">Sprite Slot</span>
+                        <strong class="vn-sprite-slot__name">Waiting</strong>
+                      </div>
+                      <div class="vn-sprite-slot" id="vn-sprite-right">
+                        <span class="vn-sprite-slot__label">Sprite Slot</span>
+                        <strong class="vn-sprite-slot__name">Waiting</strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="vn-textbox">
+                    <div class="vn-textbox__meta">
+                      <span class="vn-mode-pill" id="vn-mode">Narration</span>
+                      <span class="vn-progress" id="vn-progress">0 / 0</span>
+                    </div>
+
+                    <div class="vn-textbox__body">
+                      <p class="vn-text" id="vn-text" aria-live="polite"></p>
+                    </div>
+
+                    <div class="vn-textbox__footer">
+                      <div class="vn-textbox__hint">
+                        Click the text box or press <kbd>Space</kbd> to advance.
+                      </div>
+                      <div class="vn-textbox__actions">
+                        <button class="btn btn-outline-light btn-sm" type="button" id="vn-back-button">
+                          Back
+                        </button>
+                        <button class="btn btn-outline-light btn-sm" type="button" id="vn-next-button">
+                          Advance
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div class="vn-menu-backdrop" id="vn-menu-backdrop" hidden></div>
+    <section
+      class="vn-menu-panel"
+      id="vn-menu-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="vn-menu-title"
+      hidden
+    >
+      <div class="vn-menu-panel__head">
+        <div>
+          <p class="page-kicker mb-2">Jump Menu</p>
+          <h2 class="section-title mb-0" id="vn-menu-title">Chapters in chronology order</h2>
+        </div>
+        <button class="btn btn-outline-light btn-sm" type="button" id="vn-menu-close">Close</button>
+      </div>
+
+      <p class="page-copy mt-3 mb-0">
+        Jump to any chapter already in the archive. Later, this can expand into branching, route flags,
+        and per-scene saves.
+      </p>
+
+      <div class="vn-chapter-list mt-4" id="vn-chapter-list"></div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="shell.js" defer></script>
+    <script src="archive-core.js" defer></script>
+    <script src="vn.js" defer></script>
+  </body>
+</html>

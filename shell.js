@@ -15,6 +15,7 @@ const DC_SHELL = (() => {
   const utilityPages = [
     { key: "home", label: "Project Home", href: "index.html" },
     { key: "archive", label: "Archive Browser", href: "library.html" },
+    { key: "vn-simulator", label: "VN Simulator", href: "vn.html" },
   ];
 
   const navGroups = [
@@ -28,7 +29,7 @@ const DC_SHELL = (() => {
     },
     {
       label: "Story",
-      keys: ["characters", "relationships", "events-chapters", "story-timeline"],
+      keys: ["characters", "relationships", "events-chapters", "story-timeline", "vn-simulator"],
     },
     {
       label: "Reference",
@@ -73,6 +74,8 @@ const DC_SHELL = (() => {
       "Events and chapters are the canon's turning machinery: catalytic incidents first, then the story movement they trigger.",
     "story-timeline":
       "The timeline should clarify escalation and sequence without turning the project into a dry production sheet.",
+    "vn-simulator":
+      "The VN simulator turns chapter text into a playable reading lane with placeholder stage visuals, animated delivery, and chapter jump controls.",
     "global-prompt":
       "The global prompt shelf keeps the active canon pack close to the supporting writer-facing references that feed it.",
   };
