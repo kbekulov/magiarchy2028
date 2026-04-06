@@ -7,11 +7,13 @@ const VN_SCENE_LIBRARY = {
         name: "Inspector Leonid",
         role: "Investigator",
         src: "img/vn_simulator/chapter_1/detective_1.png",
+        aliases: ["inspector leonid", "leonid"],
       },
       {
         name: "Father Mikhail",
         role: "Church Bureau",
         src: "img/vn_simulator/chapter_1/priest_1.png",
+        aliases: ["father mikhail", "mikhail", "father mikhail arsenyev von tiesen"],
       },
     ],
   },
@@ -371,6 +373,7 @@ function renderVNEmpty(refs, message) {
   refs.narrationText.dataset.mode = "system";
   renderNarrationText(refs.narrationText, message);
   fitNarrationText(refs, {});
+  updateActiveSpriteSpeaker(refs, "");
   refs.hint.innerHTML = "The VN simulator could not load chapter text.";
   refs.backButton.disabled = true;
   refs.nextButton.disabled = true;
@@ -455,6 +458,11 @@ function setSpriteSlot(node, sprite) {
   const hasArt = Boolean(normalizedSprite.src);
 
   node.classList.toggle("has-art", hasArt);
+  node.classList.remove("is-speaking");
+  node.dataset.spriteKeys = (normalizedSprite.aliases || [normalizedSprite.name || ""])
+    .map((value) => normalizeSpeakerKey(value))
+    .filter(Boolean)
+    .join("|");
 
   if (labelNode) {
     labelNode.textContent = normalizedSprite.role || "Placeholder";
@@ -473,6 +481,28 @@ function setSpriteSlot(node, sprite) {
       artNode.alt = "";
     }
   }
+}
+
+function normalizeSpeakerKey(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function updateActiveSpriteSpeaker(refs, speakerName) {
+  const speakerKey = normalizeSpeakerKey(speakerName);
+
+  [refs.spriteLeft, refs.spriteRight].forEach((node) => {
+    if (!node) {
+      return;
+    }
+
+    const spriteKeys = (node.dataset.spriteKeys || "").split("|").filter(Boolean);
+    const isSpeaking = Boolean(speakerKey) && spriteKeys.includes(speakerKey);
+    node.classList.toggle("is-speaking", isSpeaking);
+  });
 }
 
 function renderCurrentBeat(refs, state) {
@@ -522,6 +552,7 @@ function renderCurrentBeat(refs, state) {
     state.currentTarget = refs.narrationText;
   }
 
+  updateActiveSpriteSpeaker(refs, speakerData?.speaker || "");
   updateHint(refs, state);
   playVNBeatText(refs, state, displayText);
 }
@@ -649,6 +680,7 @@ function advanceVN(refs, state, options = {}) {
   fitNarrationText(refs, state);
   refs.speaker.hidden = true;
   refs.speaker.textContent = "";
+  updateActiveSpriteSpeaker(refs, "");
   refs.hint.innerHTML =
     "Reached the end of the loaded archive. Use <kbd>Chapters</kbd> to jump elsewhere or add more text.";
   updateVNActionLabels(refs, state, true);

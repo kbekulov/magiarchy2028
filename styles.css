@@ -2431,14 +2431,43 @@ body[data-page="reader"] #reader-nav {
   opacity: 0.42;
 }
 
+.vn-sprite-slot__label,
 .vn-sprite-slot__name {
   position: relative;
+  z-index: 2;
+  align-self: flex-start;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 180ms ease, transform 180ms ease;
+  pointer-events: none;
+}
+
+.vn-sprite-slot__label {
+  padding: 0.18rem 0.62rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(10, 16, 27, 0.78);
+  box-shadow: 0 12px 24px rgba(6, 10, 18, 0.22);
+}
+
+.vn-sprite-slot__name {
   margin-top: 0.3rem;
+  padding: 0.22rem 0.72rem 0.28rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(10, 16, 27, 0.88);
+  box-shadow: 0 12px 24px rgba(6, 10, 18, 0.26);
   color: #f4f7ff;
   font-family: var(--serif);
   font-size: 1.15rem;
   line-height: 1.1;
   text-shadow: 0 1px 12px rgba(6, 10, 18, 0.48);
+}
+
+.vn-sprite-slot.is-speaking .vn-sprite-slot__label,
+.vn-sprite-slot.is-speaking .vn-sprite-slot__name {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .vn-dialogue-box {
