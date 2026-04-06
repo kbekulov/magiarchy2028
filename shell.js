@@ -137,7 +137,7 @@ const DC_SHELL = (() => {
           ${renderNavGroups()}
         </div>
 
-        <div class="sidebar-context mt-auto">
+        <div class="sidebar-context">
           <p class="sidebar-section-label sidebar-section-label--context">Page Note</p>
           <div class="sidebar-note">
             ${notes[activeKey] || notes.home}
