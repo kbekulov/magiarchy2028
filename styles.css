@@ -1830,12 +1830,22 @@ body[data-page="reader"] .reader-card {
   padding: 1.15rem 1.45rem 1.3rem;
 }
 
+body[data-page="reader"] .reader-card--literary {
+  padding: 0.85rem 1.4rem 1.15rem;
+}
+
 body[data-page="reader"] .document-toolbar {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.85rem;
+  right: 0.9rem;
   z-index: 3;
   margin-bottom: 0;
+}
+
+body[data-page="reader"] .copy-markdown-button {
+  --bs-btn-font-size: 0.92rem;
+  --bs-btn-padding-y: 0.38rem;
+  --bs-btn-padding-x: 0.72rem;
 }
 
 .reader-card--literary .markdown-body {
@@ -1843,8 +1853,10 @@ body[data-page="reader"] .document-toolbar {
 }
 
 body[data-page="reader"] .reader-card--literary .markdown-body {
-  font-size: 1.02rem;
-  line-height: 1.86;
+  max-width: 62ch;
+  padding-right: 5.9rem;
+  font-size: 1rem;
+  line-height: 1.72;
 }
 
 body[data-page="reader"] .reader-card .markdown-body > :first-child {
@@ -1852,7 +1864,7 @@ body[data-page="reader"] .reader-card .markdown-body > :first-child {
 }
 
 body[data-page="reader"] .reader-card .markdown-body p {
-  margin: 0 0 0.95rem;
+  margin: 0 0 0.72rem;
 }
 
 body[data-page="reader"] .reader-card .markdown-body p:last-child {
