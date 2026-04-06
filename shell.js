@@ -77,11 +77,75 @@ const DC_SHELL = (() => {
       "The global prompt shelf keeps the active canon pack close to the supporting writer-facing references that feed it.",
   };
 
+  const themeOptions = [
+    { id: "light-warm", label: "Light / Warm", shortLabel: "L/W" },
+    { id: "light-cold", label: "Light / Cold", shortLabel: "L/C" },
+    { id: "dark-warm", label: "Dark / Warm", shortLabel: "D/W" },
+    { id: "dark-cold", label: "Dark / Cold", shortLabel: "D/C" },
+  ].map((theme, index) => ({ ...theme, index }));
+
+  const themeById = Object.fromEntries(themeOptions.map((theme) => [theme.id, theme]));
+  const THEME_STORAGE_KEY = "magiarchy-theme";
+
   const body = document.body;
   const currentKey = body.dataset.page || "home";
   const activeKey = pageByKey[currentKey] ? currentKey : activeAliases[currentKey] || "home";
   const sidebarRoot = document.getElementById("sidebar-shell");
   const mobileRoot = document.getElementById("mobile-shell");
+  const currentTheme = applyThemeToDocument(
+    document.documentElement.dataset.theme || readStoredTheme()
+  );
+
+  function readStoredTheme() {
+    try {
+      const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+      return themeById[storedTheme] ? storedTheme : "light-cold";
+    } catch (error) {
+      return "light-cold";
+    }
+  }
+
+  function applyThemeToDocument(themeId) {
+    const validTheme = themeById[themeId] ? themeId : "light-cold";
+    document.documentElement.dataset.theme = validTheme;
+    document.documentElement.dataset.bsTheme = validTheme.startsWith("dark")
+      ? "dark"
+      : "light";
+    return validTheme;
+  }
+
+  function renderThemeSwitch() {
+    const theme = themeById[currentTheme] || themeById["light-cold"];
+
+    return `
+      <div class="theme-switch">
+        <div class="theme-switch__head">
+          <span class="sidebar-section-label sidebar-section-label--context">Color Scheme</span>
+          <span class="theme-switch__value" data-theme-current>${theme.label}</span>
+        </div>
+
+        <div class="theme-slider" data-theme-slider style="--theme-index: ${theme.index}">
+          ${themeOptions
+            .map((option) => {
+              const isActive = option.id === theme.id;
+
+              return `
+                <button
+                  class="theme-slider__option${isActive ? " is-active" : ""}"
+                  type="button"
+                  data-theme-option="${option.id}"
+                  aria-pressed="${isActive ? "true" : "false"}"
+                  title="${option.label}"
+                >
+                  ${option.shortLabel}
+                </button>
+              `;
+            })
+            .join("")}
+        </div>
+      </div>
+    `;
+  }
 
   function renderNavGroups() {
     return navGroups
@@ -129,6 +193,7 @@ const DC_SHELL = (() => {
           <p class="sidebar-copy mt-2 mb-0">
             A quieter map through Magiarchy canon, doctrine, characters, and story structure.
           </p>
+          ${renderThemeSwitch()}
         </div>
 
         <div class="sidebar-divider"></div>
@@ -174,6 +239,7 @@ const DC_SHELL = (() => {
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
+          ${renderThemeSwitch()}
           <div class="site-nav-shell">
             ${renderNavGroups()}
           </div>
@@ -188,6 +254,83 @@ const DC_SHELL = (() => {
     `;
   }
 
+  function updateThemeSwitches(themeId) {
+    const theme = themeById[themeId] || themeById["light-cold"];
+
+    document.querySelectorAll("[data-theme-slider]").forEach((slider) => {
+      slider.style.setProperty("--theme-index", String(theme.index));
+    });
+
+    document.querySelectorAll("[data-theme-current]").forEach((label) => {
+      label.textContent = theme.label;
+    });
+
+    document.querySelectorAll("[data-theme-option]").forEach((button) => {
+      const isActive = button.dataset.themeOption === theme.id;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+  }
+
+  function applyTheme(themeId, { persist = true } = {}) {
+    const validTheme = applyThemeToDocument(themeId);
+    updateThemeSwitches(validTheme);
+
+    if (persist) {
+      try {
+        window.localStorage.setItem(THEME_STORAGE_KEY, validTheme);
+      } catch (error) {
+        // Ignore storage failures and keep the in-memory selection.
+      }
+    }
+
+    return validTheme;
+  }
+
+  function bindThemeControls() {
+    document.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-theme-option]");
+      if (!button) {
+        return;
+      }
+
+      applyTheme(button.dataset.themeOption);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      const button = event.target.closest("[data-theme-option]");
+      if (!button) {
+        return;
+      }
+
+      let delta = 0;
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        delta = 1;
+      } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        delta = -1;
+      } else {
+        return;
+      }
+
+      event.preventDefault();
+
+      const currentOption = themeById[button.dataset.themeOption] || themeOptions[0];
+      const nextIndex = Math.max(
+        0,
+        Math.min(themeOptions.length - 1, currentOption.index + delta)
+      );
+      const nextTheme = themeOptions[nextIndex];
+
+      applyTheme(nextTheme.id);
+
+      const slider = button.closest("[data-theme-slider]");
+      const nextButton = slider?.querySelector(`[data-theme-option="${nextTheme.id}"]`);
+      nextButton?.focus();
+    });
+  }
+
   renderSidebar();
   renderMobile();
+  bindThemeControls();
+  applyTheme(currentTheme, { persist: false });
 })();
