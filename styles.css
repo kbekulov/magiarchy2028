@@ -622,6 +622,18 @@ body[data-page="reader"] .page-section {
   margin-top: 1.25rem !important;
 }
 
+body[data-page="reader"] #reader-record {
+  margin-top: 1rem;
+}
+
+body[data-page="reader"] #reader-card {
+  margin-top: 2rem !important;
+}
+
+body[data-page="reader"] #reader-nav {
+  margin-top: 1.8rem !important;
+}
+
 .section-header,
 .section-subheader {
   margin-bottom: 1rem;
