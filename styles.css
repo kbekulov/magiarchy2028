@@ -2346,8 +2346,11 @@ body[data-page="reader"] #reader-nav {
 .vn-narration-box {
   align-self: center;
   width: min(44rem, calc(100% - 3rem));
+  height: 14rem;
   margin: auto 0;
   padding: 1.05rem 1.15rem 1.15rem;
+  display: flex;
+  flex-direction: column;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.2rem;
   background:
@@ -2488,12 +2491,14 @@ body[data-page="reader"] #reader-nav {
 }
 
 .vn-text--narration {
-  max-width: 32ch;
-  margin: 0.95rem auto 0;
-  text-align: center;
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0.95rem 0 0;
+  overflow: auto;
+  text-align: left;
   font-size: clamp(1.08rem, 1.7vw, 1.26rem);
   line-height: 1.92;
-  text-wrap: balance;
 }
 
 .vn-text[data-mode="system"],
@@ -2666,6 +2671,7 @@ body.vn-menu-open {
 
 .vn-shell:fullscreen .vn-narration-box {
   width: min(48rem, calc(100% - 4rem));
+  height: 15rem;
 }
 
 .vn-shell:fullscreen .vn-menu-panel {
@@ -3227,6 +3233,7 @@ body[data-page="reader"] .reader-card .markdown-body p:last-child {
 
   .vn-narration-box {
     width: min(100%, calc(100% - 1rem));
+    height: 12.5rem;
   }
 
   .vn-stage__sprites {
@@ -3325,6 +3332,7 @@ body[data-page="reader"] .reader-card .markdown-body p:last-child {
 
   .vn-narration-box {
     width: min(100%, calc(100% - 0.4rem));
+    height: 11rem;
     padding: 0.9rem 0.95rem 1rem;
     border-radius: 1rem;
   }
@@ -3343,7 +3351,6 @@ body[data-page="reader"] .reader-card .markdown-body p:last-child {
   }
 
   .vn-text--narration {
-    max-width: 100%;
     font-size: 1rem;
     line-height: 1.82;
   }
