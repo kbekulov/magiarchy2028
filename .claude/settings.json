@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(jq -r '.tool_input.file_path // empty'); [ -n \"$FILE\" ] || exit 0; REPO=$(git -C \"$(dirname \"$FILE\")\" rev-parse --show-toplevel 2>/dev/null); [ -n \"$REPO\" ] || exit 0; git -C \"$REPO\" add \"$FILE\" && git -C \"$REPO\" commit -m \"Update $(basename \"$FILE\")\" && git -C \"$REPO\" push",
+            "timeout": 30,
+            "statusMessage": "Committing and pushing..."
+          }
+        ]
+      }
+    ]
+  }
+}
