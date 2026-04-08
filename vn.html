@@ -41,14 +41,14 @@
                     <button class="btn btn-outline-light btn-sm" type="button" id="vn-menu-button">
                       Chapters
                     </button>
+                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-log-button">
+                      Log
+                    </button>
                     <button class="btn btn-outline-light btn-sm" type="button" id="vn-auto-toggle" aria-pressed="false">
                       Auto
                     </button>
                     <button class="btn btn-outline-light btn-sm" type="button" id="vn-skip-toggle" aria-pressed="false">
-                      Skip Type
-                    </button>
-                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-bgm-toggle" aria-pressed="false">
-                      BGM
+                      Skip Typing
                     </button>
                     <button class="btn btn-outline-light btn-sm" type="button" id="vn-fullscreen-toggle" aria-pressed="false">
                       Fullscreen
@@ -58,14 +58,6 @@
 
                 <div class="vn-stage" id="vn-stage">
                   <div class="vn-stage__background">
-                    <div class="vn-narration-box" id="vn-narration-box" hidden>
-                      <div class="vn-narration-box__meta">
-                        <span class="vn-mode-pill" id="vn-mode-narration">Narration</span>
-                        <span class="vn-progress" id="vn-progress-narration">0 / 0</span>
-                      </div>
-                      <div class="vn-text vn-text--narration" id="vn-narration-text" aria-live="polite"></div>
-                    </div>
-
                     <div class="vn-stage__sprites">
                       <div class="vn-sprite-slot" id="vn-sprite-left">
                         <img class="vn-sprite-slot__art" alt="" hidden />
@@ -78,6 +70,14 @@
                         <strong class="vn-sprite-slot__name">Waiting</strong>
                       </div>
                     </div>
+                  </div>
+
+                  <div class="vn-narration-box" id="vn-narration-box" hidden>
+                    <div class="vn-narration-box__meta">
+                      <span class="vn-mode-pill" id="vn-mode-narration">Narration</span>
+                      <span class="vn-progress" id="vn-progress-narration">0 / 0</span>
+                    </div>
+                    <div class="vn-text vn-text--narration" id="vn-narration-text" aria-live="polite"></div>
                   </div>
 
                   <div class="vn-dialogue-box" id="vn-dialogue-box" hidden>
@@ -127,6 +127,26 @@
                   </div>
 
                   <div class="vn-chapter-list mt-3" id="vn-chapter-list"></div>
+                </section>
+
+                <div class="vn-log-backdrop" id="vn-log-backdrop" hidden></div>
+                <section
+                  class="vn-log-panel"
+                  id="vn-log-panel"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="vn-log-title"
+                  hidden
+                >
+                  <div class="vn-menu-panel__head">
+                    <div>
+                      <p class="page-kicker mb-2">Text Log</p>
+                      <h2 class="section-title mb-0" id="vn-log-title">Recent beats</h2>
+                    </div>
+                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-log-close">Close</button>
+                  </div>
+
+                  <div class="vn-log-list mt-3" id="vn-log-list"></div>
                 </section>
               </div>
             </section>

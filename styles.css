@@ -2368,21 +2368,12 @@ body[data-page="reader"] #reader-nav {
 }
 
 .vn-narration-box {
-  align-self: center;
-  width: min(75%, 64rem);
-  height: 14rem;
-  margin: auto 0;
-  padding: 1.05rem 1.15rem 1.15rem;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.2rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   background:
-    linear-gradient(180deg, rgba(14, 22, 36, 0.56), rgba(10, 17, 28, 0.72)),
-    radial-gradient(circle at top, var(--vn-accent), transparent 46%);
-  box-shadow: 0 22px 48px rgba(6, 10, 18, 0.28);
-  backdrop-filter: blur(16px);
-  z-index: 2;
+    linear-gradient(180deg, rgba(12, 19, 31, 0.82), rgba(9, 15, 25, 0.94)),
+    radial-gradient(circle at top left, var(--vn-accent-soft), transparent 32%);
+  backdrop-filter: blur(18px);
 }
 
 .vn-narration-box__meta,
@@ -2558,7 +2549,7 @@ body[data-page="reader"] #reader-nav {
 }
 
 .vn-dialogue-box__body {
-  min-height: 8rem;
+  min-height: 6rem;
   margin-top: 1rem;
 }
 
@@ -2577,28 +2568,21 @@ body[data-page="reader"] #reader-nav {
 }
 
 .vn-text--narration {
-  flex: 1 1 auto;
   width: 100%;
-  max-width: none;
-  margin: 0.95rem 0 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 0.72rem;
-  overflow: hidden;
-  text-align: left;
-  font-size: clamp(1.08rem, 1.7vw, 1.26rem);
+  max-width: 80ch;
+  margin: 0.75rem 0 0;
+  font-size: clamp(1.04rem, 1.7vw, 1.22rem);
   line-height: 1.92;
+  color: rgba(228, 236, 247, 0.92);
 }
 
 .vn-text--narration .vn-text__paragraph {
   margin: 0;
-  text-indent: 1.6em;
 }
 
 .vn-text--narration[data-mode="system"] .vn-text__paragraph,
 .vn-text--narration[data-mode="echo"] .vn-text__paragraph {
-  text-indent: 0;
+  font-style: italic;
 }
 
 .vn-text[data-mode="system"],
@@ -3501,4 +3485,103 @@ body[data-page="reader"] .reader-card .markdown-body p:last-child {
     font-size: 0.92rem;
   }
 
+}
+
+/* ─── VN Theater Mode ─────────────────────────────────────────────────────── */
+
+body[data-page="vn-simulator"] .sidebar-column {
+  display: none !important;
+}
+
+body[data-page="vn-simulator"] .content-column {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+body[data-page="vn-simulator"] .content-wrap {
+  padding: 0 !important;
+}
+
+body[data-page="vn-simulator"] .page-section {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body[data-page="vn-simulator"] .detail-panel.vn-shell {
+  border-radius: 0 !important;
+  border: none !important;
+  min-height: 100vh;
+}
+
+/* ─── VN Stage Fade Transition ────────────────────────────────────────────── */
+
+.vn-stage.is-transitioning {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms ease;
+}
+
+/* ─── VN Log Panel ────────────────────────────────────────────────────────── */
+
+.vn-log-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  border-radius: inherit;
+  background: rgba(7, 11, 19, 0.56);
+  backdrop-filter: blur(10px);
+}
+
+.vn-log-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 31;
+  width: min(52rem, calc(100% - 2rem));
+  max-height: calc(100% - 2rem);
+  overflow: auto;
+  padding: 1.3rem 1.3rem 1.45rem;
+  border: 1px solid var(--border);
+  border-radius: 1.45rem;
+  background:
+    linear-gradient(180deg, var(--surface-panel-start), var(--surface-panel-end)),
+    radial-gradient(circle at top right, var(--surface-panel-accent), transparent 30%);
+  box-shadow: var(--shadow-deep);
+  transform: translate(-50%, -50%);
+}
+
+.vn-log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.vn-log-entry {
+  padding: 0.7rem 0.9rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background:
+    linear-gradient(180deg, var(--surface-soft-start), var(--surface-soft-end));
+}
+
+.vn-log-entry__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.35rem;
+}
+
+.vn-log-entry__speaker {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.vn-log-entry__text {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+  line-height: 1.65;
 }
