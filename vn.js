@@ -19,6 +19,48 @@ const VN_SCENE_LIBRARY = {
   },
 };
 
+function listifyField(value) {
+  if (Array.isArray(value)) {
+    return value.map((item) => String(item || "").trim()).filter(Boolean);
+  }
+
+  return String(value || "")
+    .split("|")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function buildSceneSpriteFromFields(fields, side) {
+  const name = String(fields?.[`vn_${side}_name`] || "").trim();
+  const role = String(fields?.[`vn_${side}_role`] || "").trim();
+  const src = String(fields?.[`vn_${side}_sprite`] || "").trim();
+  const aliases = listifyField(fields?.[`vn_${side}_aliases`]);
+
+  if (!name && !role && !src && !aliases.length) {
+    return null;
+  }
+
+  return {
+    name: name || `Stage ${side[0].toUpperCase()}${side.slice(1)}`,
+    role: role || "Placeholder",
+    src,
+    aliases,
+  };
+}
+
+function getChapterSceneConfig(chapter) {
+  const chapterFields = chapter?.fields || {};
+  const libraryScene = VN_SCENE_LIBRARY[chapter?.id] || {};
+  const chapterSprites = ["left", "right"]
+    .map((side) => buildSceneSpriteFromFields(chapterFields, side))
+    .filter(Boolean);
+
+  return {
+    backdrop: String(chapterFields.vn_backdrop || libraryScene.backdrop || "").trim(),
+    sprites: chapterSprites.length ? chapterSprites : libraryScene.sprites || [],
+  };
+}
+
 if (vnShell) {
   initializeVNSimulator();
 }
