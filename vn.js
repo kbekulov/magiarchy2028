@@ -57,6 +57,7 @@ function getChapterSceneConfig(chapter) {
 
   return {
     backdrop: String(chapterFields.vn_backdrop || libraryScene.backdrop || "").trim(),
+    bgmTrack: String(chapterFields.vn_bgm || libraryScene.bgmTrack || "").trim(),
     sprites: chapterSprites.length ? chapterSprites : libraryScene.sprites || [],
   };
 }
@@ -148,6 +149,7 @@ function getVNRefs() {
     menuButton: document.getElementById("vn-menu-button"),
     logButton: document.getElementById("vn-log-button"),
     autoToggle: document.getElementById("vn-auto-toggle"),
+    bgmToggle: document.getElementById("vn-bgm-toggle"),
     skipToggle: document.getElementById("vn-skip-toggle"),
     fullscreenToggle: document.getElementById("vn-fullscreen-toggle"),
     menuClose: document.getElementById("vn-menu-close"),
@@ -680,6 +682,7 @@ function bindVNEvents(refs, state) {
   refs.autoToggle?.addEventListener("click", () =>
     setAutoState(refs, state, !state.autoAdvance)
   );
+  refs.bgmToggle?.addEventListener("click", () => toggleBGM(refs, state));
   refs.fullscreenToggle?.addEventListener("click", () => toggleFullscreen(refs));
   refs.menuButton?.addEventListener("click", () => openVNMenu(refs, state));
   refs.menuClose?.addEventListener("click", () => closeVNMenu(refs, state));
@@ -770,6 +773,12 @@ function bindVNEvents(refs, state) {
       return;
     }
 
+    if (event.key.toLowerCase() === "b") {
+      event.preventDefault();
+      toggleBGM(refs, state);
+      return;
+    }
+
     if (event.key.toLowerCase() === "f") {
       event.preventDefault();
       toggleFullscreen(refs);
@@ -794,6 +803,7 @@ function renderVNEmpty(refs, message) {
   refs.nextButton.disabled = true;
   refs.menuButton.disabled = true;
   refs.autoToggle.disabled = true;
+  refs.bgmToggle.disabled = true;
   refs.skipToggle.disabled = true;
 }
 
@@ -819,7 +829,7 @@ function openChapter(refs, state, chapterIndex, beatIndex = 0) {
       updateChapterScene(refs, chapter);
       updateChapterMenuSelection(refs, state);
       updateChapterUrl(chapter.id);
-      syncBGMToChapter(state);
+      syncBGMToChapter(refs, state);
       renderCurrentBeat(refs, state);
       refs.stage.classList.remove("is-transitioning");
     }, 280);
@@ -827,7 +837,7 @@ function openChapter(refs, state, chapterIndex, beatIndex = 0) {
     updateChapterScene(refs, chapter);
     updateChapterMenuSelection(refs, state);
     updateChapterUrl(chapter.id);
-    syncBGMToChapter(state);
+    syncBGMToChapter(refs, state);
     renderCurrentBeat(refs, state);
   }
 }
@@ -1227,12 +1237,12 @@ function updateVNActionLabels(refs, state, isArchiveEnd = false) {
 function updateHint(refs, state) {
   if (state.autoAdvance) {
     refs.hint.innerHTML =
-      'Auto mode is active. Press <kbd>A</kbd> to pause, <kbd>S</kbd> to skip typing, or click to take over manually.';
+      'Auto mode is active. Press <kbd>A</kbd> to pause, <kbd>B</kbd> for music, <kbd>S</kbd> to skip typing, or click to take over manually.';
     return;
   }
 
   refs.hint.innerHTML =
-    'Click or press <kbd>Space</kbd> to advance. <kbd>A</kbd> auto · <kbd>L</kbd> log · <kbd>F</kbd> fullscreen.';
+    'Click or press <kbd>Space</kbd> to advance. <kbd>A</kbd> auto · <kbd>B</kbd> bgm · <kbd>L</kbd> log · <kbd>F</kbd> fullscreen.';
 }
 
 function renderCurrentText(refs, state, text) {
@@ -1308,26 +1318,24 @@ function setAutoState(refs, state, value) {
   }
 }
 
-// BGM button removed from toolbar. Audio engine kept for future use.
-// Call toggleBGM(refs, state) programmatically if needed.
 async function toggleBGM(refs, state) {
   const nextValue = !state.bgmEnabled;
   state.bgmEnabled = nextValue;
+  updateBGMButtonState(refs, state);
 
   if (!nextValue) {
-    fadeOutBGM(state);
+    fadeOutBGM(state, { pauseOnComplete: true });
     return;
   }
 
   const engine = await ensureBGMAudio(state);
   if (!engine) {
     state.bgmEnabled = false;
+    updateBGMButtonState(refs, state);
     return;
   }
 
-  await engine.context.resume();
-  syncBGMToChapter(state);
-  fadeInBGM(state);
+  await syncBGMToChapter(refs, state);
 }
 
 async function ensureBGMAudio(state) {
@@ -1335,119 +1343,127 @@ async function ensureBGMAudio(state) {
     return state.bgmEngine;
   }
 
-  const AudioContextCtor = window.AudioContext || window.webkitAudioContext;
-  if (!AudioContextCtor) {
-    return null;
-  }
-
-  const context = new AudioContextCtor();
-  const masterGain = context.createGain();
-  masterGain.gain.value = 0.0001;
-
-  const filter = context.createBiquadFilter();
-  filter.type = "lowpass";
-  filter.frequency.value = 760;
-  filter.Q.value = 0.55;
-
-  const compressor = context.createDynamicsCompressor();
-  compressor.threshold.value = -30;
-  compressor.knee.value = 16;
-  compressor.ratio.value = 4;
-  compressor.attack.value = 0.02;
-  compressor.release.value = 0.28;
-
-  masterGain.connect(filter);
-  filter.connect(compressor);
-  compressor.connect(context.destination);
-
-  const lfo = context.createOscillator();
-  lfo.type = "sine";
-  lfo.frequency.value = 0.065;
-
-  const lfoGain = context.createGain();
-  lfoGain.gain.value = 85;
-  lfo.connect(lfoGain);
-  lfoGain.connect(filter.frequency);
-  lfo.start();
-
-  const voiceSpecs = [
-    { type: "triangle", gain: 0.03 },
-    { type: "sine", gain: 0.018 },
-    { type: "sine", gain: 0.013 },
-  ];
-
-  const voices = voiceSpecs.map((spec) => {
-    const oscillator = context.createOscillator();
-    oscillator.type = spec.type;
-    oscillator.frequency.value = 110;
-
-    const gain = context.createGain();
-    gain.gain.value = spec.gain;
-
-    oscillator.connect(gain);
-    gain.connect(masterGain);
-    oscillator.start();
-
-    return { oscillator, gain };
-  });
+  const audio = new Audio();
+  audio.loop = true;
+  audio.preload = "auto";
+  audio.volume = 0.0001;
 
   state.bgmEngine = {
-    context,
-    masterGain,
-    filter,
-    voices,
+    audio,
+    currentTrack: "",
+    fadeFrame: null,
   };
 
   return state.bgmEngine;
 }
 
-function syncBGMToChapter(state) {
-  if (!state.bgmEnabled || !state.bgmEngine || !state.chapters.length) {
+function resolveChapterBGM(chapter) {
+  return getChapterSceneConfig(chapter).bgmTrack || "";
+}
+
+function updateBGMButtonState(refs, state) {
+  if (!refs.bgmToggle) {
     return;
   }
 
   const chapter = state.chapters[state.chapterIndex];
-  const engine = state.bgmEngine;
-  const rootSequence = [110, 123.47, 130.81, 146.83, 164.81, 174.61, 196, 220];
-  const chordSetSequence = [
-    [1, 6 / 5, 3 / 2],
-    [1, 5 / 4, 3 / 2],
-    [1, 4 / 3, 5 / 3],
-    [1, 6 / 5, 8 / 5],
-  ];
-  const root = rootSequence[chapter.index % rootSequence.length];
-  const chord = chordSetSequence[chapter.index % chordSetSequence.length];
-  const now = engine.context.currentTime;
+  const hasTrack = Boolean(chapter && resolveChapterBGM(chapter));
 
-  engine.voices.forEach((voice, index) => {
-    voice.oscillator.frequency.cancelScheduledValues(now);
-    voice.oscillator.frequency.linearRampToValueAtTime(root * chord[index], now + 2.2);
-  });
+  refs.bgmToggle.disabled = !state.chapters.length;
+  refs.bgmToggle.setAttribute("aria-pressed", String(state.bgmEnabled));
+  refs.bgmToggle.classList.toggle("is-active", state.bgmEnabled);
+  refs.bgmToggle.textContent = !state.bgmEnabled ? "BGM" : hasTrack ? "BGM On" : "BGM Ready";
+  refs.bgmToggle.title = hasTrack
+    ? "Toggle chapter background music"
+    : "No track is assigned to this chapter yet. Leaving BGM on will resume playback when a chapter track exists.";
+}
 
-  engine.filter.frequency.cancelScheduledValues(now);
-  engine.filter.frequency.linearRampToValueAtTime(620 + chapter.index * 28, now + 2.2);
+async function syncBGMToChapter(refs, state) {
+  updateBGMButtonState(refs, state);
+
+  if (!state.bgmEnabled || !state.chapters.length) {
+    return;
+  }
+
+  const chapter = state.chapters[state.chapterIndex];
+  const track = resolveChapterBGM(chapter);
+  const engine = await ensureBGMAudio(state);
+  if (!engine) {
+    return;
+  }
+
+  const { audio } = engine;
+  if (!track) {
+    fadeOutBGM(state, { pauseOnComplete: true });
+    return;
+  }
+
+  const trackUrl = new URL(track, window.location.href).href;
+  if (engine.currentTrack !== trackUrl) {
+    clearBGMFade(state);
+    audio.pause();
+    audio.src = track;
+    audio.currentTime = 0;
+    audio.volume = 0.0001;
+    engine.currentTrack = trackUrl;
+  }
+
+  try {
+    await audio.play();
+    fadeInBGM(state);
+  } catch (error) {
+    console.warn("Unable to start VN chapter music", error);
+  }
+}
+
+function clearBGMFade(state) {
+  if (!state.bgmEngine) {
+    return;
+  }
+
+  if (state.bgmEngine.fadeFrame) {
+    window.cancelAnimationFrame(state.bgmEngine.fadeFrame);
+    state.bgmEngine.fadeFrame = null;
+  }
+}
+
+function fadeBGMVolume(state, targetVolume, duration, options = {}) {
+  if (!state.bgmEngine) {
+    return;
+  }
+
+  const { audio } = state.bgmEngine;
+  clearBGMFade(state);
+
+  const startVolume = Number.isFinite(audio.volume) ? audio.volume : 0.0001;
+  const startedAt = performance.now();
+
+  const tick = (timestamp) => {
+    const progress = Math.min(1, (timestamp - startedAt) / duration);
+    audio.volume = startVolume + (targetVolume - startVolume) * progress;
+
+    if (progress >= 1) {
+      state.bgmEngine.fadeFrame = null;
+      audio.volume = targetVolume;
+
+      if (options.pauseOnComplete) {
+        audio.pause();
+      }
+      return;
+    }
+
+    state.bgmEngine.fadeFrame = window.requestAnimationFrame(tick);
+  };
+
+  state.bgmEngine.fadeFrame = window.requestAnimationFrame(tick);
 }
 
 function fadeInBGM(state) {
-  if (!state.bgmEngine) {
-    return;
-  }
-
-  const now = state.bgmEngine.context.currentTime;
-  state.bgmEngine.masterGain.gain.cancelScheduledValues(now);
-  state.bgmEngine.masterGain.gain.setValueAtTime(state.bgmEngine.masterGain.gain.value, now);
-  state.bgmEngine.masterGain.gain.linearRampToValueAtTime(0.055, now + 1.2);
+  fadeBGMVolume(state, 0.18, 1200);
 }
 
-function fadeOutBGM(state) {
-  if (!state.bgmEngine) {
-    return;
-  }
-
-  const now = state.bgmEngine.context.currentTime;
-  state.bgmEngine.masterGain.gain.cancelScheduledValues(now);
-  state.bgmEngine.masterGain.gain.setValueAtTime(state.bgmEngine.masterGain.gain.value, now);
-  state.bgmEngine.masterGain.gain.linearRampToValueAtTime(0.0001, now + 0.7);
+function fadeOutBGM(state, options = {}) {
+  fadeBGMVolume(state, 0.0001, 700, options);
 }
 
 async function toggleFullscreen(refs) {
