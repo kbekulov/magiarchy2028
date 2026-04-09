@@ -1016,8 +1016,8 @@ async function openChapter(refs, state, chapterIndex, beatIndex = 0) {
         return;
       }
 
-      await finalizeOpen();
       refs.stage.classList.remove("is-transitioning");
+      await finalizeOpen();
     }, 280);
   } else {
     await finalizeOpen();
