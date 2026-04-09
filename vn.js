@@ -163,6 +163,15 @@ function getVNRefs() {
   };
 }
 
+function getVNChapterPlateTitle(chapter) {
+  const rawTitle = String(chapter?.title || "").trim();
+  if (!rawTitle) {
+    return "Untitled";
+  }
+
+  return rawTitle.replace(/^Chapter\s+\d+\s*[-:]\s*/i, "").trim() || rawTitle;
+}
+
 function parseChapterMarkdown(markdown, chapterTitle) {
   const normalized = String(markdown || "")
     .replace(/\r\n/g, "\n")
@@ -805,8 +814,13 @@ function openChapter(refs, state, chapterIndex, beatIndex = 0) {
 }
 
 function updateChapterScene(refs, chapter) {
-  refs.order.textContent = `Chronology ${window.DivineChamber.orderLabel(chapter)}`;
-  refs.title.textContent = chapter.title;
+  const chapterNumber =
+    Number.isFinite(Number(chapter?.order)) && Number(chapter.order) !== 999
+      ? `Chapter ${Number(chapter.order)}`
+      : "Archive";
+
+  refs.order.textContent = chapterNumber;
+  refs.title.textContent = getVNChapterPlateTitle(chapter);
 
   const hue = 200 + (chapter.index * 19) % 60;
   refs.stage.style.setProperty("--vn-accent", `hsla(${hue}, 78%, 62%, 0.28)`);
@@ -1216,7 +1230,7 @@ function setSkipState(refs, state, value) {
   state.skipAnimations = Boolean(value);
   refs.skipToggle.setAttribute("aria-pressed", String(state.skipAnimations));
   refs.skipToggle.classList.toggle("is-active", state.skipAnimations);
-  refs.skipToggle.textContent = state.skipAnimations ? "Skip On" : "Skip Type";
+  refs.skipToggle.textContent = "Skip";
 
   if (state.isAnimating && state.skipAnimations) {
     clearVNAnimation(state);
@@ -1230,7 +1244,7 @@ function setAutoState(refs, state, value) {
   state.autoAdvance = Boolean(value);
   refs.autoToggle.setAttribute("aria-pressed", String(state.autoAdvance));
   refs.autoToggle.classList.toggle("is-active", state.autoAdvance);
-  refs.autoToggle.textContent = state.autoAdvance ? "Auto On" : "Auto";
+  refs.autoToggle.textContent = "Auto";
   updateHint(refs, state);
 
   if (!state.autoAdvance) {
@@ -1406,7 +1420,7 @@ function setFullscreenButtonState(refs) {
   const isFullscreen = document.fullscreenElement === refs.shell;
   refs.fullscreenToggle.setAttribute("aria-pressed", String(isFullscreen));
   refs.fullscreenToggle.classList.toggle("is-active", isFullscreen);
-  refs.fullscreenToggle.textContent = isFullscreen ? "Exit Fullscreen" : "Fullscreen";
+  refs.fullscreenToggle.textContent = isFullscreen ? "Window" : "Screen";
 }
 
 function renderChapterMenu(refs, state) {

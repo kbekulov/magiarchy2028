@@ -30,33 +30,15 @@
           <div class="content-wrap">
             <section class="page-section">
               <div class="detail-panel vn-shell" id="vn-shell">
-                <div class="vn-topbar">
-                  <div class="vn-statusline" aria-live="polite">
-                    <span class="vn-statusline__order" id="vn-order">Chronology</span>
-                    <span class="vn-statusline__divider" aria-hidden="true"></span>
-                    <span class="vn-statusline__title" id="vn-chapter-title">Loading chapters…</span>
-                  </div>
-
-                  <div class="vn-toolbar">
-                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-menu-button">
-                      Chapters
-                    </button>
-                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-log-button">
-                      Log
-                    </button>
-                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-auto-toggle" aria-pressed="false">
-                      Auto
-                    </button>
-                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-skip-toggle" aria-pressed="false">
-                      Skip Typing
-                    </button>
-                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-fullscreen-toggle" aria-pressed="false">
-                      Fullscreen
-                    </button>
-                  </div>
-                </div>
-
                 <div class="vn-stage" id="vn-stage">
+                  <div class="vn-stage-header" aria-live="polite">
+                    <div class="vn-stage-titleplate">
+                      <span class="vn-stage-titleplate__order" id="vn-order">Chapter</span>
+                      <span class="vn-stage-titleplate__separator" aria-hidden="true">:</span>
+                      <span class="vn-stage-titleplate__title" id="vn-chapter-title">Loading chapters…</span>
+                    </div>
+                  </div>
+
                   <div class="vn-stage__background">
                     <div class="vn-sprite vn-sprite--left" id="vn-sprite-left">
                       <img class="vn-sprite__art" alt="" hidden />
@@ -82,17 +64,22 @@
                   </div>
 
                   <div class="vn-controlbar">
-                    <div class="vn-controlbar__hint" id="vn-hint">
-                      Click the stage or press <kbd>Space</kbd> to advance.
-                    </div>
                     <div class="vn-controlbar__actions">
-                      <span class="vn-progress visually-hidden" id="vn-progress" aria-live="polite">0 / 0</span>
-                      <button class="btn btn-outline-light btn-sm" type="button" id="vn-back-button">
-                        Back
-                      </button>
-                      <button class="btn btn-outline-light btn-sm" type="button" id="vn-next-button">
-                        Advance
-                      </button>
+                      <div class="vn-controlbar__commands">
+                        <button class="vn-command" type="button" id="vn-back-button">Back</button>
+                        <button class="vn-command" type="button" id="vn-log-button">Log</button>
+                        <button class="vn-command" type="button" id="vn-auto-toggle" aria-pressed="false">Auto</button>
+                        <button class="vn-command" type="button" id="vn-skip-toggle" aria-pressed="false">Skip</button>
+                        <button class="vn-command" type="button" id="vn-menu-button">Chapters</button>
+                        <button class="vn-command" type="button" id="vn-fullscreen-toggle" aria-pressed="false">Screen</button>
+                        <button class="vn-command vn-command--advance" type="button" id="vn-next-button">Advance</button>
+                      </div>
+                      <div class="vn-controlbar__status">
+                        <span class="vn-progress" id="vn-progress" aria-live="polite">0 / 0</span>
+                        <div class="vn-controlbar__hint" id="vn-hint">
+                          Click the stage or press <kbd>Space</kbd> to advance.
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
