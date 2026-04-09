@@ -94,15 +94,11 @@ function getVNRefs() {
     stage: document.getElementById("vn-stage"),
     spriteLeft: document.getElementById("vn-sprite-left"),
     spriteRight: document.getElementById("vn-sprite-right"),
-    narrationBox: document.getElementById("vn-narration-box"),
-    narrationMode: document.getElementById("vn-mode-narration"),
-    narrationProgress: document.getElementById("vn-progress-narration"),
-    narrationText: document.getElementById("vn-narration-text"),
-    dialogueBox: document.getElementById("vn-dialogue-box"),
-    dialogueMode: document.getElementById("vn-mode-dialogue"),
-    dialogueProgress: document.getElementById("vn-progress-dialogue"),
-    dialogueText: document.getElementById("vn-dialogue-text"),
-    speaker: document.getElementById("vn-speaker"),
+    textbox: document.getElementById("vn-textbox"),
+    textboxText: document.getElementById("vn-textbox-text"),
+    nameplate: document.getElementById("vn-nameplate"),
+    cursor: document.getElementById("vn-cursor"),
+    progress: document.getElementById("vn-progress"),
     hint: document.getElementById("vn-hint"),
     menuButton: document.getElementById("vn-menu-button"),
     logButton: document.getElementById("vn-log-button"),
@@ -518,13 +514,11 @@ function bindVNEvents(refs, state) {
 function renderVNEmpty(refs, message) {
   refs.title.textContent = "VN Simulator unavailable";
   refs.order.textContent = "Archive";
-  refs.narrationBox.hidden = false;
-  refs.dialogueBox.hidden = true;
-  refs.narrationMode.textContent = "Archive Note";
-  refs.narrationMode.dataset.mode = "system";
-  refs.narrationProgress.textContent = "0 / 0";
-  refs.narrationText.dataset.mode = "system";
-  renderNarrationText(refs.narrationText, message);
+  refs.textbox.hidden = false;
+  refs.textboxText.dataset.mode = "system";
+  refs.textboxText.textContent = message;
+  refs.nameplate.hidden = true;
+  refs.cursor.hidden = true;
   updateActiveSpriteSpeaker(refs, "");
   refs.hint.innerHTML = "The VN simulator could not load chapter text.";
   refs.backButton.disabled = true;
@@ -618,9 +612,7 @@ function setSpriteSlot(node, sprite) {
   }
 
   const normalizedSprite = sprite || {};
-  const labelNode = node.querySelector(".vn-sprite-slot__label");
-  const nameNode = node.querySelector(".vn-sprite-slot__name");
-  const artNode = node.querySelector(".vn-sprite-slot__art");
+  const artNode = node.querySelector(".vn-sprite__art");
   const hasArt = Boolean(normalizedSprite.src);
 
   node.classList.toggle("has-art", hasArt);
@@ -630,12 +622,6 @@ function setSpriteSlot(node, sprite) {
     .filter(Boolean)
     .join("|");
 
-  if (labelNode) {
-    labelNode.textContent = normalizedSprite.role || "Placeholder";
-  }
-  if (nameNode) {
-    nameNode.textContent = normalizedSprite.name || "Waiting";
-  }
   if (artNode) {
     if (hasArt) {
       artNode.hidden = false;
@@ -697,36 +683,25 @@ function renderCurrentBeat(refs, state) {
     state.log.length = 60;
   }
 
-  if (beat.mode === "dialogue") {
-    refs.narrationBox.hidden = true;
-    refs.dialogueBox.hidden = false;
-    refs.dialogueMode.textContent = beat.label || vnModeLabel(beat.mode);
-    refs.dialogueMode.dataset.mode = beat.mode;
-    refs.dialogueProgress.textContent = progressLabel;
-    refs.dialogueText.dataset.mode = beat.mode;
-    refs.dialogueText.textContent = "";
+  // Unified textbox
+  refs.textbox.hidden = false;
+  refs.textboxText.dataset.mode = beat.mode;
+  refs.textboxText.textContent = "";
+  refs.cursor.hidden = true;
 
-    if (displaySpeaker) {
-      refs.speaker.hidden = false;
-      refs.speaker.textContent = displaySpeaker;
-    } else {
-      refs.speaker.hidden = true;
-      refs.speaker.textContent = "";
-    }
-
-    state.currentTarget = refs.dialogueText;
+  if (beat.mode === "dialogue" && displaySpeaker) {
+    refs.nameplate.hidden = false;
+    refs.nameplate.textContent = displaySpeaker;
   } else {
-    refs.dialogueBox.hidden = true;
-    refs.narrationBox.hidden = false;
-    refs.narrationMode.textContent = beat.label || vnModeLabel(beat.mode);
-    refs.narrationMode.dataset.mode = beat.mode;
-    refs.narrationProgress.textContent = progressLabel;
-    refs.narrationText.dataset.mode = beat.mode;
-    renderNarrationText(refs.narrationText, "");
-    refs.speaker.hidden = true;
-    refs.speaker.textContent = "";
-    state.currentTarget = refs.narrationText;
+    refs.nameplate.hidden = true;
+    refs.nameplate.textContent = "";
   }
+
+  if (refs.progress) {
+    refs.progress.textContent = progressLabel;
+  }
+
+  state.currentTarget = refs.textboxText;
 
   updateActiveSpriteSpeaker(refs, resolvedSpeaker);
   updateHint(refs, state);
@@ -740,12 +715,14 @@ function playVNBeatText(refs, state, text) {
   if (state.skipAnimations) {
     renderCurrentText(refs, state, text);
     state.isAnimating = false;
+    if (refs.cursor) refs.cursor.hidden = false;
     updateVNActionLabels(refs, state);
     queueAutoAdvance(refs, state);
     return;
   }
 
   state.isAnimating = true;
+  if (refs.cursor) refs.cursor.hidden = true;
   updateVNActionLabels(refs, state);
   let index = 0;
 
@@ -756,6 +733,7 @@ function playVNBeatText(refs, state, text) {
     if (index >= text.length) {
       state.isAnimating = false;
       state.animationTimer = null;
+      if (refs.cursor) refs.cursor.hidden = false;
       updateVNActionLabels(refs, state);
       queueAutoAdvance(refs, state);
       return;
@@ -823,6 +801,7 @@ function advanceVN(refs, state, options = {}) {
   if (state.isAnimating) {
     clearVNAnimation(state);
     renderCurrentText(refs, state, state.currentText);
+    if (refs.cursor) refs.cursor.hidden = false;
     updateVNActionLabels(refs, state);
     if (state.autoAdvance && !options.automated) {
       queueAutoAdvance(refs, state);
@@ -842,19 +821,16 @@ function advanceVN(refs, state, options = {}) {
     return;
   }
 
-  refs.dialogueBox.hidden = true;
-  refs.narrationBox.hidden = false;
   state.archiveEnded = true;
-  refs.narrationMode.textContent = "Archive End";
-  refs.narrationMode.dataset.mode = "system";
-  refs.narrationProgress.textContent = `${chapter.beats.length} / ${chapter.beats.length}`;
-  refs.narrationText.dataset.mode = "system";
-  renderNarrationText(
-    refs.narrationText,
-    "End of the currently loaded chapter archive. Add more chapter text and the simulator will continue from here."
-  );
-  refs.speaker.hidden = true;
-  refs.speaker.textContent = "";
+  refs.textbox.hidden = false;
+  refs.textboxText.dataset.mode = "system";
+  refs.textboxText.textContent =
+    "End of the currently loaded chapter archive. Add more chapter text and the simulator will continue from here.";
+  refs.nameplate.hidden = true;
+  refs.cursor.hidden = true;
+  if (refs.progress) {
+    refs.progress.textContent = `${chapter.beats.length} / ${chapter.beats.length}`;
+  }
   updateActiveSpriteSpeaker(refs, "");
   refs.hint.innerHTML =
     "Reached the end of the loaded archive. Use <kbd>Chapters</kbd> to jump elsewhere or add more text.";
@@ -939,12 +915,7 @@ function renderCurrentText(refs, state, text) {
     return;
   }
 
-  if (state.currentMode === "dialogue") {
-    state.currentTarget.textContent = text;
-    return;
-  }
-
-  renderNarrationText(state.currentTarget, text);
+  state.currentTarget.textContent = text;
 }
 
 function renderNarrationText(target, text) {
