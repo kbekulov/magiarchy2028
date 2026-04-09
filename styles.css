@@ -2536,9 +2536,9 @@ body[data-page="reader"] #reader-nav {
   padding: 0.98rem 1.4rem 1.15rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   background:
-    linear-gradient(180deg, rgba(8, 13, 22, 0.24), rgba(6, 10, 18, 0.29)),
+    linear-gradient(180deg, rgba(8, 13, 22, 0.1), rgba(6, 10, 18, 0.14)),
     radial-gradient(circle at top left, var(--vn-accent-soft), transparent 36%);
-  backdrop-filter: blur(22px);
+  backdrop-filter: blur(10px);
 }
 
 .vn-textbox__nameplate {
