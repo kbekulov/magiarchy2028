@@ -2536,7 +2536,7 @@ body[data-page="reader"] #reader-nav {
   padding: 0.98rem 1.4rem 1.15rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   background:
-    linear-gradient(180deg, rgba(8, 13, 22, 0.88), rgba(6, 10, 18, 0.96)),
+    linear-gradient(180deg, rgba(8, 13, 22, 0.48), rgba(6, 10, 18, 0.58)),
     radial-gradient(circle at top left, var(--vn-accent-soft), transparent 36%);
   backdrop-filter: blur(22px);
 }
@@ -2811,23 +2811,40 @@ body.vn-menu-open {
   width: 100%;
   height: 100%;
   max-width: none;
-  padding: var(--vn-shell-pad);
+  padding: 0;
   border-radius: 0;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  background: #000;
+  box-shadow: none;
+}
+
+.vn-shell:fullscreen::after {
+  display: none;
+}
+
+.vn-shell:fullscreen .vn-topbar {
+  position: relative;
+  z-index: 7;
+  flex: 0 0 auto;
+  padding: 0.9rem 1.35rem;
   background:
-    linear-gradient(180deg, rgba(8, 14, 24, 0.96), rgba(5, 10, 18, 0.99)),
-    radial-gradient(circle at top right, var(--vn-accent-soft), transparent 28%);
+    linear-gradient(180deg, rgba(4, 6, 10, 0.96), rgba(6, 9, 14, 0.92)),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.03), transparent 24%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .vn-shell:fullscreen .vn-stage {
-  margin: 1rem 0 0;
-  border: 1px solid var(--border);
-  border-radius: 1.45rem;
+  margin: 0;
+  border: none;
+  border-radius: 0;
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   min-height: 0;
+  box-shadow: none;
+  background: #000;
 }
 
 .vn-shell:fullscreen .vn-stage__background {
