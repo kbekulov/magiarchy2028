@@ -474,6 +474,33 @@ function resolveSceneSpeakerName(sceneSprites, value) {
   return matchedSprite?.name || String(value || "").trim();
 }
 
+function resolveSpeakerSideOverride(chapter, speakerName) {
+  const speakerKey = normalizeSpeakerKey(speakerName);
+  if (!speakerKey) {
+    return "";
+  }
+
+  const sideEntries = getChapterFieldEntries(chapter, "vn_speaker_side_overrides");
+  for (const entry of sideEntries) {
+    const [fromSpeaker, sideValue] = entry.split("=>").map((part) => part?.trim() || "");
+    if (!fromSpeaker || !sideValue) {
+      continue;
+    }
+
+    const candidateKeys = buildSpeakerKeys(fromSpeaker);
+    const normalizedSide = sideValue.toLowerCase();
+    if (!candidateKeys.includes(speakerKey)) {
+      continue;
+    }
+
+    if (normalizedSide === "left" || normalizedSide === "right") {
+      return normalizedSide;
+    }
+  }
+
+  return "";
+}
+
 function normalizeDialogueKey(value) {
   return String(value || "")
     .replace(/\r\n/g, "\n")
@@ -885,10 +912,15 @@ function normalizeSpeakerKey(value) {
     .trim();
 }
 
-function resolveSpeakerSide(refs, speakerName) {
+function resolveSpeakerSide(chapter, refs, speakerName) {
   const speakerKey = normalizeSpeakerKey(speakerName);
   if (!speakerKey) {
     return "";
+  }
+
+  const overrideSide = resolveSpeakerSideOverride(chapter, speakerName);
+  if (overrideSide) {
+    return overrideSide;
   }
 
   const leftKeys = (refs.spriteLeft?.dataset.spriteKeys || "").split("|").filter(Boolean);
@@ -946,7 +978,7 @@ function renderCurrentBeat(refs, state) {
 
   // For unattributed dialogue (e.g. The Interview's anonymous voices), show a generic "Voice" label
   const displaySpeaker = resolvedSpeaker || (beat.mode === "dialogue" ? "Voice" : "");
-  const speakerSide = resolveSpeakerSide(refs, displaySpeaker);
+  const speakerSide = resolveSpeakerSide(chapter, refs, displaySpeaker);
 
   // Push to log (keep last 60 entries)
   state.log.unshift({ mode: beat.mode, speaker: displaySpeaker, text: displayText });
