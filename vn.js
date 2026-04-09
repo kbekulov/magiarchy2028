@@ -1,5 +1,4 @@
 const vnShell = document.getElementById("vn-shell");
-const VN_BGM_PREFERENCE_KEY = "magiarchy.vn.bgmEnabled";
 const VN_MAIN_MENU_BGM_TRACK = "media/vn_simulator/main_menu/main_menu_track_1.mp3";
 const VN_CHAPTER_INTRO_VISIBLE_MS = 1700;
 const VN_CHAPTER_INTRO_FADE_MS = 560;
@@ -71,24 +70,11 @@ if (vnShell) {
 }
 
 function readStoredBGMPreference() {
-  try {
-    const value = window.localStorage.getItem(VN_BGM_PREFERENCE_KEY);
-    if (value === null) {
-      return true;
-    }
-
-    return value !== "false";
-  } catch {
-    return true;
-  }
+  return true;
 }
 
 function persistBGMPreference(value) {
-  try {
-    window.localStorage.setItem(VN_BGM_PREFERENCE_KEY, value ? "true" : "false");
-  } catch {
-    // Ignore storage failures and keep the runtime preference only.
-  }
+  void value;
 }
 
 async function initializeVNSimulator() {
