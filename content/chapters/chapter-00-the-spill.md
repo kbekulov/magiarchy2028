@@ -11,9 +11,10 @@ case:
 characters:
 tags: magi | secrecy | church | politics | doctrine
 summary: A sharp interview dialogue defines Magi as human loopholes in natural law, establishing secrecy, Church ambivalence, and the forbidden cost of politics before the wider story opens.
-draft_version: 1.2
+draft_version: 1.3
 template: literary
 featured: true
+vn_backdrop: img/vn_simulator/chapter_0/bg_room_1.png
 ---
 
 # The Interview
