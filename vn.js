@@ -736,7 +736,11 @@ function bindVNEvents(refs, state) {
 
   document.addEventListener(
     "pointerdown",
-    () => {
+    (event) => {
+      if (event.target instanceof Element && event.target.closest("#vn-bgm-toggle")) {
+        return;
+      }
+
       resumeBGMIfEnabled();
     },
     { passive: true }
@@ -1363,6 +1367,15 @@ function setAutoState(refs, state, value) {
 }
 
 async function toggleBGM(refs, state) {
+  const chapter = state.chapters[state.chapterIndex];
+  const hasTrack = Boolean(chapter && resolveChapterBGM(chapter));
+  const audio = state.bgmEngine?.audio || null;
+
+  if (state.bgmEnabled && hasTrack && (!audio || audio.paused)) {
+    await syncBGMToChapter(refs, state);
+    return;
+  }
+
   const nextValue = !state.bgmEnabled;
   state.bgmEnabled = nextValue;
   persistBGMPreference(nextValue);
