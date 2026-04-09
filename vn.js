@@ -35,12 +35,14 @@ async function initializeVNSimulator() {
     autoAdvance: false,
     bgmEnabled: false,
     menuOpen: false,
+    logOpen: false,
     currentText: "",
     currentMode: "narration",
     currentTarget: null,
     animationTimer: null,
     autoTimer: null,
     bgmEngine: null,
+    log: [],
   };
 
   bindVNEvents(refs, state);
@@ -73,7 +75,6 @@ async function initializeVNSimulator() {
     renderChapterMenu(refs, state);
     setSkipState(refs, state, false);
     setAutoState(refs, state, false);
-    setBGMButtonState(refs, state);
     setFullscreenButtonState(refs);
     openChapter(refs, state, initialIndex, 0);
   } catch (error) {
@@ -93,25 +94,25 @@ function getVNRefs() {
     stage: document.getElementById("vn-stage"),
     spriteLeft: document.getElementById("vn-sprite-left"),
     spriteRight: document.getElementById("vn-sprite-right"),
-    narrationBox: document.getElementById("vn-narration-box"),
-    narrationMode: document.getElementById("vn-mode-narration"),
-    narrationProgress: document.getElementById("vn-progress-narration"),
-    narrationText: document.getElementById("vn-narration-text"),
-    dialogueBox: document.getElementById("vn-dialogue-box"),
-    dialogueMode: document.getElementById("vn-mode-dialogue"),
-    dialogueProgress: document.getElementById("vn-progress-dialogue"),
-    dialogueText: document.getElementById("vn-dialogue-text"),
-    speaker: document.getElementById("vn-speaker"),
+    textbox: document.getElementById("vn-textbox"),
+    textboxText: document.getElementById("vn-textbox-text"),
+    nameplate: document.getElementById("vn-nameplate"),
+    cursor: document.getElementById("vn-cursor"),
+    progress: document.getElementById("vn-progress"),
     hint: document.getElementById("vn-hint"),
     menuButton: document.getElementById("vn-menu-button"),
+    logButton: document.getElementById("vn-log-button"),
     autoToggle: document.getElementById("vn-auto-toggle"),
     skipToggle: document.getElementById("vn-skip-toggle"),
-    bgmToggle: document.getElementById("vn-bgm-toggle"),
     fullscreenToggle: document.getElementById("vn-fullscreen-toggle"),
     menuClose: document.getElementById("vn-menu-close"),
     menuPanel: document.getElementById("vn-menu-panel"),
     menuBackdrop: document.getElementById("vn-menu-backdrop"),
     chapterList: document.getElementById("vn-chapter-list"),
+    logClose: document.getElementById("vn-log-close"),
+    logPanel: document.getElementById("vn-log-panel"),
+    logBackdrop: document.getElementById("vn-log-backdrop"),
+    logList: document.getElementById("vn-log-list"),
     nextButton: document.getElementById("vn-next-button"),
     backButton: document.getElementById("vn-back-button"),
   };
@@ -197,6 +198,20 @@ function parseChapterMarkdown(markdown, chapterTitle) {
     }
 
     const mode = inferVNBeatMode(text);
+
+    // Split narration paragraphs into individual sentence beats for better VN pacing
+    if (mode === "narration") {
+      const sentences = splitIntoSentenceBeats(text);
+      sentences.forEach((sentence) => {
+        beats.push({
+          mode: "narration",
+          label: "Narration",
+          text: sentence,
+        });
+      });
+      return;
+    }
+
     beats.push({
       mode,
       label: vnModeLabel(mode),
@@ -229,6 +244,14 @@ function inferVNBeatMode(text) {
   }
 
   return "narration";
+}
+
+function splitIntoSentenceBeats(text) {
+  // Split at sentence boundaries: punctuation followed by whitespace + capital letter (or closing quote + capital)
+  // Keeps fragments and short declaratives as individual beats
+  const parts = text.split(/(?<=[.!?]['""\u2019\u201d]?)\s+(?=[A-Z\u201c"'])/);
+  const cleaned = parts.map((s) => s.trim()).filter(Boolean);
+  return cleaned.length > 1 ? cleaned : [text];
 }
 
 function vnModeLabel(mode) {
@@ -391,11 +414,13 @@ function bindVNEvents(refs, state) {
   refs.autoToggle?.addEventListener("click", () =>
     setAutoState(refs, state, !state.autoAdvance)
   );
-  refs.bgmToggle?.addEventListener("click", () => toggleBGM(refs, state));
   refs.fullscreenToggle?.addEventListener("click", () => toggleFullscreen(refs));
   refs.menuButton?.addEventListener("click", () => openVNMenu(refs, state));
   refs.menuClose?.addEventListener("click", () => closeVNMenu(refs, state));
   refs.menuBackdrop?.addEventListener("click", () => closeVNMenu(refs, state));
+  refs.logButton?.addEventListener("click", () => openVNLog(refs, state));
+  refs.logClose?.addEventListener("click", () => closeVNLog(refs, state));
+  refs.logBackdrop?.addEventListener("click", () => closeVNLog(refs, state));
 
   refs.stage?.addEventListener("click", (event) => {
     if (event.target.closest("button")) {
@@ -412,11 +437,6 @@ function bindVNEvents(refs, state) {
 
   document.addEventListener("fullscreenchange", () => {
     setFullscreenButtonState(refs);
-    fitNarrationText(refs, state);
-  });
-
-  window.addEventListener("resize", () => {
-    fitNarrationText(refs, state);
   });
 
   document.addEventListener("keydown", (event) => {
@@ -424,6 +444,14 @@ function bindVNEvents(refs, state) {
       if (event.key === "Escape") {
         event.preventDefault();
         closeVNMenu(refs, state);
+      }
+      return;
+    }
+
+    if (state.logOpen) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeVNLog(refs, state);
       }
       return;
     }
@@ -458,6 +486,12 @@ function bindVNEvents(refs, state) {
       return;
     }
 
+    if (event.key.toLowerCase() === "l") {
+      event.preventDefault();
+      openVNLog(refs, state);
+      return;
+    }
+
     if (event.key.toLowerCase() === "s") {
       event.preventDefault();
       setSkipState(refs, state, !state.skipAnimations);
@@ -467,12 +501,6 @@ function bindVNEvents(refs, state) {
     if (event.key.toLowerCase() === "a") {
       event.preventDefault();
       setAutoState(refs, state, !state.autoAdvance);
-      return;
-    }
-
-    if (event.key.toLowerCase() === "b") {
-      event.preventDefault();
-      toggleBGM(refs, state);
       return;
     }
 
@@ -486,14 +514,11 @@ function bindVNEvents(refs, state) {
 function renderVNEmpty(refs, message) {
   refs.title.textContent = "VN Simulator unavailable";
   refs.order.textContent = "Archive";
-  refs.narrationBox.hidden = false;
-  refs.dialogueBox.hidden = true;
-  refs.narrationMode.textContent = "Archive Note";
-  refs.narrationMode.dataset.mode = "system";
-  refs.narrationProgress.textContent = "0 / 0";
-  refs.narrationText.dataset.mode = "system";
-  renderNarrationText(refs.narrationText, message);
-  fitNarrationText(refs, {});
+  refs.textbox.hidden = false;
+  refs.textboxText.dataset.mode = "system";
+  refs.textboxText.textContent = message;
+  refs.nameplate.hidden = true;
+  refs.cursor.hidden = true;
   updateActiveSpriteSpeaker(refs, "");
   refs.hint.innerHTML = "The VN simulator could not load chapter text.";
   refs.backButton.disabled = true;
@@ -501,7 +526,6 @@ function renderVNEmpty(refs, message) {
   refs.menuButton.disabled = true;
   refs.autoToggle.disabled = true;
   refs.skipToggle.disabled = true;
-  refs.bgmToggle.disabled = true;
 }
 
 function openChapter(refs, state, chapterIndex, beatIndex = 0) {
@@ -513,15 +537,30 @@ function openChapter(refs, state, chapterIndex, beatIndex = 0) {
 
   clearVNAnimation(state);
   clearAutoAdvance(state);
+
+  const isChapterChange = boundedChapterIndex !== state.chapterIndex;
+
   state.archiveEnded = false;
   state.chapterIndex = boundedChapterIndex;
   state.beatIndex = Math.max(0, Math.min(chapter.beats.length - 1, beatIndex));
 
-  updateChapterScene(refs, chapter);
-  updateChapterMenuSelection(refs, state);
-  updateChapterUrl(chapter.id);
-  syncBGMToChapter(state);
-  renderCurrentBeat(refs, state);
+  if (isChapterChange && refs.stage) {
+    refs.stage.classList.add("is-transitioning");
+    window.setTimeout(() => {
+      updateChapterScene(refs, chapter);
+      updateChapterMenuSelection(refs, state);
+      updateChapterUrl(chapter.id);
+      syncBGMToChapter(state);
+      renderCurrentBeat(refs, state);
+      refs.stage.classList.remove("is-transitioning");
+    }, 280);
+  } else {
+    updateChapterScene(refs, chapter);
+    updateChapterMenuSelection(refs, state);
+    updateChapterUrl(chapter.id);
+    syncBGMToChapter(state);
+    renderCurrentBeat(refs, state);
+  }
 }
 
 function updateChapterScene(refs, chapter) {
@@ -573,9 +612,7 @@ function setSpriteSlot(node, sprite) {
   }
 
   const normalizedSprite = sprite || {};
-  const labelNode = node.querySelector(".vn-sprite-slot__label");
-  const nameNode = node.querySelector(".vn-sprite-slot__name");
-  const artNode = node.querySelector(".vn-sprite-slot__art");
+  const artNode = node.querySelector(".vn-sprite__art");
   const hasArt = Boolean(normalizedSprite.src);
 
   node.classList.toggle("has-art", hasArt);
@@ -585,12 +622,6 @@ function setSpriteSlot(node, sprite) {
     .filter(Boolean)
     .join("|");
 
-  if (labelNode) {
-    labelNode.textContent = normalizedSprite.role || "Placeholder";
-  }
-  if (nameNode) {
-    nameNode.textContent = normalizedSprite.name || "Waiting";
-  }
   if (artNode) {
     if (hasArt) {
       artNode.hidden = false;
@@ -643,36 +674,34 @@ function renderCurrentBeat(refs, state) {
   state.currentMode = beat.mode;
   state.currentText = displayText;
 
-  if (beat.mode === "dialogue") {
-    refs.narrationBox.hidden = true;
-    refs.dialogueBox.hidden = false;
-    refs.dialogueMode.textContent = beat.label || vnModeLabel(beat.mode);
-    refs.dialogueMode.dataset.mode = beat.mode;
-    refs.dialogueProgress.textContent = progressLabel;
-    refs.dialogueText.dataset.mode = beat.mode;
-    refs.dialogueText.textContent = "";
+  // For unattributed dialogue (e.g. Prequel's anonymous voices), show a generic "Voice" label
+  const displaySpeaker = resolvedSpeaker || (beat.mode === "dialogue" ? "Voice" : "");
 
-    if (resolvedSpeaker) {
-      refs.speaker.hidden = false;
-      refs.speaker.textContent = resolvedSpeaker;
-    } else {
-      refs.speaker.hidden = true;
-      refs.speaker.textContent = "";
-    }
-
-    state.currentTarget = refs.dialogueText;
-  } else {
-    refs.dialogueBox.hidden = true;
-    refs.narrationBox.hidden = false;
-    refs.narrationMode.textContent = beat.label || vnModeLabel(beat.mode);
-    refs.narrationMode.dataset.mode = beat.mode;
-    refs.narrationProgress.textContent = progressLabel;
-    refs.narrationText.dataset.mode = beat.mode;
-    renderNarrationText(refs.narrationText, "");
-    refs.speaker.hidden = true;
-    refs.speaker.textContent = "";
-    state.currentTarget = refs.narrationText;
+  // Push to log (keep last 60 entries)
+  state.log.unshift({ mode: beat.mode, speaker: displaySpeaker, text: displayText });
+  if (state.log.length > 60) {
+    state.log.length = 60;
   }
+
+  // Unified textbox
+  refs.textbox.hidden = false;
+  refs.textboxText.dataset.mode = beat.mode;
+  refs.textboxText.textContent = "";
+  refs.cursor.hidden = true;
+
+  if (beat.mode === "dialogue" && displaySpeaker) {
+    refs.nameplate.hidden = false;
+    refs.nameplate.textContent = displaySpeaker;
+  } else {
+    refs.nameplate.hidden = true;
+    refs.nameplate.textContent = "";
+  }
+
+  if (refs.progress) {
+    refs.progress.textContent = progressLabel;
+  }
+
+  state.currentTarget = refs.textboxText;
 
   updateActiveSpriteSpeaker(refs, resolvedSpeaker);
   updateHint(refs, state);
@@ -686,12 +715,14 @@ function playVNBeatText(refs, state, text) {
   if (state.skipAnimations) {
     renderCurrentText(refs, state, text);
     state.isAnimating = false;
+    if (refs.cursor) refs.cursor.hidden = false;
     updateVNActionLabels(refs, state);
     queueAutoAdvance(refs, state);
     return;
   }
 
   state.isAnimating = true;
+  if (refs.cursor) refs.cursor.hidden = true;
   updateVNActionLabels(refs, state);
   let index = 0;
 
@@ -702,6 +733,7 @@ function playVNBeatText(refs, state, text) {
     if (index >= text.length) {
       state.isAnimating = false;
       state.animationTimer = null;
+      if (refs.cursor) refs.cursor.hidden = false;
       updateVNActionLabels(refs, state);
       queueAutoAdvance(refs, state);
       return;
@@ -769,6 +801,7 @@ function advanceVN(refs, state, options = {}) {
   if (state.isAnimating) {
     clearVNAnimation(state);
     renderCurrentText(refs, state, state.currentText);
+    if (refs.cursor) refs.cursor.hidden = false;
     updateVNActionLabels(refs, state);
     if (state.autoAdvance && !options.automated) {
       queueAutoAdvance(refs, state);
@@ -788,20 +821,16 @@ function advanceVN(refs, state, options = {}) {
     return;
   }
 
-  refs.dialogueBox.hidden = true;
-  refs.narrationBox.hidden = false;
   state.archiveEnded = true;
-  refs.narrationMode.textContent = "Archive End";
-  refs.narrationMode.dataset.mode = "system";
-  refs.narrationProgress.textContent = `${chapter.beats.length} / ${chapter.beats.length}`;
-  refs.narrationText.dataset.mode = "system";
-  renderNarrationText(
-    refs.narrationText,
-    "End of the currently loaded chapter archive. Add more chapter text and the simulator will continue from here."
-  );
-  fitNarrationText(refs, state);
-  refs.speaker.hidden = true;
-  refs.speaker.textContent = "";
+  refs.textbox.hidden = false;
+  refs.textboxText.dataset.mode = "system";
+  refs.textboxText.textContent =
+    "End of the currently loaded chapter archive. Add more chapter text and the simulator will continue from here.";
+  refs.nameplate.hidden = true;
+  refs.cursor.hidden = true;
+  if (refs.progress) {
+    refs.progress.textContent = `${chapter.beats.length} / ${chapter.beats.length}`;
+  }
   updateActiveSpriteSpeaker(refs, "");
   refs.hint.innerHTML =
     "Reached the end of the loaded archive. Use <kbd>Chapters</kbd> to jump elsewhere or add more text.";
@@ -878,7 +907,7 @@ function updateHint(refs, state) {
   }
 
   refs.hint.innerHTML =
-    'Click the stage or press <kbd>Space</kbd> to advance. Use <kbd>A</kbd> for auto, <kbd>B</kbd> for BGM, and <kbd>F</kbd> for fullscreen.';
+    'Click or press <kbd>Space</kbd> to advance. <kbd>A</kbd> auto · <kbd>L</kbd> log · <kbd>F</kbd> fullscreen.';
 }
 
 function renderCurrentText(refs, state, text) {
@@ -886,13 +915,7 @@ function renderCurrentText(refs, state, text) {
     return;
   }
 
-  if (state.currentMode === "dialogue") {
-    state.currentTarget.textContent = text;
-    return;
-  }
-
-  renderNarrationText(state.currentTarget, text);
-  fitNarrationText(refs, state);
+  state.currentTarget.textContent = text;
 }
 
 function renderNarrationText(target, text) {
@@ -918,38 +941,8 @@ function renderNarrationText(target, text) {
   });
 }
 
-function fitNarrationText(refs, state) {
-  if (!refs.narrationBox || !refs.narrationText || refs.narrationBox.hidden) {
-    return;
-  }
-
-  const textNode = refs.narrationText;
-  textNode.style.fontSize = "";
-  textNode.style.lineHeight = "";
-  textNode.style.rowGap = "";
-
-  const computed = window.getComputedStyle(textNode);
-  const baseFontSize = parseFloat(computed.fontSize) || 18;
-  const baseLineHeight = parseFloat(computed.lineHeight) || baseFontSize * 1.92;
-  const baseGap = parseFloat(computed.rowGap || computed.gap) || Math.max(baseFontSize * 0.62, 10);
-
-  textNode.style.fontSize = `${baseFontSize}px`;
-  textNode.style.lineHeight = `${baseLineHeight}px`;
-  textNode.style.rowGap = `${baseGap}px`;
-
-  const lineHeightRatio = baseLineHeight / baseFontSize;
-  const gapRatio = baseGap / baseFontSize;
-  const minFontSize = window.innerWidth <= 575 ? 12.2 : window.innerWidth <= 991 ? 12.8 : 13.4;
-
-  let currentFontSize = baseFontSize;
-
-  while (textNode.scrollHeight > textNode.clientHeight && currentFontSize > minFontSize) {
-    currentFontSize -= 0.35;
-    textNode.style.fontSize = `${currentFontSize}px`;
-    textNode.style.lineHeight = `${currentFontSize * lineHeightRatio}px`;
-    textNode.style.rowGap = `${Math.max(currentFontSize * gapRatio, 6)}px`;
-  }
-}
+// fitNarrationText is no longer needed — narration box is now bottom-anchored and flows naturally.
+function fitNarrationText() {}
 
 function pauseAutoForManualInteraction(refs, state) {
   if (!state.autoAdvance) {
@@ -990,10 +983,11 @@ function setAutoState(refs, state, value) {
   }
 }
 
+// BGM button removed from toolbar. Audio engine kept for future use.
+// Call toggleBGM(refs, state) programmatically if needed.
 async function toggleBGM(refs, state) {
   const nextValue = !state.bgmEnabled;
   state.bgmEnabled = nextValue;
-  setBGMButtonState(refs, state);
 
   if (!nextValue) {
     fadeOutBGM(state);
@@ -1003,21 +997,12 @@ async function toggleBGM(refs, state) {
   const engine = await ensureBGMAudio(state);
   if (!engine) {
     state.bgmEnabled = false;
-    refs.bgmToggle.disabled = true;
-    refs.bgmToggle.textContent = "BGM N/A";
-    refs.bgmToggle.classList.remove("is-active");
     return;
   }
 
   await engine.context.resume();
   syncBGMToChapter(state);
   fadeInBGM(state);
-}
-
-function setBGMButtonState(refs, state) {
-  refs.bgmToggle.setAttribute("aria-pressed", String(state.bgmEnabled));
-  refs.bgmToggle.classList.toggle("is-active", state.bgmEnabled);
-  refs.bgmToggle.textContent = state.bgmEnabled ? "BGM On" : "BGM";
 }
 
 async function ensureBGMAudio(state) {
@@ -1225,6 +1210,54 @@ function closeVNMenu(refs, state) {
   if (state.autoAdvance && !state.isAnimating) {
     queueAutoAdvance(refs, state);
   }
+}
+
+function openVNLog(refs, state) {
+  clearAutoAdvance(state);
+  state.logOpen = true;
+  renderLogPanel(refs, state);
+  refs.logPanel.hidden = false;
+  refs.logBackdrop.hidden = false;
+  document.body.classList.add("vn-menu-open");
+  refs.logClose?.focus();
+}
+
+function closeVNLog(refs, state) {
+  state.logOpen = false;
+  refs.logPanel.hidden = true;
+  refs.logBackdrop.hidden = true;
+  document.body.classList.remove("vn-menu-open");
+  refs.logButton?.focus();
+
+  if (state.autoAdvance && !state.isAnimating) {
+    queueAutoAdvance(refs, state);
+  }
+}
+
+function renderLogPanel(refs, state) {
+  if (!refs.logList) {
+    return;
+  }
+
+  if (!state.log.length) {
+    refs.logList.innerHTML =
+      '<p class="page-copy" style="color:var(--ink-soft);margin:0">No beats recorded yet.</p>';
+    return;
+  }
+
+  refs.logList.innerHTML = state.log
+    .map((entry) => {
+      const modePill = `<span class="vn-mode-pill" data-mode="${window.DivineChamber.escapeHtml(entry.mode)}">${window.DivineChamber.escapeHtml(entry.mode === "dialogue" ? "Dialogue" : entry.mode === "echo" ? "Echo" : entry.mode === "system" ? "Note" : "Narration")}</span>`;
+      const speaker = entry.speaker
+        ? `<span class="vn-log-entry__speaker">${window.DivineChamber.escapeHtml(entry.speaker)}</span>`
+        : "";
+      return `
+        <div class="vn-log-entry">
+          <div class="vn-log-entry__meta">${modePill}${speaker}</div>
+          <p class="vn-log-entry__text">${window.DivineChamber.escapeHtml(entry.text)}</p>
+        </div>`;
+    })
+    .join("");
 }
 
 function updateChapterUrl(chapterId) {
