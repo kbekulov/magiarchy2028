@@ -166,6 +166,7 @@ function getVNRefs() {
     mainMenu: document.getElementById("vn-main-menu"),
     mainMenuStart: document.getElementById("vn-main-menu-start"),
     mainMenuButton: document.getElementById("vn-main-menu-button"),
+    mainMenuFullscreenToggle: document.getElementById("vn-main-menu-fullscreen"),
     order: document.getElementById("vn-order"),
     title: document.getElementById("vn-chapter-title"),
     stage: document.getElementById("vn-stage"),
@@ -719,6 +720,7 @@ function bindVNEvents(refs, state) {
   refs.mainMenuButton?.addEventListener("click", () => {
     showMainMenu(refs, state, { startChapterIndex: state.chapterIndex });
   });
+  refs.mainMenuFullscreenToggle?.addEventListener("click", () => toggleFullscreen(refs));
 
   refs.nextButton?.addEventListener("click", () => {
     pauseAutoForManualInteraction(refs, state);
@@ -1777,9 +1779,15 @@ async function toggleFullscreen(refs) {
 
 function setFullscreenButtonState(refs) {
   const isFullscreen = document.fullscreenElement === refs.shell;
-  refs.fullscreenToggle.setAttribute("aria-pressed", String(isFullscreen));
-  refs.fullscreenToggle.classList.toggle("is-active", isFullscreen);
-  refs.fullscreenToggle.textContent = isFullscreen ? "Exit Fullscreen" : "Fullscreen";
+  [refs.fullscreenToggle, refs.mainMenuFullscreenToggle].forEach((button) => {
+    if (!button) {
+      return;
+    }
+
+    button.setAttribute("aria-pressed", String(isFullscreen));
+    button.classList.toggle("is-active", isFullscreen);
+    button.textContent = isFullscreen ? "Exit Fullscreen" : "Fullscreen";
+  });
 }
 
 function renderChapterMenu(refs, state) {

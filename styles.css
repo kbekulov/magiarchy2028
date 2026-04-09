@@ -2236,6 +2236,15 @@ body[data-page="reader"] #reader-nav {
   transition: opacity 420ms ease;
 }
 
+.vn-main-menu__utility {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.15rem;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .vn-main-menu::before {
   content: "";
   position: absolute;
@@ -2968,6 +2977,11 @@ body.vn-menu-open {
 
 .vn-shell:fullscreen .vn-main-menu {
   padding: 3rem;
+}
+
+.vn-shell:fullscreen .vn-main-menu__utility {
+  top: 1.35rem;
+  right: 1.35rem;
 }
 
 .vn-shell:fullscreen .vn-main-menu__content {
