@@ -2530,6 +2530,12 @@ body[data-page="reader"] #reader-nav {
   white-space: pre-wrap;
 }
 
+.vn-textbox.is-speaker-left .vn-textbox__text,
+.vn-textbox.is-speaker-right .vn-textbox__text {
+  width: 100%;
+  max-width: none;
+}
+
 .vn-textbox__text[data-mode="narration"] {
   font-style: italic;
   color: rgba(228, 238, 255, 0.9);
