@@ -2354,18 +2354,25 @@ body[data-page="reader"] #reader-nav {
 
 .vn-narration-overlay {
   position: absolute;
-  /* Fill the background area, leave controlbar + textbox space at bottom */
   inset: 0 0 4rem 0;
   z-index: 2;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
   pointer-events: none;
 }
 
-.vn-narration-overlay__text {
+/* Inner wrapper keeps text + cursor grouped and sized together */
+.vn-narration-overlay__content {
   width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vn-narration-overlay__text {
   margin: 0;
   color: #f0f4ff;
   font-size: clamp(1.06rem, 1.75vw, 1.24rem);
@@ -2377,7 +2384,6 @@ body[data-page="reader"] #reader-nav {
   white-space: pre-wrap;
   word-break: break-word;
   overflow-wrap: break-word;
-  pointer-events: none;
 }
 
 .vn-narration-overlay__text[data-mode="system"],
@@ -2388,9 +2394,7 @@ body[data-page="reader"] #reader-nav {
 
 .vn-narration-overlay .vn-textbox__cursor {
   position: static;
-  display: block;
-  margin-top: 0.5rem;
-  text-align: left;
+  margin-top: 0.4rem;
 }
 
 /* ── Sprites (Type-Moon style: anchored to stage, never shift with layout) ── */
