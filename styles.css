@@ -2220,6 +2220,96 @@ body[data-page="reader"] #reader-nav {
     );
 }
 
+.vn-main-menu {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background:
+    linear-gradient(180deg, rgba(4, 6, 12, 0.34), rgba(2, 4, 9, 0.76)),
+    radial-gradient(circle at 50% 38%, rgba(169, 201, 255, 0.16), transparent 28%),
+    url("media/vn_simulator/main_menu/main_menu_bg_1.png") center center / cover no-repeat;
+  opacity: 0;
+  transition: opacity 420ms ease;
+}
+
+.vn-main-menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(6, 9, 18, 0.12), rgba(2, 4, 8, 0.64)),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 46%);
+  pointer-events: none;
+}
+
+.vn-main-menu.is-visible {
+  opacity: 1;
+}
+
+.vn-main-menu__content {
+  position: relative;
+  z-index: 1;
+  width: min(34rem, calc(100% - 2rem));
+  display: grid;
+  justify-items: center;
+  gap: 1.3rem;
+  text-align: center;
+}
+
+.vn-main-menu__logo {
+  width: min(36rem, 94%);
+  height: auto;
+  display: block;
+  filter:
+    drop-shadow(0 16px 28px rgba(0, 0, 0, 0.52))
+    drop-shadow(0 0 32px rgba(184, 210, 255, 0.16));
+}
+
+.vn-main-menu__actions {
+  width: min(18rem, 100%);
+  display: grid;
+  gap: 0.65rem;
+}
+
+.vn-main-menu__action {
+  padding: 0.1rem 0.6rem;
+  border: none;
+  background: transparent;
+  color: rgba(245, 248, 255, 0.86);
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3vw, 2.45rem);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.58),
+    0 0 18px rgba(174, 203, 255, 0.08);
+  opacity: 0.74;
+  transition: opacity 180ms ease, transform 180ms ease, text-shadow 180ms ease;
+}
+
+.vn-main-menu__action:hover,
+.vn-main-menu__action:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+  text-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.62),
+    0 0 26px rgba(188, 217, 255, 0.18);
+}
+
+.vn-main-menu__action.is-primary {
+  opacity: 1;
+}
+
+.vn-main-menu__action[disabled] {
+  cursor: default;
+  opacity: 0.56;
+  pointer-events: none;
+}
+
 .vn-topbar {
   display: flex;
   align-items: center;
@@ -2833,6 +2923,26 @@ body.vn-menu-open {
     linear-gradient(180deg, rgba(4, 6, 10, 0.96), rgba(6, 9, 14, 0.92)),
     radial-gradient(circle at top right, rgba(255, 255, 255, 0.03), transparent 24%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vn-shell:fullscreen .vn-main-menu {
+  padding: 3rem;
+}
+
+.vn-shell:fullscreen .vn-main-menu__content {
+  width: min(40rem, calc(100% - 3rem));
+}
+
+.vn-shell:fullscreen .vn-main-menu__logo {
+  width: min(42rem, 100%);
+}
+
+.vn-shell:fullscreen .vn-main-menu__actions {
+  width: min(20rem, 100%);
+}
+
+.vn-shell:fullscreen .vn-main-menu__action {
+  font-size: clamp(2.1rem, 3vw, 2.8rem);
 }
 
 .vn-shell:fullscreen .vn-stage {

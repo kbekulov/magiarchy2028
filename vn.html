@@ -30,6 +30,32 @@
           <div class="content-wrap">
             <section class="page-section">
               <div class="detail-panel vn-shell" id="vn-shell">
+                <div class="vn-main-menu" id="vn-main-menu" hidden>
+                  <div class="vn-main-menu__content">
+                    <img
+                      class="vn-main-menu__logo"
+                      id="vn-main-menu-logo"
+                      src="media/vn_simulator/main_menu/main_menu_logo.png"
+                      alt="Magiarchy"
+                    />
+
+                    <div class="vn-main-menu__actions" role="menu" aria-label="VN main menu">
+                      <button class="vn-main-menu__action is-primary" type="button" id="vn-main-menu-start">
+                        Start
+                      </button>
+                      <button class="vn-main-menu__action" type="button" disabled aria-disabled="true">
+                        Load Save
+                      </button>
+                      <button class="vn-main-menu__action" type="button" disabled aria-disabled="true">
+                        Settings
+                      </button>
+                      <button class="vn-main-menu__action" type="button" disabled aria-disabled="true">
+                        Quit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="vn-topbar">
                   <div class="vn-statusline" aria-live="polite">
                     <span class="vn-statusline__order" id="vn-order">Chronology</span>
@@ -38,6 +64,9 @@
                   </div>
 
                   <div class="vn-toolbar">
+                    <button class="btn btn-outline-light btn-sm" type="button" id="vn-main-menu-button">
+                      Main Menu
+                    </button>
                     <button class="btn btn-outline-light btn-sm" type="button" id="vn-menu-button">
                       Chapters
                     </button>

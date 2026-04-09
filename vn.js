@@ -113,6 +113,8 @@ async function initializeVNSimulator() {
     introResolve: null,
     introActive: false,
     openToken: 0,
+    mainMenuOpen: false,
+    menuStartChapterIndex: 0,
     bgmEngine: null,
     log: [],
   };
@@ -148,7 +150,7 @@ async function initializeVNSimulator() {
     setSkipState(refs, state, false);
     setAutoState(refs, state, false);
     setFullscreenButtonState(refs);
-    openChapter(refs, state, initialIndex, 0);
+    showMainMenu(refs, state, { startChapterIndex: initialIndex });
   } catch (error) {
     console.error("Unable to initialize VN simulator", error);
     renderVNEmpty(
@@ -161,6 +163,9 @@ async function initializeVNSimulator() {
 function getVNRefs() {
   return {
     shell: document.getElementById("vn-shell"),
+    mainMenu: document.getElementById("vn-main-menu"),
+    mainMenuStart: document.getElementById("vn-main-menu-start"),
+    mainMenuButton: document.getElementById("vn-main-menu-button"),
     order: document.getElementById("vn-order"),
     title: document.getElementById("vn-chapter-title"),
     stage: document.getElementById("vn-stage"),
@@ -701,12 +706,19 @@ function resolveBeatSpeaker(chapter, beatIndex) {
 
 function bindVNEvents(refs, state) {
   const resumeBGMIfEnabled = () => {
-    if (!state.bgmEnabled || !state.chapters.length) {
+    if (!state.bgmEnabled || !state.chapters.length || state.mainMenuOpen) {
       return;
     }
 
     syncBGMToChapter(refs, state);
   };
+
+  refs.mainMenuStart?.addEventListener("click", () => {
+    startVNFromMainMenu(refs, state);
+  });
+  refs.mainMenuButton?.addEventListener("click", () => {
+    showMainMenu(refs, state, { startChapterIndex: state.chapterIndex });
+  });
 
   refs.nextButton?.addEventListener("click", () => {
     pauseAutoForManualInteraction(refs, state);
@@ -732,6 +744,10 @@ function bindVNEvents(refs, state) {
   refs.logBackdrop?.addEventListener("click", () => closeVNLog(refs, state));
 
   refs.stage?.addEventListener("click", (event) => {
+    if (state.mainMenuOpen) {
+      return;
+    }
+
     if (event.target.closest("button")) {
       return;
     }
@@ -766,6 +782,14 @@ function bindVNEvents(refs, state) {
   });
 
   document.addEventListener("keydown", (event) => {
+    if (state.mainMenuOpen) {
+      if (event.key === " " || event.key === "Enter") {
+        event.preventDefault();
+        startVNFromMainMenu(refs, state);
+      }
+      return;
+    }
+
     if (state.introActive) {
       if (
         event.key === " " ||
@@ -863,6 +887,10 @@ function bindVNEvents(refs, state) {
 }
 
 function renderVNEmpty(refs, message) {
+  if (refs.mainMenu) {
+    refs.mainMenu.hidden = true;
+  }
+  refs.shell?.classList.remove("is-main-menu");
   if (refs.introOverlay) {
     refs.introOverlay.classList.remove("is-visible");
     refs.introOverlay.hidden = true;
@@ -881,10 +909,80 @@ function renderVNEmpty(refs, message) {
   refs.hint.innerHTML = "The VN simulator could not load chapter text.";
   refs.backButton.disabled = true;
   refs.nextButton.disabled = true;
+  refs.mainMenuButton.disabled = true;
   refs.menuButton.disabled = true;
   refs.autoToggle.disabled = true;
   refs.bgmToggle.disabled = true;
   refs.skipToggle.disabled = true;
+}
+
+function forceCloseVNOverlays(refs, state) {
+  state.menuOpen = false;
+  state.logOpen = false;
+  refs.menuPanel.hidden = true;
+  refs.menuBackdrop.hidden = true;
+  refs.logPanel.hidden = true;
+  refs.logBackdrop.hidden = true;
+  document.body.classList.remove("vn-menu-open");
+}
+
+function showMainMenu(refs, state, options = {}) {
+  if (!state.chapters.length || !refs.mainMenu) {
+    return;
+  }
+
+  clearVNAnimation(state);
+  clearAutoAdvance(state);
+  dismissChapterIntro(refs, state, true);
+  forceCloseVNOverlays(refs, state);
+  updateActiveSpriteSpeaker(refs, "");
+
+  if (Number.isInteger(options.startChapterIndex)) {
+    state.menuStartChapterIndex = Math.max(
+      0,
+      Math.min(state.chapters.length - 1, Number(options.startChapterIndex))
+    );
+  } else if (state.chapterIndex < state.chapters.length) {
+    state.menuStartChapterIndex = state.chapterIndex;
+  }
+
+  state.mainMenuOpen = true;
+  refs.shell?.classList.add("is-main-menu");
+  refs.mainMenu.hidden = false;
+  refs.mainMenu.classList.remove("is-visible");
+  window.requestAnimationFrame(() => {
+    refs.mainMenu?.classList.add("is-visible");
+  });
+
+  refs.textbox.hidden = true;
+  refs.nameplate.hidden = true;
+  refs.cursor.hidden = true;
+  refs.narrationOverlay.hidden = true;
+  refs.cursorNarration.hidden = true;
+  refs.mainMenuStart?.focus();
+  fadeOutBGM(state, { pauseOnComplete: true });
+}
+
+function hideMainMenu(refs, state) {
+  state.mainMenuOpen = false;
+  refs.shell?.classList.remove("is-main-menu");
+  refs.mainMenu?.classList.remove("is-visible");
+  if (refs.mainMenu) {
+    refs.mainMenu.hidden = true;
+  }
+}
+
+function startVNFromMainMenu(refs, state) {
+  if (!state.chapters.length) {
+    return;
+  }
+
+  const chapterIndex = Math.max(
+    0,
+    Math.min(state.chapters.length - 1, Number(state.menuStartChapterIndex) || 0)
+  );
+  hideMainMenu(refs, state);
+  openChapter(refs, state, chapterIndex, 0);
 }
 
 function clearChapterIntroTimers(state) {
@@ -976,6 +1074,7 @@ async function openChapter(refs, state, chapterIndex, beatIndex = 0) {
     return;
   }
 
+  hideMainMenu(refs, state);
   const openToken = ++state.openToken;
   clearVNAnimation(state);
   clearAutoAdvance(state);
