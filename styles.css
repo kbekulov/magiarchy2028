@@ -2349,10 +2349,51 @@ body[data-page="reader"] #reader-nav {
   pointer-events: none;
 }
 
+.vn-narration-overlay,
 .vn-textbox,
 .vn-controlbar {
   position: relative;
   z-index: 1;
+}
+
+/* ── Narration overlay (floats over stage, Type-Moon style) ── */
+
+.vn-narration-overlay {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2.5rem 3rem 2rem;
+  pointer-events: none;
+}
+
+.vn-narration-overlay__text {
+  margin: 0;
+  max-width: 64ch;
+  color: #f0f4ff;
+  font-size: clamp(1.06rem, 1.75vw, 1.24rem);
+  line-height: 1.95;
+  font-style: italic;
+  text-shadow:
+    0 1px 12px rgba(6, 10, 18, 0.85),
+    0 2px 28px rgba(6, 10, 18, 0.62);
+  white-space: pre-wrap;
+  pointer-events: none;
+}
+
+.vn-narration-overlay__text[data-mode="system"],
+.vn-narration-overlay__text[data-mode="echo"] {
+  color: rgba(210, 226, 255, 0.72);
+  font-size: clamp(0.96rem, 1.6vw, 1.1rem);
+}
+
+.vn-narration-overlay .vn-textbox__cursor {
+  position: static;
+  align-self: flex-start;
+  margin-top: 0.4rem;
 }
 
 /* ── Sprites (Type-Moon style: free-floating, no container chrome) ── */

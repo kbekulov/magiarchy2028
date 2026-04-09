@@ -94,6 +94,9 @@ function getVNRefs() {
     stage: document.getElementById("vn-stage"),
     spriteLeft: document.getElementById("vn-sprite-left"),
     spriteRight: document.getElementById("vn-sprite-right"),
+    narrationOverlay: document.getElementById("vn-narration-overlay"),
+    narrationText: document.getElementById("vn-narration-text"),
+    cursorNarration: document.getElementById("vn-cursor-narration"),
     textbox: document.getElementById("vn-textbox"),
     textboxText: document.getElementById("vn-textbox-text"),
     nameplate: document.getElementById("vn-nameplate"),
@@ -514,11 +517,13 @@ function bindVNEvents(refs, state) {
 function renderVNEmpty(refs, message) {
   refs.title.textContent = "VN Simulator unavailable";
   refs.order.textContent = "Archive";
-  refs.textbox.hidden = false;
-  refs.textboxText.dataset.mode = "system";
-  refs.textboxText.textContent = message;
+  refs.textbox.hidden = true;
   refs.nameplate.hidden = true;
   refs.cursor.hidden = true;
+  refs.narrationOverlay.hidden = false;
+  refs.narrationText.dataset.mode = "system";
+  refs.narrationText.textContent = message;
+  refs.cursorNarration.hidden = true;
   updateActiveSpriteSpeaker(refs, "");
   refs.hint.innerHTML = "The VN simulator could not load chapter text.";
   refs.backButton.disabled = true;
@@ -683,25 +688,39 @@ function renderCurrentBeat(refs, state) {
     state.log.length = 60;
   }
 
-  // Unified textbox
-  refs.textbox.hidden = false;
-  refs.textboxText.dataset.mode = beat.mode;
-  refs.textboxText.textContent = "";
-  refs.cursor.hidden = true;
-
-  if (beat.mode === "dialogue" && displaySpeaker) {
-    refs.nameplate.hidden = false;
-    refs.nameplate.textContent = displaySpeaker;
-  } else {
-    refs.nameplate.hidden = true;
-    refs.nameplate.textContent = "";
-  }
-
   if (refs.progress) {
     refs.progress.textContent = progressLabel;
   }
 
-  state.currentTarget = refs.textboxText;
+  if (beat.mode === "dialogue") {
+    // Bottom panel for dialogue
+    refs.narrationOverlay.hidden = true;
+    refs.narrationText.textContent = "";
+    refs.cursorNarration.hidden = true;
+    refs.textbox.hidden = false;
+    refs.textboxText.dataset.mode = beat.mode;
+    refs.textboxText.textContent = "";
+    refs.cursor.hidden = true;
+    if (displaySpeaker) {
+      refs.nameplate.hidden = false;
+      refs.nameplate.textContent = displaySpeaker;
+    } else {
+      refs.nameplate.hidden = true;
+      refs.nameplate.textContent = "";
+    }
+    state.currentTarget = refs.textboxText;
+  } else {
+    // Narration overlay for narration/system/echo
+    refs.textbox.hidden = true;
+    refs.textboxText.textContent = "";
+    refs.cursor.hidden = true;
+    refs.nameplate.hidden = true;
+    refs.narrationOverlay.hidden = false;
+    refs.narrationText.dataset.mode = beat.mode;
+    refs.narrationText.textContent = "";
+    refs.cursorNarration.hidden = true;
+    state.currentTarget = refs.narrationText;
+  }
 
   updateActiveSpriteSpeaker(refs, resolvedSpeaker);
   updateHint(refs, state);
@@ -712,17 +731,19 @@ function playVNBeatText(refs, state, text) {
   clearVNAnimation(state);
   state.currentText = text;
 
+  const activeCursor = state.currentMode === "dialogue" ? refs.cursor : refs.cursorNarration;
+
   if (state.skipAnimations) {
     renderCurrentText(refs, state, text);
     state.isAnimating = false;
-    if (refs.cursor) refs.cursor.hidden = false;
+    if (activeCursor) activeCursor.hidden = false;
     updateVNActionLabels(refs, state);
     queueAutoAdvance(refs, state);
     return;
   }
 
   state.isAnimating = true;
-  if (refs.cursor) refs.cursor.hidden = true;
+  if (activeCursor) activeCursor.hidden = true;
   updateVNActionLabels(refs, state);
   let index = 0;
 
@@ -733,7 +754,7 @@ function playVNBeatText(refs, state, text) {
     if (index >= text.length) {
       state.isAnimating = false;
       state.animationTimer = null;
-      if (refs.cursor) refs.cursor.hidden = false;
+      if (activeCursor) activeCursor.hidden = false;
       updateVNActionLabels(refs, state);
       queueAutoAdvance(refs, state);
       return;
@@ -801,7 +822,8 @@ function advanceVN(refs, state, options = {}) {
   if (state.isAnimating) {
     clearVNAnimation(state);
     renderCurrentText(refs, state, state.currentText);
-    if (refs.cursor) refs.cursor.hidden = false;
+    const activeCursor = state.currentMode === "dialogue" ? refs.cursor : refs.cursorNarration;
+    if (activeCursor) activeCursor.hidden = false;
     updateVNActionLabels(refs, state);
     if (state.autoAdvance && !options.automated) {
       queueAutoAdvance(refs, state);
@@ -822,12 +844,14 @@ function advanceVN(refs, state, options = {}) {
   }
 
   state.archiveEnded = true;
-  refs.textbox.hidden = false;
-  refs.textboxText.dataset.mode = "system";
-  refs.textboxText.textContent =
-    "End of the currently loaded chapter archive. Add more chapter text and the simulator will continue from here.";
+  refs.textbox.hidden = true;
   refs.nameplate.hidden = true;
   refs.cursor.hidden = true;
+  refs.narrationOverlay.hidden = false;
+  refs.narrationText.dataset.mode = "system";
+  refs.narrationText.textContent =
+    "End of the currently loaded chapter archive. Add more chapter text and the simulator will continue from here.";
+  refs.cursorNarration.hidden = true;
   if (refs.progress) {
     refs.progress.textContent = `${chapter.beats.length} / ${chapter.beats.length}`;
   }
