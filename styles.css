@@ -2462,7 +2462,7 @@ body[data-page="reader"] #reader-nav {
   left: 0;
   right: 0;
   z-index: 3;
-  padding: 1.15rem 1.4rem 1.25rem;
+  padding: 1.55rem 1.4rem 1.25rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   background:
     linear-gradient(180deg, rgba(8, 13, 22, 0.88), rgba(6, 10, 18, 0.96)),
@@ -2472,8 +2472,9 @@ body[data-page="reader"] #reader-nav {
 
 .vn-textbox__nameplate {
   position: absolute;
-  top: -2.4rem;
+  top: 0;
   left: 1.4rem;
+  z-index: 1;
   margin: 0;
   padding: 0.28rem 1.1rem 0.34rem;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -2481,6 +2482,9 @@ body[data-page="reader"] #reader-nav {
   border-radius: 0.6rem 0.6rem 0 0;
   background:
     linear-gradient(180deg, rgba(18, 28, 46, 0.96), rgba(12, 20, 34, 0.98));
+  box-shadow:
+    0 10px 26px rgba(5, 9, 17, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   color: #f4f7ff;
   font-family: var(--serif);
   font-size: 1.06rem;
@@ -2488,6 +2492,7 @@ body[data-page="reader"] #reader-nav {
   line-height: 1.2;
   letter-spacing: 0.02em;
   white-space: nowrap;
+  transform: translateY(-68%);
 }
 
 .vn-textbox__body {
@@ -2736,7 +2741,7 @@ body.vn-menu-open {
 }
 
 .vn-shell:fullscreen .vn-textbox {
-  padding: 1.4rem 2rem 1.6rem;
+  padding: 1.75rem 2rem 1.6rem;
   bottom: 5rem;
 }
 
