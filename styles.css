@@ -3473,33 +3473,6 @@ body[data-page="reader"] .reader-card .markdown-body p:last-child {
 
 }
 
-/* ─── VN Theater Mode ─────────────────────────────────────────────────────── */
-
-body[data-page="vn-simulator"] .sidebar-column {
-  display: none !important;
-}
-
-body[data-page="vn-simulator"] .content-column {
-  flex: 0 0 100% !important;
-  max-width: 100% !important;
-  width: 100% !important;
-}
-
-body[data-page="vn-simulator"] .content-wrap {
-  padding: 0 !important;
-}
-
-body[data-page="vn-simulator"] .page-section {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-body[data-page="vn-simulator"] .detail-panel.vn-shell {
-  border-radius: 0 !important;
-  border: none !important;
-  min-height: 100vh;
-}
-
 /* ─── VN Stage Fade Transition ────────────────────────────────────────────── */
 
 .vn-stage.is-transitioning {
