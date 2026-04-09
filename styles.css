@@ -2242,6 +2242,7 @@ body[data-page="reader"] #reader-nav {
   right: 1.15rem;
   z-index: 2;
   display: flex;
+  gap: 0.5rem;
   justify-content: flex-end;
 }
 

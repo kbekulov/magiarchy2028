@@ -1,5 +1,6 @@
 const vnShell = document.getElementById("vn-shell");
 const VN_BGM_PREFERENCE_KEY = "magiarchy.vn.bgmEnabled";
+const VN_MAIN_MENU_BGM_TRACK = "media/vn_simulator/main_menu/main_menu_track_1.mp3";
 const VN_CHAPTER_INTRO_VISIBLE_MS = 1700;
 const VN_CHAPTER_INTRO_FADE_MS = 560;
 const VN_SCENE_LIBRARY = {
@@ -166,6 +167,7 @@ function getVNRefs() {
     mainMenu: document.getElementById("vn-main-menu"),
     mainMenuStart: document.getElementById("vn-main-menu-start"),
     mainMenuButton: document.getElementById("vn-main-menu-button"),
+    mainMenuBgmToggle: document.getElementById("vn-main-menu-bgm-toggle"),
     mainMenuFullscreenToggle: document.getElementById("vn-main-menu-fullscreen"),
     order: document.getElementById("vn-order"),
     title: document.getElementById("vn-chapter-title"),
@@ -707,7 +709,7 @@ function resolveBeatSpeaker(chapter, beatIndex) {
 
 function bindVNEvents(refs, state) {
   const resumeBGMIfEnabled = () => {
-    if (!state.bgmEnabled || !state.chapters.length || state.mainMenuOpen) {
+    if (!state.bgmEnabled) {
       return;
     }
 
@@ -717,6 +719,7 @@ function bindVNEvents(refs, state) {
   refs.mainMenuStart?.addEventListener("click", () => {
     startVNFromMainMenu(refs, state);
   });
+  refs.mainMenuBgmToggle?.addEventListener("click", () => toggleBGM(refs, state));
   refs.mainMenuButton?.addEventListener("click", () => {
     showMainMenu(refs, state, { startChapterIndex: state.chapterIndex });
   });
@@ -770,7 +773,10 @@ function bindVNEvents(refs, state) {
   document.addEventListener(
     "pointerdown",
     (event) => {
-      if (event.target instanceof Element && event.target.closest("#vn-bgm-toggle")) {
+      if (
+        event.target instanceof Element &&
+        event.target.closest("#vn-bgm-toggle, #vn-main-menu-bgm-toggle")
+      ) {
         return;
       }
 
@@ -962,7 +968,12 @@ function showMainMenu(refs, state, options = {}) {
   refs.narrationOverlay.hidden = true;
   refs.cursorNarration.hidden = true;
   refs.mainMenuStart?.focus();
-  fadeOutBGM(state, { pauseOnComplete: true });
+  updateBGMButtonState(refs, state);
+  if (state.bgmEnabled) {
+    void syncBGMToChapter(refs, state);
+  } else {
+    fadeOutBGM(state, { pauseOnComplete: true });
+  }
 }
 
 function hideMainMenu(refs, state) {
@@ -1602,8 +1613,7 @@ function setAutoState(refs, state, value) {
 }
 
 async function toggleBGM(refs, state) {
-  const chapter = state.chapters[state.chapterIndex];
-  const hasTrack = Boolean(chapter && resolveChapterBGM(chapter));
+  const hasTrack = Boolean(resolveCurrentBGMTrack(state));
   const audio = state.bgmEngine?.audio || null;
 
   if (state.bgmEnabled && hasTrack && (!audio || audio.paused)) {
@@ -1655,32 +1665,51 @@ function resolveChapterBGM(chapter) {
   return getChapterSceneConfig(chapter).bgmTrack || "";
 }
 
-function updateBGMButtonState(refs, state) {
-  if (!refs.bgmToggle) {
-    return;
+function resolveCurrentBGMTrack(state) {
+  if (state.mainMenuOpen) {
+    return VN_MAIN_MENU_BGM_TRACK;
   }
 
   const chapter = state.chapters[state.chapterIndex];
-  const hasTrack = Boolean(chapter && resolveChapterBGM(chapter));
+  return chapter ? resolveChapterBGM(chapter) : "";
+}
 
-  refs.bgmToggle.disabled = !state.chapters.length;
-  refs.bgmToggle.setAttribute("aria-pressed", String(state.bgmEnabled));
-  refs.bgmToggle.classList.toggle("is-active", state.bgmEnabled);
-  refs.bgmToggle.textContent = !state.bgmEnabled ? "BGM" : hasTrack ? "BGM On" : "BGM Ready";
-  refs.bgmToggle.title = hasTrack
-    ? "Toggle chapter background music"
-    : "No track is assigned to this chapter yet. Leaving BGM on will resume playback when a chapter track exists.";
+function updateBGMButtonState(refs, state) {
+  if (!refs.bgmToggle && !refs.mainMenuBgmToggle) {
+    return;
+  }
+
+  const hasTrack = Boolean(resolveCurrentBGMTrack(state));
+  const label = !state.bgmEnabled ? "BGM" : hasTrack ? "BGM On" : "BGM Ready";
+  const title = state.mainMenuOpen
+    ? hasTrack
+      ? "Toggle main menu background music"
+      : "No track is assigned to the main menu yet."
+    : hasTrack
+      ? "Toggle chapter background music"
+      : "No track is assigned to this chapter yet. Leaving BGM on will resume playback when a chapter track exists.";
+
+  [refs.bgmToggle, refs.mainMenuBgmToggle].forEach((button) => {
+    if (!button) {
+      return;
+    }
+
+    button.disabled = !state.chapters.length && !state.mainMenuOpen;
+    button.setAttribute("aria-pressed", String(state.bgmEnabled));
+    button.classList.toggle("is-active", state.bgmEnabled);
+    button.textContent = label;
+    button.title = title;
+  });
 }
 
 async function syncBGMToChapter(refs, state) {
   updateBGMButtonState(refs, state);
 
-  if (!state.bgmEnabled || !state.chapters.length) {
+  if (!state.bgmEnabled) {
     return;
   }
 
-  const chapter = state.chapters[state.chapterIndex];
-  const track = resolveChapterBGM(chapter);
+  const track = resolveCurrentBGMTrack(state);
   const engine = await ensureBGMAudio(state);
   if (!engine) {
     return;
