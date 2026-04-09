@@ -2773,6 +2773,12 @@ body.vn-menu-open {
   bottom: 5rem;
 }
 
+.vn-shell:fullscreen .vn-textbox.is-speaker-left .vn-textbox__body,
+.vn-shell:fullscreen .vn-textbox.is-speaker-right .vn-textbox__body {
+  width: calc(100% - 4rem);
+  max-width: none;
+}
+
 .vn-shell:fullscreen .vn-textbox__nameplate {
   left: 2rem;
 }
