@@ -2462,6 +2462,7 @@ body[data-page="reader"] #reader-nav {
   left: 0;
   right: 0;
   z-index: 3;
+  overflow: visible;
   padding: 0.98rem 1.4rem 1.15rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   background:
@@ -2472,7 +2473,7 @@ body[data-page="reader"] #reader-nav {
 
 .vn-textbox__nameplate {
   position: absolute;
-  top: 0.12rem;
+  bottom: calc(100% - 1px);
   left: 1.4rem;
   z-index: 1;
   margin: 0;
@@ -2492,7 +2493,7 @@ body[data-page="reader"] #reader-nav {
   line-height: 1.2;
   letter-spacing: 0.02em;
   white-space: nowrap;
-  transform: translateY(-58%);
+  transform: none;
 }
 
 .vn-textbox__body {
