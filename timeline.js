@@ -3,175 +3,56 @@ const timelineMapBoard = document.getElementById("timeline-map-board");
 const timelineMapFrame = document.getElementById("timeline-map-frame");
 
 const timelineLanes = [
-  { id: "ch0", label: "Chapter 0", title: "Prequel", type: "chapter" },
-  { id: "ch1", label: "Chapter 1", title: "Pressure Builds", type: "chapter" },
-  { id: "ch2", label: "Chapter 2", title: "Accusation Vector", type: "chapter" },
-  { id: "ev1", label: "Event", title: "Fionn's Assassination", type: "event" },
-  { id: "ch3", label: "Chapter 3", title: "Exile Opens", type: "chapter" },
-  { id: "ch4", label: "Chapter 4", title: "Hunt Architecture", type: "chapter" },
-  { id: "ch5", label: "Chapter 5", title: "Extraction Lines", type: "chapter" },
-  { id: "ev2", label: "Event", title: "MSF Compression", type: "event" },
-  { id: "ch6", label: "Chapter 6", title: "Countermove", type: "chapter" },
-  { id: "ch7", label: "Chapter 7", title: "Institutional Pressure", type: "chapter" },
-  { id: "ev3", label: "Event", title: "Kyrien - Tien Clash", type: "event" },
-  { id: "ch8", label: "Chapter 8", title: "Visibility Debt", type: "chapter" },
-  { id: "ch9", label: "Chapter 9", title: "Return Window", type: "chapter" },
+  { id: "ch0", label: "Chapter 0", title: "The Interview", type: "chapter" },
+  { id: "ch1", label: "Chapter 1", title: "A Visitor", type: "chapter" },
 ];
 
 const timelineRows = [
   {
-    name: "Lynleit",
-    group: "MSF",
+    name: "Magi",
+    group: "Doctrine",
     kind: "character",
     activities: [
-      { title: "Inheritance pressure and visible leadership", start: 2, end: 3, tone: "gold" },
-      { title: "Framed, displaced, forced into exile", start: 4, end: 6, tone: "rose" },
-      { title: "Rebuilds leverage and public posture", start: 7, end: 10, tone: "blue" },
+      { title: "Ontology, secrecy, and political cost are articulated in direct terms", start: 1, end: 1, tone: "gold" },
+      { title: "Hidden doctrine brushes against a public investigation for the first time", start: 2, end: 2, tone: "violet" },
     ],
   },
   {
-    name: "Kyrien",
-    group: "Independent",
+    name: "Church",
+    group: "Institution",
     kind: "character",
     activities: [
-      { title: "Peripheral watch and silent preparation", start: 2, end: 3, tone: "slate" },
-      { title: "Contingency activation and extraction work", start: 4, end: 7, tone: "blue" },
-      { title: "Shadow pursuit and anti-Tien counterplay", start: 8, end: 10, tone: "violet" },
+      { title: "Fear, use, and denial are named as the Church's operating posture toward Magi", start: 1, end: 1, tone: "slate" },
+      { title: "Father Mikhail arrives before the police can classify the impossible", start: 2, end: 2, tone: "blue" },
     ],
   },
   {
-    name: "Helena",
-    group: "MSF",
+    name: "Inspector Leonid",
+    group: "Police",
     kind: "character",
     activities: [
-      { title: "Builds accusation architecture around Lynleit", start: 2, end: 4, tone: "rose" },
-      { title: "Redirects MSF machinery into the hunt", start: 5, end: 7, tone: "ember" },
-      { title: "Consolidates control under mounting instability", start: 8, end: 10, tone: "rose" },
+      { title: "Takes control of the perimeter and presses every witness for a rational answer", start: 2, end: 2, tone: "stone" },
     ],
   },
   {
-    name: "Tien",
-    group: "Helena Asset",
+    name: "Father Mikhail",
+    group: "Church Bureau",
     kind: "character",
     activities: [
-      { title: "Hidden deployment and selective pressure", start: 3, end: 5, tone: "slate" },
-      { title: "Pursuit, disruption, covert force projection", start: 6, end: 9, tone: "violet" },
+      { title: "Insists on institutional caution while implying the death may not be ordinary", start: 2, end: 2, tone: "slate" },
     ],
   },
   {
-    name: "Fionn",
-    group: "MSF",
-    kind: "character",
-    activities: [{ title: "High-value target before catalytic removal", start: 2, end: 3, tone: "gold" }],
-  },
-  {
-    name: "Felix",
-    group: "MSF",
-    kind: "character",
-    activities: [
-      { title: "Support alignment under pressure", start: 3, end: 6, tone: "teal" },
-      { title: "Operational repositioning after rupture", start: 7, end: 9, tone: "blue" },
-    ],
-  },
-  {
-    name: "Reiner",
-    group: "MSF",
-    kind: "character",
-    activities: [
-      { title: "Internal friction and tactical response", start: 3, end: 6, tone: "stone" },
-      { title: "Contested loyalties inside mutation phase", start: 7, end: 10, tone: "ember" },
-    ],
-  },
-  {
-    name: "Drake",
-    group: "Duchy",
-    kind: "character",
-    activities: [
-      { title: "Heyk's extraction and new job offer", start: 2, end: 2, tone: "gold" },
-      { title: "Peripheral monitoring of succession fallout", start: 4, end: 7, tone: "stone" },
-    ],
-  },
-  {
-    name: "Sherie",
-    group: "Duchy",
-    kind: "character",
-    activities: [
-      { title: "Heyk's extraction and new job offer", start: 2, end: 2, tone: "blue" },
-      { title: "Duchy-side interpretation and response", start: 5, end: 8, tone: "gold" },
-    ],
-  },
-  {
-    name: "Heyk",
-    group: "Duchy",
-    kind: "character",
-    activities: [
-      { title: "Covert deployment into quarantine zone", start: 1, end: 2, tone: "rose" },
-      { title: "Secondary pressure and alignment testing", start: 6, end: 9, tone: "slate" },
-    ],
-  },
-  {
-    name: "Hiyu",
-    group: "University",
-    kind: "character",
-    activities: [{ title: "Academic angle on systemic disruption", start: 7, end: 10, tone: "teal" }],
-  },
-  {
-    name: "Yulia",
-    group: "University",
-    kind: "character",
-    activities: [{ title: "Scholarly interpretation of magical strain", start: 7, end: 10, tone: "blue" }],
-  },
-  {
-    name: "Natalia",
-    group: "Magiarchy",
-    kind: "character",
-    activities: [{ title: "Internal magi governance response", start: 6, end: 10, tone: "violet" }],
-  },
-  {
-    name: "Lester",
-    group: "Magiarchy",
-    kind: "character",
-    activities: [{ title: "Strategic containment and doctrine pressure", start: 7, end: 10, tone: "slate" }],
-  },
-  {
-    name: "Myka",
-    group: "Mage Academy",
-    kind: "character",
-    activities: [{ title: "Institution-adjacent response lane", start: 8, end: 10, tone: "teal" }],
-  },
-  {
-    name: "MSF",
+    name: "Police",
     group: "Faction",
     kind: "faction",
-    activities: [
-      { title: "Internal instability under succession pressure", start: 2, end: 4, tone: "ember" },
-      { title: "Redirected hunt architecture", start: 5, end: 7, tone: "rose" },
-      { title: "Compression into guild-like continuity structure", start: 8, end: 10, tone: "blue" },
-    ],
-  },
-  {
-    name: "Magiarchy",
-    group: "Faction",
-    kind: "faction",
-    activities: [{ title: "Observation, regulation, delayed intervention", start: 5, end: 10, tone: "violet" }],
-  },
-  {
-    name: "Aristocracy",
-    group: "Faction",
-    kind: "faction",
-    activities: [{ title: "Legacy calculus and opportunistic leverage", start: 4, end: 9, tone: "gold" }],
-  },
-  {
-    name: "Government",
-    group: "Faction",
-    kind: "faction",
-    activities: [{ title: "Public-order narrative and state containment", start: 4, end: 10, tone: "stone" }],
+    activities: [{ title: "Public-order procedure collides with signals of an unnatural death", start: 2, end: 2, tone: "stone" }],
   },
   {
     name: "Church",
     group: "Faction",
     kind: "faction",
-    activities: [{ title: "Secrecy maintenance and institutional caution", start: 5, end: 10, tone: "slate" }],
+    activities: [{ title: "Secrecy maintenance and institutional caution become visible at scene level", start: 2, end: 2, tone: "slate" }],
   },
 ];
 

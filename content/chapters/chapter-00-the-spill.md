@@ -1,5 +1,5 @@
 ---
-title: Prequel
+title: The Interview
 type: chapter
 facet: story
 section: archive
@@ -10,13 +10,13 @@ canon: core
 case:
 characters:
 tags: magi | secrecy | church | politics | doctrine
-summary: A sharp prelude dialogue defines Magi as human loopholes in natural law, establishing secrecy, Church ambivalence, and the forbidden cost of politics before the wider story opens.
-draft_version: 1.1
+summary: A sharp interview dialogue defines Magi as human loopholes in natural law, establishing secrecy, Church ambivalence, and the forbidden cost of politics before the wider story opens.
+draft_version: 1.2
 template: literary
 featured: true
 ---
 
-# Prequel
+# The Interview
 
 "What can you tell me about Magi?"
 

@@ -902,7 +902,7 @@ function renderCurrentBeat(refs, state) {
   state.currentMode = beat.mode;
   state.currentText = displayText;
 
-  // For unattributed dialogue (e.g. Prequel's anonymous voices), show a generic "Voice" label
+  // For unattributed dialogue (e.g. The Interview's anonymous voices), show a generic "Voice" label
   const displaySpeaker = resolvedSpeaker || (beat.mode === "dialogue" ? "Voice" : "");
 
   // Push to log (keep last 60 entries)

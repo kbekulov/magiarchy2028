@@ -1,5 +1,5 @@
 ---
-title: Chapter 1 - Pressure Builds
+title: Chapter 1 - A Visitor
 type: chapter
 facet: story
 section: archive
@@ -10,7 +10,7 @@ canon: core
 characters: Inspector Leonid | Father Mikhail Arsenyev von Tiesen | Sergeant Marta Vale | Officer Piotr Jakubas
 tags: homicide | church | investigation | unnatural-death | pressure
 summary: Inspector Leonid arrives at a rain-soaked aristocratic residence where a homicide scene is already shadowed by Church credentials, impossible cold, and the suggestion of a death against the order of nature.
-draft_version: 1.1
+draft_version: 1.2
 template: literary
 vn_backdrop: img/vn_simulator/chapter_1/bg_street_1.png
 vn_left_name: Inspector Leonid
@@ -32,7 +32,7 @@ vn_speaker_overrides_08: You will not leave.=>Inspector Leonid | No.=>Father Mik
 vn_speaker_overrides_09: You are done touching things.=>Inspector Leonid | Yes Inspector Leonid.#3=>Officer Piotr | Write down exactly what you saw before your imagination improves it.=>Inspector Leonid | Last question. When your office received the call why send you personally?=>Inspector Leonid | Because the caller used a phrase we take seriously.=>Father Mikhail | He said the death might concern an act against the order of nature.=>Father Mikhail | Stay here Father Mikhail.=>Inspector Leonid | As you wish.=>Father Mikhail | If I find out this is some aristocratic attempt to contaminate a murder inquiry with superstition I will personally make your night unpleasant.=>Inspector Leonid | If that is what you find Inspector Leonid I will help you do it.=>Father Mikhail
 ---
 
-# Chapter 1 - Pressure Builds
+# Chapter 1 - A Visitor
 
 Rain had stopped fifteen minutes earlier, but the residence still looked wet in a way that made the whole property feel freshly uncovered.
 

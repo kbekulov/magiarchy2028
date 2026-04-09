@@ -86,19 +86,12 @@ Use this as a canon pack for story generation, character writing, scene planning
 - Continuity is carried by function, not formal definition.
 
 ### Current Chapter Timeline Scaffold
-- Chapter 0: Prequel.
-- Chapter 1: Pressure Builds.
-- Chapter 2: Accusation Vector.
+- Chapter 0: The Interview.
+- Chapter 1: A Visitor.
 - Pivotal Event: Fionn's assassination.
-- Chapter 3: Exile Opens.
-- Chapter 4: Hunt Architecture.
-- Chapter 5: Extraction Lines.
 - Pivotal Event: MSF compression into guild-like continuity.
-- Chapter 6: Countermove.
-- Chapter 7: Institutional Pressure.
 - Pivotal Event: Kyrien-Tien clash.
-- Chapter 8: Visibility Debt.
-- Chapter 9: Return Window.
+- Later chapter titles remain intentionally unset until drafted into canon.
 
 ### Timeline Trajectories
 - Chapter 0 affects Heyk, Sherie, and Drake.

@@ -36,6 +36,6 @@ The Spill is the earliest active rupture in the current timeline scaffold. It is
 
 ## Linked Material
 
-- `Prequel`
-- `Chapter 1 - Pressure Builds`
+- `The Interview`
+- `Chapter 1 - A Visitor`
 - Dossiers for Heyk, Sherie, and Drake

@@ -35,6 +35,4 @@ MSF survives collapse by changing shape instead of surrendering continuity. The 
 
 ## Linked Material
 
-- `Chapter 5 - Extraction Lines`
-- `Chapter 6 - Countermove`
-- `Chapter 7 - Institutional Pressure`
+- Later MSF transformation chapters pending canon draft
