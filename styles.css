@@ -2366,10 +2366,13 @@ body[data-page="reader"] #reader-nav {
 
 /* Inner wrapper keeps text + cursor grouped and sized together */
 .vn-narration-overlay__content {
-  width: 75%;
+  width: min(75%, 58rem);
+  min-height: clamp(9.5rem, 22vh, 13rem);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 
 .vn-narration-overlay__text {
@@ -2752,6 +2755,11 @@ body.vn-menu-open {
 
 .vn-shell:fullscreen .vn-narration-overlay {
   inset: 0 0 5rem 0;
+}
+
+.vn-shell:fullscreen .vn-narration-overlay__content {
+  width: min(74%, 62rem);
+  min-height: clamp(10.5rem, 24vh, 14rem);
 }
 
 .vn-shell:fullscreen .vn-menu-panel {
