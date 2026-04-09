@@ -2462,7 +2462,7 @@ body[data-page="reader"] #reader-nav {
   left: 0;
   right: 0;
   z-index: 3;
-  padding: 1.55rem 1.4rem 1.25rem;
+  padding: 0.98rem 1.4rem 1.15rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   background:
     linear-gradient(180deg, rgba(8, 13, 22, 0.88), rgba(6, 10, 18, 0.96)),
@@ -2472,7 +2472,7 @@ body[data-page="reader"] #reader-nav {
 
 .vn-textbox__nameplate {
   position: absolute;
-  top: 0;
+  top: 0.12rem;
   left: 1.4rem;
   z-index: 1;
   margin: 0;
@@ -2492,11 +2492,11 @@ body[data-page="reader"] #reader-nav {
   line-height: 1.2;
   letter-spacing: 0.02em;
   white-space: nowrap;
-  transform: translateY(-68%);
+  transform: translateY(-58%);
 }
 
 .vn-textbox__body {
-  min-height: 5.5rem;
+  min-height: 4.8rem;
 }
 
 .vn-textbox__text {
@@ -2741,7 +2741,7 @@ body.vn-menu-open {
 }
 
 .vn-shell:fullscreen .vn-textbox {
-  padding: 1.75rem 2rem 1.6rem;
+  padding: 1.12rem 2rem 1.45rem;
   bottom: 5rem;
 }
 
