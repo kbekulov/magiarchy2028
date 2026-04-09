@@ -242,6 +242,12 @@ function parseChapterMarkdown(markdown, chapterTitle) {
       return;
     }
 
+    const mixedSpeechBeats = decomposeMixedSpeechBlock(text);
+    if (mixedSpeechBeats?.length) {
+      beats.push(...mixedSpeechBeats);
+      return;
+    }
+
     const mode = inferVNBeatMode(text);
 
     // Split narration paragraphs into individual sentence beats for better VN pacing
@@ -260,7 +266,8 @@ function parseChapterMarkdown(markdown, chapterTitle) {
     beats.push({
       mode,
       label: vnModeLabel(mode),
-      text,
+      text: mode === "dialogue" ? extractDialoguePayload(text).text : text,
+      sourceText: mode === "dialogue" ? text : undefined,
     });
   });
 
@@ -297,6 +304,90 @@ function splitIntoSentenceBeats(text) {
   const parts = text.split(/(?<=[.!?]['""\u2019\u201d]?)\s+(?=[A-Z\u201c"'])/);
   const cleaned = parts.map((s) => s.trim()).filter(Boolean);
   return cleaned.length > 1 ? cleaned : [text];
+}
+
+function cleanNarrativeFragment(text) {
+  return String(text || "")
+    .replace(/\s+/g, " ")
+    .replace(/^[,;:\s]+/, "")
+    .replace(/[,;:\s]+$/, "")
+    .trim();
+}
+
+function isLikelySpeechAttribution(text) {
+  const cleaned = normalizeSpeakerKey(text);
+  if (!cleaned) {
+    return true;
+  }
+
+  const attributionVerbs =
+    "said|asked|replied|answered|repeated|added|murmured|whispered|shouted|snapped|continued|called|told|said he|said she";
+  const subject =
+    "he|she|they|the priest|the inspector|the officer|inspector leonid|father mikhail|father mikhail arsenyev von tiesen|sergeant vale|sergeant marta vale|officer piotr|officer piotr jakubas";
+
+  return (
+    new RegExp(`^(?:${subject})\\s+(?:${attributionVerbs})$`).test(cleaned) ||
+    new RegExp(`^(?:${attributionVerbs})\\s+(?:${subject})$`).test(cleaned)
+  );
+}
+
+function pushNarrationBeats(beats, text) {
+  const cleaned = cleanNarrativeFragment(text);
+  if (!cleaned) {
+    return;
+  }
+
+  splitIntoSentenceBeats(cleaned).forEach((sentence) => {
+    beats.push({
+      mode: "narration",
+      label: "Narration",
+      text: sentence,
+    });
+  });
+}
+
+function decomposeMixedSpeechBlock(text) {
+  if (/^[A-Z][A-Za-z\s'’-]{1,36}:\s+/.test(text) || !beatContainsSpeech(text)) {
+    return null;
+  }
+
+  const quoteMatches = Array.from(text.matchAll(/["“]([\s\S]*?)["”]/g));
+  if (!quoteMatches.length) {
+    return null;
+  }
+
+  const firstQuote = quoteMatches[0];
+  const lastQuote = quoteMatches[quoteMatches.length - 1];
+  const leadingFragment = cleanNarrativeFragment(text.slice(0, firstQuote.index));
+  const trailingFragment = cleanNarrativeFragment(
+    text.slice(lastQuote.index + lastQuote[0].length)
+  );
+
+  const hasLeadingNarration = leadingFragment && !isLikelySpeechAttribution(leadingFragment);
+  const hasTrailingNarration = trailingFragment && !isLikelySpeechAttribution(trailingFragment);
+
+  if (!hasLeadingNarration && !hasTrailingNarration) {
+    return null;
+  }
+
+  const beats = [];
+
+  if (hasLeadingNarration) {
+    pushNarrationBeats(beats, leadingFragment);
+  }
+
+  beats.push({
+    mode: "dialogue",
+    label: "Dialogue",
+    text: extractDialoguePayload(text).text,
+    sourceText: text,
+  });
+
+  if (hasTrailingNarration) {
+    pushNarrationBeats(beats, trailingFragment);
+  }
+
+  return beats;
 }
 
 function vnModeLabel(mode) {
@@ -344,6 +435,13 @@ function beatUsesAttributedDialogue(text, dialoguePayload) {
   return Boolean(normalizedDialogue) && normalizedSource !== normalizedDialogue;
 }
 
+function getChapterFieldEntries(chapter, fieldPrefix) {
+  return Object.entries(chapter?.fields || {})
+    .filter(([key]) => key === fieldPrefix || key.startsWith(`${fieldPrefix}_`))
+    .sort(([leftKey], [rightKey]) => leftKey.localeCompare(rightKey))
+    .flatMap(([, value]) => listifyField(value));
+}
+
 function getSceneSpritesForChapter(chapter) {
   return getChapterSceneConfig(chapter).sprites || [];
 }
@@ -373,9 +471,32 @@ function normalizeDialogueKey(value) {
     .toLowerCase();
 }
 
-function resolveSpeakerOverride(chapter, dialoguePayload, sceneSprites) {
-  const overrideEntries = listifyField(chapter?.fields?.vn_speaker_overrides);
-  const dialogueKey = normalizeDialogueKey(dialoguePayload?.text || "");
+function getDialogueOccurrence(chapter, beatIndex, dialogueText) {
+  const dialogueKey = normalizeDialogueKey(dialogueText);
+  if (!dialogueKey) {
+    return 0;
+  }
+
+  let occurrence = 0;
+
+  for (let index = 0; index <= beatIndex; index += 1) {
+    const candidateBeat = chapter?.beats?.[index];
+    if (candidateBeat?.mode !== "dialogue") {
+      continue;
+    }
+
+    if (normalizeDialogueKey(candidateBeat.text) === dialogueKey) {
+      occurrence += 1;
+    }
+  }
+
+  return occurrence;
+}
+
+function resolveSpeakerOverride(chapter, beatIndex, dialogueText, sceneSprites) {
+  const overrideEntries = getChapterFieldEntries(chapter, "vn_speaker_overrides");
+  const dialogueKey = normalizeDialogueKey(dialogueText);
+  const dialogueOccurrence = getDialogueOccurrence(chapter, beatIndex, dialogueText);
 
   if (!overrideEntries.length || !dialogueKey) {
     return "";
@@ -387,7 +508,14 @@ function resolveSpeakerOverride(chapter, dialoguePayload, sceneSprites) {
       continue;
     }
 
-    if (normalizeDialogueKey(fromText) === dialogueKey) {
+    const occurrenceMatch = fromText.match(/^(.*?)(?:#(\d+))?$/);
+    const sourceText = occurrenceMatch?.[1]?.trim() || fromText;
+    const sourceOccurrence = Number(occurrenceMatch?.[2] || 1);
+
+    if (
+      normalizeDialogueKey(sourceText) === dialogueKey &&
+      sourceOccurrence === dialogueOccurrence
+    ) {
       return resolveSceneSpeakerName(sceneSprites, speakerName);
     }
   }
@@ -454,30 +582,31 @@ function resolveBeatSpeaker(chapter, beatIndex) {
   }
 
   const sceneSprites = getSceneSpritesForChapter(chapter);
-  const dialoguePayload = extractDialoguePayload(beat.text);
+  const sourceText = beat.sourceText || beat.text;
+  const dialoguePayload = extractDialoguePayload(sourceText);
   if (dialoguePayload.speaker) {
     return resolveSceneSpeakerName(sceneSprites, dialoguePayload.speaker);
   }
 
-  if (!sceneSprites.length || !beatContainsSpeech(beat.text)) {
+  if (!sceneSprites.length || !beatContainsSpeech(sourceText)) {
     return "";
   }
 
-  const overrideSpeaker = resolveSpeakerOverride(chapter, dialoguePayload, sceneSprites);
+  const overrideSpeaker = resolveSpeakerOverride(chapter, beatIndex, beat.text, sceneSprites);
   if (overrideSpeaker) {
     return overrideSpeaker;
   }
 
-  const currentSpeaker = resolveUniqueSceneSpeaker(beat.text, sceneSprites);
+  const currentSpeaker = resolveUniqueSceneSpeaker(sourceText, sceneSprites);
   if (currentSpeaker) {
     return currentSpeaker;
   }
 
-  if (containsNonSceneCharacterMention(chapter, beat.text, sceneSprites)) {
+  if (containsNonSceneCharacterMention(chapter, sourceText, sceneSprites)) {
     return "";
   }
 
-  const offsets = beatUsesAttributedDialogue(beat.text, dialoguePayload)
+  const offsets = beatUsesAttributedDialogue(sourceText, dialoguePayload)
     ? [-1, -2, 1, 2]
     : [-1, 1];
 
