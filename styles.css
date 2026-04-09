@@ -2253,15 +2253,15 @@ body[data-page="reader"] #reader-nav {
 .vn-main-menu__content {
   position: relative;
   z-index: 1;
-  width: min(34rem, calc(100% - 2rem));
+  width: min(28rem, calc(100% - 2rem));
   display: grid;
   justify-items: center;
-  gap: 1.3rem;
+  gap: 0.85rem;
   text-align: center;
 }
 
 .vn-main-menu__logo {
-  width: min(36rem, 94%);
+  width: min(25rem, 82%);
   height: auto;
   display: block;
   filter:
@@ -2270,14 +2270,14 @@ body[data-page="reader"] #reader-nav {
 }
 
 .vn-main-menu__actions {
-  width: min(21rem, 100%);
+  width: min(15rem, 100%);
   display: grid;
-  gap: 0.85rem;
+  gap: 0.45rem;
 }
 
 .vn-main-menu__action {
   position: relative;
-  padding: 0.05rem 1rem;
+  padding: 0.02rem 0.7rem;
   border: none;
   outline: none;
   box-shadow: none;
@@ -2286,8 +2286,8 @@ body[data-page="reader"] #reader-nav {
   background: transparent;
   color: rgba(245, 248, 255, 0.88);
   font-family: var(--serif);
-  font-size: clamp(1.9rem, 3vw, 2.45rem);
-  line-height: 1.15;
+  font-size: clamp(1.48rem, 2.3vw, 1.95rem);
+  line-height: 1.08;
   letter-spacing: 0.01em;
   text-shadow:
     0 8px 24px rgba(0, 0, 0, 0.58),
@@ -2301,7 +2301,7 @@ body[data-page="reader"] #reader-nav {
   content: "";
   position: absolute;
   top: 50%;
-  width: 4.1rem;
+  width: 2.7rem;
   height: 1px;
   opacity: 0;
   transform: translateY(-50%) scaleX(0.82);
@@ -2310,11 +2310,11 @@ body[data-page="reader"] #reader-nav {
 }
 
 .vn-main-menu__action::before {
-  left: -1.9rem;
+  left: -1.15rem;
 }
 
 .vn-main-menu__action::after {
-  right: -1.9rem;
+  right: -1.15rem;
 }
 
 .vn-main-menu__action:hover,
@@ -2349,12 +2349,6 @@ body[data-page="reader"] #reader-nav {
   text-shadow:
     0 12px 26px rgba(0, 0, 0, 0.62),
     0 0 24px rgba(188, 217, 255, 0.16);
-}
-
-.vn-main-menu__action[disabled] {
-  cursor: default;
-  opacity: 0.6;
-  pointer-events: none;
 }
 
 .vn-topbar {
@@ -2977,19 +2971,19 @@ body.vn-menu-open {
 }
 
 .vn-shell:fullscreen .vn-main-menu__content {
-  width: min(40rem, calc(100% - 3rem));
+  width: min(31rem, calc(100% - 3rem));
 }
 
 .vn-shell:fullscreen .vn-main-menu__logo {
-  width: min(42rem, 100%);
+  width: min(27rem, 86%);
 }
 
 .vn-shell:fullscreen .vn-main-menu__actions {
-  width: min(20rem, 100%);
+  width: min(16rem, 100%);
 }
 
 .vn-shell:fullscreen .vn-main-menu__action {
-  font-size: clamp(2.1rem, 3vw, 2.8rem);
+  font-size: clamp(1.72rem, 2.25vw, 2.2rem);
 }
 
 .vn-shell:fullscreen .vn-stage {
