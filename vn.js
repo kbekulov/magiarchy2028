@@ -753,6 +753,7 @@ function bindVNEvents(refs, state) {
 function renderVNEmpty(refs, message) {
   refs.title.textContent = "VN Simulator unavailable";
   refs.order.textContent = "Archive";
+  applyTextboxSpeakerSide(refs, "");
   refs.textbox.hidden = true;
   refs.nameplate.hidden = true;
   refs.cursor.hidden = true;
@@ -884,6 +885,34 @@ function normalizeSpeakerKey(value) {
     .trim();
 }
 
+function resolveSpeakerSide(refs, speakerName) {
+  const speakerKey = normalizeSpeakerKey(speakerName);
+  if (!speakerKey) {
+    return "";
+  }
+
+  const leftKeys = (refs.spriteLeft?.dataset.spriteKeys || "").split("|").filter(Boolean);
+  if (leftKeys.includes(speakerKey)) {
+    return "left";
+  }
+
+  const rightKeys = (refs.spriteRight?.dataset.spriteKeys || "").split("|").filter(Boolean);
+  if (rightKeys.includes(speakerKey)) {
+    return "right";
+  }
+
+  return "";
+}
+
+function applyTextboxSpeakerSide(refs, side) {
+  if (!refs.textbox) {
+    return;
+  }
+
+  refs.textbox.classList.toggle("is-speaker-left", side === "left");
+  refs.textbox.classList.toggle("is-speaker-right", side === "right");
+}
+
 function updateActiveSpriteSpeaker(refs, speakerName) {
   const speakerKey = normalizeSpeakerKey(speakerName);
 
@@ -917,6 +946,7 @@ function renderCurrentBeat(refs, state) {
 
   // For unattributed dialogue (e.g. The Interview's anonymous voices), show a generic "Voice" label
   const displaySpeaker = resolvedSpeaker || (beat.mode === "dialogue" ? "Voice" : "");
+  const speakerSide = resolveSpeakerSide(refs, displaySpeaker);
 
   // Push to log (keep last 60 entries)
   state.log.unshift({ mode: beat.mode, speaker: displaySpeaker, text: displayText });
@@ -944,9 +974,11 @@ function renderCurrentBeat(refs, state) {
       refs.nameplate.hidden = true;
       refs.nameplate.textContent = "";
     }
+    applyTextboxSpeakerSide(refs, speakerSide);
     state.currentTarget = refs.textboxText;
   } else {
     // Narration overlay for narration/system/echo
+    applyTextboxSpeakerSide(refs, "");
     refs.textbox.hidden = true;
     refs.textboxText.textContent = "";
     refs.cursor.hidden = true;
@@ -1080,6 +1112,7 @@ function advanceVN(refs, state, options = {}) {
   }
 
   state.archiveEnded = true;
+  applyTextboxSpeakerSide(refs, "");
   refs.textbox.hidden = true;
   refs.nameplate.hidden = true;
   refs.cursor.hidden = true;
