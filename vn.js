@@ -1,4 +1,5 @@
 const vnShell = document.getElementById("vn-shell");
+const VN_BGM_PREFERENCE_KEY = "magiarchy.vn.bgmEnabled";
 const VN_SCENE_LIBRARY = {
   "chapter-chapter-01-a-visitor": {
     backdrop: "media/vn_simulator/chapter_1/bg_street_1.png",
@@ -66,6 +67,27 @@ if (vnShell) {
   initializeVNSimulator();
 }
 
+function readStoredBGMPreference() {
+  try {
+    const value = window.localStorage.getItem(VN_BGM_PREFERENCE_KEY);
+    if (value === null) {
+      return true;
+    }
+
+    return value !== "false";
+  } catch {
+    return true;
+  }
+}
+
+function persistBGMPreference(value) {
+  try {
+    window.localStorage.setItem(VN_BGM_PREFERENCE_KEY, value ? "true" : "false");
+  } catch {
+    // Ignore storage failures and keep the runtime preference only.
+  }
+}
+
 async function initializeVNSimulator() {
   const refs = getVNRefs();
   const state = {
@@ -76,7 +98,7 @@ async function initializeVNSimulator() {
     isAnimating: false,
     skipAnimations: false,
     autoAdvance: false,
-    bgmEnabled: false,
+    bgmEnabled: readStoredBGMPreference(),
     menuOpen: false,
     logOpen: false,
     currentText: "",
@@ -668,6 +690,14 @@ function resolveBeatSpeaker(chapter, beatIndex) {
 }
 
 function bindVNEvents(refs, state) {
+  const resumeBGMIfEnabled = () => {
+    if (!state.bgmEnabled || !state.chapters.length) {
+      return;
+    }
+
+    syncBGMToChapter(refs, state);
+  };
+
   refs.nextButton?.addEventListener("click", () => {
     pauseAutoForManualInteraction(refs, state);
     advanceVN(refs, state);
@@ -704,6 +734,14 @@ function bindVNEvents(refs, state) {
     advanceVN(refs, state);
   });
 
+  document.addEventListener(
+    "pointerdown",
+    () => {
+      resumeBGMIfEnabled();
+    },
+    { passive: true }
+  );
+
   document.addEventListener("fullscreenchange", () => {
     setFullscreenButtonState(refs);
   });
@@ -737,6 +775,7 @@ function bindVNEvents(refs, state) {
 
     if (event.key === " " || event.key === "Enter" || event.key === "ArrowRight") {
       event.preventDefault();
+      resumeBGMIfEnabled();
       pauseAutoForManualInteraction(refs, state);
       advanceVN(refs, state);
       return;
@@ -744,6 +783,7 @@ function bindVNEvents(refs, state) {
 
     if (event.key === "ArrowLeft" || event.key === "Backspace") {
       event.preventDefault();
+      resumeBGMIfEnabled();
       pauseAutoForManualInteraction(refs, state);
       retreatVN(refs, state);
       return;
@@ -751,24 +791,28 @@ function bindVNEvents(refs, state) {
 
     if (event.key.toLowerCase() === "m") {
       event.preventDefault();
+      resumeBGMIfEnabled();
       openVNMenu(refs, state);
       return;
     }
 
     if (event.key.toLowerCase() === "l") {
       event.preventDefault();
+      resumeBGMIfEnabled();
       openVNLog(refs, state);
       return;
     }
 
     if (event.key.toLowerCase() === "s") {
       event.preventDefault();
+      resumeBGMIfEnabled();
       setSkipState(refs, state, !state.skipAnimations);
       return;
     }
 
     if (event.key.toLowerCase() === "a") {
       event.preventDefault();
+      resumeBGMIfEnabled();
       setAutoState(refs, state, !state.autoAdvance);
       return;
     }
@@ -1321,6 +1365,7 @@ function setAutoState(refs, state, value) {
 async function toggleBGM(refs, state) {
   const nextValue = !state.bgmEnabled;
   state.bgmEnabled = nextValue;
+  persistBGMPreference(nextValue);
   updateBGMButtonState(refs, state);
 
   if (!nextValue) {
@@ -1331,6 +1376,7 @@ async function toggleBGM(refs, state) {
   const engine = await ensureBGMAudio(state);
   if (!engine) {
     state.bgmEnabled = false;
+    persistBGMPreference(false);
     updateBGMButtonState(refs, state);
     return;
   }
