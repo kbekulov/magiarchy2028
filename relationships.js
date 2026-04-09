@@ -153,8 +153,8 @@ const RELATIONSHIP_TRACKS = [
     characters: ["Sherie", "Drake", "Heyk"],
     dossierIds: ["dossier-dossier-sherie", "dossier-dossier-drake", "dossier-dossier-heyk"],
     relatedIds: [
-      "chapter-chapter-00-the-spill",
-      "chapter-chapter-01-pressure-builds",
+      "chapter-chapter-00-the-interview",
+      "chapter-chapter-01-a-visitor",
       "world-world-the-country",
       "world-world-external-power-blocs",
     ],

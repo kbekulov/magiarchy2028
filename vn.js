@@ -1,6 +1,6 @@
 const vnShell = document.getElementById("vn-shell");
 const VN_SCENE_LIBRARY = {
-  "chapter-chapter-01-pressure-builds": {
+  "chapter-chapter-01-a-visitor": {
     backdrop: "media/vn_simulator/chapter_1/bg_street_1.png",
     sprites: [
       {
