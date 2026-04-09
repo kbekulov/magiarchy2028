@@ -2505,7 +2505,7 @@ body[data-page="reader"] #reader-nav {
 
 .vn-textbox.is-speaker-left .vn-textbox__body,
 .vn-textbox.is-speaker-right .vn-textbox__body {
-  width: min(58%, 40rem);
+  width: min(82%, 56rem);
 }
 
 .vn-textbox.is-speaker-left .vn-textbox__body {
@@ -3344,7 +3344,7 @@ body[data-page="reader"] .reader-card .markdown-body p:last-child {
 
   .vn-textbox.is-speaker-left .vn-textbox__body,
   .vn-textbox.is-speaker-right .vn-textbox__body {
-    width: min(76%, 28rem);
+    width: min(88%, 40rem);
   }
 
   .vn-textbox.is-speaker-right .vn-textbox__nameplate {
@@ -3443,7 +3443,7 @@ body[data-page="reader"] .reader-card .markdown-body p:last-child {
 
   .vn-textbox.is-speaker-left .vn-textbox__body,
   .vn-textbox.is-speaker-right .vn-textbox__body {
-    width: min(84%, 24rem);
+    width: min(92%, 28rem);
   }
 
   .vn-textbox.is-speaker-right .vn-textbox__nameplate {
