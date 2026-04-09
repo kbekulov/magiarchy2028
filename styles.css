@@ -2345,6 +2345,73 @@ body[data-page="reader"] #reader-nav {
   pointer-events: none;
 }
 
+.vn-chapter-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background:
+    linear-gradient(180deg, rgba(2, 3, 6, 0.985), rgba(3, 5, 9, 0.99)),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.04), transparent 48%);
+  opacity: 0;
+  pointer-events: auto;
+  transition: opacity 560ms ease;
+}
+
+.vn-chapter-intro::before,
+.vn-chapter-intro::after {
+  content: "";
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 248, 255, 0.4), transparent);
+}
+
+.vn-chapter-intro::before {
+  top: calc(50% - 4.5rem);
+}
+
+.vn-chapter-intro::after {
+  top: calc(50% + 4.5rem);
+}
+
+.vn-chapter-intro.is-visible {
+  opacity: 1;
+}
+
+.vn-chapter-intro__frame {
+  position: relative;
+  z-index: 1;
+  width: min(44rem, calc(100% - 2rem));
+  text-align: center;
+}
+
+.vn-chapter-intro__eyebrow {
+  margin: 0 0 0.7rem;
+  color: rgba(202, 217, 246, 0.74);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.vn-chapter-intro__title {
+  margin: 0;
+  color: #f5f7fe;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4.5vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: 0.02em;
+  text-shadow:
+    0 12px 34px rgba(0, 0, 0, 0.62),
+    0 2px 10px rgba(0, 0, 0, 0.48);
+}
+
 .vn-controlbar {
   position: relative;
   z-index: 1;
@@ -2766,6 +2833,14 @@ body.vn-menu-open {
 .vn-shell:fullscreen .vn-stage__background {
   flex: 1 1 auto;
   min-height: 0;
+}
+
+.vn-shell:fullscreen .vn-chapter-intro {
+  padding: 3rem;
+}
+
+.vn-shell:fullscreen .vn-chapter-intro__title {
+  font-size: clamp(2.4rem, 4.2vw, 4.8rem);
 }
 
 .vn-shell:fullscreen .vn-textbox {

@@ -1,5 +1,7 @@
 const vnShell = document.getElementById("vn-shell");
 const VN_BGM_PREFERENCE_KEY = "magiarchy.vn.bgmEnabled";
+const VN_CHAPTER_INTRO_VISIBLE_MS = 1700;
+const VN_CHAPTER_INTRO_FADE_MS = 560;
 const VN_SCENE_LIBRARY = {
   "chapter-chapter-01-a-visitor": {
     backdrop: "media/vn_simulator/chapter_1/bg_street_1.png",
@@ -106,6 +108,11 @@ async function initializeVNSimulator() {
     currentTarget: null,
     animationTimer: null,
     autoTimer: null,
+    introFadeTimer: null,
+    introHideTimer: null,
+    introResolve: null,
+    introActive: false,
+    openToken: 0,
     bgmEngine: null,
     log: [],
   };
@@ -159,6 +166,9 @@ function getVNRefs() {
     stage: document.getElementById("vn-stage"),
     spriteLeft: document.getElementById("vn-sprite-left"),
     spriteRight: document.getElementById("vn-sprite-right"),
+    introOverlay: document.getElementById("vn-chapter-intro"),
+    introOrder: document.getElementById("vn-intro-order"),
+    introTitle: document.getElementById("vn-intro-title"),
     narrationOverlay: document.getElementById("vn-narration-overlay"),
     narrationText: document.getElementById("vn-narration-text"),
     cursorNarration: document.getElementById("vn-cursor-narration"),
@@ -726,6 +736,11 @@ function bindVNEvents(refs, state) {
       return;
     }
 
+    if (state.introActive) {
+      dismissChapterIntro(refs, state);
+      return;
+    }
+
     if (event.target.closest(".vn-controlbar__actions")) {
       return;
     }
@@ -751,6 +766,19 @@ function bindVNEvents(refs, state) {
   });
 
   document.addEventListener("keydown", (event) => {
+    if (state.introActive) {
+      if (
+        event.key === " " ||
+        event.key === "Enter" ||
+        event.key === "ArrowRight" ||
+        event.key === "Escape"
+      ) {
+        event.preventDefault();
+        dismissChapterIntro(refs, state);
+      }
+      return;
+    }
+
     if (state.menuOpen) {
       if (event.key === "Escape") {
         event.preventDefault();
@@ -835,6 +863,10 @@ function bindVNEvents(refs, state) {
 }
 
 function renderVNEmpty(refs, message) {
+  if (refs.introOverlay) {
+    refs.introOverlay.classList.remove("is-visible");
+    refs.introOverlay.hidden = true;
+  }
   refs.title.textContent = "VN Simulator unavailable";
   refs.order.textContent = "Archive";
   applyTextboxSpeakerSide(refs, "");
@@ -855,38 +887,140 @@ function renderVNEmpty(refs, message) {
   refs.skipToggle.disabled = true;
 }
 
-function openChapter(refs, state, chapterIndex, beatIndex = 0) {
+function clearChapterIntroTimers(state) {
+  if (state.introFadeTimer) {
+    window.clearTimeout(state.introFadeTimer);
+    state.introFadeTimer = null;
+  }
+
+  if (state.introHideTimer) {
+    window.clearTimeout(state.introHideTimer);
+    state.introHideTimer = null;
+  }
+}
+
+function finishChapterIntro(refs, state) {
+  clearChapterIntroTimers(state);
+
+  if (refs.introOverlay) {
+    refs.introOverlay.classList.remove("is-visible");
+    refs.introOverlay.hidden = true;
+  }
+
+  state.introActive = false;
+  const resolve = state.introResolve;
+  state.introResolve = null;
+  if (typeof resolve === "function") {
+    resolve();
+  }
+}
+
+function dismissChapterIntro(refs, state, immediate = false) {
+  if (!refs.introOverlay) {
+    return;
+  }
+
+  if (!state.introActive && refs.introOverlay.hidden) {
+    return;
+  }
+
+  clearChapterIntroTimers(state);
+
+  if (immediate || state.skipAnimations) {
+    finishChapterIntro(refs, state);
+    return;
+  }
+
+  refs.introOverlay.classList.remove("is-visible");
+  state.introHideTimer = window.setTimeout(() => {
+    finishChapterIntro(refs, state);
+  }, VN_CHAPTER_INTRO_FADE_MS);
+}
+
+function playChapterIntro(refs, state, chapter) {
+  if (!refs.introOverlay || !refs.introOrder || !refs.introTitle) {
+    return Promise.resolve();
+  }
+
+  dismissChapterIntro(refs, state, true);
+
+  refs.introOrder.textContent = `Chronology ${window.DivineChamber.orderLabel(chapter)}`;
+  refs.introTitle.textContent = chapter.title;
+  refs.textbox.hidden = true;
+  refs.nameplate.hidden = true;
+  refs.cursor.hidden = true;
+  refs.narrationOverlay.hidden = true;
+  refs.cursorNarration.hidden = true;
+  updateActiveSpriteSpeaker(refs, "");
+  refs.introOverlay.hidden = false;
+  refs.introOverlay.classList.remove("is-visible");
+  state.introActive = true;
+
+  return new Promise((resolve) => {
+    state.introResolve = resolve;
+
+    window.requestAnimationFrame(() => {
+      refs.introOverlay?.classList.add("is-visible");
+    });
+
+    state.introFadeTimer = window.setTimeout(() => {
+      dismissChapterIntro(refs, state);
+    }, state.skipAnimations ? 360 : VN_CHAPTER_INTRO_VISIBLE_MS);
+  });
+}
+
+async function openChapter(refs, state, chapterIndex, beatIndex = 0) {
   const boundedChapterIndex = Math.max(0, Math.min(state.chapters.length - 1, chapterIndex));
   const chapter = state.chapters[boundedChapterIndex];
   if (!chapter) {
     return;
   }
 
+  const openToken = ++state.openToken;
   clearVNAnimation(state);
   clearAutoAdvance(state);
+  dismissChapterIntro(refs, state, true);
 
   const isChapterChange = boundedChapterIndex !== state.chapterIndex;
 
   state.archiveEnded = false;
   state.chapterIndex = boundedChapterIndex;
   state.beatIndex = Math.max(0, Math.min(chapter.beats.length - 1, beatIndex));
+  const shouldShowIntro = state.beatIndex === 0;
 
-  if (isChapterChange && refs.stage) {
-    refs.stage.classList.add("is-transitioning");
-    window.setTimeout(() => {
-      updateChapterScene(refs, chapter);
-      updateChapterMenuSelection(refs, state);
-      updateChapterUrl(chapter.id);
-      syncBGMToChapter(refs, state);
-      renderCurrentBeat(refs, state);
-      refs.stage.classList.remove("is-transitioning");
-    }, 280);
-  } else {
+  const finalizeOpen = async () => {
     updateChapterScene(refs, chapter);
     updateChapterMenuSelection(refs, state);
     updateChapterUrl(chapter.id);
-    syncBGMToChapter(refs, state);
+    await syncBGMToChapter(refs, state);
+
+    if (state.openToken !== openToken) {
+      return;
+    }
+
+    if (shouldShowIntro) {
+      await playChapterIntro(refs, state, chapter);
+      if (state.openToken !== openToken) {
+        return;
+      }
+    }
+
     renderCurrentBeat(refs, state);
+  };
+
+  if (isChapterChange && refs.stage) {
+    refs.stage.classList.add("is-transitioning");
+    window.setTimeout(async () => {
+      if (state.openToken !== openToken) {
+        refs.stage.classList.remove("is-transitioning");
+        return;
+      }
+
+      await finalizeOpen();
+      refs.stage.classList.remove("is-transitioning");
+    }, 280);
+  } else {
+    await finalizeOpen();
   }
 }
 
