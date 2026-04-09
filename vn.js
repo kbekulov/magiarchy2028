@@ -345,7 +345,54 @@ function beatUsesAttributedDialogue(text, dialoguePayload) {
 }
 
 function getSceneSpritesForChapter(chapter) {
-  return VN_SCENE_LIBRARY[chapter?.id]?.sprites || [];
+  return getChapterSceneConfig(chapter).sprites || [];
+}
+
+function resolveSceneSpeakerName(sceneSprites, value) {
+  const normalizedValue = normalizeSpeakerKey(value);
+  if (!normalizedValue) {
+    return "";
+  }
+
+  const matchedSprite = sceneSprites.find((sprite) =>
+    buildSpeakerKeys(sprite.name || "")
+      .concat((sprite.aliases || []).flatMap((alias) => buildSpeakerKeys(alias)))
+      .includes(normalizedValue)
+  );
+
+  return matchedSprite?.name || String(value || "").trim();
+}
+
+function normalizeDialogueKey(value) {
+  return String(value || "")
+    .replace(/\r\n/g, "\n")
+    .replace(/[“”"]/g, "")
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function resolveSpeakerOverride(chapter, dialoguePayload, sceneSprites) {
+  const overrideEntries = listifyField(chapter?.fields?.vn_speaker_overrides);
+  const dialogueKey = normalizeDialogueKey(dialoguePayload?.text || "");
+
+  if (!overrideEntries.length || !dialogueKey) {
+    return "";
+  }
+
+  for (const entry of overrideEntries) {
+    const [fromText, speakerName] = entry.split("=>").map((part) => part?.trim() || "");
+    if (!fromText || !speakerName) {
+      continue;
+    }
+
+    if (normalizeDialogueKey(fromText) === dialogueKey) {
+      return resolveSceneSpeakerName(sceneSprites, speakerName);
+    }
+  }
+
+  return "";
 }
 
 function buildSpeakerKeys(value) {
@@ -406,14 +453,19 @@ function resolveBeatSpeaker(chapter, beatIndex) {
     return "";
   }
 
+  const sceneSprites = getSceneSpritesForChapter(chapter);
   const dialoguePayload = extractDialoguePayload(beat.text);
   if (dialoguePayload.speaker) {
-    return dialoguePayload.speaker;
+    return resolveSceneSpeakerName(sceneSprites, dialoguePayload.speaker);
   }
 
-  const sceneSprites = getSceneSpritesForChapter(chapter);
   if (!sceneSprites.length || !beatContainsSpeech(beat.text)) {
     return "";
+  }
+
+  const overrideSpeaker = resolveSpeakerOverride(chapter, dialoguePayload, sceneSprites);
+  if (overrideSpeaker) {
+    return overrideSpeaker;
   }
 
   const currentSpeaker = resolveUniqueSceneSpeaker(beat.text, sceneSprites);
@@ -619,13 +671,13 @@ function updateChapterScene(refs, chapter) {
   refs.stage.style.setProperty("--vn-accent-strong", `hsla(${hue}, 82%, 58%, 0.46)`);
   refs.stage.style.setProperty("--vn-accent-soft", `hsla(${hue}, 80%, 72%, 0.12)`);
   applyChapterSceneArt(refs, chapter);
+  const configuredScene = getChapterSceneConfig(chapter);
 
   const spriteNames = chapter.characters?.length
     ? chapter.characters.slice(0, 2)
     : chapter.beats.some((beat) => beat.mode === "dialogue")
       ? ["Speaker A", "Speaker B"]
       : ["Stage Left", "Stage Right"];
-  const configuredScene = VN_SCENE_LIBRARY[chapter.id];
 
   if (configuredScene?.sprites?.length) {
     setSpriteSlot(refs.spriteLeft, configuredScene.sprites[0] || null);
@@ -646,7 +698,7 @@ function updateChapterScene(refs, chapter) {
 }
 
 function applyChapterSceneArt(refs, chapter) {
-  const configuredScene = VN_SCENE_LIBRARY[chapter.id];
+  const configuredScene = getChapterSceneConfig(chapter);
   const backdrop = configuredScene?.backdrop || "img/bg.png";
   const opacity = configuredScene?.backdrop ? "0.76" : "0.5";
   refs.stage.style.setProperty("--vn-stage-art", `url("${backdrop}")`);

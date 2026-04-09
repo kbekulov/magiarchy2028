@@ -12,6 +12,15 @@ tags: homicide | church | investigation | unnatural-death | pressure
 summary: Inspector Leonid arrives at a rain-soaked aristocratic residence where a homicide scene is already shadowed by Church credentials, impossible cold, and the suggestion of a death against the order of nature.
 draft_version: 1.0
 template: literary
+vn_backdrop: img/vn_simulator/chapter_1/bg_street_1.png
+vn_left_name: Inspector Leonid
+vn_left_role: Investigator
+vn_left_sprite: img/vn_simulator/chapter_1/detective_1.png
+vn_left_aliases: Inspector Leonid | Leonid | Inspector | The Inspector
+vn_right_name: Father Mikhail
+vn_right_role: Church Bureau
+vn_right_sprite: img/vn_simulator/chapter_1/priest_1.png
+vn_right_aliases: Father Mikhail | Mikhail | Father Mikhail Arsenyev von Tiesen | Priest | The Priest
 ---
 
 # Chapter 1 - Pressure Builds
