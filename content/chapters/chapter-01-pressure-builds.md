@@ -12,14 +12,14 @@ tags: homicide | church | investigation | unnatural-death | pressure
 summary: Inspector Leonid arrives at a rain-soaked aristocratic residence where a homicide scene is already shadowed by Church credentials, impossible cold, and the suggestion of a death against the order of nature.
 draft_version: 1.2
 template: literary
-vn_backdrop: img/vn_simulator/chapter_1/bg_street_1.png
+vn_backdrop: media/vn_simulator/chapter_1/bg_street_1.png
 vn_left_name: Inspector Leonid
 vn_left_role: Investigator
-vn_left_sprite: img/vn_simulator/chapter_1/detective_1.png
+vn_left_sprite: media/vn_simulator/chapter_1/detective_1.png
 vn_left_aliases: Inspector Leonid | Leonid | Inspector | The Inspector
 vn_right_name: Father Mikhail
 vn_right_role: Church Bureau
-vn_right_sprite: img/vn_simulator/chapter_1/priest_1.png
+vn_right_sprite: media/vn_simulator/chapter_1/priest_1.png
 vn_right_aliases: Father Mikhail | Mikhail | Father Mikhail Arsenyev von Tiesen | Priest | The Priest
 vn_speaker_overrides_01: Why, is there clergy inside my perimeter?=>Inspector Leonid | I asked a simple question.=>Inspector Leonid | He was already here when patrol entered, sir.=>Sergeant Vale | That is not an answer.=>Inspector Leonid | It's the only one I have.=>Sergeant Vale | This is an active homicide scene Who authorized Church access?=>Inspector Leonid | No one authorized it=>Father Mikhail | That is not how this works.=>Inspector Leonid | Tonight, Inspector, it appears to be.=>Father Mikhail | Name.#1=>Inspector Leonid
 vn_speaker_overrides_02: Father Mikhail Arsenyev von Tiesen.=>Father Mikhail | And why is Father Mikhail Arsenyev von Tiesen standing in my crime scene?=>Inspector Leonid | Waiting.=>Father Mikhail | For whom?=>Inspector Leonid | For you.=>Father Mikhail | Where is the body?=>Inspector Leonid | In the receiving room.=>Sergeant Vale | Why has it not been moved?=>Inspector Leonid | Medical refused transport pending homicide clearance.=>Sergeant Vale | Then why does everybody out here look like they've seen a saint descend through the ceiling?=>Inspector Leonid

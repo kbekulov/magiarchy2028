@@ -14,7 +14,7 @@ summary: A sharp interview dialogue defines Magi as human loopholes in natural l
 draft_version: 1.3
 template: literary
 featured: true
-vn_backdrop: img/vn_simulator/chapter_0/bg_room_1.png
+vn_backdrop: media/vn_simulator/chapter_0/bg_room_1.png
 ---
 
 # The Interview

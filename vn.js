@@ -1,18 +1,18 @@
 const vnShell = document.getElementById("vn-shell");
 const VN_SCENE_LIBRARY = {
   "chapter-chapter-01-pressure-builds": {
-    backdrop: "img/vn_simulator/chapter_1/bg_street_1.png",
+    backdrop: "media/vn_simulator/chapter_1/bg_street_1.png",
     sprites: [
       {
         name: "Inspector Leonid",
         role: "Investigator",
-        src: "img/vn_simulator/chapter_1/detective_1.png",
+        src: "media/vn_simulator/chapter_1/detective_1.png",
         aliases: ["inspector leonid", "leonid"],
       },
       {
         name: "Father Mikhail",
         role: "Church Bureau",
-        src: "img/vn_simulator/chapter_1/priest_1.png",
+        src: "media/vn_simulator/chapter_1/priest_1.png",
         aliases: ["father mikhail", "mikhail", "father mikhail arsenyev von tiesen"],
       },
     ],
@@ -841,7 +841,7 @@ function updateChapterScene(refs, chapter) {
 
 function applyChapterSceneArt(refs, chapter) {
   const configuredScene = getChapterSceneConfig(chapter);
-  const backdrop = configuredScene?.backdrop || "img/bg.png";
+  const backdrop = configuredScene?.backdrop || "media/bg.png";
   const opacity = configuredScene?.backdrop ? "0.76" : "0.5";
   refs.stage.style.setProperty("--vn-stage-art", `url("${backdrop}")`);
   refs.stage.style.setProperty("--vn-stage-art-opacity", opacity);
