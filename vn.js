@@ -425,6 +425,19 @@ function extractDialoguePayload(text) {
   };
 }
 
+function formatDialogueDisplayText(text) {
+  const cleaned = String(text || "").trim();
+  if (!cleaned) {
+    return "";
+  }
+
+  if (/^["“].*["”]$/.test(cleaned) || /^'.*'$/.test(cleaned)) {
+    return cleaned;
+  }
+
+  return `“${cleaned}”`;
+}
+
 function beatContainsSpeech(text) {
   return /^([A-Z][A-Za-z\s'’-]{1,36}):\s+/.test(text) || /["“][\s\S]*["”]/.test(text);
 }
@@ -896,7 +909,7 @@ function renderCurrentBeat(refs, state) {
   state.archiveEnded = false;
   const dialoguePayload = beat.mode === "dialogue" ? extractDialoguePayload(beat.text) : null;
   const resolvedSpeaker = resolveBeatSpeaker(chapter, state.beatIndex);
-  const displayText = dialoguePayload ? dialoguePayload.text : beat.text;
+  const displayText = dialoguePayload ? formatDialogueDisplayText(dialoguePayload.text) : beat.text;
   const progressLabel = `${state.beatIndex + 1} / ${chapter.beats.length}`;
 
   state.currentMode = beat.mode;
