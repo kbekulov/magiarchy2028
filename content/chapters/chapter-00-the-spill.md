@@ -11,12 +11,12 @@ case:
 characters:
 tags: magi | secrecy | church | politics | doctrine
 summary: A sharp interview dialogue defines Magi as human loopholes in natural law, establishing secrecy, Church ambivalence, and the forbidden cost of politics before the wider story opens.
-draft_version: 1.6
+draft_version: 1.7
 template: literary
 featured: true
 vn_backdrop: media/vn_simulator/chapter_0/bg_room_1.png
 vn_left_name: Guest
-vn_left_aliases: Guest | Voice 2 | Second Voice | Respondent
+vn_left_aliases: Guest | Journalist | Voice 1 | Voice 2 | First Voice | Second Voice | Interviewer | Respondent
 vn_right_name: Journalist
 vn_right_aliases: Journalist | Voice 1 | First Voice | Interviewer
 vn_speaker_overrides_01: What can you tell me about Magi?=>Journalist | That depends on whether you want the answer fit for a child, a priest, or a judge.=>Guest | The true one.=>Journalist | A dangerous preference.=>Guest | Very well. Magi do not create miracles. They exploit them.=>Guest | Explain.=>Journalist | Nature is full of pressure points. Fault lines. Small mercies in the machinery. Most men live their entire lives without seeing them. A Magus sees them, presses where others only endure, and obtains from the world an effect that the world was already willing to permit.=>Guest | So your craft is natural.=>Journalist | Do not say that too loudly. It upsets both the devout and the educated, though for different reasons.=>Guest | And the common word for it?=>Journalist
