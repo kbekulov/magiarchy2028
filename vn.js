@@ -96,6 +96,8 @@ async function initializeVNSimulator() {
     currentText: "",
     currentMode: "narration",
     currentTarget: null,
+    narrationSteps: [],
+    narrationStepIndex: 0,
     animationTimer: null,
     autoTimer: null,
     introFadeTimer: null,
@@ -331,16 +333,16 @@ function paginateLongNarrationText(text) {
     return [];
   }
 
-  if (canFitNarrationText(cleaned)) {
-    return [cleaned];
+  const sentences = splitIntoSentenceBeats(cleaned);
+  if (!sentences.length) {
+    return [];
   }
 
-  const sentences = splitIntoSentenceBeats(cleaned);
   const pages = [];
   let currentPage = "";
 
   sentences.forEach((sentence) => {
-    const nextPage = currentPage ? `${currentPage} ${sentence}` : sentence;
+    const nextPage = currentPage ? `${currentPage}\n\n${sentence}` : sentence;
     if (!currentPage || canFitNarrationText(nextPage)) {
       currentPage = nextPage;
       return;
@@ -431,6 +433,23 @@ function splitIntoSentenceBeats(text) {
   const parts = text.split(/(?<=[.!?]['""\u2019\u201d]?)\s+(?=[A-Z\u201c"'])/);
   const cleaned = parts.map((s) => s.trim()).filter(Boolean);
   return cleaned.length > 1 ? cleaned : [text];
+}
+
+function splitNarrationSentences(text) {
+  return String(text || "")
+    .split(/\n\s*\n+/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
+    .flatMap((paragraph) => splitIntoSentenceBeats(paragraph));
+}
+
+function buildNarrationStepTexts(text) {
+  const sentences = splitNarrationSentences(text);
+  if (!sentences.length) {
+    return [];
+  }
+
+  return sentences.map((_, index) => sentences.slice(0, index + 1).join("\n\n"));
 }
 
 function cleanNarrativeFragment(text) {
@@ -1356,17 +1375,21 @@ function renderCurrentBeat(refs, state) {
   const dialoguePayload = beat.mode === "dialogue" ? extractDialoguePayload(beat.text) : null;
   const resolvedSpeaker = resolveBeatSpeaker(chapter, state.beatIndex);
   const displayText = dialoguePayload ? formatDialogueDisplayText(dialoguePayload.text) : beat.text;
+  const narrationSteps = beat.mode === "narration" ? buildNarrationStepTexts(displayText) : [];
+  const visibleText = narrationSteps[0] || displayText;
   const progressLabel = `${state.beatIndex + 1} / ${chapter.beats.length}`;
 
   state.currentMode = beat.mode;
-  state.currentText = displayText;
+  state.currentText = visibleText;
+  state.narrationSteps = narrationSteps;
+  state.narrationStepIndex = 0;
 
   // For unattributed dialogue (e.g. The Interview's anonymous voices), show a generic "Voice" label
   const displaySpeaker = resolvedSpeaker || (beat.mode === "dialogue" ? "Voice" : "");
   const speakerSide = resolveSpeakerSide(chapter, refs, displaySpeaker);
 
   // Push to log (keep last 60 entries)
-  state.log.unshift({ mode: beat.mode, speaker: displaySpeaker, text: displayText });
+  state.log.unshift({ mode: beat.mode, speaker: displaySpeaker, text: visibleText });
   if (state.log.length > 60) {
     state.log.length = 60;
   }
@@ -1409,14 +1432,15 @@ function renderCurrentBeat(refs, state) {
 
   updateActiveSpriteSpeaker(refs, resolvedSpeaker);
   updateHint(refs, state);
-  playVNBeatText(refs, state, displayText);
+  playVNBeatText(refs, state, visibleText);
 }
 
-function playVNBeatText(refs, state, text) {
+function playVNBeatText(refs, state, text, options = {}) {
   clearVNAnimation(state);
   state.currentText = text;
 
   const activeCursor = state.currentMode === "dialogue" ? refs.cursor : refs.cursorNarration;
+  const startIndex = Math.max(0, Math.min(Number(options.startIndex) || 0, text.length));
 
   if (state.skipAnimations) {
     renderCurrentText(refs, state, text);
@@ -1430,7 +1454,11 @@ function playVNBeatText(refs, state, text) {
   state.isAnimating = true;
   if (activeCursor) activeCursor.hidden = true;
   updateVNActionLabels(refs, state);
-  let index = 0;
+  let index = startIndex;
+
+  if (startIndex > 0) {
+    renderCurrentText(refs, state, text.slice(0, startIndex));
+  }
 
   const tick = () => {
     renderCurrentText(refs, state, text.slice(0, index + 1));
@@ -1501,6 +1529,52 @@ function clearAutoAdvance(state) {
   }
 }
 
+function hasMoreNarrationSteps(state) {
+  return (
+    state.currentMode === "narration" &&
+    Array.isArray(state.narrationSteps) &&
+    state.narrationStepIndex < state.narrationSteps.length - 1
+  );
+}
+
+function advanceNarrationStep(refs, state) {
+  if (!hasMoreNarrationSteps(state)) {
+    return false;
+  }
+
+  const previousText = state.currentText || "";
+  state.narrationStepIndex += 1;
+  const nextText = state.narrationSteps[state.narrationStepIndex] || "";
+
+  if (state.log[0]?.mode === "narration") {
+    state.log[0].text = nextText;
+  }
+
+  playVNBeatText(refs, state, nextText, { startIndex: previousText.length });
+  return true;
+}
+
+function retreatNarrationStep(refs, state) {
+  if (
+    state.currentMode !== "narration" ||
+    !Array.isArray(state.narrationSteps) ||
+    state.narrationStepIndex <= 0
+  ) {
+    return false;
+  }
+
+  state.narrationStepIndex -= 1;
+  state.currentText = state.narrationSteps[state.narrationStepIndex] || "";
+  renderCurrentText(refs, state, state.currentText);
+
+  if (state.log[0]?.mode === "narration") {
+    state.log[0].text = state.currentText;
+  }
+
+  updateVNActionLabels(refs, state);
+  return true;
+}
+
 function advanceVN(refs, state, options = {}) {
   if (!state.chapters.length) {
     return;
@@ -1517,6 +1591,10 @@ function advanceVN(refs, state, options = {}) {
     if (state.autoAdvance && !options.automated) {
       queueAutoAdvance(refs, state);
     }
+    return;
+  }
+
+  if (advanceNarrationStep(refs, state)) {
     return;
   }
 
@@ -1571,6 +1649,10 @@ function retreatVN(refs, state) {
     return;
   }
 
+  if (retreatNarrationStep(refs, state)) {
+    return;
+  }
+
   if (state.beatIndex > 0) {
     state.beatIndex -= 1;
     renderCurrentBeat(refs, state);
@@ -1589,7 +1671,10 @@ function updateVNActionLabels(refs, state, isArchiveEnd = false) {
     return;
   }
 
-  refs.backButton.disabled = state.chapterIndex === 0 && state.beatIndex === 0;
+  refs.backButton.disabled =
+    state.chapterIndex === 0 &&
+    state.beatIndex === 0 &&
+    !(state.currentMode === "narration" && state.narrationStepIndex > 0);
 
   if (isArchiveEnd) {
     refs.nextButton.textContent = "Archive End";
@@ -1601,6 +1686,11 @@ function updateVNActionLabels(refs, state, isArchiveEnd = false) {
 
   if (state.isAnimating) {
     refs.nextButton.textContent = state.skipAnimations ? "Advance" : "Finish Line";
+    return;
+  }
+
+  if (hasMoreNarrationSteps(state)) {
+    refs.nextButton.textContent = "Advance";
     return;
   }
 
