@@ -3,8 +3,8 @@ title: Note - Music Direction
 type: note
 facet: meta
 section: notes
-order: 3
-chronology: 930
+order: 4
+chronology: 940
 status: working
 canon: reference
 tags: music | atmosphere | placeholder
