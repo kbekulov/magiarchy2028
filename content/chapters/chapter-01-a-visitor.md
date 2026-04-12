@@ -9,8 +9,8 @@ status: draft
 canon: core
 characters: Inspector Leo | Father Mikhail | Sergeant Marek | Officer Piotr
 tags: homicide | church | investigation | unnatural-death | pressure
-summary: Inspector Leo arrives at a rain-soaked aristocratic residence where a homicide scene is already shadowed by Church credentials, impossible cold, and the suggestion of a death against the order of nature.
-draft_version: 1.5
+summary: Inspector Leo arrives at a rain-soaked aristocratic residence where a homicide scene is already shadowed by Church credentials, impossible cold, a dead phone that rings, and Father Mikhail's eventual disappearance.
+draft_version: 1.6
 template: literary
 vn_backdrop: media/vn_simulator/chapter_1/bg_street_1.png
 vn_left_name: Inspector Leo
@@ -30,6 +30,9 @@ vn_speaker_overrides_06: From inside the house=>Inspector Leo | Yes.#1=>Father M
 vn_speaker_overrides_07: Tell me why anyone in this house would call your office before homicide.=>Inspector Leo | I assume because someone here believed the nature of the death might be mistaken for something ordinary.=>Father Mikhail | A dead man in a locked receiving room is already homicide until proven otherwise.=>Inspector Leo | Of course.=>Father Mikhail | You think it is not ordinary.=>Inspector Leo | I think that someone in this house was frightened of a particular kind of mistake.=>Father Mikhail | Let me make something plain. You are not on this scene as an equal authority. You are here because somebody panicked and made a phone call that I do not yet understand. Until I do you are an irregular civilian presence with unusual credentials.=>Inspector Leo | Understood.=>Father Mikhail | You will remain available.=>Inspector Leo | Yes.#2=>Father Mikhail
 vn_speaker_overrides_08: You will not leave.=>Inspector Leo | No.=>Father Mikhail | You will not speak to press family counsel household staff Church media or anyone else who suddenly remembers your office exists.=>Inspector Leo | Agreed.=>Father Mikhail | Sergeant Marek.=>Inspector Leo | Yes Inspector Leo.#2=>Sergeant Marek | Lock digital perimeter. Pull every exterior camera from the residence neighboring properties and street traffic poles covering the last three hours. I want gate access logs alarm logs private security records and household comms. Nobody deletes anything.=>Inspector Leo | Yes.#3=>Sergeant Marek | Separate staff. No group statements.=>Inspector Leo | Yes.#4=>Sergeant Marek
 vn_speaker_overrides_09: You are done touching things.=>Inspector Leo | Yes Inspector Leo.#3=>Officer Piotr | Write down exactly what you saw before your imagination improves it.=>Inspector Leo | Last question. When your office received the call why send you personally?=>Inspector Leo | Because the caller used a phrase we take seriously.=>Father Mikhail | He said the death might concern an act against the order of nature.=>Father Mikhail | Stay here Father Mikhail.=>Inspector Leo | As you wish.=>Father Mikhail | If I find out this is some aristocratic attempt to contaminate a murder inquiry with superstition I will personally make your night unpleasant.=>Inspector Leo | If that is what you find Inspector Leo I will help you do it.=>Father Mikhail
+vn_speaker_overrides_10: Name.#3=>Inspector Leo | Senior housekeeper, sir. She says she dropped the cabinet door when she heard-=>Patrol Officer | Whose phone is that?=>Inspector Leo | Move=>Inspector Leo | Did anyone touch this?=>Inspector Leo | No Inspector Leo=>Sergeant Marek | Good=>Inspector Leo | Nobody else=>Inspector Leo | Inspector Leo speaking Identify yourself=>Inspector Leo | This residence requested ecclesiastical attendance Has Father Mikhail arrived?=>Unknown Caller
+vn_speaker_overrides_11: Who is this?=>Inspector Leo | Has Father Mikhail arrived?=>Unknown Caller | You are interfering with a homicide investigation State your name=>Inspector Leo | Is the deceased still in place?=>Unknown Caller | Sir?=>Sergeant Marek | Listen to me carefully. This line is being logged, and if you-=>Inspector Leo | Then he has not yet been moved.=>Unknown Caller | Prank=>Inspector Leo | Somebody in this house has a sense of timing and no sense at all beyond that Marek, pull internal telecom records if any still exist. I want every extension mapped every active line every inactive line and a list of who had access to household comms. Find out whether this call could have been routed through the gate security office staff quarters or a neighboring property.=>Inspector Leo
+vn_speaker_overrides_12: Yes Inspector Leo.#4=>Sergeant Marek | And since apparently everyone here has forgotten we still have a dead man in the house, we are going back to the receiving room. Now.=>Inspector Leo | If you have a thought save it until you have something better than clerical atmosphere to support it.=>Inspector Leo | Of course.#2=>Father Mikhail
 ---
 
 # Chapter 1 - A Visitor
@@ -371,3 +374,267 @@ It was, however, the answer of a man who expected the room beyond the doorway to
 Inspector Leo disliked that too.
 
 Then he went inside.
+
+The receiving hall carried the smell of wet wool, floor polish, and the first faint intrusion of blood.
+
+Inspector Leo stopped just past the threshold and let the room arrange itself around him.
+
+High ceiling. Marble underfoot. Family portraits in heavy frames. A side chair on its back near the runner. Two uniformed officers along the wall trying to look useful by standing still. One forensic tech near the archway speaking into her headset in a voice pitched lower than necessary, as if the house itself required discretion.
+
+At the far end, a woman in a dark silk blouse stood near a shattered display cabinet, one hand pressed to her mouth, the other red where glass had nicked the palm. A patrol officer had just taken hold of her wrist to keep her from touching anything else.
+
+House staff, Leo thought. Excellent. There was always one who bled into the scene without contributing anything worth the blood.
+
+"Name," he said.
+
+The woman looked at him but did not answer.
+
+The officer answered for her. "Senior housekeeper, sir. She says she dropped the cabinet door when she heard-"
+
+A loud ring cut through the hall.
+
+Everybody stopped.
+
+It was not a mobile phone chirp. Not a digital tone. Not the thin synthetic trill of a security panel. It was a hard mechanical ring, old-fashioned and metallic, the sound of a real bell striking inside a real housing. It came once, sharply enough to seem close, then again with greater force because the silence around it had deepened.
+
+No one moved.
+
+The third ring spread through the corridor like something physical. Even the forensics tech lowered her headset.
+
+Inspector Leo turned his head toward the sound.
+
+West hallway. Midway down. Not upstairs. Not outside. Interior line.
+
+The fourth ring came on schedule.
+
+"Whose phone is that?" he asked.
+
+No one answered.
+
+The housekeeper's face had lost the little color it still had. One of the younger officers glanced at Father Mikhail, who had not entered the hall proper but now stood just within the doorway, his attention fixed on the corridor with a degree of stillness Leo had begun to regard as personal insult.
+
+The ring came again.
+
+"Move," said Leo.
+
+The spell broke. Officers and techs shifted at once. Marek moved first, Leo behind him, then the others in a narrow file through the west corridor. Their shoes clicked over stone, then muted themselves on a runner gone dark from old use. The ringing continued at measured intervals, patient and insistent, as if it had all the time in the world and knew perfectly well they were coming.
+
+They found the phone on a narrow table beneath a gilt mirror.
+
+Black Bakelite. Heavy base. Brass number plate dulled with age. Not decorative. Not antique enough to be useless. A household line, or meant to look like one.
+
+It rang again the moment they stopped in front of it.
+
+The sound in the enclosed hallway was worse.
+
+Inspector Leo saw the hesitation move through the group in small humiliating ways. A shift of weight. A throat worked dry. Eyes refusing to rest on the receiver for more than a second at a time.
+
+He looked at Marek. "Did anyone touch this?"
+
+"No, Inspector Leo."
+
+"Good."
+
+Another ring.
+
+Leo held out a hand. "Nobody else."
+
+He took the receiver himself.
+
+The bell stopped at once.
+
+For a second there was only line noise. Thin static. A soft internal hiss. Then two clicks in quick succession, so crisp they sounded almost ceremonial.
+
+"Inspector Leo speaking," he said. "Identify yourself."
+
+No answer.
+
+He listened. The line breathed faintly.
+
+Then a woman's voice came through, distant and flattened by interference, but precise enough in diction to irritate him immediately.
+
+"This residence requested ecclesiastical attendance," she said. "Has Father Mikhail arrived?"
+
+Leo looked up without meaning to. Every face in the corridor was on him.
+
+"Who is this?"
+
+The line crackled.
+
+Again the same voice, unchanged in cadence: "Has Father Mikhail arrived?"
+
+Leo's expression hardened. Someone in the house had seen the priest, then decided to become inventive. Or someone outside the house already knew and wanted the police to know that they knew. Both possibilities were tiresome.
+
+"You are interfering with a homicide investigation," he said. "State your name."
+
+A pause.
+
+Then: "Is the deceased still in place?"
+
+Leo pulled the receiver slightly away from his ear and stared at it as if that might improve the intelligence of the person on the other end.
+
+Marek said, quietly, "Sir?"
+
+Leo put the receiver back to his ear. "Listen to me carefully. This line is being logged, and if you-"
+
+The voice cut across him without raising itself.
+
+"Then he has not yet been moved."
+
+A soft click followed.
+
+The static vanished.
+
+Dead silence.
+
+Inspector Leo held the receiver there a second longer, more from refusal than hope, then lowered it to his side.
+
+"Prank," he said.
+
+No one contradicted him. No one looked convinced either.
+
+He returned the receiver to the cradle with more force than necessary. The plastic knocked once against the housing before settling.
+
+"Somebody in this house has a sense of timing and no sense at all beyond that," he said. "Marek, pull internal telecom records if any still exist. I want every extension mapped, every active line, every inactive line, and a list of who had access to household comms. Find out whether this call could have been routed through the gate, security office, staff quarters, or a neighboring property."
+
+"Yes, Inspector Leo."
+
+He turned to the officers behind him. "And since apparently everyone here has forgotten we still have a dead man in the house, we are going back to the receiving room. Now."
+
+The group began to break apart.
+
+Leo took two steps, then glanced once toward Father Mikhail. The priest had not moved close to the phone, but something in his face had altered. Not fear. Not exactly surprise. Recognition had entered first, and caution immediately after it.
+
+Leo disliked both.
+
+"If you have a thought," he said, "save it until you have something better than clerical atmosphere to support it."
+
+Father Mikhail inclined his head. "Of course."
+
+Leo gave him another moment in which to volunteer something useful. He did not.
+
+Then Leo turned and went on toward the body, taking Marek and the nearest tech with him.
+
+The hallway emptied in increments. Shoes receded. Voices resumed, subdued and practical now that they had something to call ridiculous. The housekeeper was led away. Someone reopened a kit. Somebody else asked for fresh gloves.
+
+Within half a minute only Father Mikhail remained in the corridor.
+
+He approached the table without hurry.
+
+The phone sat where Leo had left it, thick and black and self-contained, as if its earlier insistence had been a vulgar rumor attached to someone else's object.
+
+Mikhail lifted the receiver.
+
+Nothing.
+
+No static. No residual hiss. No line hum. Not even the low electrical life of a dormant connection. The silence on the other end was complete.
+
+He lowered his gaze to the table, then to the wall behind it.
+
+The cord ran from the receiver into the body of the instrument. A second cable left the rear housing and passed behind the table toward the baseboard.
+
+Mikhail crouched.
+
+The line had been cut.
+
+Not tugged free. Not damaged in the night's confusion. Cut cleanly, with intent, several inches from where it entered the wall channel. The exposed copper had already darkened. Dust had settled along the split insulation. This had not happened tonight. Possibly not this week.
+
+He stayed there a moment, one gloved hand resting against the wood of the table.
+
+Then he stood, slid the cable back into shadow, and replaced the receiver carefully on its cradle.
+
+When he looked toward the receiving room again, the police were already disappearing into their proper labors. Measurements. Statements. Photographs. Timelines. Entry points.
+
+Good work, all of it.
+
+Useless work, if the line had rung.
+
+Mikhail folded his hands in front of him and listened to the house.
+
+This was no longer a matter for public procedure. It had crossed over at the exact point where mechanism ceased to protect meaning.
+
+He said nothing.
+
+Four days later the barriers were gone.
+
+The body had been removed, the blood documented and cleaned, the glass swept, the staff interviewed twice, the lawyers activated, the insurance representatives briefed, and the newspapers fed on a diet of evasive phrases that satisfied no one and preserved everything important. The residence no longer belonged to forensics. It belonged to vacuumed carpets, sealed drawers, and the long afterlife of official embarrassment.
+
+Father Mikhail's office submitted a request for unobstructed ecclesiastical access to the property.
+
+Inspector Leo objected in writing, then in person, then with the clipped fatigue of a man who knew precisely which objections would fail and resented having to formulate them anyway. The request had come wrapped in the sort of documentation that did not openly outrank the police but had a way of proceeding past them all the same.
+
+By then the house was no longer an active scene. There was nothing left to bag, swab, or photograph. Nothing, in Leo's view, except old aristocratic walls and one dead man who remained stubbornly dead.
+
+Permission was granted.
+
+Mikhail returned the next morning.
+
+He returned the morning after that as well.
+
+Then the next day, and the next.
+
+The household staff stopped asking whether he needed anything. By the end of the week they had begun leaving a pot of tea in the side morning room without being told. One of the groundsmen started greeting him as if he were an unpleasant but permanent feature of the property. A junior clerk from the diocesan office joked, once and only once, that Father Mikhail seemed to have taken a second residence.
+
+Mikhail ignored the joke.
+
+He did not come for the dead man.
+
+He did not come for the family.
+
+He did not come to bless, cleanse, witness, or negotiate.
+
+He came for the hallway.
+
+He learned the house's hours. Which pipes knocked after sunset. Which staircase carried sound upward. Which doors swelled in damp weather and required a shoulder. Which servants crossed the west corridor and at what times. Which lights the staff forgot to extinguish. Which evening silence belonged to emptiness and which to people listening from behind doors.
+
+He learned, too, that the phone remained exactly where it had been left.
+
+A house electrician, summoned for unrelated checks, confirmed that the line was dead and had been dead for some time. The instrument was useless. It should have been removed.
+
+Mikhail asked that it remain.
+
+On the ninth evening he sat alone in a straight-backed chair across from the narrow table, coat buttoned, gloves off, breviary closed on his knee.
+
+The corridor was unlit except for a spill of amber from the adjoining room. Beyond the windows the last of the rain had turned the garden lamps into soft blurs. Somewhere deep in the house timber gave a small settling complaint, then stopped.
+
+Mikhail checked his watch.
+
+The previous call had come at 21:14.
+
+At 21:13 the house seemed to withdraw from itself. Sound thinned. Even the old pipes chose that moment to keep quiet.
+
+At 21:14 the dead phone rang.
+
+Once.
+
+The bell struck with such force in the enclosed corridor that the sound seemed to hit the walls and come back colder.
+
+Mikhail was already standing when it rang the second time.
+
+He crossed the corridor without haste, though every movement in him had tightened. The bell sounded once more before he reached the table. Then it stopped.
+
+He looked at the black receiver for a moment, as if confirming something with himself rather than with the instrument. At last he picked it up and raised it to his ear.
+
+The house remained silent.
+
+No servant passed through the corridor. No pipe knocked. No board settled. Even the rain, which had threatened all evening at the windows, seemed to hold itself back.
+
+Mikhail listened.
+
+Whatever came through the line did not change his face at first. Then the change was there all at once, not dramatic enough for panic, but worse for its restraint. His mouth set. His gaze lowered a fraction, as if directed toward some point much farther away than the wall before him.
+
+He said nothing.
+
+After a while he returned the receiver to the cradle, took his gloves from the chair, and walked deeper into the darkened residence.
+
+By morning, Father Mikhail was nowhere in the house.
+
+The staff assumed he had left before dawn. By afternoon they were less certain. His coat was gone, but one glove remained on the side table in the west corridor, folded neatly beside the dead phone. His aides at the Church had not seen him return. No driver had collected him. No one at the gate had logged his departure.
+
+Inspector Leo was informed before noon and arrived in a temper sharpened by the kind of coincidence he no longer believed in.
+
+The residence was searched again. Then the grounds. Then the river embankment below the property. Nothing was found.
+
+The following week, after the Church exhausted the private explanations available to it and the police exhausted the public ones, a missing person report was filed.
+
+It listed Father Mikhail as last seen at the residence.
