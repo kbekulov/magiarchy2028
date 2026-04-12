@@ -125,6 +125,17 @@ Whenever content changes, rebuild the manifest:
 python3 scripts/build_library_manifest.py
 ```
 
+Before editing an existing chapter into a new draft version, archive the current
+Markdown file first:
+
+```bash
+python3 scripts/archive_chapter_version.py content/chapters/chapter-01-a-visitor.md
+```
+
+Archived chapter snapshots live in `content/chapters/old versions/` with a
+datetime suffix, for example `chapter-01-a-visitor__2026-04-13_14-30-00.md`.
+The active chapter files remain directly inside `content/chapters/`.
+
 ## Preview locally
 
 ```bash
