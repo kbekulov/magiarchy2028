@@ -10,7 +10,7 @@ canon: core
 characters: Inspector Leo | Father Mikhail | Sergeant Marek | Officer Piotr
 tags: homicide | church | investigation | unnatural-death | pressure
 summary: Inspector Leo arrives at a rain-soaked aristocratic residence where a homicide scene is already shadowed by Church credentials, impossible cold, a dead phone that rings, and Father Mikhail's eventual disappearance.
-draft_version: 1.6
+draft_version: 1.7
 template: literary
 vn_backdrop: media/vn_simulator/chapter_1/bg_street_1.png
 vn_left_name: Inspector Leo
@@ -29,7 +29,7 @@ vn_speaker_overrides_05: Initial handheld scan was inconsistent. Forensics hasn'
 vn_speaker_overrides_06: From inside the house=>Inspector Leo | Yes.#1=>Father Mikhail | By whom?=>Inspector Leo | We were not given a name.=>Father Mikhail | And what exactly was said?=>Inspector Leo | That there had been a death. That it was necessary the Church be informed at once. And that the police must not be allowed to misunderstand what they found.=>Father Mikhail | Must not be allowed.=>Inspector Leo | That was the phrasing.=>Father Mikhail | Convenient.=>Inspector Leo | I am not here to improve its tone.=>Father Mikhail
 vn_speaker_overrides_07: Tell me why anyone in this house would call your office before homicide.=>Inspector Leo | I assume because someone here believed the nature of the death might be mistaken for something ordinary.=>Father Mikhail | A dead man in a locked receiving room is already homicide until proven otherwise.=>Inspector Leo | Of course.=>Father Mikhail | You think it is not ordinary.=>Inspector Leo | I think that someone in this house was frightened of a particular kind of mistake.=>Father Mikhail | Let me make something plain. You are not on this scene as an equal authority. You are here because somebody panicked and made a phone call that I do not yet understand. Until I do you are an irregular civilian presence with unusual credentials.=>Inspector Leo | Understood.=>Father Mikhail | You will remain available.=>Inspector Leo | Yes.#2=>Father Mikhail
 vn_speaker_overrides_08: You will not leave.=>Inspector Leo | No.=>Father Mikhail | You will not speak to press family counsel household staff Church media or anyone else who suddenly remembers your office exists.=>Inspector Leo | Agreed.=>Father Mikhail | Sergeant Marek.=>Inspector Leo | Yes Inspector Leo.#2=>Sergeant Marek | Lock digital perimeter. Pull every exterior camera from the residence neighboring properties and street traffic poles covering the last three hours. I want gate access logs alarm logs private security records and household comms. Nobody deletes anything.=>Inspector Leo | Yes.#3=>Sergeant Marek | Separate staff. No group statements.=>Inspector Leo | Yes.#4=>Sergeant Marek
-vn_speaker_overrides_09: You are done touching things.=>Inspector Leo | Yes Inspector Leo.#3=>Officer Piotr | Write down exactly what you saw before your imagination improves it.=>Inspector Leo | Last question. When your office received the call why send you personally?=>Inspector Leo | Because the caller used a phrase we take seriously.=>Father Mikhail | He said the death might concern an act against the order of nature.=>Father Mikhail | Stay here Father Mikhail.=>Inspector Leo | As you wish.=>Father Mikhail | If I find out this is some aristocratic attempt to contaminate a murder inquiry with superstition I will personally make your night unpleasant.=>Inspector Leo | If that is what you find Inspector Leo I will help you do it.=>Father Mikhail
+vn_speaker_overrides_09: You are done touching things.=>Inspector Leo | Yes Inspector Leo.#3=>Officer Piotr | Write down exactly what you saw before your imagination improves it.=>Inspector Leo | Last question. When your office received the call why send you personally?=>Inspector Leo | Because the caller used a phrase we take seriously.=>Father Mikhail | Not one I am authorized to repeat to civil authority.=>Father Mikhail | That is convenient.=>Inspector Leo | It is doctrine.=>Father Mikhail | Your doctrine is interfering with my investigation.=>Inspector Leo | Our doctrine is the reason I am answering you at all.=>Father Mikhail | Stay here Father Mikhail.=>Inspector Leo | As you wish.=>Father Mikhail | If I find out this is some aristocratic attempt to contaminate a murder inquiry with superstition I will personally make your night unpleasant.=>Inspector Leo | If that is what you find Inspector Leo I will help you do it.=>Father Mikhail
 vn_speaker_overrides_10: Name.#3=>Inspector Leo | Senior housekeeper, sir. She says she dropped the cabinet door when she heard-=>Patrol Officer | Whose phone is that?=>Inspector Leo | Move=>Inspector Leo | Did anyone touch this?=>Inspector Leo | No Inspector Leo=>Sergeant Marek | Good=>Inspector Leo | Nobody else=>Inspector Leo | Inspector Leo speaking Identify yourself=>Inspector Leo | This residence requested ecclesiastical attendance Has Father Mikhail arrived?=>Unknown Caller
 vn_speaker_overrides_11: Who is this?=>Inspector Leo | Has Father Mikhail arrived?=>Unknown Caller | You are interfering with a homicide investigation State your name=>Inspector Leo | Is the deceased still in place?=>Unknown Caller | Sir?=>Sergeant Marek | Listen to me carefully. This line is being logged, and if you-=>Inspector Leo | Then he has not yet been moved.=>Unknown Caller | Prank=>Inspector Leo | Somebody in this house has a sense of timing and no sense at all beyond that Marek, pull internal telecom records if any still exist. I want every extension mapped every active line every inactive line and a list of who had access to household comms. Find out whether this call could have been routed through the gate security office staff quarters or a neighboring property.=>Inspector Leo
 vn_speaker_overrides_12: Yes Inspector Leo.#4=>Sergeant Marek | And since apparently everyone here has forgotten we still have a dead man in the house, we are going back to the receiving room. Now.=>Inspector Leo | If you have a thought save it until you have something better than clerical atmosphere to support it.=>Inspector Leo | Of course.#2=>Father Mikhail
@@ -339,13 +339,23 @@ For the first time, the priest took a moment.
 
 Inspector Leo waited.
 
-Father Mikhail said, "He said the death might concern an act against the order of nature."
+Father Mikhail looked at him, weighed rank against rule, and chose rule.
 
-That sat in the rain-cooled air without shape for a second or two.
+"Not one I am authorized to repeat to civil authority."
 
-The phrase did not belong to panic. It belonged to doctrine.
+"That is convenient."
 
-Not because the words were theatrical. Because they were not. They had been spoken in exactly the tone a bank official might use to discuss a sealed transfer or a customs officer to discuss contraband classifications.
+"It is doctrine."
+
+"Your doctrine is interfering with my investigation."
+
+"Our doctrine is the reason I am answering you at all."
+
+That refusal sat in the rain-cooled air without shape for a second or two.
+
+It did not belong to panic. It belonged to procedure.
+
+Not because the words were theatrical. Because they were not. They had been withheld in exactly the tone a bank official might use to discuss a sealed transfer or a customs officer to discuss contraband classifications.
 
 Inspector Leo found that infinitely worse.
 
