@@ -2,6 +2,9 @@ const vnShell = document.getElementById("vn-shell");
 const VN_MAIN_MENU_BGM_TRACK = "media/vn_simulator/main_menu/main_menu_track_1.mp3";
 const VN_CHAPTER_INTRO_VISIBLE_MS = 1700;
 const VN_CHAPTER_INTRO_FADE_MS = 560;
+const VN_NARRATION_PAGE_MAX_CHARS = 560;
+const VN_NARRATION_PAGE_MAX_LINES = 8;
+const VN_NARRATION_APPROX_CHARS_PER_LINE = 72;
 const VN_SCENE_LIBRARY = {
   "chapter-chapter-01-a-visitor": {
     backdrop: "media/vn_simulator/chapter_1/bg_street_1.png",
@@ -278,16 +281,8 @@ function parseChapterMarkdown(markdown, chapterTitle) {
 
     const mode = inferVNBeatMode(text);
 
-    // Split narration paragraphs into individual sentence beats for better VN pacing
     if (mode === "narration") {
-      const sentences = splitIntoSentenceBeats(text);
-      sentences.forEach((sentence) => {
-        beats.push({
-          mode: "narration",
-          label: "Narration",
-          text: sentence,
-        });
-      });
+      pushNarrationBeats(beats, text);
       return;
     }
 
@@ -299,15 +294,119 @@ function parseChapterMarkdown(markdown, chapterTitle) {
     });
   });
 
-  return beats.length
-    ? beats
-    : [
-        {
-          mode: "system",
-          label: "Archive Note",
-          text: "This chapter does not have readable body text yet.",
-        },
-      ];
+  return normalizeVNBeats(beats);
+}
+
+function buildNarrationBeat(text) {
+  return {
+    mode: "narration",
+    label: "Narration",
+    text,
+  };
+}
+
+function estimateNarrationLines(text) {
+  return String(text || "")
+    .split(/\n\s*\n+/)
+    .filter(Boolean)
+    .reduce((lineCount, paragraph, index) => {
+      const paragraphLines = Math.max(
+        1,
+        Math.ceil(paragraph.length / VN_NARRATION_APPROX_CHARS_PER_LINE)
+      );
+      return lineCount + paragraphLines + (index > 0 ? 1 : 0);
+    }, 0);
+}
+
+function canFitNarrationText(text) {
+  return (
+    String(text || "").length <= VN_NARRATION_PAGE_MAX_CHARS &&
+    estimateNarrationLines(text) <= VN_NARRATION_PAGE_MAX_LINES
+  );
+}
+
+function paginateLongNarrationText(text) {
+  const cleaned = cleanNarrativeFragment(text);
+  if (!cleaned) {
+    return [];
+  }
+
+  if (canFitNarrationText(cleaned)) {
+    return [cleaned];
+  }
+
+  const sentences = splitIntoSentenceBeats(cleaned);
+  const pages = [];
+  let currentPage = "";
+
+  sentences.forEach((sentence) => {
+    const nextPage = currentPage ? `${currentPage} ${sentence}` : sentence;
+    if (!currentPage || canFitNarrationText(nextPage)) {
+      currentPage = nextPage;
+      return;
+    }
+
+    pages.push(currentPage);
+    currentPage = sentence;
+  });
+
+  if (currentPage) {
+    pages.push(currentPage);
+  }
+
+  return pages;
+}
+
+function paginateNarrationBeats(beats) {
+  const paginatedBeats = [];
+  let narrationBuffer = [];
+
+  const flushNarrationBuffer = () => {
+    if (!narrationBuffer.length) {
+      return;
+    }
+
+    paginatedBeats.push(buildNarrationBeat(narrationBuffer.join("\n\n")));
+    narrationBuffer = [];
+  };
+
+  beats.forEach((beat) => {
+    if (beat.mode !== "narration") {
+      flushNarrationBuffer();
+      paginatedBeats.push(beat);
+      return;
+    }
+
+    const candidateText = narrationBuffer.length
+      ? `${narrationBuffer.join("\n\n")}\n\n${beat.text}`
+      : beat.text;
+
+    if (!narrationBuffer.length || canFitNarrationText(candidateText)) {
+      narrationBuffer.push(beat.text);
+      return;
+    }
+
+    flushNarrationBuffer();
+    narrationBuffer.push(beat.text);
+  });
+
+  flushNarrationBuffer();
+  return paginatedBeats;
+}
+
+function fallbackVNBeats() {
+  return [
+    {
+      mode: "system",
+      label: "Archive Note",
+      text: "This chapter does not have readable body text yet.",
+    },
+  ];
+}
+
+function normalizeVNBeats(beats) {
+  const paginatedBeats = paginateNarrationBeats(beats);
+  return paginatedBeats.length ? paginatedBeats : fallbackVNBeats();
 }
 
 function inferVNBeatMode(text) {
@@ -365,12 +464,8 @@ function pushNarrationBeats(beats, text) {
     return;
   }
 
-  splitIntoSentenceBeats(cleaned).forEach((sentence) => {
-    beats.push({
-      mode: "narration",
-      label: "Narration",
-      text: sentence,
-    });
+  paginateLongNarrationText(cleaned).forEach((page) => {
+    beats.push(buildNarrationBeat(page));
   });
 }
 
@@ -1387,7 +1482,11 @@ function queueAutoAdvance(refs, state) {
 
   const baseDelay = beat.mode === "dialogue" ? 900 : 1200;
   const perCharacterDelay = beat.mode === "dialogue" ? 34 : 38;
-  const delay = Math.max(1400, Math.min(6200, baseDelay + state.currentText.length * perCharacterDelay));
+  const maxDelay = beat.mode === "dialogue" ? 6200 : 12000;
+  const delay = Math.max(
+    1400,
+    Math.min(maxDelay, baseDelay + state.currentText.length * perCharacterDelay)
+  );
 
   state.autoTimer = window.setTimeout(() => {
     state.autoTimer = null;
@@ -1527,6 +1626,11 @@ function updateHint(refs, state) {
 
 function renderCurrentText(refs, state, text) {
   if (!state.currentTarget) {
+    return;
+  }
+
+  if (state.currentTarget === refs.narrationText && state.currentMode === "narration") {
+    renderNarrationText(state.currentTarget, text);
     return;
   }
 

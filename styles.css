@@ -2584,6 +2584,7 @@ body[data-page="reader"] #reader-nav {
 }
 
 .vn-narration-overlay__text {
+  width: 100%;
   margin: 0;
   color: #f0f4ff;
   font-size: clamp(1.06rem, 1.75vw, 1.24rem);
@@ -2595,6 +2596,15 @@ body[data-page="reader"] #reader-nav {
   white-space: pre-wrap;
   word-break: break-word;
   overflow-wrap: break-word;
+}
+
+.vn-narration-overlay__text .vn-text__paragraph {
+  margin: 0;
+  text-indent: 1.65em;
+}
+
+.vn-narration-overlay__text .vn-text__paragraph + .vn-text__paragraph {
+  margin-top: 0.65rem;
 }
 
 .vn-narration-overlay__text[data-mode="system"],
