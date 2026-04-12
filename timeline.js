@@ -27,7 +27,7 @@ const timelineRows = [
     ],
   },
   {
-    name: "Inspector Leonid",
+    name: "Inspector Leo",
     group: "Police",
     kind: "character",
     activities: [

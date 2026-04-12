@@ -7,16 +7,16 @@ const VN_SCENE_LIBRARY = {
     backdrop: "media/vn_simulator/chapter_1/bg_street_1.png",
     sprites: [
       {
-        name: "Inspector Leonid",
+        name: "Inspector Leo",
         role: "Investigator",
         src: "media/vn_simulator/chapter_1/detective_1.png",
-        aliases: ["inspector leonid", "leonid"],
+        aliases: ["inspector leo", "leo"],
       },
       {
         name: "Father Mikhail",
         role: "Church Bureau",
         src: "media/vn_simulator/chapter_1/priest_1.png",
-        aliases: ["father mikhail", "mikhail", "father mikhail arsenyev von tiesen"],
+        aliases: ["father mikhail", "mikhail"],
       },
     ],
   },
