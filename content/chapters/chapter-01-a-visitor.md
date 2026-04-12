@@ -10,7 +10,7 @@ canon: core
 characters: Inspector Leo | Father Mikhail | Sergeant Marek | Officer Piotr
 tags: homicide | church | investigation | unnatural-death | pressure
 summary: Inspector Leo arrives at a rain-soaked aristocratic residence where a homicide scene is already shadowed by Church credentials, impossible cold, and the suggestion of a death against the order of nature.
-draft_version: 1.4
+draft_version: 1.5
 template: literary
 vn_backdrop: media/vn_simulator/chapter_1/bg_street_1.png
 vn_left_name: Inspector Leo
@@ -34,13 +34,13 @@ vn_speaker_overrides_09: You are done touching things.=>Inspector Leo | Yes Insp
 
 # Chapter 1 - A Visitor
 
-Rain had stopped fifteen minutes earlier, but the residence still looked wet in a way that made the whole property feel freshly uncovered.
+Rain had stopped fifteen minutes earlier, but wetness still clung to the residence, turning the whole property into something freshly uncovered.
 
-Blue police strobes rolled over the front facade in mute pulses, catching on rain-dark stone, iron fencing, security glass, and old carved ornament too expensive to remove and too historic to replace. The mansion sat on a corner lot above the river district, one of those surviving aristocratic estates that had outlived kingdoms, occupations, constitutions, and development plans by becoming useful to each of them in turn.
+Blue police strobes rolled over the front facade in mute pulses, cutting across rain-dark stone, iron fencing, security glass, and old carved ornament too expensive to remove and too historic to replace. The mansion sat on a corner lot above the river district, one of those surviving aristocratic estates that had outlived kingdoms, occupations, constitutions, and development plans by becoming useful to each of them in turn.
 
 A patrol officer lifted the tape for him.
 
-Inspector Leo stepped through, flashed his credentials without slowing, and took in the courtyard in one sweep.
+Inspector Leo stepped through, flashed his credentials without slowing, and measured the courtyard in one sweep.
 
 One ambulance. Two patrol cars. Forensics van still sealed. Outer barrier holding. Three officers at the steps. One of them pale enough to be useless.
 
@@ -48,13 +48,17 @@ And under the portico, waiting near the open front doors as if he belonged there
 
 Inspector Leo stopped.
 
-He looked from the priest to Sergeant Marek and back again.
+Priest. Sergeant Marek. Priest again.
 
 "Why," he asked, "is there clergy inside my perimeter?"
 
 No one answered immediately.
 
 Water dripped from the stone lions flanking the staircase. Somewhere on the street beyond the gates, journalists were beginning to gather behind the second police line. A drone buzzed at a distance, then vanished, probably already warned off by municipal air control.
+
+Press risk. Airspace risk. Jurisdictional contamination risk.
+
+The scene was already trying to multiply.
 
 Inspector Leo turned fully to the sergeant.
 
@@ -66,7 +70,7 @@ Sergeant Marek approached, shoulders wet, tablet in one hand. "He was already he
 
 "It's the only one I have."
 
-Inspector Leo looked back at the priest.
+Inspector Leo turned back to the priest.
 
 Not local parish. Not hospital chaplain. The man wore a black clerical coat with a standing collar, but the cut was too severe, too tailored, too deliberate. Nothing pastoral about him. Mid-forties perhaps. Pale. Clean-shaven. Gloves on. No umbrella. No visible rush in him at all.
 
@@ -74,13 +78,13 @@ He was dry.
 
 That was the first thing Inspector Leo disliked.
 
-The second was that the man did not look surprised to be the center of the scene.
+The second was that the man carried no surprise at being the center of the scene.
 
 Inspector Leo crossed the courtyard.
 
 "This is an active homicide scene," he said. "Who authorized Church access?"
 
-The priest regarded him with the calm attention of someone receiving a formal introduction rather than a challenge.
+The priest met him with the calm attention of someone receiving a formal introduction rather than a challenge.
 
 "No one authorized it," he said.
 
@@ -98,7 +102,7 @@ The priest reached into his coat and produced an identification wallet, then ope
 
 Inspector Leo took the wallet.
 
-The name matched the face. The seal beneath it was more interesting.
+The name matched the face. The seal beneath it carried the real weight.
 
 Not diocesan parish administration. Not a city deanery. Not even ordinary episcopal office. This came from a Church bureau with a title bland enough to hide its purpose, the kind of office nobody at street level was supposed to need.
 
@@ -112,11 +116,13 @@ Father Mikhail closed the wallet. "Waiting."
 
 "For you."
 
-That answer made Sergeant Marek look away.
+That answer pulled Sergeant Marek's eyes off the exchange.
 
-Inspector Leo glanced past Father Mikhail into the entrance hall.
+The entrance hall opened behind Father Mikhail.
 
 The interior lights were fully on. Marble floor. Dark runner carpet. A toppled side chair. One crime-scene tech near the threshold speaking in a low voice into her headset. Another officer farther in, standing too rigidly, as if afraid to shift his weight and accidentally remember something.
+
+Too many bodies near the threshold. Too many stories forming before evidence had one.
 
 The stretcher outside was empty.
 
@@ -144,7 +150,7 @@ Inspector Leo faced the sergeant. "Who made first entry?"
 
 A young officer by the steps stiffened involuntarily.
 
-Inspector Leo saw it at once. "You."
+The movement gave him the answer. "You."
 
 The young patrolman approached, face drained, cap tucked under one arm.
 
@@ -168,11 +174,11 @@ The young man hesitated just long enough to irritate him.
 
 Inspector Leo waited.
 
-Officer Piotr looked embarrassed by his own words. "Too cold for the room, sir."
+Embarrassment tightened Officer Piotr's face. "Too cold for the room, sir."
 
 "How cold?"
 
-The officer glanced toward the doorway, then toward Father Mikhail, then back to the inspector.
+The officer's attention cut toward the doorway, then toward Father Mikhail, then back to the inspector.
 
 "Like he'd been outside for hours," he said. "Maybe longer."
 
@@ -190,7 +196,7 @@ Inspector Leo's expression did not change.
 
 "No, sir."
 
-He looked to Sergeant Marek.
+Sergeant Marek became the next point of pressure.
 
 "Thermal read?"
 
@@ -210,7 +216,7 @@ Inspector Leo shifted his gaze to Father Mikhail. "Have you been inside?"
 
 Father Mikhail accepted that without reaction.
 
-The inspector studied him for another moment. It was not only the clothes or the credentials. It was his composure. People trained in grief looked one way. People trained in bureaucracy looked another. Father Mikhail had the stillness of someone trained to stand near events that were not to be spoken of directly.
+For another moment, the inspector measured him. Not only the clothes or the credentials. The composure. People trained in grief carried one kind of stillness. People trained in bureaucracy carried another. Father Mikhail had the stillness of someone trained to stand near events that were not to be spoken of directly.
 
 Inspector Leo said, "Who called you?"
 
@@ -236,7 +242,7 @@ Sergeant Marek lowered his tablet.
 
 "And what exactly was said?"
 
-Father Mikhail looked toward the open doorway, then back to him.
+Father Mikhail allowed the open doorway one brief glance before returning to him.
 
 "That there had been a death. That it was necessary the Church be informed at once. And that the police must not be allowed to misunderstand what they found."
 
@@ -260,7 +266,7 @@ Father Mikhail's eyes were pale grey, flat and administrative.
 
 "I assume because someone here believed the nature of the death might be mistaken for something ordinary."
 
-Inspector Leo almost smiled at that.
+A smile nearly formed on Inspector Leo's face.
 
 "A dead man in a locked receiving room is already homicide until proven otherwise."
 
@@ -271,6 +277,8 @@ Inspector Leo almost smiled at that.
 "I think," said Father Mikhail, "that someone in this house was frightened of a particular kind of mistake."
 
 The answer irritated him because it was careful rather than dramatic. Not occult. Not florid. Institutional. As if this were not madness but classification.
+
+Classification meant paperwork. Paperwork meant jurisdiction. Jurisdiction meant someone would try to move the problem before it could be named.
 
 Inspector Leo stepped closer.
 
@@ -308,7 +316,7 @@ He turned away.
 
 "Yes."
 
-He looked to Officer Piotr.
+Officer Piotr was next.
 
 "You are done touching things."
 
@@ -318,7 +326,7 @@ He looked to Officer Piotr.
 
 The young officer nodded too fast.
 
-Then Inspector Leo looked once more at Father Mikhail.
+Then Inspector Leo returned to Father Mikhail.
 
 "Last question. When your office received the call, why send you personally?"
 
@@ -332,15 +340,17 @@ Father Mikhail said, "He said the death might concern an act against the order o
 
 That sat in the rain-cooled air without shape for a second or two.
 
+The phrase did not belong to panic. It belonged to doctrine.
+
 Not because the words were theatrical. Because they were not. They had been spoken in exactly the tone a bank official might use to discuss a sealed transfer or a customs officer to discuss contraband classifications.
 
 Inspector Leo found that infinitely worse.
 
 From inside the residence came the sharp crash of glass, followed by a woman saying something fast and furious in French before another voice silenced her.
 
-The inspector looked toward the doorway.
+The crash pulled the inspector toward the doorway.
 
-Then back at the priest.
+Then the priest reclaimed his attention.
 
 "Stay here, Father Mikhail."
 
