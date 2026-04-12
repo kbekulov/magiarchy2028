@@ -9,8 +9,8 @@ status: draft
 canon: core
 characters: Inspector Leo | Father Mikhail | Sergeant Marek | Officer Piotr
 tags: homicide | church | investigation | unnatural-death | pressure
-summary: Inspector Leo arrives at a rain-soaked aristocratic residence where a homicide scene is already shadowed by Church credentials, impossible cold, a dead phone that rings, and Father Mikhail's eventual disappearance.
-draft_version: 1.8
+summary: Inspector Leo arrives at a rain-soaked aristocratic residence where a homicide scene is already shadowed by Church credentials, impossible cold, a dead phone that rings, and a missing-person report that omits the impossible call.
+draft_version: 1.9
 template: literary
 vn_backdrop: media/vn_simulator/chapter_1/bg_street_1.png
 vn_left_name: Inspector Leo
@@ -45,7 +45,7 @@ A patrol officer lifted the tape for him.
 
 Inspector Leo stepped through, flashed his credentials without slowing, and measured the courtyard in one sweep.
 
-One ambulance. Two patrol cars. Forensics van still sealed. Outer barrier holding. Three officers at the steps. One had gone pale enough to become a liability.
+One ambulance. Two patrol cars. Forensics van still sealed. Outer barrier holding. Three officers at the steps. One had gone pale enough to be a liability.
 
 And under the portico, waiting near the open front doors as if he belonged there, a priest.
 
@@ -79,9 +79,9 @@ Not local parish. Not hospital chaplain. The man wore a black clerical coat with
 
 He was dry.
 
-That was the first thing Inspector Leo disliked.
+That was the first thing Leo disliked.
 
-The second: no surprise at becoming the center of the scene.
+The second was that he showed no surprise at all.
 
 Inspector Leo crossed the courtyard.
 
@@ -125,7 +125,7 @@ The entrance hall opened behind Father Mikhail.
 
 The interior lights were fully on. Marble floor. Dark runner carpet. A toppled side chair. One crime-scene tech near the threshold speaking in a low voice into her headset. Another officer farther in, standing too rigidly, as if afraid to shift his weight and accidentally remember something.
 
-Too many bodies near the threshold. Too many stories forming before evidence had one.
+Too many bodies near the threshold. Too many stories forming before the evidence had formed one.
 
 The stretcher outside was empty.
 
@@ -153,7 +153,7 @@ Inspector Leo faced the sergeant. "Who made first entry?"
 
 A young officer by the steps stiffened involuntarily.
 
-The movement gave him the answer. "You."
+That answered it. "You."
 
 The young patrolman approached, face drained, cap tucked under one arm.
 
@@ -171,7 +171,7 @@ Officer Piotr swallowed before speaking. "Male victim. No response. No visible s
 
 "And?"
 
-The young man hesitated just long enough to irritate him.
+The young man hesitated. Long enough to irritate him.
 
 "And the body was too cold."
 
@@ -199,7 +199,7 @@ Inspector Leo's expression did not change.
 
 "No, sir."
 
-Sergeant Marek became the next point of pressure.
+Leo turned to Sergeant Marek.
 
 "Thermal read?"
 
@@ -219,7 +219,7 @@ Inspector Leo shifted his gaze to Father Mikhail. "Have you been inside?"
 
 Father Mikhail accepted that without reaction.
 
-For another moment, the inspector measured him. Not only the clothes or the credentials. The composure. People trained in grief carried one kind of stillness. People trained in bureaucracy carried another. Father Mikhail had the stillness of someone trained to stand near events that were not to be spoken of directly.
+For another moment, the inspector measured him. Not only the clothes or the credentials. The composure. People trained in grief carried one kind of stillness. People trained in bureaucracy carried another. Father Mikhail had the stillness of someone trained to stand near events that were not spoken of directly.
 
 Inspector Leo said, "Who called you?"
 
@@ -279,7 +279,7 @@ The beginning of a smile touched Inspector Leo's mouth and died there.
 
 "I think," said Father Mikhail, "that someone in this house was frightened of a particular kind of mistake."
 
-The answer irritated him because it remained careful rather than dramatic. Not occult. Not florid. Institutional. As if this were not madness but classification.
+The answer irritated him because it stayed careful rather than dramatic. Not occult. Not florid. Institutional. As if this were not madness but classification.
 
 Classification meant paperwork. Paperwork meant jurisdiction. Jurisdiction meant someone would try to move the problem before it could be named.
 
@@ -353,7 +353,7 @@ Father Mikhail let the silence hold, weighed rank against rule, and chose rule.
 
 That refusal sat in the rain-cooled air without shape for a second or two.
 
-It did not belong to panic. It belonged to procedure.
+Not panic. Procedure.
 
 Not because the words were theatrical. Because they were not. They had been withheld in exactly the tone a bank official might use to discuss a sealed transfer or a customs officer to discuss contraband classifications.
 
@@ -439,7 +439,7 @@ The sound in the enclosed hallway was worse.
 
 The hesitation moved through the group in small humiliating ways. A shift of weight. A throat worked dry. Eyes refusing to rest on the receiver for more than a second at a time.
 
-Marek became the next point of command. "Did anyone touch this?"
+Leo turned to Marek. "Did anyone touch this?"
 
 "No, Inspector Leo."
 
@@ -501,7 +501,7 @@ Inspector Leo held the receiver there a second longer, more from refusal than ho
 
 "Prank," he said.
 
-No one contradicted him. Conviction appeared nowhere.
+No one contradicted him. No one believed him either.
 
 He returned the receiver to the cradle with more force than necessary. The plastic knocked once against the housing before settling.
 
@@ -515,7 +515,7 @@ The group began to break apart.
 
 Two steps later, Father Mikhail reentered the edge of Leo's calculation. The priest had not moved close to the phone, but something in his face had altered. Not fear. Not exactly surprise. Recognition had entered first, and caution immediately after it.
 
-Both were useful only as warnings.
+Both registered as warnings.
 
 "If you have a thought," he said, "save it until you have something better than clerical atmosphere to support it."
 
@@ -557,7 +557,7 @@ Toward the receiving room, the police were already disappearing into their prope
 
 Good work, all of it.
 
-Useless work, if the line had rung.
+Useless, if the line had rung.
 
 Mikhail folded his hands in front of him and listened to the house.
 
@@ -567,7 +567,7 @@ He said nothing.
 
 Four days later the barriers were gone.
 
-The body had been removed, the blood documented and cleaned, the glass swept, the staff interviewed twice, the lawyers activated, the insurance representatives briefed, and the newspapers fed on a diet of evasive phrases that satisfied no one and preserved everything important. The residence no longer belonged to forensics. It belonged to vacuumed carpets, sealed drawers, and the long afterlife of official embarrassment.
+The body had been removed, the blood documented and cleaned, the glass swept, the staff interviewed twice, the lawyers activated, the insurance representatives briefed, and the newspapers fed on a diet of evasive phrases that satisfied no one and preserved everything important. The residence no longer belonged to forensics. It belonged to vacuumed carpets, sealed drawers, and the afterlife of official embarrassment.
 
 Father Mikhail's office submitted a request for unobstructed ecclesiastical access to the property.
 
@@ -611,7 +611,7 @@ Mikhail checked his watch.
 
 The previous call had come at 21:14.
 
-At 21:13 the house seemed to withdraw from itself. Sound thinned. Even the old pipes chose that moment to keep quiet.
+At 21:13 the house seemed to withdraw. Sound thinned. Even the old pipes chose that moment to keep quiet.
 
 At 21:14 the dead phone rang.
 
@@ -623,7 +623,7 @@ Mikhail was already standing when it rang the second time.
 
 He crossed the corridor without haste, though every movement in him had tightened. The bell sounded once more before he reached the table. Then it stopped.
 
-For a moment, the black receiver held him there. Not from fear. From confirmation. At last he picked it up and raised it to his ear.
+For a moment, the black receiver held him there. Not fear. Confirmation. At last he picked it up and raised it to his ear.
 
 The house remained silent.
 
@@ -648,3 +648,4 @@ The residence was searched again. Then the grounds. Then the river embankment be
 The following week, after the Church exhausted the private explanations available to it and the police exhausted the public ones, a missing person report was filed.
 
 The report listed Father Mikhail as last seen at the residence.
+It made no mention of the phone in the west corridor.
