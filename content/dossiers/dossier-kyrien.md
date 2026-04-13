@@ -50,4 +50,4 @@ He is shaped by early exposure to lethal knowledge and by the suspicious removal
 
 ## Thematic Axis
 
-Kyrien edits invisible drafts while Lynleit carries visible strategy.
+Kyrien edits invisible drafts while Lynleit carries the public burden of strategy.

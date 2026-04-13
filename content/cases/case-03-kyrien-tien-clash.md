@@ -29,6 +29,6 @@ Tien functions as Helena's covert mirror to Kyrien: another precise actor shaped
 
 ## Narrative Use
 
-- It externalizes the conflict between visible leadership and shadow action.
+- It externalizes the conflict between public burden and shadow action.
 - It converts abstract pursuit into direct embodied danger.
 - It prepares the return phase by clarifying what kind of force now shapes the story's underside.

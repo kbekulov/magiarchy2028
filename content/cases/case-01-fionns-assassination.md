@@ -30,7 +30,7 @@ This event is the story's decisive break. Helena weaponizes the murder political
 
 ## Counterweight
 
-Kyrien becomes essential at the moment ordinary chains of command fail. His value is not formal rank, but contingency: extraction, unpredictability, and the ability to act where visible authority cannot.
+Kyrien becomes essential at the moment ordinary chains of command fail. His value is not formal rank, but contingency: extraction, unpredictability, and the ability to act where public authority cannot.
 
 ## Story Consequence
 

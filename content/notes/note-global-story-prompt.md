@@ -278,11 +278,11 @@ Use this as a canon pack for story generation, character writing, scene planning
 - Subtitle: Visible Protagonist; Acting Heir-Director.
 - Age: 28.
 - Gender: Female.
-- Narrative role: visible protagonist and public decision-maker.
+- Narrative role: reluctant visible protagonist and public decision-maker.
 - Occupation: acting heir of MSF.
 - Core goal: hold the structure together without abandoning ethics.
 - Key dynamic: public legitimacy paired with hidden contingency support.
-- About: the sole heir of MSF, forced into leadership early to prevent institutional collapse after internal instability; she rejects rule through fear and treats trust as infrastructure.
+- About: the sole heir of MSF, forced into leadership early to prevent institutional collapse after internal instability; she rejects rule through fear and treats trust as rare, load-bearing infrastructure. Public authority is a role she accepts because the system needs a face, not because visibility is her natural element.
 
 #### Visual Description
 - Stature: average height; slim, lean build.
@@ -296,19 +296,22 @@ Use this as a canon pack for story generation, character writing, scene planning
 - Footwear: dark over-the-knee boots with medium heels; elegant, stable, and mobility-friendly in a crisis.
 
 #### Leadership Style
-- Communicates directly and reduces the distance that power usually creates.
-- Builds loyalty through emotional presence and visible sincerity.
-- Prefers cohesion to control, and alignment to obedience.
-- Is viewed as soft by traditionalists who mistake warmth for weakness.
+- Begins with pattern before contact: motive, silence, future consequence, and fracture line.
+- Communicates with careful directness rather than broad availability.
+- Reduces the distance power creates only when proximity serves the deeper structure.
+- Builds loyalty through chosen presence, private recognition, and moral steadiness.
+- Prefers cohesion to control, and alignment to obedience, but does not mistake open access for trust.
+- Is viewed as soft, distant, or difficult to read by traditionalists who mistake coercion for strength.
 
 #### Writer Guide Notes
 - Matured early under succession pressure and understands that legitimacy must be earned in real time.
 - Keeps her moral philosophy even as she accepts selective opacity when deterrence becomes necessary.
-- Must prove that proximity can be strength, and must make at least one costly trust-based decision.
-- Voice target: composed and conviction-driven; vulnerability should feel conscious and chosen.
+- Public authority should feel deliberate and slightly costly, not socially effortless.
+- Must prove that selectively granted proximity can be strength, and must make at least one costly trust-based decision.
+- Voice target: composed, elliptical, and conviction-driven; vulnerability should feel conscious, rare, and chosen.
 
 #### Thematic Axis
-- Visible power trying to remain ethical while relying on shadow capability to keep the system survivable.
+- Private ethical perception forced into visible authority while relying on shadow capability to keep the system survivable.
 
 ### Kyrien
 - Subtitle: Independent Ally; Hidden Contingency.
@@ -347,7 +350,7 @@ Use this as a canon pack for story generation, character writing, scene planning
 #### Thematic Axis
 - Refuses to mythologize magic.
 - Functions as shadow capability inside institutions.
-- He edits invisible drafts while Lynleit executes visible strategy.
+- He edits invisible drafts while Lynleit carries the public burden of strategy.
 
 ### Placeholder Characters
 The following are registered but currently placeholder profiles: Drake, Sherie, Heyk, Felix, Reiner, Fionn, Helena, Yulia, Hiyu, Natalia, Lester, Myka, Tien.
@@ -364,42 +367,42 @@ Use this placeholder doctrine for each until replaced:
 
 ### Lynleit + Kyrien
 - Core framing: structural complementarity under pressure, not romance-first tension.
-- She leads through proximity; he operates through distance.
-- She builds legitimacy through transparency; he preserves survivability through controlled opacity.
+- She leads through selectively granted proximity; he operates through distance.
+- She builds legitimacy through controlled disclosure and private pattern-reading; he preserves survivability through controlled opacity.
 
 #### Lynleit - Visible Authority
-- Intentionally collapses hierarchy; treats core colleagues as allies.
-- Creates loyalty but appears soft to traditional executives.
-- Learns cohesion is strength but not deterrence.
-- Grows by adding structural insurance without abandoning ethics.
+- Does not collapse hierarchy by default; she narrows distance deliberately when a person or crisis requires it.
+- Creates loyalty through rare, precise access but can appear soft, distant, or opaque to traditional executives.
+- Learns that chosen proximity is strength but not deterrence.
+- Grows by adding structural insurance without abandoning ethics or moral privacy.
 
 #### Kyrien - Invisible Contingency
 - Off-chart, unofficial, outside consensus machinery.
 - Systemic contingency, not simple enforcer.
 - Suspicious during calm; inevitable during crisis.
-- Disrupts threats before visible leadership absorbs impact.
+- Disrupts threats before public leadership absorbs impact.
 
 #### Trust Without Visibility
-- Lynleit chooses controlled trust, not ignorance.
+- Lynleit chooses controlled trust, not ignorance or open access.
 - Central tension: tolerance for incomplete operational visibility.
 - Visible consequences still land on Lynleit when hidden interventions escalate.
 
 #### Crisis Dynamic
-- Lynleit handles negotiation, morale, public strategy.
+- Lynleit handles negotiation, morale, and public strategy when the role requires it, even when visibility costs her.
 - Kyrien redirects threats and neutralizes sub-visible escalation.
 - Post-crisis ambiguity is deliberate survivability design.
 
 #### Relational Axis
 - He is neither weapon nor subordinate; he is an independent ally.
 - She anchors through responsibility; he stands with her by choice.
-- She integrates through inclusion; he protects through exclusion.
-- She writes visible narrative; he edits invisible draft.
+- She integrates through chosen access; he protects through exclusion.
+- She deciphers the visible narrative; he edits the invisible draft.
 
 #### Writer Rule
 - Transparency supported by controlled opacity.
 - Do not romanticize prematurely.
 - Do not flatten either character into archetype.
-- Keep Lynleit strategic/decisive and Kyrien restrained/precise/independently moral.
+- Keep Lynleit private, pattern-driven, strategic/decisive and Kyrien restrained/precise/independently moral.
 - Their power is tension, not dominance.
 
 ### Felix + Reiner
