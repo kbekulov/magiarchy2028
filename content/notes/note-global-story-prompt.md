@@ -282,7 +282,7 @@ Use this as a canon pack for story generation, character writing, scene planning
 - Occupation: acting heir of MSF.
 - Core goal: hold the structure together without abandoning ethics.
 - Key dynamic: public legitimacy paired with hidden contingency support.
-- About: the sole heir of MSF, forced into leadership early to prevent institutional collapse after internal instability; she rejects rule through fear and treats trust as rare, load-bearing infrastructure. Public authority is a role she accepts because the system needs a face, not because visibility is her natural element.
+- About: the sole heir of MSF, forced into leadership early to prevent institutional collapse after internal instability; she rejects rule through fear and treats trust as rare, load-bearing infrastructure. Public authority is a role she accepts because the system needs a face, not because visibility is her natural element. Her elegance, style, and physical composure are private control languages rather than mere decoration.
 
 #### Visual Description
 - Stature: average height; slim, lean build.
@@ -294,6 +294,8 @@ Use this as a canon pack for story generation, character writing, scene planning
 - Bottoms: fitted black shorts.
 - Legwear: opaque black stockings.
 - Footwear: dark over-the-knee boots with medium heels; elegant, stable, and mobility-friendly in a crisis.
+- Style doctrine: highly maintained elegance with small playful deviations that feel chosen, not accidental.
+- Embodied presence: naturally coordinated and aware of balance, weight, timing, and posture; not defined as physically trained, but quick to become physically exact when pressure requires it.
 
 #### Leadership Style
 - Begins with pattern before contact: motive, silence, future consequence, and fracture line.
@@ -302,16 +304,19 @@ Use this as a canon pack for story generation, character writing, scene planning
 - Builds loyalty through chosen presence, private recognition, and moral steadiness.
 - Prefers cohesion to control, and alignment to obedience, but does not mistake open access for trust.
 - Is viewed as soft, distant, or difficult to read by traditionalists who mistake coercion for strength.
+- Uses style and physical composure as quiet boundary-setting rather than display.
 
 #### Writer Guide Notes
 - Matured early under succession pressure and understands that legitimacy must be earned in real time.
 - Keeps her moral philosophy even as she accepts selective opacity when deterrence becomes necessary.
 - Public authority should feel deliberate and slightly costly, not socially effortless.
 - Must prove that selectively granted proximity can be strength, and must make at least one costly trust-based decision.
+- Her physical grace should read as cultivated body-awareness rather than martial prowess.
+- Her aesthetic choices should reveal private taste and control without becoming vanity.
 - Voice target: composed, elliptical, and conviction-driven; vulnerability should feel conscious, rare, and chosen.
 
 #### Thematic Axis
-- Private ethical perception forced into visible authority while relying on shadow capability to keep the system survivable.
+- Private ethical perception, aesthetic control, and embodied composure forced into visible authority while relying on shadow capability to keep the system survivable.
 
 ### Kyrien
 - Subtitle: Independent Ally; Hidden Contingency.
@@ -402,7 +407,7 @@ Use this placeholder doctrine for each until replaced:
 - Transparency supported by controlled opacity.
 - Do not romanticize prematurely.
 - Do not flatten either character into archetype.
-- Keep Lynleit private, pattern-driven, strategic/decisive and Kyrien restrained/precise/independently moral.
+- Keep Lynleit private, pattern-driven, aesthetically controlled, physically composed, strategic/decisive and Kyrien restrained/precise/independently moral.
 - Their power is tension, not dominance.
 
 ### Felix + Reiner
