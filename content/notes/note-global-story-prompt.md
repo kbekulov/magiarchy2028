@@ -88,6 +88,7 @@ Use this as a canon pack for story generation, character writing, scene planning
 ### Current Chapter Timeline Scaffold
 - Chapter 0: The Interview.
 - Chapter 1: A Visitor.
+- Chapter 2: Lyn.
 - Pivotal Event: Fionn's assassination.
 - Pivotal Event: MSF compression into guild-like continuity.
 - Pivotal Event: Kyrien-Tien clash.

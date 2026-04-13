@@ -1,0 +1,231 @@
+---
+title: Chapter 2 - Lyn
+type: chapter
+facet: story
+section: archive
+order: 2
+chronology: 30
+status: draft
+canon: core
+characters: Lynleit | Housekeeper | Father Mikhail
+tags: lynleit | church | investigation | familiar | residence | dead-phone
+summary: Lynleit enters the disturbed residence a week after Father Mikhail's disappearance, questions the housekeeper, and sends a quiet cat to trace the dead phone's impossible line.
+draft_version: 1.0
+template: literary
+vn_left_name: Lynleit
+vn_left_role: Visitor
+vn_left_aliases: Lynleit | Miss Lynleit
+vn_right_name: Housekeeper
+vn_right_role: Residence Staff
+vn_right_aliases: Housekeeper | Senior Housekeeper | Older Woman
+vn_speaker_side_overrides: Lynleit=>left | Housekeeper=>right
+vn_speaker_overrides_01: Lynleit.=>Lynleit | You were expected, miss.=>Housekeeper | The morning room will do.=>Lynleit | Tea?=>Housekeeper | Yes. Thank you.=>Lynleit | No noise. No detours. Bring me the line.=>Lynleit | If there is anything you wish to see, miss, I can have someone accompany you.=>Housekeeper | Later, perhaps. I would appreciate a few practical details first.=>Lynleit
+vn_speaker_overrides_02: Father Mikhail.=>Lynleit | He visited daily?=>Lynleit | Almost. Yes.=>Housekeeper | He kept mainly to the west corridor?=>Lynleit | Yes.#1=>Housekeeper | He asked for the phone to remain where it was.=>Lynleit | That is correct.=>Housekeeper | He sat with it in the evening.=>Lynleit | Yes.#2=>Housekeeper
+vn_speaker_overrides_03: You know more than most of the people who have come through this house.=>Housekeeper | Enough to avoid wasting your time.=>Lynleit | He sat there every evening. Always before nine. Sometimes with a prayer book. Sometimes with nothing. He did not want anyone nearby. On the last night he refused supper.=>Housekeeper | And after that?=>Lynleit | Nothing. By morning he was gone.=>Housekeeper | No sound in the night?=>Lynleit | No one admitted hearing any.=>Housekeeper
+vn_speaker_overrides_04: The phone is still there?=>Lynleit | Yes.#3=>Housekeeper | Good.=>Lynleit | Miss Lynleit, may I ask in what capacity you are here?=>Housekeeper | In the capacity of someone sent to determine whether Father Mikhail left the house.=>Lynleit | Then I will show you the corridor.=>Housekeeper | Please.=>Lynleit | May I?=>Lynleit | Of course.=>Housekeeper
+vn_speaker_overrides_05: Where did that come from?=>Housekeeper | It came with me.=>Lynleit | You brought a cat.=>Housekeeper | Yes.#4=>Lynleit | Miss?=>Housekeeper | For the next few minutes, I need you not to call anyone.=>Lynleit | Why?=>Housekeeper | Because if Father Mikhail heard what I think he heard, noise will matter.=>Lynleit
+---
+
+# Chapter 2 - Lyn
+
+A week after Father Mikhail's disappearance, the residence had recovered its shape but not its habits.
+
+The front steps had been washed twice. Broken glass had long since left the receiving hall. The river still moved below the property with the same indifferent width. From the street, the mansion had resumed its old occupation: wealth made architectural, secrecy made domestic.
+
+Inside, however, every bell was answered too quickly.
+
+The household had begun to recognize the sound of official shoes. Police leather. Church leather. Legal leather. They differed less by appearance than by tempo. The police arrived with impatience, the clergy with silence, the lawyers with the manner of men already pricing damage.
+
+That afternoon the gate officer called ahead before admitting the young woman with the blue umbrella.
+
+She did not look dangerous, which over the past week had become reason enough to call ahead.
+
+She stepped from the car without hurry, closed the umbrella herself, and gave her name in a voice too even to belong to someone there by accident.
+
+"Lynleit."
+
+The senior housekeeper received her in the entrance hall. The cut on her hand had healed into a thin pale line that only showed when the fingers opened fully.
+
+"You were expected, miss."
+
+That was not entirely true. A call had come that morning from a Church office the staff no longer enjoyed hearing from. A young lady would be visiting. She was to be admitted without delay. She was not clergy. She was not police. She was to be shown courtesy and not questioned beyond what courtesy required.
+
+The household had learned, over the past week, that such instructions usually concealed more than they clarified.
+
+Lynleit removed her gloves one finger at a time.
+
+She was young enough to make the instruction feel absurd. Early twenties, perhaps less at first glance. Dark blue hair worn neatly, blue eyes that looked direct without ever becoming open, a fitted dark blazer over a white blouse, black ribbon at the collar, dark shorts over black tights, boots practical enough to suggest she did not dress for effect unless effect served function. She carried a structured leather purse that might have passed for merely expensive had it not been handled with such consistent care.
+
+The housekeeper said, "Would you prefer the morning room, miss? Or the small salon?"
+
+"The morning room will do."
+
+"Tea?"
+
+"Yes. Thank you."
+
+She followed the housekeeper down the corridor with the composed attention of someone new to the house but not new to entering troubled places. Her gaze moved once to the west hallway. Briefly, though with enough precision to show that she had marked it.
+
+The housekeeper noticed that in turn.
+
+They seated her in the side morning room overlooking the garden. Tea was promised. A plate of untouched biscuits appeared by reflexive household logic. A fire had been lit, though the day did not need one. The staff had developed an aversion to cold corners.
+
+Lynleit waited until the housekeeper withdrew and the door clicked shut.
+
+Then she set the purse on her lap and opened it.
+
+For a moment nothing happened.
+
+Then a cat rose from the darkness inside as quietly as if it had been folded there rather than hidden.
+
+Small. Grey. Short-haired. No collar. No attempt at indignation after confinement. It placed one paw on the lip of the bag, then another, and looked at her with a concentration no ordinary pet would have spent on a human face.
+
+Lynleit touched two fingers to the top of its head.
+
+"No noise," she said softly. "No detours. Bring me the line."
+
+The cat blinked once, slipped to the carpet, and vanished beneath a side table with a fluidity that seemed less like stealth than refusal to be observed.
+
+Lynleit closed the purse.
+
+By the time the tea arrived, she was seated exactly as before, hands folded, expression composed.
+
+The housekeeper set the tray down. "If there is anything you wish to see, miss, I can have someone accompany you."
+
+"Later, perhaps." Lynleit lifted the cup but did not drink. "I would appreciate a few practical details first."
+
+The housekeeper remained standing.
+
+"Father Mikhail," Lynleit said. "He visited daily?"
+
+"Almost. Yes."
+
+"He kept mainly to the west corridor?"
+
+The housekeeper hesitated. "Yes."
+
+"He asked for the phone to remain where it was."
+
+The older woman gave her a sharper look. "That is correct."
+
+"He sat with it in the evening."
+
+"Yes."
+
+Lynleit let the silence sit for a moment, not as pressure but as allowance. The housekeeper, having endured police interviews and Church questions and one visit from family counsel, had developed a reflex against speaking too soon. Lynleit respected the reflex enough to wait it out.
+
+At length the housekeeper said, "You know more than most of the people who have come through this house."
+
+"Enough to avoid wasting your time."
+
+That answer seemed to satisfy her more than reassurance would have.
+
+"He sat there every evening," the housekeeper said. "Always before nine. Sometimes with a prayer book. Sometimes with nothing. He did not want anyone nearby. On the last night he refused supper."
+
+"And after that?"
+
+"Nothing. By morning he was gone."
+
+"No sound in the night?"
+
+"No one admitted hearing any."
+
+Admitted.
+
+Lynleit registered the word but did not pause on it.
+
+"The phone is still there?"
+
+"Yes."
+
+"Good."
+
+That single word changed the housekeeper's expression more than any direct question had. Good was not the response of a curious outsider. It belonged to someone who had expected the object to matter.
+
+The housekeeper said carefully, "Miss Lynleit, may I ask in what capacity you are here?"
+
+Lynleit set her cup back on the saucer with deliberate neatness.
+
+"In the capacity of someone sent to determine whether Father Mikhail left the house."
+
+The answer was narrow enough to be true and broad enough to prevent a second useful question.
+
+The housekeeper seemed to understand that and accept it as the limit available to her.
+
+"Then I will show you the corridor."
+
+"Please."
+
+They rose.
+
+The cat was not in the room.
+
+The housekeeper did not notice its absence because she had never noticed its presence.
+
+The west corridor had acquired, over the past week, the peculiar cleanliness of a place nobody trusted enough to neglect. The runner had been brushed. The gilt mirror restored its own hallway without distortion. The narrow table stood precisely where it had stood before, and on it the black telephone waited with the same dense, unhelpful composure.
+
+Lynleit stopped three steps short of it.
+
+The housekeeper, watching her from the side, felt the atmosphere shift without being able to identify what had shifted. The young woman had not become afraid. She had become exact.
+
+"May I?" Lynleit asked.
+
+The housekeeper gestured toward the instrument. "Of course."
+
+Lynleit approached the table.
+
+The line remained visibly dead. The cable at the back had been mended only enough to confirm its uselessness and then left disconnected on police instruction. A practical compromise. Test, confirm, preserve. Human procedure loved partial gestures when certainty ran out.
+
+Her attention moved past the phone to the skirting board, then to the corner where wall met runner, then to the mirror.
+
+The cat appeared from beneath the runner as if it had been woven into the corridor from the start. It did not rub against her leg or announce itself with the ordinary vanity of pets. It crossed directly to the table, rose once on its hind legs, and placed one paw against the wall below the mirror.
+
+Then it held there.
+
+Its ears had gone forward in listening.
+
+The housekeeper drew a quiet breath. "Where did that come from?"
+
+Lynleit did not look at her. "It came with me."
+
+"You brought a cat."
+
+"Yes."
+
+The answer was so bare that protest found no purchase in it.
+
+The animal lowered itself again, then turned away from the phone entirely and walked along the wall in a straight line, tail level, step for step as if following something laid into the air half a foot above the floor. It passed the end table, ignored the scent of polish and dust and old fabric, ignored the open arch toward the receiving room, ignored the kitchen wing entirely.
+
+At the first intersection it stopped.
+
+The trail divided there.
+
+Lynleit saw the hesitation in the animal's shoulders. A delicate uncertainty, gone almost as soon as it appeared. She crouched beside it and laid her hand lightly on its back.
+
+The fur under her fingers had risen.
+
+Cold moved through the corridor. Too little to stir curtains or trouble any lamp, enough for the body to register subtraction.
+
+The housekeeper said, very quietly now, "Miss?"
+
+Lynleit looked down the branching hallways.
+
+One path led deeper into the private rooms of the residence.
+
+The other led toward the staircase descending to the old service level beneath the house, a floor the staff still used only in parts and never alone after dark.
+
+The cat made its choice.
+
+It turned toward the stairs.
+
+Lynleit rose.
+
+"For the next few minutes," she said, her voice still courteous and now entirely different, "I need you not to call anyone."
+
+The housekeeper stared at her. "Why?"
+
+Lynleit's eyes remained on the descending corridor.
+
+"Because if Father Mikhail heard what I think he heard," she said, "noise will matter."
+
+Then she took the first step toward the lower level, and the cat went ahead of her without a sound.

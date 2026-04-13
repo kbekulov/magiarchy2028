@@ -466,15 +466,24 @@ function isLikelySpeechAttribution(text) {
     return true;
   }
 
-  const attributionVerbs =
-    "said|asked|replied|answered|repeated|added|murmured|whispered|shouted|snapped|continued|called|told|said he|said she";
-  const subject =
-    "he|she|they|the priest|the inspector|the officer|inspector leonid|father mikhail|father mikhail arsenyev von tiesen|sergeant vale|sergeant marta vale|officer piotr|officer piotr jakubas";
+  const tokens = cleaned.split(" ").filter(Boolean);
+  const speechVerbs = new Set([
+    "said",
+    "asked",
+    "replied",
+    "answered",
+    "repeated",
+    "added",
+    "murmured",
+    "whispered",
+    "shouted",
+    "snapped",
+    "continued",
+    "called",
+    "told",
+  ]);
 
-  return (
-    new RegExp(`^(?:${subject})\\s+(?:${attributionVerbs})$`).test(cleaned) ||
-    new RegExp(`^(?:${attributionVerbs})\\s+(?:${subject})$`).test(cleaned)
-  );
+  return tokens.length <= 8 && tokens.some((token) => speechVerbs.has(token));
 }
 
 function pushNarrationBeats(beats, text) {

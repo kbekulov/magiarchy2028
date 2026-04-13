@@ -5,6 +5,7 @@ const timelineMapFrame = document.getElementById("timeline-map-frame");
 const timelineLanes = [
   { id: "ch0", label: "Chapter 0", title: "The Interview", type: "chapter" },
   { id: "ch1", label: "Chapter 1", title: "A Visitor", type: "chapter" },
+  { id: "ch2", label: "Chapter 2", title: "Lyn", type: "chapter" },
 ];
 
 const timelineRows = [
@@ -15,6 +16,7 @@ const timelineRows = [
     activities: [
       { title: "Ontology, secrecy, and political cost are articulated in direct terms", start: 1, end: 1, tone: "gold" },
       { title: "Hidden doctrine brushes against a public investigation for the first time", start: 2, end: 2, tone: "violet" },
+      { title: "Lynleit traces the dead phone as a pressure line rather than a broken object", start: 3, end: 3, tone: "teal" },
     ],
   },
   {
@@ -24,6 +26,7 @@ const timelineRows = [
     activities: [
       { title: "Fear, use, and denial are named as the Church's operating posture toward Magi", start: 1, end: 1, tone: "slate" },
       { title: "Father Mikhail arrives before the police can classify the impossible", start: 2, end: 2, tone: "blue" },
+      { title: "A Church instruction admits Lynleit into the house without explaining her status", start: 3, end: 3, tone: "slate" },
     ],
   },
   {
@@ -40,6 +43,23 @@ const timelineRows = [
     kind: "character",
     activities: [
       { title: "Insists on institutional caution while implying the death may not be ordinary", start: 2, end: 2, tone: "slate" },
+      { title: "His disappearance becomes the practical object Lynleit is sent to test", start: 3, end: 3, tone: "slate" },
+    ],
+  },
+  {
+    name: "Lynleit",
+    group: "Visitor",
+    kind: "character",
+    activities: [
+      { title: "Enters the residence under Church-adjacent instruction and follows the impossible line downward", start: 3, end: 3, tone: "teal" },
+    ],
+  },
+  {
+    name: "Housekeeper",
+    group: "Residence Staff",
+    kind: "character",
+    activities: [
+      { title: "Names the house's changed habits and guides Lynleit toward the west corridor", start: 3, end: 3, tone: "stone" },
     ],
   },
   {
@@ -52,7 +72,10 @@ const timelineRows = [
     name: "Church",
     group: "Faction",
     kind: "faction",
-    activities: [{ title: "Secrecy maintenance and institutional caution become visible at scene level", start: 2, end: 2, tone: "slate" }],
+    activities: [
+      { title: "Secrecy maintenance and institutional caution become visible at scene level", start: 2, end: 2, tone: "slate" },
+      { title: "Its off-stage authority routes Lynleit into the residence while preserving deniability", start: 3, end: 3, tone: "slate" },
+    ],
   },
 ];
 
