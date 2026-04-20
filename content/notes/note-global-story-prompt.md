@@ -89,6 +89,7 @@ Use this as a canon pack for story generation, character writing, scene planning
 - Chapter 0: The Interview.
 - Chapter 1: A Visitor.
 - Chapter 2: Lyn.
+- Chapter 3: Below.
 - Pivotal Event: Fionn's assassination.
 - Pivotal Event: MSF compression into guild-like continuity.
 - Pivotal Event: Kyrien-Tien clash.

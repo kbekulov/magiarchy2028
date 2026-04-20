@@ -6,6 +6,7 @@ const timelineLanes = [
   { id: "ch0", label: "Chapter 0", title: "The Interview", type: "chapter" },
   { id: "ch1", label: "Chapter 1", title: "A Visitor", type: "chapter" },
   { id: "ch2", label: "Chapter 2", title: "Lyn", type: "chapter" },
+  { id: "ch3", label: "Chapter 3", title: "Below", type: "chapter" },
 ];
 
 const timelineRows = [
@@ -17,6 +18,7 @@ const timelineRows = [
       { title: "Ontology, secrecy, and political cost are articulated in direct terms", start: 1, end: 1, tone: "gold" },
       { title: "Hidden doctrine brushes against a public investigation for the first time", start: 2, end: 2, tone: "violet" },
       { title: "Lynleit traces the dead phone as a pressure line rather than a broken object", start: 3, end: 3, tone: "teal" },
+      { title: "The pressure line resolves into heat, rhythm, and blood circulation below the house", start: 4, end: 4, tone: "rose" },
     ],
   },
   {
@@ -27,6 +29,7 @@ const timelineRows = [
       { title: "Fear, use, and denial are named as the Church's operating posture toward Magi", start: 1, end: 1, tone: "slate" },
       { title: "Father Mikhail arrives before the police can classify the impossible", start: 2, end: 2, tone: "blue" },
       { title: "A Church instruction admits Lynleit into the house without explaining her status", start: 3, end: 3, tone: "slate" },
+      { title: "Its silence leaves Lynleit alone with the consequence beneath the residence", start: 4, end: 4, tone: "slate" },
     ],
   },
   {
@@ -44,6 +47,7 @@ const timelineRows = [
     activities: [
       { title: "Insists on institutional caution while implying the death may not be ordinary", start: 2, end: 2, tone: "slate" },
       { title: "His disappearance becomes the practical object Lynleit is sent to test", start: 3, end: 3, tone: "slate" },
+      { title: "The trail tied to his disappearance descends into the house's hidden circulation", start: 4, end: 4, tone: "slate" },
     ],
   },
   {
@@ -52,6 +56,7 @@ const timelineRows = [
     kind: "character",
     activities: [
       { title: "Enters the residence under Church-adjacent instruction and follows the impossible line downward", start: 3, end: 3, tone: "teal" },
+      { title: "Continues below after the familiar flees, using composure and a concealed pistol to probe the basement", start: 4, end: 4, tone: "teal" },
     ],
   },
   {
@@ -60,6 +65,7 @@ const timelineRows = [
     kind: "character",
     activities: [
       { title: "Names the house's changed habits and guides Lynleit toward the west corridor", start: 3, end: 3, tone: "stone" },
+      { title: "Retreats when the lower level becomes warm, rhythmic, and visibly wrong", start: 4, end: 4, tone: "stone" },
     ],
   },
   {
@@ -75,6 +81,7 @@ const timelineRows = [
     activities: [
       { title: "Secrecy maintenance and institutional caution become visible at scene level", start: 2, end: 2, tone: "slate" },
       { title: "Its off-stage authority routes Lynleit into the residence while preserving deniability", start: 3, end: 3, tone: "slate" },
+      { title: "The unanswered lower-house anomaly increases the cost of keeping procedure clean", start: 4, end: 4, tone: "slate" },
     ],
   },
 ];
