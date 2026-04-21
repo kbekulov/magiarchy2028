@@ -90,6 +90,7 @@ Use this as a canon pack for story generation, character writing, scene planning
 - Chapter 1: A Visitor.
 - Chapter 2: Lyn.
 - Chapter 3: Below.
+- Chapter 4: Plans.
 - Pivotal Event: Fionn's assassination.
 - Pivotal Event: MSF compression into guild-like continuity.
 - Pivotal Event: Kyrien-Tien clash.
@@ -99,6 +100,7 @@ Use this as a canon pack for story generation, character writing, scene planning
 - Chapter 0 affects Heyk, Sherie, and Drake.
 - Heyk's early arc begins in Chapter 0 and stretches into Chapter 1: covert deployment into quarantine zone.
 - Sherie's and Drake's Chapter 1 event: Heyk's extraction and new job offer.
+- Chapters 2-4 move Lynleit from quiet entry and pattern-reading into direct confrontation with house-level magical architecture.
 - Lynleit moves from inheritance pressure to exile, then into leverage recovery and visible return positioning.
 - Kyrien moves from silent preparation into contingency activation, extraction work, and direct anti-Tien counterplay.
 - Helena builds the accusation architecture, redirects MSF into the hunt, and consolidates unstable control.

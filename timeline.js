@@ -7,6 +7,7 @@ const timelineLanes = [
   { id: "ch1", label: "Chapter 1", title: "A Visitor", type: "chapter" },
   { id: "ch2", label: "Chapter 2", title: "Lyn", type: "chapter" },
   { id: "ch3", label: "Chapter 3", title: "Below", type: "chapter" },
+  { id: "ch4", label: "Chapter 4", title: "Plans", type: "chapter" },
 ];
 
 const timelineRows = [
@@ -19,6 +20,7 @@ const timelineRows = [
       { title: "Hidden doctrine brushes against a public investigation for the first time", start: 2, end: 2, tone: "violet" },
       { title: "Lynleit traces the dead phone as a pressure line rather than a broken object", start: 3, end: 3, tone: "teal" },
       { title: "The pressure line resolves into heat, rhythm, and blood circulation below the house", start: 4, end: 4, tone: "rose" },
+      { title: "Pressure architecture turns openly hostile, rewriting routes and movement below the residence", start: 5, end: 5, tone: "rose" },
     ],
   },
   {
@@ -48,6 +50,7 @@ const timelineRows = [
       { title: "Insists on institutional caution while implying the death may not be ordinary", start: 2, end: 2, tone: "slate" },
       { title: "His disappearance becomes the practical object Lynleit is sent to test", start: 3, end: 3, tone: "slate" },
       { title: "The trail tied to his disappearance descends into the house's hidden circulation", start: 4, end: 4, tone: "slate" },
+      { title: "The route left in his wake now leads into a basement that records insist does not exist", start: 5, end: 5, tone: "slate" },
     ],
   },
   {
@@ -57,6 +60,7 @@ const timelineRows = [
     activities: [
       { title: "Enters the residence under Church-adjacent instruction and follows the impossible line downward", start: 3, end: 3, tone: "teal" },
       { title: "Continues below after the familiar flees, using composure and a concealed pistol to probe the basement", start: 4, end: 4, tone: "teal" },
+      { title: "Confirms the basement should not exist on record, then survives the house reshaping itself to keep her below", start: 5, end: 5, tone: "teal" },
     ],
   },
   {
@@ -82,6 +86,7 @@ const timelineRows = [
       { title: "Secrecy maintenance and institutional caution become visible at scene level", start: 2, end: 2, tone: "slate" },
       { title: "Its off-stage authority routes Lynleit into the residence while preserving deniability", start: 3, end: 3, tone: "slate" },
       { title: "The unanswered lower-house anomaly increases the cost of keeping procedure clean", start: 4, end: 4, tone: "slate" },
+      { title: "Whatever lies beneath the house now exceeds the safety of denial and begins forcing architectural response", start: 5, end: 5, tone: "slate" },
     ],
   },
 ];
