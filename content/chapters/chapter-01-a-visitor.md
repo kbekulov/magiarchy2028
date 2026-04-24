@@ -24,7 +24,7 @@ vn_right_aliases: Father Mikhail | Mikhail | Priest | The Priest
 vn_speaker_overrides_01: Why, is there clergy inside my perimeter?=>Inspector Leo | I asked a simple question.=>Inspector Leo | He was already here when patrol entered, sir.=>Sergeant Marek | That is not an answer.=>Inspector Leo | It's the only one I have.=>Sergeant Marek | This is an active homicide scene Who authorized Church access?=>Inspector Leo | No one authorized it=>Father Mikhail | That is not how this works.=>Inspector Leo | Tonight, Inspector, it appears to be.=>Father Mikhail | Name.#1=>Inspector Leo
 vn_speaker_overrides_02: Father Mikhail.=>Father Mikhail | And why is Father Mikhail standing in my crime scene?=>Inspector Leo | Waiting.=>Father Mikhail | For whom?=>Inspector Leo | For you.=>Father Mikhail | Where is the body?=>Inspector Leo | In the receiving room.=>Sergeant Marek | Why has it not been moved?=>Inspector Leo | Medical refused transport pending homicide clearance.=>Sergeant Marek | Then why does everybody out here look like they've seen a saint descend through the ceiling?=>Inspector Leo
 vn_speaker_overrides_03: Who made first entry?=>Inspector Leo | Patrol Unit Three.=>Sergeant Marek | Who touched the victim?=>Inspector Leo | You.=>Inspector Leo | Name.#2=>Inspector Leo | Officer Piotr, sir.=>Officer Piotr | You checked for pulse?=>Inspector Leo | Yes Inspector Leo.#1=>Officer Piotr | What did you find?=>Inspector Leo | Male victim. No response. No visible survivability. I checked carotid and wrist.=>Officer Piotr
-vn_speaker_overrides_04: And?=>Inspector Leo | And the body was too cold.=>Officer Piotr | Too cold for the room, sir.=>Officer Piotr | How cold?=>Inspector Leo | Like he'd been outside for hours Maybe longer.=>Officer Piotr | Windows open?=>Inspector Leo | No, sir.=>Officer Piotr | HVAC malfunction?=>Inspector Leo | Wet clothes?=>Inspector Leo | Thermal read?=>Inspector Leo
+vn_speaker_overrides_04: And?=>Inspector Leo | And the body was too cold.=>Officer Piotr | Too cold for the room, sir.=>Officer Piotr | How cold?=>Inspector Leo | Like he'd been outside for hours Maybe longer.=>Officer Piotr | Windows open?=>Inspector Leo | No, sir.#1=>Officer Piotr | HVAC malfunction?=>Inspector Leo | No, sir.#2=>Officer Piotr | Wet clothes?=>Inspector Leo | No, sir.#3=>Officer Piotr | Thermal read?=>Inspector Leo
 vn_speaker_overrides_05: Initial handheld scan was inconsistent. Forensics hasn't logged final yet.=>Sergeant Marek | Have you been inside?=>Inspector Leo | I stood at the threshold.=>Father Mikhail | That is already too far.=>Inspector Leo | I did not cross it.=>Father Mikhail | You are still not supposed to be here.=>Inspector Leo | Who called you?=>Inspector Leo | Not the police.=>Father Mikhail | Yes Father Mikhail I had guessed that.=>Inspector Leo | A call was placed to my office from inside this residence eight minutes before emergency services received the first civilian report.=>Father Mikhail
 vn_speaker_overrides_06: From inside the house=>Inspector Leo | Yes.#1=>Father Mikhail | By whom?=>Inspector Leo | We were not given a name.=>Father Mikhail | And what exactly was said?=>Inspector Leo | That there had been a death. That it was necessary the Church be informed at once. And that the police must not be allowed to misunderstand what they found.=>Father Mikhail | Must not be allowed.=>Inspector Leo | That was the phrasing.=>Father Mikhail | Convenient.=>Inspector Leo | I am not here to improve its tone.=>Father Mikhail
 vn_speaker_overrides_07: Tell me why anyone in this house would call your office before homicide.=>Inspector Leo | I assume because someone here believed the nature of the death might be mistaken for something ordinary.=>Father Mikhail | A dead man in a locked receiving room is already homicide until proven otherwise.=>Inspector Leo | Of course.=>Father Mikhail | You think it is not ordinary.=>Inspector Leo | I think that someone in this house was frightened of a particular kind of mistake.=>Father Mikhail | Let me make something plain. You are not on this scene as an equal authority. You are here because somebody panicked and made a phone call that I do not yet understand. Until I do you are an irregular civilian presence with unusual credentials.=>Inspector Leo | Understood.=>Father Mikhail | You will remain available.=>Inspector Leo | Yes.#2=>Father Mikhail
@@ -59,7 +59,7 @@ One ended in a sealed annex. One ended in a transfer order signed by a man who h
 
 Leo had kept copies of the six pages.
 
-He had learned from them only this: when clergy appeared before the body was cold, the night had already developed a second chain of command.
+He had learned one rule from them. When clergy appeared before the body was cold, the night had already developed a second chain of command.
 
 "Why," he asked, "is there clergy inside my perimeter?"
 
@@ -501,7 +501,7 @@ Leo's expression hardened. Someone in the house had tracked the priest, then dec
 
 A pause.
 
-Then: "Is the deceased still in place?"
+"Is the deceased still in place?"
 
 Leo pulled the receiver slightly away from his ear. The instrument remained stubbornly black in his hand.
 
