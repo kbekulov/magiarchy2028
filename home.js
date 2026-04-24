@@ -1,8 +1,9 @@
 const homeStats = document.getElementById("home-stats");
 const homeFeatured = document.getElementById("home-featured");
 const homeRecent = document.getElementById("home-recent");
+const homeStoryPath = document.getElementById("home-story-path");
 
-if (homeStats && homeFeatured && homeRecent) {
+if (homeStats && homeFeatured && homeRecent && homeStoryPath) {
   initializeHome();
 }
 
@@ -11,6 +12,24 @@ async function initializeHome() {
   const literaryEntries = entries.filter((entry) =>
     ["chapter", "scene", "play"].includes(entry.type)
   );
+  const chapters = window.DivineChamber.byChronology(
+    entries.filter((entry) => entry.type === "chapter")
+  );
+
+  homeStoryPath.innerHTML = chapters
+    .map(
+      (entry, index) => `
+        <a class="story-path__item" href="${window.DivineChamber.entryUrl(entry)}">
+          <span class="story-path__order">${String(index).padStart(2, "0")}</span>
+          <span class="story-path__body">
+            <strong>${window.DivineChamber.escapeHtml(entry.title)}</strong>
+            <span>${window.DivineChamber.escapeHtml(entry.summary)}</span>
+          </span>
+          <span class="story-path__status">${window.DivineChamber.formatStatus(entry.status)}</span>
+        </a>
+      `
+    )
+    .join("");
 
   homeStats.innerHTML = `
     <article class="stat-card">

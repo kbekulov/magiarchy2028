@@ -438,6 +438,8 @@ window.DivineChamber = (() => {
     const eyebrow = options.eyebrow || "";
     const showStatus = options.showStatus ?? false;
     const metaLine = [];
+    const recordState = entry.canon === "core" ? "Canon" : sentenceCase(entry.canon || "Working");
+    const statusLabel = formatStatus(entry.status);
 
     if (entry.status && !showStatus && !["canon", "final"].includes(entry.status)) {
       metaLine.push(`<span>${escapeHtml(formatStatus(entry.status))}</span>`);
@@ -459,6 +461,7 @@ window.DivineChamber = (() => {
       <article class="archive-card archive-card--${escapeHtml(entry.template)} archive-card--${escapeHtml(
         entry.facet
       )}">
+        <div class="archive-card__seal" aria-label="Record state">${escapeHtml(recordState)}</div>
         <div class="archive-card__meta">
           <div class="chip-row">
             ${renderBadges(entry, {
@@ -470,6 +473,7 @@ window.DivineChamber = (() => {
           ${eyebrow ? `<p class="archive-card__eyebrow">${escapeHtml(eyebrow)}</p>` : ""}
         </div>
         <h2 class="archive-card__title">${escapeHtml(entry.title)}</h2>
+        <div class="archive-card__filing">${escapeHtml(statusLabel)} record</div>
         <p class="archive-card__summary">${escapeHtml(entry.summary || "No summary provided yet.")}</p>
         ${renderCharacterChips(entry, { maxCharacters: options.maxCharacterChips })}
         ${

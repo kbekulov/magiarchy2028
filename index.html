@@ -14,6 +14,7 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <link rel="icon" type="image/png" href="media/favicon.png" />
     <script src="theme-init.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -28,50 +29,59 @@
 
         <main class="col-lg-9 col-xl-10 content-column">
           <div class="content-wrap">
-            <section class="hero-card hero-card--home">
+            <section class="hero-card hero-card--home story-portal">
               <div class="hero-card__inner">
-                <p class="page-kicker">The Archive</p>
+                <p class="page-kicker">Occult Political Fantasy</p>
                 <h1 class="page-title">Magiarchy</h1>
                 <p class="hero-lead">
-                  Magic is real, hidden, and older than the governments that contain it. Someone just forced the question of what happens when that arrangement breaks.
+                  A dead phone rings inside a locked house. The Church arrives before the police understand why. Under the floor, something is still circulating.
                 </p>
                 <p class="page-copy hero-copy">
-                  Magiarchy is an occult-political story world built around an institutional crisis:
-                  a hidden order under pressure, an acting heir who inherits the fracture, and a
-                  succession conflict that uses accusation as its primary weapon.
+                  Start with the chapters, play them as a visual novel, or open the archive when the
+                  evidence starts contradicting itself. The documents are not decoration. They are
+                  how the hidden world tries to stay coherent.
                 </p>
 
                 <div class="hero-actions">
-                  <a class="btn btn-brass" href="vn.html">Read Chapter 1</a>
-                  <a class="btn btn-outline-light" href="library.html">Browse the Archive</a>
+                  <a class="btn btn-brass" href="reader.html?id=chapter-chapter-00-the-interview">Start Reading</a>
+                  <a class="btn btn-outline-light" href="vn.html">Play VN</a>
+                  <a class="btn btn-outline-light" href="library.html">Explore Archive</a>
                 </div>
               </div>
 
               <div class="hero-card__aside">
                 <div class="hero-note hero-note--guide">
-                  <p class="card-kicker">New to the world?</p>
+                  <p class="card-kicker">Choose an entry point</p>
                   <div class="route-list">
+                    <a class="route-link" href="reader.html?id=chapter-chapter-00-the-interview">
+                      <strong class="route-link__title">Story Mode</strong>
+                      <span class="route-link__copy">
+                        Read the current chapter sequence as clean prose with archive context beside it.
+                      </span>
+                    </a>
                     <a class="route-link" href="vn.html">
-                      <strong class="route-link__title">Start with Chapter 1</strong>
+                      <strong class="route-link__title">VN Mode</strong>
                       <span class="route-link__copy">
-                        A homicide scene, an uninvited priest, and a body that was too cold for the room.
+                        Turn the chapter text into staged beats, dialogue, logs, and episode jumps.
                       </span>
                     </a>
-                    <a class="route-link" href="characters.html">
-                      <strong class="route-link__title">The people holding power</strong>
+                    <a class="route-link" href="events.html">
+                      <strong class="route-link__title">Case Files</strong>
                       <span class="route-link__copy">
-                        Lynleit inherited an unstable institution. Helena wants it. Kyrien answers to neither.
-                      </span>
-                    </a>
-                    <a class="route-link" href="narrative.html">
-                      <strong class="route-link__title">The world behind the world</strong>
-                      <span class="route-link__copy">
-                        Three hundred years of secrecy, one pressure point, and the question of whether the hidden order survives revelation.
+                        Follow the institutional incidents the story is trying to classify.
                       </span>
                     </a>
                   </div>
                 </div>
               </div>
+            </section>
+
+            <section class="page-section mt-4">
+              <div class="section-header">
+                <p class="page-kicker">Reading Order</p>
+                <h2 class="section-title">The current story spine</h2>
+              </div>
+              <div class="story-path" id="home-story-path"></div>
             </section>
 
             <section class="page-section mt-4">
@@ -81,7 +91,7 @@
                   <h2 class="section-title trailer-feature__title">Two minutes of what the world feels like</h2>
                   <p class="page-copy mt-3 mb-0">
                     Before the dossiers and the crisis files, before the institutional logic and the
-                    hidden order — this is the tone. Secrecy held by pressure. Authority that knows
+                    hidden order - this is the tone. Secrecy held by pressure. Authority that knows
                     it is watched.
                   </p>
 
@@ -121,8 +131,8 @@
 
             <section class="page-section mt-4">
               <div class="section-header">
-                <p class="page-kicker">Go deeper</p>
-                <h2 class="section-title">What the archive holds</h2>
+                <p class="page-kicker">Archive Layers</p>
+                <h2 class="section-title">Documents around the story</h2>
               </div>
 
               <div class="entry-grid entry-grid--wide">
@@ -163,7 +173,7 @@
                   <p class="archive-card__eyebrow">Provisional soundtrack</p>
                   <h3 class="archive-card__title">Music Room</h3>
                   <p class="archive-card__summary">
-                    Institutional motifs, pressure themes, and character signatures — organized by narrative function, ready to grow with the canon.
+                    Institutional motifs, pressure themes, and character signatures organized by narrative function, ready to grow with the canon.
                   </p>
                   <div class="archive-card__footer">
                     <a class="btn btn-outline-light btn-sm" href="music.html">Open music</a>
@@ -185,8 +195,8 @@
 
             <section class="page-section mt-4">
               <div class="section-header">
-                <p class="page-kicker">Canon status</p>
-                <h2 class="section-title">What is currently in the record</h2>
+                <p class="page-kicker">Record State</p>
+                <h2 class="section-title">What is currently indexed</h2>
               </div>
 
               <div class="stats-grid" id="home-stats"></div>

@@ -9,6 +9,10 @@ const readerContext = document.getElementById("reader-context");
 const relatedList = document.getElementById("related-list");
 const readerNav = document.getElementById("reader-nav");
 const readerSourceLink = document.getElementById("reader-source-link");
+const readerVNLink = document.getElementById("reader-vn-link");
+const readerProgress = document.getElementById("reader-progress");
+const readerProgressLabel = document.getElementById("reader-progress-label");
+const readerProgressFill = document.getElementById("reader-progress-fill");
 const readerCard = document.getElementById("reader-card");
 const readerLayout = document.getElementById("reader-layout");
 
@@ -24,6 +28,10 @@ if (
   relatedList &&
   readerNav &&
   readerSourceLink &&
+  readerVNLink &&
+  readerProgress &&
+  readerProgressLabel &&
+  readerProgressFill &&
   readerCard &&
   readerLayout
 ) {
@@ -52,6 +60,12 @@ async function initializeReader() {
     const related = window.DivineChamber.getRelatedEntries(entries, entry, 4);
     const prevNext = window.DivineChamber.findPrevNext(entries, entry);
     const fields = entry.fields || {};
+    const chapterEntries = window.DivineChamber.byChronology(
+      entries.filter((item) => item.type === "chapter")
+    );
+    const chapterIndex = chapterEntries.findIndex((item) => item.id === entry.id);
+    const wordCount = countWords(markdown);
+    const readMinutes = Math.max(1, Math.ceil(wordCount / 230));
 
     document.title = `${entry.title} | Magiarchy`;
     readerKind.textContent = window.DivineChamber.formatType(entry.type);
@@ -70,6 +84,7 @@ async function initializeReader() {
       recordItem("Canon", window.DivineChamber.sentenceCase(entry.canon)),
       recordItem("Version", fields.draft_version ? `v${fields.draft_version}` : ""),
       recordItem("Chronology", window.DivineChamber.orderLabel(entry)),
+      recordItem("Read Time", entry.type === "chapter" ? `${readMinutes} min` : ""),
       recordItem("Crisis", entry.case_name),
       recordItem("Role", fields.role),
       recordItem("Affiliation", fields.affiliation),
@@ -84,6 +99,8 @@ async function initializeReader() {
 
     readerBody.innerHTML = window.DivineChamber.renderMarkdown(markdown);
     removeDuplicateHeading(readerBody, entry.title);
+    updateReaderProgress(entry, chapterIndex, chapterEntries.length, wordCount);
+    updateVNLink(entry, chapterIndex);
     readerContext.innerHTML = `
       ${entry.characters?.length ? blockRow("Characters", entry.characters) : ""}
       ${entry.tags?.length ? blockRow("Tags", entry.tags) : ""}
@@ -137,6 +154,9 @@ function renderMissing(message) {
   readerNav.innerHTML = "";
   readerSourceLink.classList.add("disabled");
   readerSourceLink.removeAttribute("href");
+  readerVNLink.classList.add("disabled");
+  readerVNLink.removeAttribute("href");
+  readerProgress.hidden = true;
 }
 
 function recordItem(label, value) {
@@ -176,6 +196,38 @@ function navLink(entry, label) {
       <strong>${window.DivineChamber.escapeHtml(entry.title)}</strong>
     </a>
   `;
+}
+
+function countWords(markdown) {
+  return String(markdown || "")
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .match(/\b[\w']+\b/g)?.length || 0;
+}
+
+function updateReaderProgress(entry, chapterIndex, chapterCount, wordCount) {
+  if (entry.type !== "chapter" || chapterIndex < 0 || !chapterCount) {
+    readerProgress.hidden = true;
+    return;
+  }
+
+  const progress = Math.round(((chapterIndex + 1) / chapterCount) * 100);
+  readerProgress.hidden = false;
+  readerProgressLabel.textContent = `Chapter ${chapterIndex + 1} of ${chapterCount} - ${wordCount.toLocaleString()} words`;
+  readerProgressFill.style.width = `${progress}%`;
+}
+
+function updateVNLink(entry, chapterIndex) {
+  if (entry.type !== "chapter" || chapterIndex < 0) {
+    readerVNLink.classList.add("disabled");
+    readerVNLink.removeAttribute("href");
+    readerVNLink.setAttribute("aria-disabled", "true");
+    return;
+  }
+
+  readerVNLink.classList.remove("disabled");
+  readerVNLink.removeAttribute("aria-disabled");
+  readerVNLink.href = `vn.html?chapter=${encodeURIComponent(entry.id)}`;
 }
 
 function removeDuplicateHeading(container, title) {

@@ -14,6 +14,7 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <link rel="icon" type="image/png" href="media/favicon.png" />
     <script src="theme-init.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -42,6 +43,12 @@
                   <div class="record-strip" id="reader-meta"></div>
                   <div class="record-grid" id="reader-record"></div>
                   <article class="reader-card mt-4" id="reader-card">
+                    <div class="reader-progress" id="reader-progress" hidden>
+                      <span id="reader-progress-label">Reading progress</span>
+                      <span class="reader-progress__bar" aria-hidden="true">
+                        <span id="reader-progress-fill"></span>
+                      </span>
+                    </div>
                     <div id="reader-toolbar"></div>
                     <div class="markdown-body" id="reader-body">
                       <p class="page-copy mb-0">Loading file text.</p>
@@ -58,6 +65,11 @@
                     <div id="reader-context"></div>
                     <div class="mt-4">
                       <a class="btn btn-outline-light w-100" href="library.html">Back to Archive</a>
+                    </div>
+                    <div class="mt-3">
+                      <a class="btn btn-outline-light w-100" href="#" id="reader-vn-link">
+                        Continue in VN
+                      </a>
                     </div>
                     <div class="mt-3">
                       <a class="btn btn-brass w-100" href="#" id="reader-source-link" target="_blank" rel="noreferrer">

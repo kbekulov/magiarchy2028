@@ -1,39 +1,39 @@
 const DC_SHELL = (() => {
   const sections = [
-    { key: "story-universe", label: "Story Universe", href: "narrative.html" },
-    { key: "magic-system", label: "Magic System", href: "magic.html" },
+    { key: "story-universe", label: "Story", href: "narrative.html" },
+    { key: "magic-system", label: "Magic", href: "magic.html" },
     { key: "locations", label: "Locations", href: "locations.html" },
     { key: "music", label: "Music", href: "music.html" },
     { key: "organizations", label: "Organizations", href: "organizations.html" },
-    { key: "characters", label: "Characters", href: "characters.html" },
+    { key: "characters", label: "Cast", href: "characters.html" },
     { key: "relationships", label: "Relationships", href: "relationships.html" },
-    { key: "events-chapters", label: "Events & Chapters", href: "events.html" },
-    { key: "story-timeline", label: "Story Timeline", href: "timeline.html" },
-    { key: "global-prompt", label: "Global Prompt", href: "notes.html" },
+    { key: "events-chapters", label: "Case Files", href: "events.html" },
+    { key: "story-timeline", label: "Timeline", href: "timeline.html" },
+    { key: "global-prompt", label: "Writer's Desk", href: "notes.html" },
   ];
 
   const utilityPages = [
-    { key: "home", label: "Project Home", href: "index.html" },
-    { key: "archive", label: "Archive Browser", href: "library.html" },
-    { key: "vn-simulator", label: "VN Simulator", href: "vn.html" },
+    { key: "home", label: "Home", href: "index.html" },
+    { key: "archive", label: "Archive", href: "library.html" },
+    { key: "vn-simulator", label: "VN", href: "vn.html" },
   ];
 
   const navGroups = [
     {
-      label: "Start Here",
-      keys: ["home", "global-prompt", "story-universe"],
-    },
-    {
-      label: "World",
-      keys: ["magic-system", "locations", "organizations"],
+      label: "Start",
+      keys: ["home", "story-universe", "vn-simulator"],
     },
     {
       label: "Story",
-      keys: ["characters", "relationships", "events-chapters", "story-timeline", "vn-simulator"],
+      keys: ["archive", "characters", "events-chapters", "story-timeline"],
+    },
+    {
+      label: "World",
+      keys: ["magic-system", "locations", "organizations", "relationships"],
     },
     {
       label: "Reference",
-      keys: ["music", "archive"],
+      keys: ["music", "global-prompt"],
     },
   ];
 
@@ -53,9 +53,9 @@ const DC_SHELL = (() => {
 
   const notes = {
     home:
-      "Start from the global prompt or story universe, then move outward into world files, character dossiers, and chapter machinery.",
+      "Start with the chapters or VN mode, then let the archive turn the story's documents into evidence.",
     archive:
-      "The archive stays as the deep-browse layer, while the main sidebar works as the cleaner front-facing table of contents.",
+      "The archive is the deep-browse layer: canon files, partial dossiers, sealed doctrine, and working notes in one searchable record.",
     "story-universe":
       "This page frames the hidden-world premise, the political equilibrium, and the thematic pressure before you open narrower files.",
     "magic-system":
@@ -75,9 +75,9 @@ const DC_SHELL = (() => {
     "story-timeline":
       "The timeline should clarify escalation and sequence without turning the project into a dry production sheet.",
     "vn-simulator":
-      "The VN simulator turns chapter text into a playable reading lane with placeholder stage visuals, animated delivery, and chapter jump controls.",
+      "The VN simulator turns chapter text into a playable reading lane with staged delivery, chapter jump controls, and episode pacing.",
     "global-prompt":
-      "The global prompt shelf keeps the active canon pack close to the supporting writer-facing references that feed it.",
+      "The Writer's Desk keeps the canon pack and construction notes close without making scaffolding compete with the front-facing story.",
   };
 
   const themeOptions = [
@@ -224,9 +224,9 @@ const DC_SHELL = (() => {
     sidebarRoot.innerHTML = `
       <div class="sidebar-panel">
         <div class="sidebar-top">
-          <p class="sidebar-kicker mb-2">Hidden World Archive</p>
+          <p class="sidebar-kicker mb-2">Magiarchy</p>
           <p class="sidebar-copy mt-2 mb-0">
-            A quieter map through Magiarchy canon, doctrine, characters, and story structure.
+            Start with the story. Use the archive when the documents begin to look back.
           </p>
         </div>
 
@@ -273,7 +273,7 @@ const DC_SHELL = (() => {
       <div class="offcanvas offcanvas-start mobile-drawer d-lg-none" tabindex="-1" id="mobileNav">
         <div class="offcanvas-header border-bottom">
           <div>
-            <p class="drawer-kicker mb-0">Hidden World Archive</p>
+            <p class="drawer-kicker mb-0">Magiarchy</p>
           </div>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>

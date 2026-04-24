@@ -5,6 +5,7 @@ const VN_CHAPTER_INTRO_FADE_MS = 560;
 const VN_NARRATION_PAGE_MAX_CHARS = 560;
 const VN_NARRATION_PAGE_MAX_LINES = 8;
 const VN_NARRATION_APPROX_CHARS_PER_LINE = 72;
+const VN_BGM_STORAGE_KEY = "magiarchy-vn-bgm";
 const VN_SCENE_LIBRARY = {
   "chapter-chapter-01-a-visitor": {
     backdrop: "media/vn_simulator/chapter_1/bg_street_1.png",
@@ -73,11 +74,19 @@ if (vnShell) {
 }
 
 function readStoredBGMPreference() {
-  return true;
+  try {
+    return window.localStorage.getItem(VN_BGM_STORAGE_KEY) === "true";
+  } catch (error) {
+    return false;
+  }
 }
 
 function persistBGMPreference(value) {
-  void value;
+  try {
+    window.localStorage.setItem(VN_BGM_STORAGE_KEY, String(Boolean(value)));
+  } catch (error) {
+    // Keep the in-memory preference if storage is unavailable.
+  }
 }
 
 async function initializeVNSimulator() {
@@ -108,6 +117,7 @@ async function initializeVNSimulator() {
     mainMenuOpen: false,
     menuStartChapterIndex: 0,
     bgmEngine: null,
+    bgmUserActivated: false,
     log: [],
   };
 
@@ -822,6 +832,7 @@ function bindVNEvents(refs, state) {
       return;
     }
 
+    state.bgmUserActivated = true;
     syncBGMToChapter(refs, state);
   };
 
@@ -1079,7 +1090,7 @@ function showMainMenu(refs, state, options = {}) {
   refs.mainMenuStart?.focus();
   updateBGMButtonState(refs, state);
   if (state.bgmEnabled) {
-    void syncBGMToChapter(refs, state);
+    updateBGMButtonState(refs, state);
   } else {
     fadeOutBGM(state, { pauseOnComplete: true });
   }
@@ -1104,6 +1115,7 @@ function startVNFromMainMenu(refs, state) {
     Math.min(state.chapters.length - 1, Number(state.menuStartChapterIndex) || 0)
   );
   hideMainMenu(refs, state);
+  state.bgmUserActivated = true;
   openChapter(refs, state, chapterIndex, 0);
 }
 
@@ -1282,7 +1294,7 @@ function updateChapterScene(refs, chapter) {
 
 function applyChapterSceneArt(refs, chapter) {
   const configuredScene = getChapterSceneConfig(chapter);
-  const backdrop = configuredScene?.backdrop || "media/bg.png";
+  const backdrop = configuredScene?.backdrop || "media/bg-1200.webp";
   const opacity = configuredScene?.backdrop ? "0.76" : "0.5";
   refs.stage.style.setProperty("--vn-stage-art", `url("${backdrop}")`);
   refs.stage.style.setProperty("--vn-stage-art-opacity", opacity);
@@ -1804,6 +1816,7 @@ function setAutoState(refs, state, value) {
 async function toggleBGM(refs, state) {
   const hasTrack = Boolean(resolveCurrentBGMTrack(state));
   const audio = state.bgmEngine?.audio || null;
+  state.bgmUserActivated = true;
 
   if (state.bgmEnabled && hasTrack && (!audio || audio.paused)) {
     await syncBGMToChapter(refs, state);
@@ -1869,12 +1882,20 @@ function updateBGMButtonState(refs, state) {
   }
 
   const hasTrack = Boolean(resolveCurrentBGMTrack(state));
-  const label = !state.bgmEnabled ? "BGM" : hasTrack ? "BGM On" : "BGM Ready";
+  const label = !state.bgmEnabled
+    ? "BGM"
+    : hasTrack && state.bgmUserActivated
+      ? "BGM On"
+      : "BGM Ready";
   const title = state.mainMenuOpen
-    ? hasTrack
+    ? hasTrack && !state.bgmUserActivated
+      ? "Music is ready and will start after Start or BGM is pressed."
+      : hasTrack
       ? "Toggle main menu background music"
       : "No track is assigned to the main menu yet."
-    : hasTrack
+    : hasTrack && !state.bgmUserActivated
+      ? "Music is ready and will start after Start or BGM is pressed."
+      : hasTrack
       ? "Toggle chapter background music"
       : "No track is assigned to this chapter yet. Leaving BGM on will resume playback when a chapter track exists.";
 
@@ -1895,6 +1916,10 @@ async function syncBGMToChapter(refs, state) {
   updateBGMButtonState(refs, state);
 
   if (!state.bgmEnabled) {
+    return;
+  }
+
+  if (!state.bgmUserActivated) {
     return;
   }
 
