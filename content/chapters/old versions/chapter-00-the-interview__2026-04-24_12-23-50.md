@@ -10,8 +10,8 @@ canon: core
 case:
 characters:
 tags: magi | secrecy | church | politics | doctrine
-summary: A confiscated interview defines Magi as human loopholes in natural law, establishing secrecy, Church complicity, and the political cost of naming magic in public.
-draft_version: 2.1
+summary: A sharp interview dialogue defines Magi as human loopholes in natural law, establishing secrecy, Church ambivalence, and the forbidden cost of politics before the wider story opens.
+draft_version: 2.0
 template: literary
 featured: true
 vn_backdrop: media/vn_simulator/chapter_0/bg_room_1.png
@@ -28,17 +28,9 @@ vn_speaker_overrides_03: It is also a practical one.=>Guest | You mean that a wi
 
 # The Interview
 
-The confiscation record identified the object as a portable tape recorder, civilian grade, recovered from a newspaper office two hours after the fire.
+The recorder clicked once.
 
-It did not mention the journalist by name.
-
-That omission was deliberate. Omissions were cheaper than funerals and easier to defend in committee.
-
-The transcript began after twenty-three seconds of static.
-
-Then the recorder clicked once.
-
-Red light. Steady. Someone drew a breath too close to the microphone and moved back.
+Red light. Steady.
 
 "What can you tell me about Magi?"
 
@@ -58,7 +50,7 @@ A pause followed. Paper shifted under a careful hand. Somewhere in the room, a c
 
 "So your craft is natural."
 
-The lamp hummed above the table. Its heat did not reach the corners. Beyond it, glass reflected two silhouettes and a locked door.
+The lamp hummed above the table. Its heat did not reach the corners.
 
 "Do not say that too loudly. It upsets both the devout and the educated, though for different reasons."
 
@@ -96,7 +88,7 @@ Silence.
 
 "You mean that a witness must die."
 
-The clock marked one second. The interviewer's pen stopped moving.
+The clock marked one second.
 
 "I mean that the world protects its coherence with astonishing cruelty."
 
@@ -114,7 +106,7 @@ At that, the answer came with a quiet sound that may once have been amusement.
 
 "And politics?"
 
-A chair creaked. Outside the room, a floorboard answered.
+A chair creaked.
 
 "Politics is forbidden."
 
@@ -123,19 +115,3 @@ A chair creaked. Outside the room, a floorboard answered.
 Wood creaked under someone's hand. Not from fear. From pressure.
 
 "Neither. Merely expensive."
-
-The recorder continued for another nine seconds.
-
-No words followed.
-
-Only the clock, the lamp, and the softened scrape of a chair pushed back from the table.
-
-The official copy ended there. The damaged original contained one additional sound: a knock at the locked door, answered from inside before either recorded speaker moved.
-
-Three knocks.
-
-Then a man's voice, faint and close to the wood.
-
-"You used the word politics."
-
-After that, the tape burned clean through.
